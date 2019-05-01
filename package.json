@@ -17,6 +17,7 @@
     "eslint-plugin-react": "^7.12.4"
   },
   "scripts": {
+    "nodemon": "nodemon src/index.js",
     "lint": "node_modules/.bin/eslint src --ext .js",
     "fix": "node_modules/.bin/eslint src --ext .js --fix",
     "git": "hooks/git.sh"
