@@ -1,0 +1,25 @@
+{
+  "name": "learnExpress",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/bamdadsabbagh/learnExpress.git",
+  "author": "Bamdad Sabbagh <dev@bamdadsabbagh.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-graphql": "^0.8.0",
+    "graphql": "^14.2.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4"
+  },
+  "scripts": {
+    "lint": "node_modules/.bin/eslint src --ext .js",
+    "fix": "node_modules/.bin/eslint src --ext .js --fix"
+  }
+}
