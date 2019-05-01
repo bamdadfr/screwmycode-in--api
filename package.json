@@ -6,9 +6,7 @@
   "author": "Bamdad Sabbagh <dev@bamdadsabbagh.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.4",
-    "express-graphql": "^0.8.0",
-    "graphql": "^14.2.1"
+    "express": "^4.16.4"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
@@ -20,6 +18,7 @@
   },
   "scripts": {
     "lint": "node_modules/.bin/eslint src --ext .js",
-    "fix": "node_modules/.bin/eslint src --ext .js --fix"
+    "fix": "node_modules/.bin/eslint src --ext .js --fix",
+    "git": "hooks/git.sh"
   }
 }
