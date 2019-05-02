@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# cd .git/hooks && ln -s ../../hooks/pre-commit ./pre-commit && chmod +x ./pre-commit
+# cd .git/hooks && ln -s ../../hooks/pre-commit.sh ./pre-commit.sh && chmod +x ./pre-commit.sh && cd ../../
 
 # $PWD working dir
 reactPath=.
