@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const { exec } = require('child_process')
 
 const app = express()
@@ -8,7 +9,7 @@ app.get('/', (req, res) => {
   res.send('Hello')
 })
 
-app.get('/:id', (req, res) => {
+app.get('/:id', cors(), (req, res) => {
 
   const id = req.params.id
 
