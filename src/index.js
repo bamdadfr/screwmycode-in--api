@@ -4,31 +4,32 @@ const { exec } = require('child_process')
 
 const app = express()
 const port = 5000
+const youtubeUrl = 'https://www.youtube.com/watch?v='
 
 app.get('/', (req, res) => {
   res.send('Hello')
 })
 
-app.get('/:id', cors(), (req, res) => {
-
+app.get('/youtube/:id', cors(), (req, res) => {
   const id = req.params.id
-
   console.log('id', id)
 
-  exec('youtube-dl -f 140 -g https://www.youtube.com/watch?v=' + id, (err, stdout, stderr) => {
-    if (err) {
-      // node couldn't execute the command
-      return
-    }
+  let title, url
+  exec('youtube-dl -e ' + youtubeUrl + id, (err, stdout, stderr) => {
+    if (err) { return }
+    title = stdout
+  })
 
+  // getting url
+  exec('youtube-dl -f 140 -g ' + youtubeUrl + id, (err, stdout, stderr) => {
+    if (err) { return }
+
+    url = stdout
     res.send({
-      res: stdout,
+      title,
+      url,
       err: stderr
     })
-
-    // the *entire* stdout and stderr (buffered)
-    console.log(`stdout: ${stdout}`)
-    console.log(`stderr: ${stderr}`)
   })
 
 })
