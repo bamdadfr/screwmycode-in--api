@@ -14,24 +14,20 @@ app.get('/youtube/:id', cors(), (req, res) => {
   const id = req.params.id
   console.log('id', id)
 
-  let title, url
-  exec('youtube-dl -e ' + youtubeUrl + id, (err, stdout, stderr) => {
-    if (err) { return }
-    title = stdout
-  })
-
-  // getting url
-  exec('youtube-dl -f 140 -g ' + youtubeUrl + id, (err, stdout, stderr) => {
+  let response, title, url
+  exec('youtube-dl -e -f 140 -g ' + youtubeUrl + id, (err, stdout, stderr) => {
     if (err) { return }
 
-    url = stdout
+    response = stdout.split('\n')
+    title = response[0]
+    url = response[1]
+
     res.send({
       title,
       url,
       err: stderr
     })
   })
-
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
