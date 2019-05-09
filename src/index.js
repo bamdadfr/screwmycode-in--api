@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
   res.send('Hello')
 })
 
-app.get('/youtube/:id', cors(), (req, res) => {
+app.get('/youtube/:id', (req, res) => {
   const { id } = req.params
   console.log('id', id)
 
