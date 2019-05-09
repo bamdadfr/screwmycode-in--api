@@ -33,7 +33,7 @@ app.get('/youtube/:id', cors(), (req, res) => {
       res.send({
         title,
         url,
-        err: stderr,
+        // err: stderr,
       })
     })
   } else {
