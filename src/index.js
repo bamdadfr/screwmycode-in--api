@@ -9,7 +9,7 @@ const app = express()
 const port = 5000
 const youtubeUrl = 'https://www.youtube.com/watch?v='
 
-const regExp = /^([0-9A-Za-z_-]{11})$/
+const regEx = /^([0-9A-Za-z_-]{11})$/
 
 // API Service
 
@@ -19,12 +19,15 @@ app.get('/', (req, res) => {
   res.send('Hello')
 })
 
+// Use CORS() for local dev
+// remove it for production when behind a Apache Reverse Proxy
+
 // app.get('/youtube/:id', cors(), (req, res) => {
 app.get('/youtube/:id', (req, res) => {
   const { id } = req.params
   console.log('id', id)
 
-  if (regExp.test(id)) {
+  if (regEx.test(id)) {
     exec(`youtube-dl -e -f 140 -g ${youtubeUrl}${id}`, (err, stdout, stderr) => {
       if (err) { return }
 
@@ -32,6 +35,7 @@ app.get('/youtube/:id', (req, res) => {
       const [title, url] = response
 
       res.send({
+        success: true,
         title,
         url,
         // err: stderr,
@@ -39,6 +43,7 @@ app.get('/youtube/:id', (req, res) => {
     })
   } else {
     res.send({
+      success: false,
       err: 'Wrong YouTube ID',
     })
   }
