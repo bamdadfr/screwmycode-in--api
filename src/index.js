@@ -9,7 +9,7 @@ const app = express()
 const port = 5000
 const youtubeUrl = 'https://www.youtube.com/watch?v='
 
-const regExp = /([0-9A-Za-z_-]{11})/
+const regExp = /^([0-9A-Za-z_-]{11})$/
 
 // API Service
 
