@@ -11,21 +11,25 @@ app.get('/', (req, res) => {
 })
 
 app.get('/youtube/:id', cors(), (req, res) => {
-  const id = req.params.id
+  const { id } = req.params
   console.log('id', id)
 
-  let response, title, url
-  exec('youtube-dl -e -f 140 -g ' + youtubeUrl + id, (err, stdout, stderr) => {
+  let response; let title; let
+    url
+  exec(`youtube-dl -e -f 140 -g ${youtubeUrl}${id}`, (err, stdout, stderr) => {
     if (err) { return }
 
     response = stdout.split('\n')
     title = response[0]
     url = response[1]
 
+    console.log('title', title)
+    console.log('url', url)
+
     res.send({
       title,
       url,
-      err: stderr
+      err: stderr,
     })
   })
 })
