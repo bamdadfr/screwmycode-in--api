@@ -15,8 +15,7 @@ const port = 5000
 
  */
 
-
-const isUrl200 = url => new Promise((resolve, reject) => {
+const isUrl200 = url => new Promise((resolve) => {
   https.get(url, (r) => {
     if (r.statusCode === 200) {
       resolve(true)
@@ -40,10 +39,7 @@ const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
             err: stderr,
           })
         } else {
-          reject({
-            success: false,
-            err: '403',
-          })
+          reject(new Error('HTTP request answer != 200, retrying...'))
         }
       })
   })
@@ -53,8 +49,8 @@ const execShellCommandUntilSuccess = async (baseUrl, id) => {
   try {
     return await execShellCommand(baseUrl, id)
   } catch (err) {
-    console.log('403 catched, retrying...', err)
-    return await execShellCommand(baseUrl, id)
+    console.log(err)
+    return execShellCommand(baseUrl, id)
   }
 }
 
@@ -64,7 +60,6 @@ const execShellCommandUntilSuccess = async (baseUrl, id) => {
   ENDPOINT
 
  */
-
 
 app.use(helmet())
 
@@ -85,9 +80,8 @@ app.get('/', (req, res) => {
 // Use CORS() for local dev
 // remove it for production when behind a Apache Reverse Proxy
 
-app.get('/youtube/:id', cors(), (req, res) => {
-// app.get('/youtube/:id', (req, res) => {
-
+// app.get('/youtube/:id', cors(), (req, res) => {
+app.get('/youtube/:id', (req, res) => {
   const { id } = req.params
   console.log(new Date(), 'YouTube:', id)
 
@@ -97,6 +91,11 @@ app.get('/youtube/:id', cors(), (req, res) => {
   if (regEx.test(id)) {
     execShellCommandUntilSuccess(baseUrl, id)
       .then(r => res.send(r))
+  } else {
+    res.send({
+      success: false,
+      err: 'Wrong YouTube ID',
+    })
   }
 })
 
