@@ -21,6 +21,7 @@
       {
         "allowTernary": true
       }
-    ]
+    ],
+    "prefer-promise-reject-errors": "off"
   }
 }

@@ -27,21 +27,31 @@ const isUrl200 = url => new Promise((resolve) => {
 
 const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
   exec(`youtube-dl -e -f 140 -g ${baseUrl}${id}`, (err, stdout, stderr) => {
-    const [title, url] = stdout.split('\n')
-
-    isUrl200(url)
-      .then((is200) => {
-        if (is200) {
-          resolve({
-            success: true,
-            title,
-            url,
-            err: stderr,
-          })
-        } else {
-          reject(new Error('HTTP request answer != 200, retrying...'))
-        }
+    if (err) {
+      reject({
+        continue: false,
+        err,
       })
+    } else {
+      const [title, url] = stdout.split('\n')
+      isUrl200(url)
+        .then((is200) => {
+          if (is200) {
+            console.log('success')
+            resolve({
+              success: true,
+              title,
+              url,
+              err: stderr,
+            })
+          } else {
+            reject({
+              continue: true,
+              err: 'HTTP request answer != 200, retrying...',
+            })
+          }
+        })
+    }
   })
 })
 
@@ -49,8 +59,14 @@ const execShellCommandUntilSuccess = async (baseUrl, id) => {
   try {
     return await execShellCommand(baseUrl, id)
   } catch (err) {
-    console.log(err)
-    return execShellCommand(baseUrl, id)
+    if (err.continue) {
+      return execShellCommand(baseUrl, id)
+    }
+    console.log('aborted')
+    return ({
+      success: false,
+      err: err.err,
+    })
   }
 }
 
@@ -80,8 +96,8 @@ app.get('/', (req, res) => {
 // Use CORS() for local dev
 // remove it for production when behind a Apache Reverse Proxy
 
-// app.get('/youtube/:id', cors(), (req, res) => {
-app.get('/youtube/:id', (req, res) => {
+app.get('/youtube/:id', cors(), (req, res) => {
+// app.get('/youtube/:id', (req, res) => {
   const { id } = req.params
   console.log(new Date(), 'YouTube:', id)
 
