@@ -51,6 +51,7 @@ const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
             })
           }
         })
+        .catch(isUrl200err => console.log('isUrl200', isUrl200err))
     }
   })
 })
@@ -96,8 +97,8 @@ app.get('/', (req, res) => {
 // Use CORS() for local dev
 // remove it for production when behind a Apache Reverse Proxy
 
-// app.get('/youtube/:id', cors(), (req, res) => {
-app.get('/youtube/:id', (req, res) => {
+app.get('/youtube/:id', cors(), (req, res) => {
+// app.get('/youtube/:id', (req, res) => {
   const { id } = req.params
   console.log(new Date(), 'YouTube:', id)
 
@@ -107,6 +108,7 @@ app.get('/youtube/:id', (req, res) => {
   if (regEx.test(id)) {
     execShellCommandUntilSuccess(baseUrl, id)
       .then(r => res.send(r))
+      .catch(err => console.log('execShellCommandUntilSuccess', err))
   } else {
     res.send({
       success: false,
