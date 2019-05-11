@@ -97,8 +97,8 @@ app.get('/', (req, res) => {
 // Use CORS() for local dev
 // remove it for production when behind a Apache Reverse Proxy
 
-app.get('/youtube/:id', cors(), (req, res) => {
-// app.get('/youtube/:id', (req, res) => {
+// app.get('/youtube/:id', cors(), (req, res) => {
+app.get('/youtube/:id', (req, res) => {
   const { id } = req.params
   console.log(new Date(), 'YouTube:', id)
 
