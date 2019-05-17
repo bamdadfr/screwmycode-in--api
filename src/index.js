@@ -100,7 +100,9 @@ app.get('/', (req, res) => {
 // app.get('/youtube/:id', cors(), (req, res) => {
 app.get('/youtube/:id', (req, res) => {
   const { id } = req.params
-  console.log(new Date(), 'YouTube:', id)
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+
+  console.log(new Date(), ip, ' YouTube:', id)
 
   const baseUrl = 'https://www.youtube.com/watch?v='
   const regEx = /^([0-9A-Za-z_-]{11})$/
