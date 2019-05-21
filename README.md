@@ -2,6 +2,9 @@
 
 * https://www.youtube.com/watch?v=0oXYLzuucwE&list=PL55RiY5tL51q4D-B63KBnygU6opNPFk_q
 
+# design pattern for express apps (file structure)
+https://medium.freecodecamp.org/how-to-write-a-production-ready-node-and-express-app-f214f0b17d8c
+
 ## Documentation
 ### Express
 * https://expressjs.com/en/starter/installing.html
