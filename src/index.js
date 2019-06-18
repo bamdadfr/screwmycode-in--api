@@ -15,15 +15,25 @@ const port = 5000
 
  */
 
-const isUrl200 = url => new Promise((resolve) => {
+const fetchUrl = url => new Promise((resolve) => {
   https.get(url, (r) => {
     if (r.statusCode === 200) {
-      resolve(true)
+      resolve(r.res.headers['content-type'])
     } else {
       resolve(false)
     }
   })
 })
+
+const isMp4 = headers => headers === 'audio/mp4'
+
+// TODO: add xml parsing to get <baseUrl> in xml/dash file
+const isDash = (headers) => {
+  if (headers === 'video/vnd.mpeg.dash.mpd') {
+    return true
+  }
+  return false
+}
 
 const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
   exec(`youtube-dl -e -f 140 -g ${baseUrl}${id}`, (err, stdout, stderr) => {
@@ -34,10 +44,11 @@ const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
       })
     } else {
       const [title, url] = stdout.split('\n')
-      isUrl200(url)
-        .then((is200) => {
-          if (is200) {
+      fetchUrl(url)
+        .then((fetchUrlResult) => {
+          if (!fetchUrlResult) {
             console.log('success')
+            console.log(fetchUrlResult)
             resolve({
               success: true,
               title,
@@ -51,7 +62,7 @@ const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
             })
           }
         })
-        .catch(isUrl200err => console.log('isUrl200', isUrl200err))
+        .catch(err => console.log('fetchUrl error:', err))
     }
   })
 })
@@ -97,8 +108,8 @@ app.get('/', (req, res) => {
 // Use CORS() for local dev
 // remove it for production when behind a Apache Reverse Proxy
 
-// app.get('/youtube/:id', cors(), (req, res) => {
-app.get('/youtube/:id', (req, res) => {
+app.get('/youtube/:id', cors(), (req, res) => {
+// app.get('/youtube/:id', (req, res) => {
   const { id } = req.params
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
 
