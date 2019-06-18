@@ -49,10 +49,21 @@ const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
           if (!fetchUrlResult) {
             console.log('success')
             console.log(fetchUrlResult)
+
+            let audioUrl = ''
+
+            if (isMp4(fetchUrlResult)) {
+              audioUrl = url
+            }
+
+            if (isDash(fetchUrlResult)) {
+              audioUrl = 'test'
+            }
+
             resolve({
               success: true,
               title,
-              url,
+              url: audioUrl,
               err: stderr,
             })
           } else {
@@ -62,7 +73,7 @@ const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
             })
           }
         })
-        .catch(err => console.log('fetchUrl error:', err))
+        .catch(fetchUrlError => console.log('fetchUrlError:', fetchUrlError))
     }
   })
 })
