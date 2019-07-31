@@ -15,25 +15,29 @@ const port = 5000
 
  */
 
-const fetchUrl = url => new Promise((resolve) => {
+const isUrl200 = url => new Promise((resolve) => {
   https.get(url, (r) => {
+    const response = {
+      success: false,
+      contentType: '',
+      dashUrl: null,
+    }
+
     if (r.statusCode === 200) {
-      resolve(r.res.headers['content-type'])
+      if (r.headers['content-type'] === 'video/vnd.mpeg.dash.mpd') {
+        response.success = true
+        response.contentType = r.headers['content-type']
+        response.dashUrl = 'test'
+      } else {
+        response.success = true
+        response.contentType = r.headers['content-type']
+      }
+      resolve(response)
     } else {
-      resolve(false)
+      resolve(response)
     }
   })
 })
-
-const isMp4 = headers => headers === 'audio/mp4'
-
-// TODO: add xml parsing to get <baseUrl> in xml/dash file
-const isDash = (headers) => {
-  if (headers === 'video/vnd.mpeg.dash.mpd') {
-    return true
-  }
-  return false
-}
 
 const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
   exec(`youtube-dl -e -f 140 -g ${baseUrl}${id}`, (err, stdout, stderr) => {
@@ -44,26 +48,14 @@ const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
       })
     } else {
       const [title, url] = stdout.split('\n')
-      fetchUrl(url)
-        .then((fetchUrlResult) => {
-          if (!fetchUrlResult) {
+      isUrl200(url)
+        .then((is200) => {
+          if (is200.success) {
             console.log('success')
-            console.log(fetchUrlResult)
-
-            let audioUrl = ''
-
-            if (isMp4(fetchUrlResult)) {
-              audioUrl = url
-            }
-
-            if (isDash(fetchUrlResult)) {
-              audioUrl = 'test'
-            }
-
             resolve({
               success: true,
               title,
-              url: audioUrl,
+              url,
               err: stderr,
             })
           } else {
@@ -73,7 +65,7 @@ const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
             })
           }
         })
-        .catch(fetchUrlError => console.log('fetchUrlError:', fetchUrlError))
+        .catch(isUrl200err => console.log('isUrl200', isUrl200err))
     }
   })
 })
