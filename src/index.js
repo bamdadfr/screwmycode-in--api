@@ -15,7 +15,7 @@ const port = 5000
 
  */
 
-const isUrl200 = url => new Promise((resolve) => {
+const checkUrl = url => new Promise((resolve) => {
   https.get(url, (r) => {
     const response = {
       success: false,
@@ -48,9 +48,9 @@ const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
       })
     } else {
       const [title, url] = stdout.split('\n')
-      isUrl200(url)
-        .then((is200) => {
-          if (is200.success) {
+      checkUrl(url)
+        .then((r) => {
+          if (r.success) {
             console.log('success')
             resolve({
               success: true,
@@ -65,7 +65,7 @@ const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
             })
           }
         })
-        .catch(isUrl200err => console.log('isUrl200', isUrl200err))
+        .catch(err => console.log('checkUrl: ', err))
     }
   })
 })
