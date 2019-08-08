@@ -3,6 +3,8 @@ const cors = require('cors')
 const helmet = require('helmet')
 const { exec } = require('child_process')
 const https = require('https')
+const fetch = require('node-fetch')
+const parser = require('fast-xml-parser')
 
 // INIT
 
@@ -19,20 +21,31 @@ const checkUrl = url => new Promise((resolve) => {
   https.get(url, (r) => {
     const response = {
       success: false,
-      contentType: '',
+      type: '',
       dashUrl: null,
     }
 
     if (r.statusCode === 200) {
       if (r.headers['content-type'] === 'video/vnd.mpeg.dash.mpd') {
+        console.log('dash detected')
         response.success = true
-        response.contentType = r.headers['content-type']
-        response.dashUrl = 'test'
+        response.type = 'dash'
+
+        // json.MPD.Period.AdaptationSet[1].Representation.BaseURL
+
+        fetch(url)
+          .then(res => res.text())
+          .then(xml => parser.parse(xml, {
+            ignoreAttributes: false,
+          }))
+          .then(json => response.dashUrl = json.MPD.Period.AdaptationSet[1].Representation.BaseURL)
+          .then(r => resolve(response))
+          .catch(err => console.warn(err))
       } else {
         response.success = true
-        response.contentType = r.headers['content-type']
+        response.type = 'audio'
+        resolve(response)
       }
-      resolve(response)
     } else {
       resolve(response)
     }
@@ -52,10 +65,13 @@ const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
         .then((r) => {
           if (r.success) {
             console.log('success')
+            console.log(r)
             resolve({
               success: true,
+              type: r.type,
               title,
               url,
+              dashUrl: r.dashUrl,
               err: stderr,
             })
           } else {
