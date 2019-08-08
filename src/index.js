@@ -27,11 +27,8 @@ const checkUrl = url => new Promise((resolve) => {
 
     if (r.statusCode === 200) {
       if (r.headers['content-type'] === 'video/vnd.mpeg.dash.mpd') {
-        console.log('dash detected')
         response.success = true
         response.type = 'dash'
-
-        // json.MPD.Period.AdaptationSet[1].Representation.BaseURL
 
         fetch(url)
           .then(res => res.text())
@@ -65,7 +62,6 @@ const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
         .then((r) => {
           if (r.success) {
             console.log('success')
-            console.log(r)
             resolve({
               success: true,
               type: r.type,
