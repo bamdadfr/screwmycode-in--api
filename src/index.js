@@ -25,7 +25,7 @@ const checkUrl = url => new Promise((resolve) => {
       dashUrl: null,
     }
 
-    if (r.statusCode === 200) {
+    if (r.statusCode === 200 || r.statusCode === 302) {
       if (r.headers['content-type'] === 'video/vnd.mpeg.dash.mpd') {
         response.success = true
         response.type = 'dash'
@@ -50,7 +50,7 @@ const checkUrl = url => new Promise((resolve) => {
 })
 
 const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
-  exec(`youtube-dl -e -f 140 -g ${baseUrl}${id}`, (err, stdout, stderr) => {
+  exec(`torsocks youtube-dl -e -f 140 -g ${baseUrl}${id}`, (err, stdout, stderr) => {
     if (err) {
       reject({
         continue: false,
@@ -58,6 +58,7 @@ const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
       })
     } else {
       const [title, url] = stdout.split('\n')
+
       checkUrl(url)
         .then((r) => {
           if (r.success) {
@@ -123,8 +124,8 @@ app.get('/', (req, res) => {
 // Use CORS() for local dev
 // remove it for production when behind a Apache Reverse Proxy
 
-// app.get('/youtube/:id', cors(), (req, res) => {
-app.get('/youtube/:id', (req, res) => {
+app.get('/youtube/:id', cors(), (req, res) => {
+// app.get('/youtube/:id', (req, res) => {
   const { id } = req.params
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
 
