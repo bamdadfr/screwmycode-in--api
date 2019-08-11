@@ -50,7 +50,7 @@ const checkUrl = url => new Promise((resolve) => {
 })
 
 const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
-  exec(`torsocks youtube-dl -e -f 140 -g ${baseUrl}${id}`, (err, stdout, stderr) => {
+  exec(`youtube-dl -e -f 140 -g ${baseUrl}${id}`, (err, stdout, stderr) => {
     if (err) {
       reject({
         continue: false,
