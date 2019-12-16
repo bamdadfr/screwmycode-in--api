@@ -4,16 +4,22 @@ Node.js API for retrieving audio sources URLs from YouTube links.
 
 *Based on youtube-dl https://github.com/ytdl-org/youtube-dl*
 
-## Docker Image Building
+## Build image
 
 ```bash
-docker build -t api.screwmycode.in .
+docker build -t bamdadsabbagh/api.screwmycode.in .
 ```
 
-## Docker Container Usage
+## Retrieve image from Docker Hub
 
 ```bash
-docker run -d --name api -p 8080:5000 api.screwmycode.in
+docker pull bamdadsabbagh/api.screwmycode.in
+```
+
+## Start container
+
+```bash
+docker run -d --name api -p 8080:5000 bamdadsabbagh/api.screwmycode.in
 ```
 
 ## Examples
