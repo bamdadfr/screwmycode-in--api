@@ -1,13 +1,16 @@
 #!/bin/bash
-
 # add to npm scripts:
 # "git": "hooks/git.sh"
 
-query="yarn fix"
-eval "$query"
+# cd into script dir
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
-echo "add, commit & push - Please input commit message then press [ENTER]"
-read commit
+# ask user for commit message
+IFS= read -r -p "Please enter a commit message: " commit
 
-query="git add . && git commit -m $commit && git push"
+# eslint
+node_modules/.bin/eslint src --ext .js --fix
+
+# build query and execute
+query="git add . && git commit -m \""$commit"\" && git push"
 eval "$query"
