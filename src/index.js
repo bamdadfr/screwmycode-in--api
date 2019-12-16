@@ -1,5 +1,6 @@
 const express = require('express')
 const helmet = require('helmet')
+const cors = require('cors')
 const { exec } = require('child_process')
 const https = require('https')
 const fetch = require('node-fetch')
@@ -107,7 +108,7 @@ app.get('/', (req, res) => {
 
 // ENDPOINT /youtube
 
-app.get('/youtube/:id', (req, res) => {
+app.get('/youtube/:id', cors(), (req, res) => {
   const { id } = req.params
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
 
