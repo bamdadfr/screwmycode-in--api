@@ -1,8 +1,8 @@
 {
   "name": "api.screwmycode.in",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "main": "index.js",
-  "repository": "https://github.com/bamdadsabbagh/learnExpress.git",
+  "repository": "https://github.com/bamdadsabbagh/api.screwmycode.in.git",
   "author": "Bamdad Sabbagh <dev@bamdadsabbagh.com>",
   "license": "MIT",
   "dependencies": {
