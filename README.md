@@ -19,7 +19,7 @@ docker pull bamdadsabbagh/api.screwmycode.in
 ## Start container
 
 ```bash
-docker run -d --name api -p 8080:5000 bamdadsabbagh/api.screwmycode.in
+docker run -d --name api.screwmycode.in --restart=always -p 5000:5000 bamdadsabbagh/api.screwmycode.in
 ```
 
 ## Examples
