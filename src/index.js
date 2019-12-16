@@ -1,5 +1,4 @@
 const express = require('express')
-const cors = require('cors')
 const helmet = require('helmet')
 const { exec } = require('child_process')
 const https = require('https')
@@ -11,11 +10,7 @@ const parser = require('fast-xml-parser')
 const app = express()
 const port = 5000
 
-/*
-
-  GLOBAL FUNCTIONS
-
- */
+// GLOBAL FUNCTIONS
 
 const checkUrl = url => new Promise((resolve) => {
   https.get(url, (r) => {
@@ -29,14 +24,15 @@ const checkUrl = url => new Promise((resolve) => {
       if (r.headers['content-type'] === 'video/vnd.mpeg.dash.mpd') {
         response.success = true
         response.type = 'dash'
-
         fetch(url)
           .then(res => res.text())
           .then(xml => parser.parse(xml, {
             ignoreAttributes: false,
           }))
-          .then(json => response.dashUrl = json.MPD.Period.AdaptationSet[1].Representation.BaseURL)
-          .then(r => resolve(response))
+          .then((json) => {
+            response.dashUrl = json.MPD.Period.AdaptationSet[1].Representation.BaseURL
+          })
+          .then(() => resolve(response))
           .catch(err => console.warn(err))
       } else {
         response.success = true
@@ -78,7 +74,7 @@ const execShellCommand = (baseUrl, id) => new Promise((resolve, reject) => {
             })
           }
         })
-        .catch(err => console.log('checkUrl: ', err))
+        .catch(checkUrlErr => console.log('checkUrl: ', checkUrlErr))
     }
   })
 })
@@ -98,12 +94,7 @@ const execShellCommandUntilSuccess = async (baseUrl, id) => {
   }
 }
 
-/*
-
-  GLOBAL
-  ENDPOINT
-
- */
+// ENDPOINT /
 
 app.use(helmet())
 
@@ -114,18 +105,9 @@ app.get('/', (req, res) => {
   })
 })
 
-/*
+// ENDPOINT /youtube
 
-  YOUTUBE
-  ENDPOINT
-
- */
-
-// Use CORS() for local dev
-// remove it for production when behind a Apache Reverse Proxy
-
-app.get('/youtube/:id', cors(), (req, res) => {
-// app.get('/youtube/:id', (req, res) => {
+app.get('/youtube/:id', (req, res) => {
   const { id } = req.params
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
 
@@ -145,5 +127,7 @@ app.get('/youtube/:id', cors(), (req, res) => {
     })
   }
 })
+
+// RUNTIME
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
