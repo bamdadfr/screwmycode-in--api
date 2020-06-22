@@ -3,5 +3,5 @@
 ## repositories
 
 - [gitlab](https://gitlab.com/screwmycodein/screwmycode-api) main
-- [github](#)
+- [github](https://github.com/screwmycode/screwmycode-api)
 
