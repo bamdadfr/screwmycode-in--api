@@ -5,3 +5,8 @@
 - [gitlab](https://gitlab.com/screwmycodein/screwmycode-api) main
 - [github](https://github.com/screwmycode/screwmycode-api)
 
+## run
+
+```bash
+docker run -d --name screwmycode-api --restart=always -p 5000:3000 registry-api.screwmycode.in/screwmycodein/screwmycode-api
+```
