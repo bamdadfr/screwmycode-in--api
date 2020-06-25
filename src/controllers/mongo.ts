@@ -1,4 +1,4 @@
-import Youtube, { IYoutube } from '../models/youtube'
+import Youtube from '../models/youtube'
 
 const doesExist = async (id: string): Promise<boolean> => {
 
