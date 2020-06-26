@@ -1,9 +1,6 @@
-# [screwmycode-api](https://api.screwmycode.in/)
+# @screwmycode/screwmycode-api
 
-## repositories
-
-- [gitlab](https://gitlab.com/screwmycodein/screwmycode-api) main
-- [github](https://github.com/screwmycode/screwmycode-api) read only
+[screwmycode-api](https://api.screwmycode.in/)
 
 ## run
 
