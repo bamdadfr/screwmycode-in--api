@@ -27,7 +27,7 @@
     "ytdl-core": "^2.1.7"
   },
   "devDependencies": {
-    "@bamdadsabbagh/eslint-config": "^1.2.2",
+    "@bamdadsabbagh/eslint-config": "^1.2.3",
     "@bamdadsabbagh/stylelint-config": "^1.2.1",
     "@types/cookie-parser": "^1.4.2",
     "@types/cors": "^2.8.6",
