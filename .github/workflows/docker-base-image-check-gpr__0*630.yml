@@ -1,8 +1,8 @@
-name: docker-base-image-check (hourly)
+name: docker-base-image-check-gpr (30 */6 * * *)
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '30 */6 * * *'
 
 jobs:
   check:
