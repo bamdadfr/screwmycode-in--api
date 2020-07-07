@@ -24,7 +24,7 @@
     "morgan": "~1.10.0",
     "node-fetch": "^2.6.0",
     "snyk": "^1.360.0",
-    "ytdl-core": "^2.1.7"
+    "ytdl-core": "^3.1.2"
   },
   "devDependencies": {
     "@bamdadsabbagh/eslint-config": "^1.2.11",
