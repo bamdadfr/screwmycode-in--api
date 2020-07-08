@@ -1,9 +1,14 @@
-# @screwmycode/screwmycode-api
+# [@screwmycode/screwmycode-api](https://github.com/screwmycode/screwmycode-api)
 
-[screwmycode-api](https://api.screwmycode.in/)
+API for [screwmycode-www](https://github.com/screwmycode/screwmycode-www)
 
-## run
+API available [here](https://api.screwmycode.in)
+
+## dev
 
 ```bash
-docker run -d --name screwmycode-api --restart=always -p 5000:3000 registry-api.screwmycode.in/screwmycode/screwmycode-api
+git clone https://github.com/screwmycode/screwmycode-api
+cd screwmycode-api
+yarn
+yarn start
 ```
