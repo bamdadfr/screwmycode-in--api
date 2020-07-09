@@ -23,7 +23,7 @@
     "mongoose": "^5.9.22",
     "morgan": "~1.10.0",
     "node-fetch": "^2.6.0",
-    "snyk": "^1.360.0",
+    "snyk": "^1.361.0",
     "ytdl-core": "^3.1.2"
   },
   "devDependencies": {
