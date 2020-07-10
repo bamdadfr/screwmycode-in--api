@@ -1,92 +1,11 @@
 // import ytdl from 'ytdl-core'
-import fetch from 'node-fetch'
-import parser from 'fast-xml-parser'
-import mongoController from './mongo.controller'
+import { YoutubeCreate, YoutubeRead } from './youtube.model'
+import { isValidID, getExpireDate, getYoutubeRawData } from './youtube.utils'
 
-const ytdl = require ('ytdl-core')
-
-const testId = (id: any): any => {
-
-    const regEx = /^([0-9A-Za-z_-]{11})$/
-
-    return regEx.test (id)
-
-}
-
-const findExpireDate = (string: string, isDash: boolean): string => {
-
-    if (isDash) {
-
-        const regEx = /expire\/[0-9]{10}/gm
-
-        return regEx.exec (string)[0].replace ('expire/', '')
-
-    }
-
-    const regEx = /expire=[0-9]{10}/gm
-
-    return regEx.exec (string)[0].replace ('expire=', '')
-
-}
-
-const fetchDash = async (url: string): Promise<string> => new Promise ((resolve, reject) => {
-
-    fetch (url)
-        .then ((res) => res.text ())
-        .then ((xml) => parser.parse (xml, {
-            'ignoreAttributes': false,
-        }))
-        .then ((json) => {
-
-            resolve (json.MPD.Period.AdaptationSet[1].Representation.BaseURL)
-
-        })
-        .catch ((err) => reject (err))
-
-})
-
-const youtubeDL = async (id: string): Promise<object> => {
-
-    const url = `https://www.youtube.com/watch?v=${id}`
-
-    // does not exist in database, triggering youtube-dl
-    return ytdl.getInfo (url, { 
-        'filter': 'audio',
-    }, (err: any, info: any) => {
-
-        if (err) throw err
-
-        const format = ytdl.chooseFormat (info.formats, {
-            'quality': '140',
-        })
-
-        if (format.isDashMPD) {
-
-            return fetchDash (format.url)
-                .then ((r) => ({
-                    'success': true,
-                    'isDash': true,
-                    'title': info.title,
-                    'url': r,
-                }))
-
-        }
-
-        return ({
-            'success': true,
-            'isDash': false,
-            'title': info.title,
-            'url': format.url,
-        })
-
-    })
-
-}
-
-export default async (id: string): Promise<object> => {
+export const YoutubeController = async (id: string): Promise<object> => {
 
     // first, checking if ID provided is OK
-    if (testId (id)) {
+    if (isValidID (id)) {
         
         // format of the response to send through the API
         const responseToSend: any = {
@@ -95,7 +14,7 @@ export default async (id: string): Promise<object> => {
             'url': null,
         }
         
-        const responseInDatabase: any = await mongoController.get (id)
+        const responseInDatabase: any = await YoutubeRead (id)
         
         if (responseInDatabase.success) {
 
@@ -120,50 +39,37 @@ export default async (id: string): Promise<object> => {
         }
 
         // trigger youtubeDL(id)
-        const youtubeDLResult: any = await youtubeDL (id)
-            .catch (() => ({
-                'success': false,
-                'error': 'error fetching id',
-            }))
+        const youtubeRawData: any = await getYoutubeRawData (id)
 
-        // return now if youtubeDL(id) failed
-        if (youtubeDLResult.success === false) {
+        if (youtubeRawData.success === false) return youtubeRawData
 
-            return youtubeDLResult
+        responseToSave.date = Date.now ()
 
-        }
+        if (youtubeRawData.isDash) {
 
-        if (youtubeDLResult.success) {
+            responseToSave.expireDate = parseInt (getExpireDate (youtubeRawData.url, true), 10)
 
-            responseToSave.date = Date.now ()
+        } else {
 
-            if (youtubeDLResult.isDash) {
-
-                responseToSave.expireDate = parseInt (findExpireDate (youtubeDLResult.url, true), 10)
-
-            } else {
-
-                responseToSave.expireDate = parseInt (findExpireDate (youtubeDLResult.url, false), 10)
-
-            }
-
-            responseToSave.id = id
-
-            responseToSave.title = youtubeDLResult.title
-
-            responseToSave.url = youtubeDLResult.url
-
-            mongoController.save (responseToSave)
-
-            responseToSend.success = youtubeDLResult.success
-
-            responseToSend.title = youtubeDLResult.title
-
-            responseToSend.url = youtubeDLResult.url
-
-            return responseToSend
+            responseToSave.expireDate = parseInt (getExpireDate (youtubeRawData.url, false), 10)
 
         }
+
+        responseToSave.id = id
+
+        responseToSave.title = youtubeRawData.title
+
+        responseToSave.url = youtubeRawData.url
+
+        YoutubeCreate (responseToSave)
+
+        responseToSend.success = youtubeRawData.success
+
+        responseToSend.title = youtubeRawData.title
+
+        responseToSend.url = youtubeRawData.url
+
+        return responseToSend
 
     } else {
 
@@ -173,7 +79,5 @@ export default async (id: string): Promise<object> => {
         })
 
     }
-
-    return null
 
 }

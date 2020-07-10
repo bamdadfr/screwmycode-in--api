@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY package.json tsconfig.json yarn.lock ./
 RUN yarn install --pure-lockfile --no-progress
-RUN yarn global add typescript
+RUN yarn add typescript @types/node
 
 COPY . ./
 RUN yarn build

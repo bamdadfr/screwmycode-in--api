@@ -1,6 +1,6 @@
 import { IMongoEnv } from './mongo.types'
 
-const getUrl = (): string => {
+export const getMongoURL = (): string => {
 
     const mongoEnv: IMongoEnv = {
         'protocol': 'mongodb',
@@ -23,8 +23,4 @@ const getUrl = (): string => {
 
     return r
 
-}
-
-export {
-    getUrl,
 }

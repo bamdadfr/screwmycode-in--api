@@ -1,13 +1,13 @@
 import request from 'supertest'
 import mongoose from 'mongoose'
 import app from './app'
-import { getUrl } from './mongo.utils'
+import { getMongoURL } from './mongo.utils'
 
 describe ('GET /youtube', () => {
 
     beforeAll (() => {
 
-        mongoose.connect (getUrl (), {
+        mongoose.connect (getMongoURL (), {
             'useNewUrlParser': true,
             'useUnifiedTopology': true,
         }) 
