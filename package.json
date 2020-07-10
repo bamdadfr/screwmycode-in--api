@@ -1,5 +1,6 @@
 {
   "name": "screwmycode-api",
+  "license": "MIT",
   "scripts": {
     "start": "yarn dev",
     "build": "tsc --build tsconfig.json",
@@ -23,7 +24,7 @@
     "ytdl-core": "^3.1.2"
   },
   "devDependencies": {
-    "@bamdadsabbagh/eslint-config": "^1.2.14",
+    "@bamdadsabbagh/eslint-config": "^1.3.0",
     "@bamdadsabbagh/stylelint-config": "^1.2.12",
     "@types/cookie-parser": "^1.4.2",
     "@types/cors": "^2.8.6",
