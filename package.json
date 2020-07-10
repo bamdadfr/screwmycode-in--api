@@ -2,15 +2,18 @@
   "name": "screwmycode-api",
   "license": "MIT",
   "scripts": {
-    "clean": "rm -rf dist",
-    "start": "yarn dev",
     "build": "tsc --build tsconfig.json",
-    "lint": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
+    "clean": "rm -rf dist",
     "dev": "yarn clean && yarn build && concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"yarn watch-ts\" \"yarn watch-node\"",
-    "watch-ts": "tsc -w",
-    "watch-node": "nodemon dist/app.bin.js",
+    "dev:mongo:start": "docker-compose -f dev/docker-compose.yml up -d",
+    "dev:mongo:stop": "docker-compose -f dev/docker-compose.yml down",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
+    "sort-packages": "npx sort-package-json",
+    "start": "yarn dev",
     "test": "jest",
-    "test:detect": "jest --detectOpenHandles"
+    "test:detect": "jest --detectOpenHandles",
+    "watch-node": "nodemon dist/app.bin.js",
+    "watch-ts": "tsc -w"
   },
   "dependencies": {
     "chalk": "^4.1.0",

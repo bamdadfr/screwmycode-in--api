@@ -8,19 +8,35 @@ API available [here](https://api.screwmycode.in)
 
 ## dev
 
+### get source
+
 ```bash
-# get repo
 git clone https://github.com/screwmycode/screwmycode-api
 cd screwmycode-api
+```
 
+### local mongo database
+
+`mongo-express` available at <http://localhost:8081>
+
+```bash
+# start
+yarn dev:mongo:start
+
+# stop
+yarn dev:mongo:stop
+```
+
+### app
+
+runs app at <http://localhost:3000>
+
+```bash
 # install dependencies
 yarn
 
-# start dev mongo service
-docker-compose -f dev/docker-compose.yml up -d
-
-# start app available at http://localhost:3000/
-yarn start
+# run
+yarn dev
 ```
 
 ## prod
