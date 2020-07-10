@@ -1,4 +1,3 @@
-// / <reference path="./app.types.ts" />
 import createError from 'http-errors'
 import express, { Response, Request } from 'express'
 import cookieParser from 'cookie-parser'
