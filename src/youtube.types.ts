@@ -13,8 +13,9 @@ export interface IYoutubeReadResponse {
 
 export interface IYoutubeControllerResponse {
     success: boolean,
-    title: string,
-    url: string,
+    error?: string,
+    title?: string,
+    url?: string,
 }
 
 export interface IYoutubeRawData {

@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 import app from './app'
 import { getMongoURL } from './mongo.utils'
 
-describe ('test route /', () => {
+describe ('testing route /', () => {
 
     beforeAll (() => {
 

@@ -3,7 +3,7 @@ import { YoutubeQueryCreate, YoutubeQueryRead } from './youtube.queries'
 import { isValidID, getExpireDate, getYoutubeRawData } from './youtube.utils'
 import { IYoutubeControllerResponse, IYoutubeReadResponse, IYoutubeModel, IYoutubeRawData } from './youtube.types'
 
-export const YoutubeController = async (id: string): Promise<object> => {
+export const YoutubeController = async (id: string): Promise<IYoutubeControllerResponse> => {
 
     // first, checking if ID provided is OK
     if (isValidID (id)) {
