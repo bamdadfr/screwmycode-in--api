@@ -1,36 +1,18 @@
-// / <reference path="./declare.ts" />
+// / <reference path="./app.types.ts" />
 import createError from 'http-errors'
 import express, { Response, Request } from 'express'
-import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import cors from 'cors'
-// services
 import { MongooseServiceStart } from './mongo.service'
-// components
-import indexRouter from './app.route'
-import youtubeRouter from './youtube.route'
+import appRoutes from './app.routes'
+import youtubeRoutes from './youtube.routes'
 
 // init express app
 const app = express ()
 
-if (app.get ('env') === 'development') {
-
-    process.env.MONGO_HOST = 'localhost'
-
-    process.env.MONGO_USER = 'root'
-
-    process.env.MONGO_PASSWORD = 'root'
-
-}
-
 // mongo
 MongooseServiceStart ()
-
-// view engine setup
-app.set ('views', path.join (__dirname, 'views'))
-
-app.set ('view engine', 'jade')
 
 app.use (logger ('dev'))
 
@@ -40,20 +22,14 @@ app.use (express.urlencoded ({ 'extended': false }))
 
 app.use (cookieParser ())
 
-app.use (express.static (path.join (__dirname, 'public')))
-
 app.use (cors ())
 
-app.use ('/', indexRouter)
+app.use ('/', appRoutes)
 
-app.use ('/youtube', youtubeRouter)
+app.use ('/youtube', youtubeRoutes)
 
 // catch 404 and forward to error handler
-app.use ((req, res, next) => {
-
-    next (createError (404))
-
-})
+app.use ((_req, _res, next) => next (createError (404)))
 
 // error handler
 app.use ((err: any, req: Request, res: Response) => {
