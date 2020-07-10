@@ -1,4 +1,5 @@
 import Youtube from '../models/youtube'
+import { IGetResponse } from './mongo.types'
 
 const doesExist = async (id: string): Promise<boolean> => {
 
@@ -14,11 +15,6 @@ const save = (obj: void): void => {
 
     newYoutube.save ()
 
-}
-
-interface IGetResponse {
-    success: boolean,
-    data?: object,
 }
 
 const get = async (id: string): Promise<IGetResponse> => new Promise ((resolve) => {

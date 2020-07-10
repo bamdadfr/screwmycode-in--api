@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 import app from '../app'
 import { getUrl } from '../services/mongo.utils'
 
-describe ('test route /', () => {
+describe ('GET /youtube', () => {
 
     beforeAll (() => {
 
@@ -20,12 +20,20 @@ describe ('test route /', () => {
     
     })
 
-    it ('should succeed given /', async () => {
+    it ('should succeed given /youtube', async () => {
 
-        const response = await request (app).get ('/')
+        const response = await request (app).get ('/youtube')
 
         expect (response.body).toBeTruthy ()
 
+    })
+
+    it ('should succeed given /youtube/UY6dvVeuzk4', async () => {
+
+        const response = await request (app).get ('/youtube/UY6dvVeuzk4')
+
+        expect (response.body).toBeTruthy ()
+    
     })
 
 })

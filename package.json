@@ -8,7 +8,8 @@
     "dev": "yarn build && concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"yarn watch-ts\" \"yarn watch-node\"",
     "watch-ts": "tsc -w",
     "watch-node": "nodemon dist/bin/www.js",
-    "test": "jest"
+    "test": "jest",
+    "test:detect": "jest --detectOpenHandles"
   },
   "dependencies": {
     "chalk": "^4.1.0",
@@ -24,7 +25,7 @@
     "ytdl-core": "^3.1.2"
   },
   "devDependencies": {
-    "@bamdadsabbagh/eslint-config": "^1.3.0",
+    "@bamdadsabbagh/eslint-config": "^1.3.1",
     "@bamdadsabbagh/stylelint-config": "^1.2.12",
     "@types/cookie-parser": "^1.4.2",
     "@types/cors": "^2.8.6",
@@ -36,6 +37,7 @@
     "@types/node-fetch": "^2.5.7",
     "concurrently": "^5.2.0",
     "jest": "^26.1.0",
+    "mocha": "^8.0.1",
     "nodemon": "^2.0.4",
     "superagent": "^5.3.1",
     "supertest": "^4.0.2",
