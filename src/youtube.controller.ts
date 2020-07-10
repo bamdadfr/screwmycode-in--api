@@ -1,5 +1,5 @@
 // import ytdl from 'ytdl-core'
-import { YoutubeCreate, YoutubeRead } from './youtube.model'
+import { YoutubeQueryCreate, YoutubeQueryRead } from './youtube.queries'
 import { isValidID, getExpireDate, getYoutubeRawData } from './youtube.utils'
 import { IYoutubeControllerResponse, IYoutubeReadResponse, IYoutubeModel, IYoutubeRawData } from './youtube.types'
 
@@ -15,7 +15,7 @@ export const YoutubeController = async (id: string): Promise<object> => {
             'url': null,
         }
         
-        const responseInDatabase: IYoutubeReadResponse = await YoutubeRead (id)
+        const responseInDatabase: IYoutubeReadResponse = await YoutubeQueryRead (id)
         
         if (responseInDatabase.success) {
 
@@ -62,7 +62,7 @@ export const YoutubeController = async (id: string): Promise<object> => {
 
         responseToSave.url = youtubeRawData.url
 
-        YoutubeCreate (responseToSave)
+        YoutubeQueryCreate (responseToSave)
 
         responseToSend.success = youtubeRawData.success
 
