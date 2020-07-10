@@ -1,4 +1,4 @@
-import Youtube from '../models/youtube'
+import Youtube from './youtube.model'
 import { IGetResponse } from './mongo.types'
 
 const doesExist = async (id: string): Promise<boolean> => {

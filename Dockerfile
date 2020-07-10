@@ -24,4 +24,4 @@ COPY --from=build /app/node_modules /app/node_modules
 EXPOSE 3000
 
 USER node
-CMD ["node", "/app/dist/bin/www.js"]
+CMD ["node", "/app/dist/app.bin.js"]

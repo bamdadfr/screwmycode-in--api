@@ -2,7 +2,7 @@
 
 import http from 'http'
 import Debug from 'debug'
-import app from '../app'
+import app from './app'
 
 const debug = Debug ('test:server')
 

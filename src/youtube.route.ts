@@ -1,5 +1,5 @@
 import express from 'express'
-import youtubeController from '../controllers/youtube'
+import youtubeController from './youtube.controller'
 
 const router = express.Router ()
 
