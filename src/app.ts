@@ -6,10 +6,10 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import cors from 'cors'
 // services
-import mongoService from './services/mongo'
+import mongoService from './mongo.service'
 // components
-import indexRouter from './routes/index'
-import youtubeRouter from './routes/youtube'
+import indexRouter from './app.route'
+import youtubeRouter from './youtube.route'
 
 // init express app
 const app = express ()

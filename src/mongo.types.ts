@@ -4,3 +4,8 @@ export interface IMongoEnv {
     user: string,
     pass: string,
 }
+
+export interface IGetResponse {
+    success: boolean,
+    data?: object,
+}

@@ -1,7 +1,7 @@
 import request from 'supertest'
 import mongoose from 'mongoose'
-import app from '../app'
-import { getUrl } from '../services/mongo.utils'
+import app from './app'
+import { getUrl } from './mongo.utils'
 
 describe ('GET /youtube', () => {
 

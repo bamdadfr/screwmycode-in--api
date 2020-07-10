@@ -1,7 +1,7 @@
 // import ytdl from 'ytdl-core'
 import fetch from 'node-fetch'
 import parser from 'fast-xml-parser'
-import mongoController from './mongo'
+import mongoController from './mongo.controller'
 
 const ytdl = require ('ytdl-core')
 
