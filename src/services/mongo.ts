@@ -1,46 +1,14 @@
 import mongoose from 'mongoose'
 import chalk from 'chalk'
-
-interface IMongoEnv {
-    protocol: string,
-    host: string,
-    user: string,
-    pass: string,
-}
-
-const getMongoUrl = (): string => {
-
-    const mongoEnv: IMongoEnv = {
-        'protocol': 'mongodb:',
-        'host': process.env.MONGO_HOST,
-        'user': process.env.MONGO_USER,
-        'pass': process.env.MONGO_PASSWORD,
-    }
-
-    if (process.env.NODE_ENV !== 'production') {
-
-        mongoEnv.host = 'localhost'
-
-        mongoEnv.user = 'root'
-
-        mongoEnv.pass = 'root'
-    
-    }
-
-    const r: string = mongoEnv.protocol + '//' + mongoEnv.user + ':' + mongoEnv.pass + '@' + mongoEnv.host
-
-    return r
-
-}
+import { getUrl } from './mongo.utils'
 
 const start = (): void => {
 
-    // init mongoose connection
-    const mongoDatabase = getMongoUrl ()
+    if (process.env.NODE_ENV === 'test') return
 
     // mongoose.set ('debug', true)
 
-    mongoose.connect (mongoDatabase, {
+    mongoose.connect (getUrl (), {
         'useNewUrlParser': true,
         'useUnifiedTopology': true,
     }) 
@@ -65,6 +33,13 @@ const start = (): void => {
 
 }
 
+const stop = (): void => {
+
+    mongoose.connection.close ()
+
+}
+
 export default {
     start,
+    stop,
 }
