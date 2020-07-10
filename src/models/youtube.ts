@@ -1,15 +1,5 @@
 import mongoose from 'mongoose'
 
-// interface
-export interface IYoutube {
-    date: number,
-    expireDate: number,
-    id: string,
-    title: string,
-    url: string,
-}
-
-// mongo schema
 const YoutubeSchema = new mongoose.Schema ({
     'date': Number,
     'expireDate': Number,

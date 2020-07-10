@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import cors from 'cors'
 // services
-import mongooseService from './services/mongo'
+import mongoService from './services/mongo'
 // components
 import indexRouter from './routes/index'
 import youtubeRouter from './routes/youtube'
@@ -25,7 +25,7 @@ if (app.get ('env') === 'development') {
 }
 
 // mongo
-mongooseService.start ()
+mongoService.start ()
 
 // view engine setup
 app.set ('views', path.join (__dirname, 'views'))
