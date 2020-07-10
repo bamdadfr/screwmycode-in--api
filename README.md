@@ -9,8 +9,24 @@ API available [here](https://api.screwmycode.in)
 ## dev
 
 ```bash
+# get repo
 git clone https://github.com/screwmycode/screwmycode-api
 cd screwmycode-api
+
+# install dependencies
 yarn
+
+# start dev mongo service
+docker-compose -f dev/docker-compose.yml up -d
+
+# start app
 yarn start
 ```
+
+## prod
+
+CI/CD pipelines happen on `master` branch.
+
+Automatic release at 04:30 UTC everyday.
+
+You can force a release by adding `[force-release]` to your commit message
