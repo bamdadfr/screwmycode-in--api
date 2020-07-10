@@ -7,6 +7,7 @@ import cors from 'cors'
 import { MongooseServiceStart } from './mongo.service'
 import appRoutes from './app.routes'
 import youtubeRoutes from './youtube.routes'
+import { IError } from './app.types'
 
 // init express app
 const app = express ()
@@ -32,7 +33,7 @@ app.use ('/youtube', youtubeRoutes)
 app.use ((_req, _res, next) => next (createError (404)))
 
 // error handler
-app.use ((err: any, req: Request, res: Response) => {
+app.use ((err: IError, req: Request, res: Response) => {
 
     // set locals, only providing error in development
     res.locals.message = err.message

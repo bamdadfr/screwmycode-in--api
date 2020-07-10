@@ -3,10 +3,11 @@
 import http from 'http'
 import Debug from 'debug'
 import app from './app'
+import { IError } from './app.types'
 
 const debug = Debug ('test:server')
 
-const normalizePort = (val: any): any => {
+const normalizePort = (val: string): string|number|boolean => {
 
     const port = parseInt (val, 10)
 
@@ -32,7 +33,7 @@ const port = normalizePort (process.env.PORT || '3000')
 
 app.set ('port', port)
 
-const onError = (error: any): any => {
+const onError = (error: IError): void => {
 
     if (error.syscall !== 'listen') {
 
@@ -72,7 +73,7 @@ const onError = (error: any): any => {
 
 const server = http.createServer (app)
 
-const onListening = (): any => {
+const onListening = (): void => {
 
     const addr = server.address ()
 

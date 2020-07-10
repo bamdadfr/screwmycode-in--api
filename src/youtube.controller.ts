@@ -1,6 +1,7 @@
 // import ytdl from 'ytdl-core'
 import { YoutubeCreate, YoutubeRead } from './youtube.model'
 import { isValidID, getExpireDate, getYoutubeRawData } from './youtube.utils'
+import { IYoutubeControllerResponse, IYoutubeReadResponse, IYoutubeModel, IYoutubeRawData } from './youtube.types'
 
 export const YoutubeController = async (id: string): Promise<object> => {
 
@@ -8,13 +9,13 @@ export const YoutubeController = async (id: string): Promise<object> => {
     if (isValidID (id)) {
         
         // format of the response to send through the API
-        const responseToSend: any = {
+        const responseToSend: IYoutubeControllerResponse = {
             'success': null,
             'title': null,
             'url': null,
         }
         
-        const responseInDatabase: any = await YoutubeRead (id)
+        const responseInDatabase: IYoutubeReadResponse = await YoutubeRead (id)
         
         if (responseInDatabase.success) {
 
@@ -30,7 +31,7 @@ export const YoutubeController = async (id: string): Promise<object> => {
         }
         
         // if does not exist in database
-        const responseToSave: any = {
+        const responseToSave: IYoutubeModel = {
             'date': null,
             'expireDate': null,
             'id': null,
@@ -39,7 +40,7 @@ export const YoutubeController = async (id: string): Promise<object> => {
         }
 
         // trigger youtubeDL(id)
-        const youtubeRawData: any = await getYoutubeRawData (id)
+        const youtubeRawData: IYoutubeRawData = await getYoutubeRawData (id)
 
         if (youtubeRawData.success === false) return youtubeRawData
 
