@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import chalk from 'chalk'
 import { getMongoURL } from './mongo.utils'
 
-export const MongooseServiceStart = (): void => {
+export const MongoServiceStart = (): void => {
 
     if (process.env.NODE_ENV === 'test') return
 
@@ -33,7 +33,7 @@ export const MongooseServiceStart = (): void => {
 
 }
 
-export const MongooseServiceStop = (): void => {
+export const MongoServiceStop = (): void => {
 
     mongoose.connection.close ()
 
