@@ -4,7 +4,7 @@ LABEL maintainer="Bamdad Sabbagh <devops@bamdadsabbagh.com>"
 ENV NODE_ENV=production
 WORKDIR /app
 
-COPY package.json tsconfig.json yarn.lock .snyk ./
+COPY package.json tsconfig.json yarn.lock ./
 RUN yarn install --pure-lockfile --no-progress
 RUN yarn global add typescript
 
