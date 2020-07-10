@@ -3,7 +3,7 @@ import express, { Response, Request } from 'express'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import cors from 'cors'
-import { MongooseServiceStart } from './mongo.service'
+import { MongoServiceStart } from './mongo.service'
 import appRoutes from './app.routes'
 import youtubeRoutes from './youtube.routes'
 import { IError } from './app.types'
@@ -12,7 +12,7 @@ import { IError } from './app.types'
 const app = express ()
 
 // mongo
-MongooseServiceStart ()
+MongoServiceStart ()
 
 app.use (logger ('dev'))
 
