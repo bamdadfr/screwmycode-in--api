@@ -10,3 +10,21 @@ export interface IYoutubeReadResponse {
     success: boolean,
     data?: object,
 }
+
+export interface IYoutubeControllerResponse {
+    success: boolean,
+    title: string,
+    url: string,
+}
+
+export interface IYoutubeRawData {
+    success: boolean,
+    isDash: boolean,
+    title: string,
+    url: string,
+}
+
+export interface IYTDLResponse {
+    formats?: string,
+    title?: string,
+}

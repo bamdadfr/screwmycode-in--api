@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import { isExisting } from './youtube.utils'
-import { IYoutubeReadResponse } from './youtube.types'
+import { IYoutubeReadResponse, IYoutubeModel, IYoutubeRawData } from './youtube.types'
 
 const YoutubeSchema = new mongoose.Schema ({
     'date': Number,
@@ -12,7 +12,7 @@ const YoutubeSchema = new mongoose.Schema ({
 
 export const YoutubeModel = mongoose.model ('Youtube', YoutubeSchema)
 
-export const YoutubeCreate = (obj: void): void => {
+export const YoutubeCreate = (obj: IYoutubeModel): void => {
 
     // eslint-disable-next-line new-cap
     const newYoutube = new YoutubeModel (obj)
@@ -36,7 +36,7 @@ export const YoutubeRead = async (id: string): Promise<IYoutubeReadResponse> => 
                     'date': 'desc',
                 })
                 .limit (1)
-                .exec ((error: any, response: any) => {
+                .exec ((error: Error, response: IYoutubeRawData) => {
     
                     // eslint-disable-next-line no-console
                     if (error) return console.log (error)

@@ -1,6 +1,7 @@
 import fetch from 'node-fetch'
 import parser from 'fast-xml-parser'
 import { YoutubeModel } from './youtube.model'
+import { IYoutubeRawData, IYTDLResponse } from './youtube.types'
 
 const ytdl = require ('ytdl-core')
 
@@ -36,7 +37,7 @@ export const getYoutubeDashData = async (url: string): Promise<string> => new Pr
 
 })
 
-export const getYoutubeRawData = async (id: string): Promise<object> => {
+export const getYoutubeRawData = async (id: string): Promise<IYoutubeRawData> => {
 
     const url = `https://www.youtube.com/watch?v=${id}`
 
@@ -46,11 +47,11 @@ export const getYoutubeRawData = async (id: string): Promise<object> => {
         { 
             'filter': 'audio',
         },
-        (err: any, info: any) => {
+        (err: object, response: IYTDLResponse) => {
 
             if (err) throw err
 
-            const format = ytdl.chooseFormat (info.formats, {
+            const format = ytdl.chooseFormat (response.formats, {
                 'quality': '140',
             })
 
@@ -60,7 +61,7 @@ export const getYoutubeRawData = async (id: string): Promise<object> => {
                     .then ((r) => ({
                         'success': true,
                         'isDash': true,
-                        'title': info.title,
+                        'title': response.title,
                         'url': r,
                     }))
                     .catch (err => ({
@@ -73,7 +74,7 @@ export const getYoutubeRawData = async (id: string): Promise<object> => {
             return ({
                 'success': true,
                 'isDash': false,
-                'title': info.title,
+                'title': response.title,
                 'url': format.url,
             })
 
@@ -90,7 +91,7 @@ export const isExisting = async (id: string): Promise<boolean> => {
 
 }
 
-export const isValidID = (id: any): any => {
+export const isValidID = (id: string): boolean => {
 
     const regEx = /^([0-9A-Za-z_-]{11})$/
 
