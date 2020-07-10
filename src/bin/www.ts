@@ -48,6 +48,7 @@ const onError = (error: any): any => {
     switch (error.code) {
 
         case 'EACCES':
+            // eslint-disable-next-line no-console
             console.error (bind + ' requires elevated privileges')
 
             process.exit (1)
@@ -55,6 +56,7 @@ const onError = (error: any): any => {
             break
 
         case 'EADDRINUSE':
+            // eslint-disable-next-line no-console
             console.error (bind + ' is already in use')
 
             process.exit (1)

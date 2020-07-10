@@ -13,7 +13,7 @@ const testId = (id: any): any => {
 
 }
 
-const findExpireDate = (string: string, isDash: boolean) => {
+const findExpireDate = (string: string, isDash: boolean): string => {
 
     if (isDash) {
 
@@ -29,7 +29,7 @@ const findExpireDate = (string: string, isDash: boolean) => {
 
 }
 
-const fetchDash = async (url: string) => new Promise ((resolve, reject) => {
+const fetchDash = async (url: string): Promise<string> => new Promise ((resolve, reject) => {
 
     fetch (url)
         .then ((res) => res.text ())
@@ -45,7 +45,7 @@ const fetchDash = async (url: string) => new Promise ((resolve, reject) => {
 
 })
 
-const youtubeDL = async (id: string): Promise<any> => {
+const youtubeDL = async (id: string): Promise<object> => {
 
     const url = `https://www.youtube.com/watch?v=${id}`
 
@@ -83,7 +83,7 @@ const youtubeDL = async (id: string): Promise<any> => {
 
 }
 
-export default async (id: string): Promise<any> => {
+export default async (id: string): Promise<object> => {
 
     // first, checking if ID provided is OK
     if (testId (id)) {
