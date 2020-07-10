@@ -30,6 +30,10 @@ describe ('testinging youtube queries', () => {
 
         expect (response.success).toBeTruthy ()
 
+        expect (response.title).toBeTruthy ()
+
+        expect (response.url).toBeTruthy ()
+
         done ()
 
     })
