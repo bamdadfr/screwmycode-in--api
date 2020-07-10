@@ -1,7 +1,5 @@
 {
   "name": "screwmycode-api",
-  "version": "0.0.0",
-  "private": true,
   "scripts": {
     "start": "yarn dev",
     "build": "tsc --build tsconfig.json",
@@ -9,8 +7,6 @@
     "dev": "yarn build && concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"yarn watch-ts\" \"yarn watch-node\"",
     "watch-ts": "tsc -w",
     "watch-node": "nodemon dist/bin/www.js",
-    "snyk-protect": "snyk protect",
-    "prepare": "yarn run snyk-protect",
     "test": "jest"
   },
   "dependencies": {
@@ -24,7 +20,6 @@
     "mongoose": "^5.9.22",
     "morgan": "~1.10.0",
     "node-fetch": "^2.6.0",
-    "snyk": "^1.361.3",
     "ytdl-core": "^3.1.2"
   },
   "devDependencies": {
@@ -43,6 +38,5 @@
     "nodemon": "^2.0.4",
     "superagent": "^5.3.1",
     "supertest": "^4.0.2"
-  },
-  "snyk": true
+  }
 }
