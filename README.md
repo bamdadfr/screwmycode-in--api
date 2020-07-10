@@ -19,7 +19,7 @@ yarn
 # start dev mongo service
 docker-compose -f dev/docker-compose.yml up -d
 
-# start app
+# start app available at http://localhost:3000/
 yarn start
 ```
 
