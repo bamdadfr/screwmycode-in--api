@@ -1,14 +1,14 @@
 import mongoose from 'mongoose'
 import chalk from 'chalk'
-import { getUrl } from './mongo.utils'
+import { getMongoURL } from './mongo.utils'
 
-const start = (): void => {
+export const MongooseServiceStart = (): void => {
 
     if (process.env.NODE_ENV === 'test') return
 
     // mongoose.set ('debug', true)
 
-    mongoose.connect (getUrl (), {
+    mongoose.connect (getMongoURL (), {
         'useNewUrlParser': true,
         'useUnifiedTopology': true,
     }) 
@@ -33,13 +33,8 @@ const start = (): void => {
 
 }
 
-const stop = (): void => {
+export const MongooseServiceStop = (): void => {
 
     mongoose.connection.close ()
 
-}
-
-export default {
-    start,
-    stop,
 }
