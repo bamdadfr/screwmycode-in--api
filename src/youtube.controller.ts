@@ -1,7 +1,7 @@
 // import ytdl from 'ytdl-core'
 import { YoutubeQueryCreate, YoutubeQueryRead } from './youtube.queries'
-import { isValidID, getExpireDate, getYoutubeRawData } from './youtube.utils'
-import { IYoutubeControllerResponse, IYoutubeReadResponse, IYoutubeModel, IYoutubeRawData } from './youtube.types'
+import { isValidID, getExpireDate, getYoutubeInfo } from './youtube.utils'
+import { IYoutubeControllerResponse, IYoutubeReadResponse, IYoutubeModel, IYoutubeInfo } from './youtube.types'
 
 export const YoutubeController = async (id: string): Promise<IYoutubeControllerResponse> => {
 
@@ -40,7 +40,7 @@ export const YoutubeController = async (id: string): Promise<IYoutubeControllerR
         }
 
         // trigger youtubeDL(id)
-        const youtubeRawData: IYoutubeRawData = await getYoutubeRawData (id)
+        const youtubeRawData: IYoutubeInfo = await getYoutubeInfo (id)
 
         if (youtubeRawData.success === false) return youtubeRawData
 
