@@ -1,6 +1,6 @@
 import { YoutubeModel } from './youtube.model'
 import { isExisting } from './youtube.utils'
-import { IYoutubeModel, IYoutubeReadResponse, IYoutubeRawData } from './youtube.types'
+import { IYoutubeModel, IYoutubeReadResponse, IYoutubeInfo } from './youtube.types'
 
 export const YoutubeQueryCreate = (obj: IYoutubeModel): void => {
 
@@ -12,7 +12,7 @@ export const YoutubeQueryCreate = (obj: IYoutubeModel): void => {
 
 export const YoutubeQueryRead = async (id: string): Promise<IYoutubeReadResponse> => new Promise ((resolve) => {
 
-    const run = async (): Promise<void> => {
+    (async (): Promise<void> => {
     
         const exists = await isExisting (id)
     
@@ -27,7 +27,7 @@ export const YoutubeQueryRead = async (id: string): Promise<IYoutubeReadResponse
                 })
                 .limit (1)
                 .exec (
-                    (error: Error, response: IYoutubeRawData) => {
+                    (error: Error, response: IYoutubeInfo) => {
     
                         if (error) throw error
     
@@ -63,8 +63,6 @@ export const YoutubeQueryRead = async (id: string): Promise<IYoutubeReadResponse
     
         }
     
-    }
-    
-    run ()
+    }) ()
 
 })

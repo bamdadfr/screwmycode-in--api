@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 import parser from 'fast-xml-parser'
 import { YoutubeModel } from './youtube.model'
-import { IYoutubeRawData, IYTDLResponse } from './youtube.types'
+import { IYoutubeInfo, IYTDLResponse } from './youtube.types'
 
 const ytdl = require ('ytdl-core')
 
@@ -21,65 +21,86 @@ export const getExpireDate = (string: string, isDash: boolean): string => {
 
 }
 
-export const getYoutubeDashData = async (url: string): Promise<string> => new Promise ((resolve, reject) => {
+export const getYoutubeDashInfo = async (url: string): Promise<string> => new Promise ((resolve, reject) => {
 
-    fetch (url)
-        .then ((res) => res.text ())
-        .then ((xml) => parser.parse (xml, {
-            'ignoreAttributes': false,
-        }))
-        .then ((json) => {
+    (async (): Promise<void> => {
 
+        try {
+
+            const response = await fetch (url)
+            const text = await response.text ()
+    
+            const xml = parser.parse (text, {
+                'ignoreAttributes': false,
+            })
+    
+            const json = xml
+    
             resolve (json.MPD.Period.AdaptationSet[1].Representation.BaseURL)
+        
+        } catch (error) {
 
-        })
-        .catch ((err) => reject (err))
+            reject (error)
+        
+        }
+        
+    }) ()
+
+    // fetch (url)
+    //     .then ((res) => res.text ())
+    //     .then ((xml) => parser.parse (xml, {
+    //         'ignoreAttributes': false,
+    //     }))
+    //     .then ((json) => {
+
+    //         resolve (json.MPD.Period.AdaptationSet[1].Representation.BaseURL)
+
+    //     })
+    //     .catch ((err) => reject (err))
 
 })
 
-export const getYoutubeRawData = async (id: string): Promise<IYoutubeRawData> => {
+export const getYoutubeInfo = async (id: string): Promise<IYoutubeInfo> => {
 
     const url = `https://www.youtube.com/watch?v=${id}`
 
-    // does not exist in database, triggering youtube-dl
-    return ytdl.getInfo (
-        url,
-        { 
+    try {
+
+        const info = await ytdl.getInfo (url, {
             'filter': 'audio',
-        },
-        (err: object, response: IYTDLResponse) => {
+        })
 
-            if (err) throw err
+        const format = ytdl.chooseFormat (info.formats, {
+            'quality': '140',
+        })
 
-            const format = ytdl.chooseFormat (response.formats, {
-                'quality': '140',
-            })
+        if (format.isDashMPD) {
 
-            if (format.isDashMPD) {
+            return getYoutubeDashInfo (format.url)
+                .then ((r) => ({
+                    'success': true,
+                    'isDash': true,
+                    'title': info.videoDetails.title,
+                    'url': r,
+                }))
+        
+        }
 
-                return getYoutubeDashData (format.url)
-                    .then ((r) => ({
-                        'success': true,
-                        'isDash': true,
-                        'title': response.title,
-                        'url': r,
-                    }))
-                    .catch (err => ({
-                        'success': false,
-                        'error': err,
-                    }))
+        return ({
+            'success': true,
+            'isDash': false,
+            'title': info.videoDetails.title,
+            'url': format.url,
+        })
 
-            }
+    } catch (error) {
 
-            return ({
-                'success': true,
-                'isDash': false,
-                'title': response.title,
-                'url': format.url,
-            })
-
-        },
-    )
+        return {
+            'success': false,
+            error,
+        }
+    
+    }
 
 }
 

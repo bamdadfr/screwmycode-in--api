@@ -18,11 +18,12 @@ export interface IYoutubeControllerResponse {
     url?: string,
 }
 
-export interface IYoutubeRawData {
+export interface IYoutubeInfo {
     success: boolean,
-    isDash: boolean,
-    title: string,
-    url: string,
+    error?: object,
+    isDash?: boolean,
+    title?: string,
+    url?: string,
 }
 
 export interface IYTDLResponse {

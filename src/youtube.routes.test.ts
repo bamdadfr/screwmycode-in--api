@@ -36,5 +36,13 @@ describe ('GET /youtube', () => {
     
     })
 
+    it ('should fail given /youtube/UY6dvSDuzK4', async () => {
+
+        const response = await request (app).get ('/youtube/UY6dvSDuzK4')
+
+        expect (response.success).toBeFalsy ()
+    
+    })
+
 })
 
