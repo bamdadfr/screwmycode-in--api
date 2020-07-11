@@ -20,7 +20,7 @@ export interface IYoutubeControllerResponse {
 
 export interface IYoutubeInfo {
     success: boolean,
-    error?: object,
+    error?: object|string,
     isDash?: boolean,
     title?: string,
     url?: string,
