@@ -13,7 +13,7 @@ export interface IYoutubeReadResponse {
 
 export interface IYoutubeControllerResponse {
     success: boolean,
-    error?: string,
+    error?: object|string,
     title?: string,
     url?: string,
 }
