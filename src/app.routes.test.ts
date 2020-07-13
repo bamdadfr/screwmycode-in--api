@@ -1,6 +1,6 @@
 import request from 'supertest'
 import mongoose from 'mongoose'
-import app from './app'
+import { App } from './app'
 import { getMongoURL } from './mongo.utils'
 
 describe ('testing route /', () => {
@@ -22,7 +22,7 @@ describe ('testing route /', () => {
 
     it ('should succeed given /', async () => {
 
-        const response = await request (app).get ('/')
+        const response = await request (App).get ('/')
 
         expect (response.body).toBeTruthy ()
 

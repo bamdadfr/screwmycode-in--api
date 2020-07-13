@@ -4,35 +4,33 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import cors from 'cors'
 import { MongoServiceStart } from './mongo.service'
-import appRoutes from './app.routes'
-import youtubeRoutes from './youtube.routes'
+import { AppRoutes } from './app.routes'
+import { YoutubeRoutes } from './youtube.routes'
 import { IError } from './app.types'
 
-// init express app
-const app = express ()
+export const App = express ()
 
-// mongo
 MongoServiceStart ()
 
-app.use (logger ('dev'))
+App.use (logger ('dev'))
 
-app.use (express.json ())
+App.use (express.json ())
 
-app.use (express.urlencoded ({ 'extended': false }))
+App.use (express.urlencoded ({ 'extended': false }))
 
-app.use (cookieParser ())
+App.use (cookieParser ())
 
-app.use (cors ())
+App.use (cors ())
 
-app.use ('/', appRoutes)
+App.use ('/', AppRoutes)
 
-app.use ('/youtube', youtubeRoutes)
+App.use ('/youtube', YoutubeRoutes)
 
 // catch 404 and forward to error handler
-app.use ((_req, _res, next) => next (createError (404)))
+App.use ((_req, _res, next) => next (createError (404)))
 
 // error handler
-app.use ((err: IError, req: Request, res: Response) => {
+App.use ((err: IError, req: Request, res: Response) => {
 
     // set locals, only providing error in development
     res.locals.message = err.message
@@ -45,5 +43,3 @@ app.use ((err: IError, req: Request, res: Response) => {
     res.render ('error')
 
 })
-
-export default app

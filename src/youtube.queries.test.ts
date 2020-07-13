@@ -1,6 +1,4 @@
-import request from 'supertest'
 import mongoose from 'mongoose'
-import app from './app'
 import { getMongoURL } from './mongo.utils'
 import { YoutubeController } from './youtube.controller'
 import { IYoutubeControllerResponse } from './youtube.types'
