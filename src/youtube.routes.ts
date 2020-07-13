@@ -1,9 +1,9 @@
 import express from 'express'
 import { YoutubeController } from './youtube.controller'
 
-const router = express.Router ()
+export const YoutubeRoutes = express.Router ()
 
-router.get ('/', (_req, res) => {
+YoutubeRoutes.get ('/', (_req, res) => {
 
     res.send ({
         'success': true,
@@ -12,7 +12,7 @@ router.get ('/', (_req, res) => {
 
 })
 
-router.get ('/:id', async (req, res) => {
+YoutubeRoutes.get ('/:id', async (req, res) => {
 
     const { id } = req.params
     const r = await YoutubeController (id)
@@ -20,5 +20,3 @@ router.get ('/:id', async (req, res) => {
     res.send (r)
 
 })
-
-export default router

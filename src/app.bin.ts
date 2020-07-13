@@ -2,7 +2,7 @@
 
 import http from 'http'
 import Debug from 'debug'
-import app from './app'
+import { App } from './app'
 import { IError } from './app.types'
 
 const debug = Debug ('test:server')
@@ -31,7 +31,7 @@ const normalizePort = (val: string): string|number|boolean => {
 
 const port = normalizePort (process.env.PORT || '3000')
 
-app.set ('port', port)
+App.set ('port', port)
 
 const onError = (error: IError): void => {
 
@@ -71,7 +71,7 @@ const onError = (error: IError): void => {
 
 }
 
-const server = http.createServer (app)
+const server = http.createServer (App)
 
 const onListening = (): void => {
 

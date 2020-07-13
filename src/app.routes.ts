@@ -1,8 +1,8 @@
 import express from 'express'
 
-const router = express.Router ()
+export const AppRoutes = express.Router ()
 
-router.get ('/', (_req, res) => {
+AppRoutes.get ('/', (_req, res) => {
 
     res.send ({
         'success': true,
@@ -10,5 +10,3 @@ router.get ('/', (_req, res) => {
     })
 
 })
-
-export default router
