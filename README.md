@@ -1,5 +1,6 @@
 # [@screwmycode/screwmycode-api](https://github.com/screwmycode/screwmycode-api)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/9d8331cec24be05155cc/maintainability)](https://codeclimate.com/github/screwmycode/screwmycode-api/maintainability)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/3df62fb1146c4c99b517413cbb61e869)](https://www.codacy.com/gh/screwmycode/screwmycode-api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=screwmycode/screwmycode-api&amp;utm_campaign=Badge_Grade)
 ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/screwmycode/screwmycode-api)
 ![David](https://img.shields.io/david/screwmycode/screwmycode-api)
