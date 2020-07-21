@@ -6,7 +6,7 @@
     "build": "tsc --build tsconfig.json",
     "clean": "rm -rf dist",
     "dev:start": "yarn mongo:start && yarn clean && yarn build && concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"yarn watch:ts\" \"yarn watch:node\"",
-    "dev:stop": "yarn mongo:stop && yarn clean && yarn build && concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"yarn watch:ts\" \"yarn watch:node\"",
+    "dev:stop": "yarn mongo:stop && yarn clean",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
     "mongo:start": "docker-compose -f dev/docker-compose.yml up -d",
     "mongo:stop": "docker-compose -f dev/docker-compose.yml down",
