@@ -1,6 +1,14 @@
 import { YoutubeModel } from './youtube.model'
-import { isExisting } from './youtube.utils'
 import { IYoutubeModel, IYoutubeReadResponse, IYoutubeInfo } from './youtube.types'
+import { YoutubeConstantsErrorQuery } from './youtube.constants'
+
+export const YoutubeQueryExists = async (id: string): Promise<boolean> => {
+
+    const doesExist = await YoutubeModel.exists ({ id })
+
+    return doesExist
+
+}
 
 export const YoutubeQueryCreate = (obj: IYoutubeModel): void => {
 
@@ -14,54 +22,46 @@ export const YoutubeQueryRead = async (id: string): Promise<IYoutubeReadResponse
 
     (async (): Promise<void> => {
     
-        const exists = await isExisting (id)
+        const doesExist = await YoutubeQueryExists (id)
+
+        if (!doesExist) resolve (YoutubeConstantsErrorQuery)
     
-        if (exists) {
-    
-            YoutubeModel
-                .find ({
-                    id,
-                })
-                .sort ({
-                    'date': 'desc',
-                })
-                .limit (1)
-                .exec (
-                    (error: Error, response: IYoutubeInfo) => {
-    
-                        if (error) throw error
-    
-                        const dateNow = parseInt (
-                            Date.now ()
-                                .toString ()
-                                .slice (0, 10),
-                            10,
-                        )
-    
-                        if (dateNow < response[0].expireDate) {
-    
-                            resolve ({
-                                'success': true,
-                                'data': response,
-                            })
-    
-                        } else {
-    
-                            resolve ({
-                                'success': false,
-                            })
-    
-                        }
-    
-                    })
-    
-        } else {
-    
-            resolve ({
-                'success': false,
+        YoutubeModel
+            .find ({
+                id,
             })
+            .sort ({
+                'date': 'desc',
+            })
+            .limit (1)
+            .exec (
+                (error: Error, response: IYoutubeInfo) => {
     
-        }
+                    if (error) throw error
+    
+                    const dateNow = parseInt (
+                        Date.now ()
+                            .toString ()
+                            .slice (0, 10),
+                        10,
+                    )
+    
+                    if (dateNow < response[0].expireDate) {
+    
+                        resolve ({
+                            'success': true,
+                            'data': response,
+                        })
+    
+                    } else {
+    
+                        resolve ({
+                            'success': false,
+                        })
+    
+                    }
+    
+                })
     
     }) ()
 
