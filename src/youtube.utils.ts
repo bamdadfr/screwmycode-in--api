@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 import parser from 'fast-xml-parser'
 import { YoutubeModel } from './youtube.model'
-import { IYoutubeInfo, IYTDLResponse } from './youtube.types'
+import { IYoutubeInfo } from './youtube.types'
 
 const ytdl = require ('ytdl-core')
 
@@ -101,14 +101,6 @@ export const getYoutubeInfo = async (id: string): Promise<IYoutubeInfo> => {
         }
     
     }
-
-}
-
-export const isExisting = async (id: string): Promise<boolean> => {
-
-    const result = await YoutubeModel.exists ({ id })
-
-    return result
 
 }
 
