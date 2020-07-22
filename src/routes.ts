@@ -1,8 +1,10 @@
-import { App } from './app'
-import { AppRoutes } from './app.routes'
+import { HomeRoutes } from './home.routes'
 import { YoutubeRoutes } from './youtube.routes'
 
-App.use ('/', AppRoutes)
+export const Routes = (App: any): void => {
 
-App.use ('/youtube', YoutubeRoutes)
+    App.use ('/', HomeRoutes)
 
+    App.use ('/youtube', YoutubeRoutes)
+    
+}

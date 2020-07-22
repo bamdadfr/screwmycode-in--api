@@ -18,14 +18,14 @@ export const YoutubeQueryCreate = (obj: IYoutubeModel): void => {
     
 }
 
-export const YoutubeQueryRead = async (id: string): Promise<IYoutubeReadResponse> => new Promise ((resolve) => {
+export const YoutubeQueryRead = async (id: string): Promise<IYoutubeReadResponse> => new Promise (resolve => {
 
     (async (): Promise<void> => {
     
         const doesExist = await YoutubeQueryExists (id)
 
-        if (!doesExist) resolve (YoutubeConstantsErrorQuery)
-    
+        if (!doesExist) return resolve (YoutubeConstantsErrorQuery)
+        
         YoutubeModel
             .find ({
                 id,
@@ -45,17 +45,17 @@ export const YoutubeQueryRead = async (id: string): Promise<IYoutubeReadResponse
                             .slice (0, 10),
                         10,
                     )
-    
+
                     if (dateNow < response[0].expireDate) {
     
-                        resolve ({
+                        return resolve ({
                             'success': true,
                             'data': response,
                         })
     
                     } else {
     
-                        resolve ({
+                        return resolve ({
                             'success': false,
                         })
     

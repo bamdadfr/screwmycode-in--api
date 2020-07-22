@@ -5,6 +5,7 @@ import logger from 'morgan'
 import cors from 'cors'
 import { MongoServiceStart } from './mongo.service'
 import { IError } from './app.types'
+import { Routes } from './routes'
 
 export const App = express ()
 
@@ -19,6 +20,8 @@ App.use (express.urlencoded ({ 'extended': false }))
 App.use (cookieParser ())
 
 App.use (cors ())
+
+Routes (App)
 
 // catch 404 and forward to error handler
 App.use ((_req, _res, next) => next (createError (404)))
