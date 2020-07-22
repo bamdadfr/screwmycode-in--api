@@ -7,7 +7,7 @@ import { YoutubeConstantsErrorBadID } from './youtube.constants'
 export const YoutubeController = async (id: string): Promise<IYoutubeControllerResponse> => {
 
     if (!isValidID (id)) return YoutubeConstantsErrorBadID
-        
+
     // format of the response to send through the API
     const responseToSend: IYoutubeControllerResponse = {
         'success': null,

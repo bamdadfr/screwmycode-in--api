@@ -20,27 +20,41 @@ describe ('GET /youtube', () => {
     
     })
 
+    const baseURL = '/youtube/'
+
     it ('should succeed given /youtube', async () => {
 
-        const response = await request (App).get ('/youtube')
+        const response = await request (App).get (baseURL)
 
-        expect (response.body).toBeTruthy ()
+        await expect (response.status).toBe (200)
+
+        await expect (response.success).toBeTruthy ()
+
+        await expect (response.body).toBeTruthy ()
 
     })
 
     it ('should succeed given /youtube/UY6dvVeuzk4', async () => {
 
-        const response = await request (App).get ('/youtube/UY6dvVeuzk4')
+        const id = 'UY6dvVeuzk4'
+        const response = await request (App).get (baseURL + id)
 
-        expect (response.body).toBeTruthy ()
+        await expect (response.status).toBe (200)
+
+        await expect (response.success).toBeTruthy ()
+
+        await expect (response.body).toBeTruthy ()
     
     })
 
     it ('should fail given /youtube/UY6dvSDuzK4', async () => {
 
-        const response = await request (App).get ('/youtube/UY6dvSDuzK4')
+        const id = 'UY6dvSDuzK4'
+        const response = await request (App).get (baseURL + id)
 
-        expect (response.success).toBeFalsy ()
+        await expect (response.status).toBe (200)
+
+        await expect (response.success).toBeFalsy ()
     
     })
 

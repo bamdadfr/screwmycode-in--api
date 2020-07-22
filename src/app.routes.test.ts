@@ -24,7 +24,11 @@ describe ('testing route /', () => {
 
         const response = await request (App).get ('/')
 
-        expect (response.body).toBeTruthy ()
+        await expect (response.status).toBe (200)
+
+        await expect (response.success).toBeTruthy ()
+
+        await expect (response.body).toBeTruthy ()
 
     })
 
