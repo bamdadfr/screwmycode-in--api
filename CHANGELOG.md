@@ -1,3 +1,11 @@
+## [1.2.76](https://github.com/screwmycode/screwmycode-api/compare/v1.2.75...v1.2.76) (2020-09-10)
+
+
+### Bug Fixes
+
+* asfalte: 🔨 git-commit-force-release__push ([cd125e8](https://github.com/screwmycode/screwmycode-api/commit/cd125e8bea839e3b3e5e1c0aa137c8d89d50f9cd))
+* testing v1 gpr [force-release] ([e057c88](https://github.com/screwmycode/screwmycode-api/commit/e057c8874a9ed92c90f6b9f484959f9d60336c8c))
+
 ## [1.2.75](https://github.com/screwmycode/screwmycode-api/compare/v1.2.74...v1.2.75) (2020-09-10)
 
 
