@@ -637,9 +637,9 @@
     "@types/node" "*"
 
 "@types/bson@*":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@types/bson/-/bson-4.0.2.tgz#7accb85942fc39bbdb7515d4de437c04f698115f"
-  integrity sha512-+uWmsejEHfmSjyyM/LkrP0orfE2m5Mx9Xel4tXNeqi1ldK5XMQcDsFkBmLDtuyKUbxj2jGDo0H240fbCRJZo7Q==
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@types/bson/-/bson-4.0.3.tgz#30889d2ffde6262abbe38659364c631454999fbf"
+  integrity sha512-mVRvYnTOZJz3ccpxhr3wgxVmSeiYinW+zlzQz3SXWaJmD1DuL05Jeq7nKw3SnbKmbleW5qrLG5vdyWe/A9sXhw==
   dependencies:
     "@types/node" "*"
 
