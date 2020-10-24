@@ -4488,9 +4488,9 @@ miniget@^1.6.1:
   integrity sha512-USPNNK2bnHLOplX8BZVMehUkyQizS/DFpBdoH0TS+fM+hQoLNg9tWg4MeY9wE8gfY0pbzmx5UBEODujt3Lz8AA==
 
 miniget@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/miniget/-/miniget-2.0.1.tgz#e2188573317ad8239bab33f056aae64804fc8e47"
-  integrity sha512-MX+QfVIPAutz6c+T7WKuFKtjcw0nOyRRh1ubhTDD+z/e/pKcSAsfAV63aQKUgb1MFRT1GyfJeW53N5fHkX0wIA==
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/miniget/-/miniget-2.0.2.tgz#173ae2375fc2074601adc538544508070329fc3f"
+  integrity sha512-rUYQiHXVjisRIuEdvIQxXPsAKp9Gltz5JdLWA8a3c/5265f2bZudg5mGtWcox0HHxkw51v8od/jLsqyYlM8UBw==
 
 minimatch@^3.0.4:
   version "3.0.4"
