@@ -3390,9 +3390,9 @@ is-ci@^2.0.0:
     ci-info "^2.0.0"
 
 is-core-module@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.0.0.tgz#58531b70aed1db7c0e8d4eb1a0a2d1ddd64bd12d"
-  integrity sha512-jq1AH6C8MuteOoBPwkxHafmByhL9j5q4OaPGdbuD+ZtQJVzH+i6E3BJDQcBA09k57i2Hh2yQbEG8yObZ0jdlWw==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.1.0.tgz#a4cc031d9b1aca63eecbd18a650e13cb4eeab946"
+  integrity sha512-YcV7BgVMRFRua2FqQzKtTDMz8iCuLEyGKjr70q8Zm1yy2qKcurbFEd79PAdHV77oL3NrAaOVQIbMmiHQCHB7ZA==
   dependencies:
     has "^1.0.3"
 
@@ -4595,9 +4595,9 @@ mongoose-legacy-pluralize@1.0.2:
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
 mongoose@^5.9.29:
-  version "5.10.11"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.10.11.tgz#4bef4a85d35f38eb45a0af27b276d2bfd2196b5c"
-  integrity sha512-R5BFitKW94/S/Z48w+X+qi/eto66jWBcVEVA8nYVkBoBAPFGq7JSYP/0uso+ZHs+7XjSzTuui+SUllzxIrf9yA==
+  version "5.10.12"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.10.12.tgz#74cdf9e9cb568b806cd71f703b7c2b8c4f251796"
+  integrity sha512-BoWagkWYEfpNCBPzSbfTlLHEtiGziSXbH/YHibrZbhvH1t+zM98X/guL7Ieeh35el4ilf+XFruK84nF5k0QpSw==
   dependencies:
     bson "^1.1.4"
     kareem "2.3.1"
