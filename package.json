@@ -13,7 +13,7 @@
     "package:clean": "rm -rf node_modules",
     "package:reinstall": "yarn package:clean && yarn",
     "package:sort": "npx sort-package-json",
-    "start": "yarn dev",
+    "start": "yarn dev:start",
     "test": "jest",
     "test:detect": "jest --detectOpenHandles",
     "watch:node": "nodemon dist/app.bin.js",
