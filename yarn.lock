@@ -4341,11 +4341,11 @@ lowercase-keys@^2.0.0:
   integrity sha512-tqNXrS78oMOE73NMxK4EMLQsQowWf8jKooH9g7xPavRT706R6bkQJ6DY2Te7QukaZsulxa30wQ7bk0pm4XiHmA==
 
 m3u8stream@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/m3u8stream/-/m3u8stream-0.8.0.tgz#025a63358ee32d7652bdc0a93f46078582ec5e96"
-  integrity sha512-vvSjdkBPdDHzVr2M+aIXbnYys4zX6m3UzxMaxBJr1PpE0e/3sawkLD4EEmz/q9hv87bleotR70cOWR3UBMtskw==
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/m3u8stream/-/m3u8stream-0.8.1.tgz#a1528f2d8901375171c41c33b6727c6df277bdda"
+  integrity sha512-fzjOzn+eYHbHLaTg0R4BCvyKOl24a7fNnhFc/B2zKX3BilD7sHMTipcMDXjbKKqAgJZWbAe2sktDRaTD5KVb3g==
   dependencies:
-    miniget "^2.0.1"
+    miniget "^3.0.0"
     sax "^1.2.4"
 
 make-dir@^3.0.0:
@@ -4524,10 +4524,15 @@ min-indent@^1.0.0:
   resolved "https://registry.yarnpkg.com/min-indent/-/min-indent-1.0.1.tgz#a63f681673b30571fbe8bc25686ae746eefa9869"
   integrity sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==
 
-miniget@^2.0.1, miniget@^2.1.0:
+miniget@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/miniget/-/miniget-2.1.0.tgz#2dfb9ecb3a9a55d9dc682102f65fca2a06e3f5ca"
   integrity sha512-fy9x3d/0oOIhkwAms6kgxTYkHwdELhMfgj+9a/aYZpJdTWIIWGta9aXHUtnzUn+LjBmRoTdPRQSi2hkmEvXk3A==
+
+miniget@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/miniget/-/miniget-3.0.0.tgz#4d6f4c250f5540efeb9fbe9e965a6660174fb9cd"
+  integrity sha512-s+gfqBEEGyoCf+1OG/6OKJDLXUubASlcVoBeXpftT0uyWha2G1qnxE63XLoD8F4Wq+KsTK70raxPoFkOmrzW5g==
 
 minimatch@^3.0.4:
   version "3.0.4"
