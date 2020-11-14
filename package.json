@@ -1,6 +1,6 @@
 {
   "name": "screwmycode-api",
-  "version": "1.2.372",
+  "version": "1.2.373",
   "license": "MIT",
   "scripts": {
     "build": "tsc --build tsconfig.json",
