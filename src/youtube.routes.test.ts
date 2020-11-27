@@ -3,6 +3,14 @@ import mongoose from 'mongoose'
 import { App } from './app'
 import { getMongoURL } from './mongo.utils'
 
+const verifyHeaders = (response: any): void => {
+
+    expect (response.status).toBe (200)
+
+    expect (response.type).toBe ('application/json')
+
+}
+
 describe ('GET /youtube', () => {
 
     beforeAll (() => {
@@ -26,11 +34,11 @@ describe ('GET /youtube', () => {
 
         const response = await request (App).get (baseURL)
 
-        await expect (response.status).toBe (200)
+        verifyHeaders (response)
 
-        await expect (response.success).toBeTruthy ()
+        expect (response.body).toBeTruthy ()
 
-        await expect (response.body).toBeTruthy ()
+        expect (response.body.success).toBeTruthy ()
 
     })
 
@@ -39,11 +47,11 @@ describe ('GET /youtube', () => {
         const id = 'UY6dvVeuzk4'
         const response = await request (App).get (baseURL + id)
 
-        await expect (response.status).toBe (200)
+        verifyHeaders (response)
 
-        await expect (response.success).toBeTruthy ()
+        expect (response.body).toBeTruthy ()
 
-        await expect (response.body).toBeTruthy ()
+        expect (response.body.success).toBeTruthy ()
     
     })
 
@@ -52,9 +60,20 @@ describe ('GET /youtube', () => {
         const id = 'UY6dvSDuzK4'
         const response = await request (App).get (baseURL + id)
 
-        await expect (response.status).toBe (200)
+        verifyHeaders (response)
 
-        await expect (response.success).toBeFalsy ()
+        expect (response.body.success).toBeFalsy ()
+    
+    })
+
+    it ('should fail given /youtube/badid', async () => {
+
+        const id = 'badid'
+        const response = await request (App).get (baseURL + id)
+
+        verifyHeaders (response)
+
+        expect (response.body.success).toBeFalsy ()
     
     })
 
