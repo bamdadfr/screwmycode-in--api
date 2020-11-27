@@ -38,8 +38,11 @@ runs app at <http://localhost:3000>
 # install dependencies
 yarn
 
-# run
-yarn dev
+# dev start
+yarn start
+
+# dev stop
+yarn stop
 ```
 
 ## prod
