@@ -1,24 +1,35 @@
-# [screwmycode-api](https://github.com/screwmycode/screwmycode-api)
+#
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/9d8331cec24be05155cc/maintainability)](https://codeclimate.com/github/screwmycode/screwmycode-api/maintainability)
-![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/screwmycode/screwmycode-api)
-![David](https://img.shields.io/david/screwmycode/screwmycode-api)
-![David](https://img.shields.io/david/dev/screwmycode/screwmycode-api)
+<p align=center>
+    API for <a href="https://github.com/screwmycode/screwmycode-www">screwmycode-www</a>
+    <br/>
+    API available <a href="https://api.screwmycode.in">here</a>
+</p>
 
-API for [screwmycode-www](https://github.com/screwmycode/screwmycode-www)
+<p align=center>
+    <img src="https://img.shields.io/github/v/release/screwmycode/screwmycode-api">
+    <img src="https://api.codeclimate.com/v1/badges/9d8331cec24be05155cc/maintainability">
+</p>
 
-API available [here](https://api.screwmycode.in)
+<p align=center>
+    <img src="https://img.shields.io/david/screwmycode/screwmycode-api">
+    <img src="https://img.shields.io/david/dev/screwmycode/screwmycode-api">
+    <img src="https://img.shields.io/snyk/vulnerabilities/github/screwmycode/screwmycode-api">
+</p>
 
-## dev
+<p align=center>
+    <img src="https://img.shields.io/github/stars/screwmycode/screwmycode-api">
+    <img src="https://img.shields.io/github/forks/screwmycode/screwmycode-api">
+</p>
 
-### get source
+## get source
 
 ```bash
 git clone https://github.com/screwmycode/screwmycode-api
 cd screwmycode-api
 ```
 
-### local mongo database
+## local mongo database
 
 `mongo-express` available at <http://localhost:8081>
 
@@ -30,7 +41,7 @@ yarn dev:mongo:start
 yarn dev:mongo:stop
 ```
 
-### app
+## app
 
 runs app at <http://localhost:3000>
 
