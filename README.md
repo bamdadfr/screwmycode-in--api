@@ -1,25 +1,32 @@
 #
 
 <p align=center>
-    API for <a href="https://github.com/screwmycode/screwmycode-www">screwmycode-www</a>
-    <br/>
-    API available <a href="https://api.screwmycode.in">here</a>
+  <a href="https://api.screwmycode.in/"><img width=100 src="https://raw.githubusercontent.com/screwmycode/screwmycode-www/master/src/components/icons/SCRW_CHAMP.svg"></a>
 </p>
 
 <p align=center>
-    <img src="https://img.shields.io/github/v/release/screwmycode/screwmycode-api">
-    <img src="https://api.codeclimate.com/v1/badges/9d8331cec24be05155cc/maintainability">
+  Variable speed pitch control for <a href="https://www.youtube.com/">YouTube</a>
 </p>
 
 <p align=center>
-    <img src="https://img.shields.io/david/screwmycode/screwmycode-api">
-    <img src="https://img.shields.io/david/dev/screwmycode/screwmycode-api">
-    <img src="https://img.shields.io/snyk/vulnerabilities/github/screwmycode/screwmycode-api">
+  <a href="https://github.com/screwmycode/screwmycode-api"><img src="https://img.shields.io/github/stars/screwmycode/screwmycode-api?label=git"></a>
+  <img src="https://img.shields.io/github/license/screwmycode/screwmycode-api">
 </p>
 
 <p align=center>
-    <img src="https://img.shields.io/github/stars/screwmycode/screwmycode-api">
-    <img src="https://img.shields.io/github/forks/screwmycode/screwmycode-api">
+  <img src="https://img.shields.io/github/languages/count/screwmycode/screwmycode-api">
+  <img src="https://img.shields.io/github/languages/top/screwmycode/screwmycode-api">
+</p>
+
+<p align=center>
+  <img src="https://img.shields.io/github/v/release/screwmycode/screwmycode-api">
+  <img src="https://api.codeclimate.com/v1/badges/43b9b1c5b6357b7a10fa/maintainability" />
+</p>
+
+<p align=center>
+  <img src="https://img.shields.io/david/screwmycode/screwmycode-api">
+  <img src="https://img.shields.io/david/dev/screwmycode/screwmycode-api">
+  <img src="https://img.shields.io/snyk/vulnerabilities/github/screwmycode/screwmycode-api">
 </p>
 
 ## get source
