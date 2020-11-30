@@ -20,7 +20,7 @@
 
 <p align=center>
   <img src="https://img.shields.io/github/v/release/screwmycode/screwmycode-api">
-  <img src="https://api.codeclimate.com/v1/badges/43b9b1c5b6357b7a10fa/maintainability" />
+  <img src="https://api.codeclimate.com/v1/badges/9d8331cec24be05155cc/maintainability" />
 </p>
 
 <p align=center>
