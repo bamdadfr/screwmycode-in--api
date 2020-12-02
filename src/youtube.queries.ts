@@ -1,5 +1,5 @@
 import { YoutubeModel } from './youtube.model'
-import { IYoutubeModel, IYoutubeReadResponse, IYoutubeInfo } from './youtube.types'
+import { IYoutubeModel, IYoutubeReadResponse } from './youtube.types'
 import { YoutubeConstantsErrorQuery } from './youtube.constants'
 
 export const YoutubeQueryExists = async (id: string): Promise<boolean> => {
@@ -35,7 +35,8 @@ export const YoutubeQueryRead = async (id: string): Promise<IYoutubeReadResponse
             })
             .limit (1)
             .exec (
-                (error: Error, response: IYoutubeInfo) => {
+                // (error: Error, response: IYoutubeInfo) => {
+                (error: Error, response: any) => {
     
                     if (error) throw error
     
