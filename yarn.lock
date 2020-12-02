@@ -304,9 +304,9 @@
     typescript "^4.0.5"
 
 "@bamdadsabbagh/stylelint-config@^1.2.43":
-  version "1.2.125"
-  resolved "https://registry.yarnpkg.com/@bamdadsabbagh/stylelint-config/-/stylelint-config-1.2.125.tgz#bebc89759a5a8c5c79a6b34a93c8ccdc36fb24be"
-  integrity sha512-Ownc3i4njuvqOb9yGjsaSUkIQscUcGlUz9DcSD8eazpw51so9B9b5msJk9Nq/X0tFazTtmx0Vcu9isgK3CKbCA==
+  version "1.2.126"
+  resolved "https://registry.yarnpkg.com/@bamdadsabbagh/stylelint-config/-/stylelint-config-1.2.126.tgz#62fdf234279164b821bf928ea12b7b6573c2eed4"
+  integrity sha512-HxEGXtJiSaKsBr3CawSZEP3Sl+DXPsgHmflQIi7jIV54R0U0erVTLOL/0vt8IBU+2p2PGRW16H44KlUzAYlyMA==
   dependencies:
     stylelint "^13.5.0"
     stylelint-config-prettier "^8.0.1"
