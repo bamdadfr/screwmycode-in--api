@@ -1,3 +1,12 @@
+## [1.2.431](https://github.com/screwmycode/screwmycode-api/compare/v1.2.430...v1.2.431) (2020-12-02)
+
+
+### Bug Fixes
+
+* asfalte: 🔨 git-commit-force-release__push ([5e0bcc3](https://github.com/screwmycode/screwmycode-api/commit/5e0bcc31093d5014e5267e9d904311bbdbc5e3fc))
+* bandage fix until I got time ([4a75b39](https://github.com/screwmycode/screwmycode-api/commit/4a75b396eca3ab6233305e640fe9b6094e0fb33d))
+* removing @types/mongoose ([d7484d1](https://github.com/screwmycode/screwmycode-api/commit/d7484d16fb3bb7761dfb934e0532fb1151082055))
+
 ## [1.2.430](https://github.com/screwmycode/screwmycode-api/compare/v1.2.429...v1.2.430) (2020-12-02)
 
 
