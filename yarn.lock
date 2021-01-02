@@ -6998,9 +6998,9 @@ yargs@^15.4.1:
     yargs-parser "^18.1.2"
 
 ytdl-core@^4.0.3:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-4.3.0.tgz#64d2150d7549ae974dd61a7fa8e8856384d814b0"
-  integrity sha512-YemZZDQ1t8myFtwobCceVBvLDWhvxELZrPMUTflIhN+3qv6lilMK50GkG4DKQEAPverwdiD5UrTOB+urEs2d3Q==
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-4.3.1.tgz#d5f9bc5e70b901b374f93347797a93d23a6b1c0b"
+  integrity sha512-3OeQbxeHkfeQe7eKH0NcHZdMYz9HE9s2ISWFmomFKlxYJUq9N3M5IdnlD9YNIqhAY11fGYoCMKcjj/CBwg/1Ug==
   dependencies:
     m3u8stream "^0.8.3"
     miniget "^4.0.0"
