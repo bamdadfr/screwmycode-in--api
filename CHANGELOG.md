@@ -1,3 +1,13 @@
+## [1.2.440](https://github.com/screwmycode/screwmycode-api/compare/v1.2.439...v1.2.440) (2021-01-02)
+
+
+### Bug Fixes
+
+* asfalte: ⚙️ yarn-upgrade--0x130 ([42ca7ee](https://github.com/screwmycode/screwmycode-api/commit/42ca7eee44a34afa0bbe297f224a0802a0d16110))
+* asfalte: ⚙️ yarn-upgrade--0x130 ([78e18f0](https://github.com/screwmycode/screwmycode-api/commit/78e18f018c0986780279a6e57d060b3a4b19f20f))
+* asfalte: ⚙️ yarn-upgrade--0x130 ([23f5e70](https://github.com/screwmycode/screwmycode-api/commit/23f5e700fe8a4a0bf71e7480bd1aa50bcfe7d65f))
+* asfalte: ⚙️ yarn-upgrade--0x130 ([43717c0](https://github.com/screwmycode/screwmycode-api/commit/43717c0a205c17940af05ab796ce5c13c9b7e19b))
+
 ## [1.2.439](https://github.com/screwmycode/screwmycode-api/compare/v1.2.438...v1.2.439) (2021-01-01)
 
 
