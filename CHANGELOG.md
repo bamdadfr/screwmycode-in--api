@@ -1,3 +1,16 @@
+## [1.2.458](https://github.com/screwmycode/screwmycode-api/compare/v1.2.457...v1.2.458) (2021-01-19)
+
+
+### Bug Fixes
+
+* asfalte: ⚙️ yarn-upgrade--0x130 ([e34743c](https://github.com/screwmycode/screwmycode-api/commit/e34743c00444d90a4b2cb0e2ec97080d44fe14fc))
+* asfalte: 🔨 git-commit-force-release--onPush ([0480874](https://github.com/screwmycode/screwmycode-api/commit/0480874990d1c948f85ce91e67fac557dff3a197))
+
+
+### Performance Improvements
+
+* removed `nodemon` dep ([b56338f](https://github.com/screwmycode/screwmycode-api/commit/b56338f48ac52da83b998d18ebc41d68abda3935))
+
 ## [1.2.457](https://github.com/screwmycode/screwmycode-api/compare/v1.2.456...v1.2.457) (2021-01-19)
 
 
