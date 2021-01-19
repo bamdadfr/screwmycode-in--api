@@ -1,3 +1,11 @@
+## [1.2.464](https://github.com/screwmycode/screwmycode-api/compare/v1.2.463...v1.2.464) (2021-01-19)
+
+
+### Bug Fixes
+
+* asfalte: ⚙️ yarn-upgrade--0x130 ([f734431](https://github.com/screwmycode/screwmycode-api/commit/f734431b0a096a14c7596522c3665e6df4bf3e6c))
+* asfalte: 🐳 docker-gpr-base-image-check--0x100 ([3a6b8da](https://github.com/screwmycode/screwmycode-api/commit/3a6b8da6df2a79b5a6c1f6b3118dbd76b2929038))
+
 ## [1.2.463](https://github.com/screwmycode/screwmycode-api/compare/v1.2.462...v1.2.463) (2021-01-19)
 
 
