@@ -4317,9 +4317,9 @@ mongoose-legacy-pluralize@1.0.2:
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
 mongoose@^5.9.29:
-  version "5.11.12"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.11.12.tgz#452d28ef04b9c6a9601e62a54064851c3b57d4ee"
-  integrity sha512-70wST9hnVlPbt5nKClPKJo54ULIACOVGYdg8fyj17sWtCJLyURCDahhzUh+oUA7WVykOW2ZMqWm2kujBIWYagg==
+  version "5.11.13"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.11.13.tgz#1a8af3c83152d5e0427509966926ea7f5ead4d66"
+  integrity sha512-rXbaxSJfLnKKO2RTm8MKt65glrtfKDc4ATEb6vEbbzsVGCiLut753K5axdpyvE7KeTH7GOh4LzmuQLOvaaWOmA==
   dependencies:
     "@types/mongodb" "^3.5.27"
     bson "^1.1.4"
@@ -6539,9 +6539,9 @@ yargs@^15.4.1:
     yargs-parser "^18.1.2"
 
 ytdl-core@^4.0.3:
-  version "4.4.3"
-  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-4.4.3.tgz#d968bbb1d6c7f2d0ed477715e849c53ccd3f0d85"
-  integrity sha512-0GexY2dMk0pvIE0UAB5GPiyaNjiawqDi5eUCUHW7CP1ZNyEco8Lct8/3AsI6aO0EQLGK774ocDvWxOE7W0qrTg==
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-4.4.4.tgz#d7635dc4ea95965b52589bd3adc6b28368daae22"
+  integrity sha512-/IFJTM5RjN20q6RVaE/9rv9tKoBtx95lKZCI/pUPDiDzu9fXyuPbkVzEQJmsYEwzi0zdv4d6iJy0gHWz49o6mw==
   dependencies:
     m3u8stream "^0.8.3"
     miniget "^4.0.0"
