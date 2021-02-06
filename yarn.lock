@@ -281,9 +281,9 @@
     to-fast-properties "^2.0.0"
 
 "@bamdadsabbagh/eslint-config@^1.5.0":
-  version "1.5.12"
-  resolved "https://registry.yarnpkg.com/@bamdadsabbagh/eslint-config/-/eslint-config-1.5.12.tgz#7681ee5f033d48fae26cc3afbeed96e51eb26374"
-  integrity sha512-zKof+61VM9/T1hO174DfoOtgY04G8S6H7kpmfOpz/xSex8m7aXcGeBM2p/6KPpzG669rsFp1HvWI9vWwGSbmoA==
+  version "1.5.13"
+  resolved "https://registry.yarnpkg.com/@bamdadsabbagh/eslint-config/-/eslint-config-1.5.13.tgz#71bb8bdc85ac278334324a85d08b4f8ea9daae08"
+  integrity sha512-hSdgy6bS2QF4Xk0gLHm/bJcUCiAQz3oRl4xHsO7j/IALtjh85DOOwr34v0ZMrYltOShbCy65mCJOXDUL9IxKtA==
   dependencies:
     "@types/node" "^14.0.27"
     "@types/react" "^17.0.0"
