@@ -1,14 +1,17 @@
-import { IMongoEnv } from './mongo.types'
+/**
+ * build the mongodb url for querying
+ * depends on environment
+ * @returns {string}
+ */
+const getMongoURL = () => {
 
-export const getMongoURL = (): string => {
-
-    const mongoEnv: IMongoEnv = {
+    const mongoEnv = {
         'protocol': 'mongodb',
         'host': process.env.MONGO_HOST,
         'user': process.env.MONGO_USER,
         'pass': process.env.MONGO_PASSWORD,
     }
-    
+
     if (process.env.NODE_ENV !== 'production') {
 
         mongoEnv.host = 'localhost'
@@ -16,11 +19,11 @@ export const getMongoURL = (): string => {
         mongoEnv.user = 'root'
 
         mongoEnv.pass = 'root'
-    
+
     }
 
-    const r: string = mongoEnv.protocol + '://' + mongoEnv.user + ':' + mongoEnv.pass + '@' + mongoEnv.host
-
-    return r
+    return mongoEnv.protocol + '://' + mongoEnv.user + ':' + mongoEnv.pass + '@' + mongoEnv.host
 
 }
+
+module.exports.getMongoURL = getMongoURL

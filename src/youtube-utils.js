@@ -1,11 +1,14 @@
-import fetch from 'node-fetch'
-import parser from 'fast-xml-parser'
-import { YoutubeModel } from './youtube.model'
-import { IYoutubeInfo } from './youtube.types'
-
+const fetch = require ('node-fetch')
+const parser = require ('fast-xml-parser')
 const ytdl = require ('ytdl-core')
 
-export const getExpireDate = (string: string, isDash: boolean): string => {
+/**
+ * check the expiry date with regex
+ * @param string {string} - string to test with regex
+ * @param isDash {boolean} - specific rules for dash files from youtube
+ * @returns {string}
+ */
+const getExpireDate = (string, isDash) => {
 
     if (isDash) {
 
@@ -21,46 +24,47 @@ export const getExpireDate = (string: string, isDash: boolean): string => {
 
 }
 
-export const getYoutubeDashInfo = async (url: string): Promise<string> => new Promise ((resolve, reject) => {
+module.exports.getExpireDate = getExpireDate
 
-    (async (): Promise<void> => {
+/**
+ * get information for the id when the file format is dash
+ * @param url {string} - full youtube URL
+ * @returns {Promise<unknown>}
+ */
+const getYoutubeDashInfo = async (url) => new Promise ((resolve, reject) => {
+
+    (async () => {
 
         try {
 
             const response = await fetch (url)
             const text = await response.text ()
-    
-            const xml = parser.parse (text, {
+
+            const json = parser.parse (text, {
                 'ignoreAttributes': false,
             })
-    
-            const json = xml
-    
+
             resolve (json.MPD.Period.AdaptationSet[1].Representation.BaseURL)
-        
+
         } catch (error) {
 
             reject (error)
-        
+
         }
-        
+
     }) ()
-
-    // fetch (url)
-    //     .then ((res) => res.text ())
-    //     .then ((xml) => parser.parse (xml, {
-    //         'ignoreAttributes': false,
-    //     }))
-    //     .then ((json) => {
-
-    //         resolve (json.MPD.Period.AdaptationSet[1].Representation.BaseURL)
-
-    //     })
-    //     .catch ((err) => reject (err))
 
 })
 
-export const getYoutubeInfo = async (id: string): Promise<IYoutubeInfo> => {
+module.exports.getYoutubeDashInfo = getYoutubeDashInfo
+
+// noinspection JSValidateJSDoc
+/**
+ * get youtube information for the given id
+ * @param id {string} - youtube id
+ * @returns {Promise<{success: boolean, title: string, isDash: boolean, url: minimist.Opts.unknown}|{success: boolean, title: string, isDash: boolean, url: string}|{success: boolean, error}>}
+ */
+const getYoutubeInfo = async (id) => {
 
     const url = `https://www.youtube.com/watch?v=${id}`
 
@@ -83,7 +87,7 @@ export const getYoutubeInfo = async (id: string): Promise<IYoutubeInfo> => {
                     'title': info.videoDetails.title,
                     'url': r,
                 }))
-        
+
         }
 
         return ({
@@ -99,12 +103,19 @@ export const getYoutubeInfo = async (id: string): Promise<IYoutubeInfo> => {
             'success': false,
             error,
         }
-    
+
     }
 
 }
 
-export const isValidID = (id: string): boolean => {
+module.exports.getYoutubeInfo = getYoutubeInfo
+
+/**
+ * test the id with regex to test compliance with youtube's pattern
+ * @param id {string} - youtube id
+ * @returns {boolean}
+ */
+const isValidID = (id) => {
 
     const regEx = /^([0-9A-Za-z_-]{11})$/
 
@@ -112,3 +123,4 @@ export const isValidID = (id: string): boolean => {
 
 }
 
+module.exports.isValidID = isValidID

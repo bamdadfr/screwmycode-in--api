@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
-import http from 'http'
-import Debug from 'debug'
-import { App } from './app'
-import { IError } from './app.types'
-
+const http = require ('http')
+const Debug = require ('debug')
 const debug = Debug ('test:server')
+const { AppExpress } = require ('./app-express')
 
-const normalizePort = (val: string): string|number|boolean => {
+// eslint-disable-next-line no-console
+console.log ('environment', process.env.NODE_ENV)
+
+const normalizePort = (val) => {
 
     const port = parseInt (val, 10)
 
@@ -15,14 +16,14 @@ const normalizePort = (val: string): string|number|boolean => {
 
         // named pipe
         return val
-    
+
     }
 
     if (port >= 0) {
 
         // port number
         return port
-    
+
     }
 
     return false
@@ -31,14 +32,14 @@ const normalizePort = (val: string): string|number|boolean => {
 
 const port = normalizePort (process.env.PORT || '3000')
 
-App.set ('port', port)
+AppExpress.set ('port', port)
 
-const onError = (error: IError): void => {
+const onError = (error) => {
 
     if (error.syscall !== 'listen') {
 
         throw error
- 
+
     }
 
     const bind = typeof port === 'string'
@@ -66,14 +67,14 @@ const onError = (error: IError): void => {
 
         default:
             throw error
-    
+
     }
 
 }
 
-const server = http.createServer (App)
+const server = http.createServer (AppExpress)
 
-const onListening = (): void => {
+const onListening = () => {
 
     const addr = server.address ()
 

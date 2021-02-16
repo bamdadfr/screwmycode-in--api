@@ -1,30 +1,29 @@
-import mongoose from 'mongoose'
-import { getMongoURL } from './mongo.utils'
-import { YoutubeController } from './youtube.controller'
-import { IYoutubeControllerResponse } from './youtube.types'
-import { YoutubeQueryRead } from './youtube.queries'
+const mongoose = require ('mongoose')
+const { getMongoURL } = require ('./mongo-utils')
+const { YoutubeController } = require ('./youtube-controller')
+const { YoutubeQueryRead } = require ('./youtube-queries')
 
-describe ('testinging youtube queries', () => {
+describe ('testing youtube queries', () => {
 
     beforeAll (() => {
 
         mongoose.connect (getMongoURL (), {
             'useNewUrlParser': true,
             'useUnifiedTopology': true,
-        }) 
-    
+        })
+
     })
 
     afterAll (() => {
 
         mongoose.disconnect ()
-    
+
     })
 
     // https://www.youtube.com/watch?v=UY6dvVeuzk4
     it ('should succeed creating youtube entry', async done => {
 
-        const response: IYoutubeControllerResponse = await YoutubeController ('UY6dvVeuzk4')
+        const response = await YoutubeController ('UY6dvVeuzk4')
 
         expect (response.success).toBeTruthy ()
 
@@ -43,7 +42,7 @@ describe ('testinging youtube queries', () => {
         expect (response.success).toBeTruthy ()
 
         done ()
-    
+
     })
 
 })

@@ -1,7 +1,6 @@
-import express from 'express'
-import { YoutubeController } from './youtube.controller'
-
-export const YoutubeRoutes = express.Router ()
+const express = require ('express')
+const { YoutubeController } = require ('./youtube-controller')
+const YoutubeRoutes = express.Router ()
 
 YoutubeRoutes.get ('/', (_req, res) => {
 
@@ -20,3 +19,5 @@ YoutubeRoutes.get ('/:id', async (req, res) => {
     res.send (r)
 
 })
+
+module.exports.YoutubeRoutes = YoutubeRoutes
