@@ -1,8 +1,12 @@
-import mongoose from 'mongoose'
-import chalk from 'chalk'
-import { getMongoURL } from './mongo.utils'
+const mongoose = require ('mongoose')
+const chalk = require ('chalk')
+const { getMongoURL } = require ('./mongo-utils')
 
-export const MongoServiceStart = (): void => {
+/**
+ * starts the mongo service
+ * @constructor
+ */
+const MongoServiceStart = () => {
 
     if (process.env.NODE_ENV === 'test') return
 
@@ -11,14 +15,14 @@ export const MongoServiceStart = (): void => {
     mongoose.connect (getMongoURL (), {
         'useNewUrlParser': true,
         'useUnifiedTopology': true,
-    }) 
+    })
         .catch ((e) => {
 
             // eslint-disable-next-line no-console
             console.log (chalk.red.bold (e))
-            
-        })   
-    
+
+        })
+
     const db = mongoose.connection
 
     // eslint-disable-next-line no-console
@@ -33,8 +37,16 @@ export const MongoServiceStart = (): void => {
 
 }
 
-export const MongoServiceStop = (): void => {
+module.exports.MongoServiceStart = MongoServiceStart
+
+/**
+ * stops the mongo service
+ * @constructor
+ */
+const MongoServiceStop = () => {
 
     mongoose.connection.close ()
 
 }
+
+module.exports.MongoServiceStop = MongoServiceStop

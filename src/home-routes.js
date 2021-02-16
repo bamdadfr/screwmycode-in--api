@@ -1,6 +1,5 @@
-import express from 'express'
-
-export const HomeRoutes = express.Router ()
+const express = require ('express')
+const HomeRoutes = express.Router ()
 
 HomeRoutes.get ('/', (_req, res) => {
 
@@ -10,3 +9,5 @@ HomeRoutes.get ('/', (_req, res) => {
     })
 
 })
+
+module.exports.HomeRoutes = HomeRoutes
