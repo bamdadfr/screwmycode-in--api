@@ -1,3 +1,11 @@
+## [1.2.494](https://github.com/screwmycode/screwmycode-api/compare/v1.2.493...v1.2.494) (2021-02-16)
+
+
+### Bug Fixes
+
+* asfalte: 🔨 git-commit-force-release--onPush ([8e15ab8](https://github.com/screwmycode/screwmycode-api/commit/8e15ab81c19bd58004e124ec5c94b23aecec7850))
+* cleaned package.json (babel-cli) ([c300c82](https://github.com/screwmycode/screwmycode-api/commit/c300c82941a2b0d6d7a125b336edf477d2976e9b))
+
 ## [1.2.493](https://github.com/screwmycode/screwmycode-api/compare/v1.2.492...v1.2.493) (2021-02-16)
 
 
