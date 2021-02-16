@@ -1,3 +1,15 @@
+## [1.2.493](https://github.com/screwmycode/screwmycode-api/compare/v1.2.492...v1.2.493) (2021-02-16)
+
+
+### Bug Fixes
+
+* asfalte: 🔨 git-commit-force-release--onPush ([0bc9f35](https://github.com/screwmycode/screwmycode-api/commit/0bc9f35c8491597a405340da63cfa27ddc210e09))
+
+
+### Performance Improvements
+
+* refacto ([577b8f8](https://github.com/screwmycode/screwmycode-api/commit/577b8f85a5bf680da218a1cfecda302b07e0ce35))
+
 ## [1.2.492](https://github.com/screwmycode/screwmycode-api/compare/v1.2.491...v1.2.492) (2021-02-15)
 
 
