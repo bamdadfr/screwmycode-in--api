@@ -30,7 +30,7 @@
     "morgan": "~1.10.0",
     "node-fetch": "^2.6.0",
     "pm2": "^4.5.4",
-    "ytdl-core": "^4.0.3"
+    "ytdl-core": "^4.5.0"
   },
   "devDependencies": {
     "@bamdadsabbagh/eslint-config": "^1.5.0",
