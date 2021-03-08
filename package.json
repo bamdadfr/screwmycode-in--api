@@ -33,7 +33,7 @@
     "ytdl-core": "^4.0.3"
   },
   "devDependencies": {
-    "@bamdadsabbagh/eslint-config": "^1.5.0",
+    "@bamdadsabbagh/eslint-config": "^1.8.4",
     "jest": "^26.4.0",
     "supertest": "^6.0.1"
   }
