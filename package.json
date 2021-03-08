@@ -1,6 +1,6 @@
 {
   "name": "screwmycode-api",
-  "version": "1.2.497",
+  "version": "1.2.498",
   "license": "MIT",
   "scripts": {
     "dev": "yarn dev:stop && yarn dev:start",
