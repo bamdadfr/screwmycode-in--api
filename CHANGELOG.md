@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/screwmycode/screwmycode-api/compare/v1.3.1...v1.3.2) (2021-03-31)
+
+
+### Bug Fixes
+
+* **deps:** upgraded to latest ([5ecd1bf](https://github.com/screwmycode/screwmycode-api/commit/5ecd1bf921f3240b65138a102886331769c0b1de))
+
 ## [1.3.1](https://github.com/screwmycode/screwmycode-api/compare/v1.3.0...v1.3.1) (2021-03-31)
 
 
