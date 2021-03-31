@@ -1,5 +1,5 @@
 {
-    "appName": "screwmycode-api",
+    "name": "screwmycode-api",
     "version": "1.2.502",
     "description": "API for screwmycode.in",
     "author": {
