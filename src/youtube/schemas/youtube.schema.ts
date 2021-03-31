@@ -18,7 +18,7 @@ export class Youtube {
   expireDate: number;
 
   @Prop()
-  hit: number;
+  hits: number;
 }
 
 export const YoutubeSchema = SchemaFactory.createForClass(Youtube);

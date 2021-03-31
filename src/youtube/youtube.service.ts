@@ -54,7 +54,7 @@ export class YoutubeService {
       id,
       title: youtube.title,
       url: youtube.url,
-      hit: 1,
+      hits: 1,
       expireDate: getExpireDate(youtube.url, youtube.isDash),
     };
 
@@ -77,7 +77,7 @@ export class YoutubeService {
     foundYoutube.title = youtube.title;
     foundYoutube.url = youtube.url;
     foundYoutube.expireDate = getExpireDate(youtube.url, youtube.isDash);
-    foundYoutube.hit += 1;
+    foundYoutube.hits += 1;
 
     return foundYoutube.save();
   }
@@ -89,7 +89,7 @@ export class YoutubeService {
 
     if (foundYoutube === null) throw new Error('youtube id was not found');
 
-    foundYoutube.hit += 1;
+    foundYoutube.hits += 1;
 
     return foundYoutube.save();
   }
