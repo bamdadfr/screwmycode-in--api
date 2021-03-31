@@ -2,6 +2,8 @@
 
 !package.json
 !yarn.lock
-!ecosystem.config.js
+
+!tsconfig.json
+!tsconfig.build.json
 
 !src/
