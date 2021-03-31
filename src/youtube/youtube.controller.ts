@@ -16,13 +16,13 @@ export class YoutubeController {
   @Get(':id')
   async read(@Param('id') id: string): Promise<YoutubeDto> {
     try {
-      const { title, url, hit } = await this.youtubeService.read(id);
+      const { title, url, hits } = await this.youtubeService.read(id);
       return {
         success: true,
         data: {
           title,
           url,
-          hit,
+          hits,
         },
       };
     } catch (error) {
@@ -40,13 +40,13 @@ export class YoutubeController {
   async update(@Param('id') id: string): Promise<YoutubeDto> {
     try {
       await this.youtubeService.update(id);
-      const { title, url, hit } = await this.youtubeService.read(id);
+      const { title, url, hits } = await this.youtubeService.read(id);
       return {
         success: true,
         data: {
           title,
           url,
-          hit,
+          hits,
         },
       };
     } catch (error) {

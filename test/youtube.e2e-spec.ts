@@ -33,7 +33,7 @@ describe('YoutubeController (e2e)', () => {
     expect(response.body.data).toBeDefined();
     expect(response.body.data.title).toBeDefined();
     expect(response.body.data.url).toBeDefined();
-    expect(response.body.data.hit).toBeDefined();
+    expect(response.body.data.hits).toBeDefined();
     expect(response.body.error).toBeUndefined();
   });
 

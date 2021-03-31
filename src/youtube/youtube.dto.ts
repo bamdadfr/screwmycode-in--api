@@ -3,7 +3,7 @@ export class YoutubeDto {
   data?: {
     title: string;
     url: string;
-    hit: number;
+    hits: number;
   };
   error?: {
     message: string;
