@@ -1,3 +1,14 @@
+## [1.3.1](https://github.com/screwmycode/screwmycode-api/compare/v1.3.0...v1.3.1) (2021-03-31)
+
+
+### Bug Fixes
+
+* **changelog:** appending old entries ([b406f23](https://github.com/screwmycode/screwmycode-api/commit/b406f2327f4aa72863a673d5555b6f832351737c))
+* **CI:** better workflows ([17af04f](https://github.com/screwmycode/screwmycode-api/commit/17af04f35a0343d9efee9bcfd96bf9507eaa1e6e))
+* **IDE:** adding intellij config files ([4c19bd0](https://github.com/screwmycode/screwmycode-api/commit/4c19bd0557b7c4bd90f3d5b7a96d1514d85cb55c))
+* **IDE:** adding intellij config files ([82e98cd](https://github.com/screwmycode/screwmycode-api/commit/82e98cdafac51714cf9ec9c68075e0201ab9d0f3))
+* **youtubeSchema:** renamed field `hit` to `hits` ([8d5a79a](https://github.com/screwmycode/screwmycode-api/commit/8d5a79aa0ff7c3b7b6488c8d00f376117068ecd1))
+
 # [1.3.0](https://github.com/screwmycode/screwmycode-api/compare/v1.2.502...v1.3.0) (2021-03-31)
 
 
