@@ -1199,9 +1199,9 @@ ajv@6.12.6, ajv@^6.10.0, ajv@^6.12.2, ajv@^6.12.3, ajv@^6.12.4, ajv@^6.12.5:
     uri-js "^4.2.2"
 
 ajv@^8.0.1:
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.0.2.tgz#1396e27f208ed56dd5638ab5a251edeb1c91d402"
-  integrity sha512-V0HGxJd0PiDF0ecHYIesTOqfd1gJguwQUOYfMfAWnRsWQEXfc5ifbUFhD3Wjc+O+y7VAqL+g07prq9gHQ/JOZQ==
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.0.3.tgz#81f1b07003b329f000b7912e59a24f52392867b6"
+  integrity sha512-Df6NAivu9KpZw+q8ySijAgLvr1mUA5ihkRvCLCxpdYR21ann5yIuN+PpFxmweSj7i3yjJ0x5LN5KVs0RRzskAQ==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -2138,9 +2138,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.649:
-  version "1.3.703"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.703.tgz#6d9b9a75c42a40775f5930329e642b22b227317f"
-  integrity sha512-SVBVhNB+4zPL+rvtWLw7PZQkw/Eqj1HQZs22xtcqW36+xoifzEOEEDEpkxSMfB6RFeSIOcG00w6z5mSqLr1Y6w==
+  version "1.3.704"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.704.tgz#894205a237cbe0097d63da8f6d19e605dd13ab51"
+  integrity sha512-6cz0jvawlUe4h5AbfQWxPzb+8LzVyswGAWiGc32EJEmfj39HTQyNPkLXirc7+L4x5I6RgRkzua8Ryu5QZqc8cA==
 
 emittery@^0.7.1:
   version "0.7.2"
@@ -4043,9 +4043,9 @@ media-typer@0.3.0:
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
 
 memfs@^3.1.2:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/memfs/-/memfs-3.2.0.tgz#f9438e622b5acd1daa8a4ae160c496fdd1325b26"
-  integrity sha512-f/xxz2TpdKv6uDn6GtHee8ivFyxwxmPuXatBb1FBwxYNuVpbM3k/Y1Z+vC0mH/dIXXrukYfe3qe5J32Dfjg93A==
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/memfs/-/memfs-3.2.1.tgz#12301801a14eb3daa9f7491aa0ff09ffec519dd0"
+  integrity sha512-Y5vcpQzWTime4fBTr/fEnxXUxEYUgKbDlty1WX0gaa4ae14I6KmvK1S8HtXOX0elKAE6ENZJctkGtbTFYcRIUw==
   dependencies:
     fs-monkey "1.0.1"
 
@@ -4192,9 +4192,9 @@ mongoose-legacy-pluralize@1.0.2:
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
 mongoose@^5.12.2:
-  version "5.12.2"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.12.2.tgz#3274630dfb9a8e63dbda0c6e7124fd475623c6ff"
-  integrity sha512-kT9t6Nvu9WPsfssn7Gzke446Il8UdMilY7Sa5vALtwoOoNOGtZEVjekZBFwsBFzTWtBA/x5gBmJoYFP+1LeDlg==
+  version "5.12.3"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.12.3.tgz#e48b4cfd898bd779f6a776fc0e232bf790ac4c1a"
+  integrity sha512-frsSR9yeldaRpSUeTegXCSB0Tu5UGq8sHuHBuEV31Jk3COyxlKFQPL7UsdMhxPUCmk74FpOYSmNwxhWBEqgzQg==
   dependencies:
     "@types/mongodb" "^3.5.27"
     bson "^1.1.4"
@@ -4202,7 +4202,7 @@ mongoose@^5.12.2:
     mongodb "3.6.5"
     mongoose-legacy-pluralize "1.0.2"
     mpath "0.8.3"
-    mquery "3.2.4"
+    mquery "3.2.5"
     ms "2.1.2"
     regexp-clone "1.0.0"
     safe-buffer "5.2.1"
@@ -4214,10 +4214,10 @@ mpath@0.8.3:
   resolved "https://registry.yarnpkg.com/mpath/-/mpath-0.8.3.tgz#828ac0d187f7f42674839d74921970979abbdd8f"
   integrity sha512-eb9rRvhDltXVNL6Fxd2zM9D4vKBxjVVQNLNijlj7uoXUy19zNDsIif5zR+pWmPCWNKwAtqyo4JveQm4nfD5+eA==
 
-mquery@3.2.4:
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/mquery/-/mquery-3.2.4.tgz#9c5c2e285ea6c6f20673f3528973c99ee1aaa1a0"
-  integrity sha512-uOLpp7iRX0BV1Uu6YpsqJ5b42LwYnmu0WeF/f8qgD/On3g0XDaQM6pfn0m6UxO6SM8DioZ9Bk6xxbWIGHm2zHg==
+mquery@3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/mquery/-/mquery-3.2.5.tgz#8f2305632e4bb197f68f60c0cffa21aaf4060c51"
+  integrity sha512-VjOKHHgU84wij7IUoZzFRU07IAxd5kWJaDmyUzQlbjHjyoeK5TNeeo8ZsFDtTYnSgpW6n/nMNIHvE3u8Lbrf4A==
   dependencies:
     bluebird "3.5.1"
     debug "3.1.0"
@@ -4696,9 +4696,9 @@ progress@^2.0.0:
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
 prompts@^2.0.1:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/prompts/-/prompts-2.4.0.tgz#4aa5de0723a231d1ee9121c40fdf663df73f61d7"
-  integrity sha512-awZAKrk3vN6CroQukBL+R9051a4R3zCZBlJm/HBfrSZ8iTpYix3VX1vU4mveiLpiwmOJT4wokTF9m6HUk4KqWQ==
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/prompts/-/prompts-2.4.1.tgz#befd3b1195ba052f9fd2fde8a486c4e82ee77f61"
+  integrity sha512-EQyfIuO2hPDsX1L/blblV+H7I0knhgAd82cVneCwcdND9B8AuCDuRcBH6yIcG4dFzlOUqbazQqwGjx5xmsNLuQ==
   dependencies:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
@@ -5570,9 +5570,9 @@ supports-hyperlinks@^2.0.0:
     supports-color "^7.0.0"
 
 swagger-ui-dist@^3.18.1:
-  version "3.45.1"
-  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-3.45.1.tgz#3c0b718cb5e944056500d92a45a04d2072073582"
-  integrity sha512-QWotWWYkgSdPtI6HW12q4Ua5zxIhhvnYvx9iZKtDbZuVvJSTnMIzaHrE6KJVe/8plWh7Wpd/qqeBfpOxF8g1/g==
+  version "3.46.0"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-3.46.0.tgz#f08d2c9b4a2dce922ba363c598e4795b5ccf0b80"
+  integrity sha512-ueaZ45OHhHvGKmocvCkxFY8VCfbP5PgcxutoQxy9j8/VZeDoLDvg8FBf4SO6NxHhieNAdYPUd0O6G9FjJO2fqw==
 
 swagger-ui-express@^4.1.6:
   version "4.1.6"
