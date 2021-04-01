@@ -1,3 +1,11 @@
+## [1.3.4](https://github.com/screwmycode/screwmycode-api/compare/v1.3.3...v1.3.4) (2021-04-01)
+
+
+### Bug Fixes
+
+* **getYoutubeInfo:** better Error throwing syntax ([646b721](https://github.com/screwmycode/screwmycode-api/commit/646b72157151c33b4ff1dd6750833fa894333f12))
+* **yarn:** upgraded to latest dependencies ([0dd9011](https://github.com/screwmycode/screwmycode-api/commit/0dd9011fca7238b36eef8ec239da81c75d39918e))
+
 ## [1.3.3](https://github.com/screwmycode/screwmycode-api/compare/v1.3.2...v1.3.3) (2021-04-01)
 
 
