@@ -23,30 +23,21 @@ export async function getYoutubeInfo(id: string): Promise<GetYoutubeInfo> {
       filter: 'audio',
     });
 
-    /**
-     * add title to response
-     */
     response = {
       title: info.videoDetails.title,
     };
 
-    const format = ytdl.chooseFormat(info.formats, {
+    const audio = ytdl.chooseFormat(info.formats, {
       quality: '140',
     });
 
-    /**
-     * add url to response
-     */
     response = {
       ...response,
-      url: format.url,
+      url: audio.url,
     };
 
-    /**
-     * if format is dash:
-     * we need an extra step to parse and get a correct url
-     */
-    if (format.isDashMPD) {
+    // if format is dash, we need an extra step to get the correct url
+    if (audio.isDashMPD) {
       const dashUrl = await getDashUrl(url);
       response = {
         ...response,
@@ -57,6 +48,6 @@ export async function getYoutubeInfo(id: string): Promise<GetYoutubeInfo> {
 
     return response;
   } catch (error) {
-    throw Error(error);
+    throw new Error(error);
   }
 }
