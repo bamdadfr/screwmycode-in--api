@@ -9,7 +9,8 @@ export class GetYoutubeInfo {
 }
 
 /**
- * getYoutubeInfo()
+ * @function getYoutubeInfo
+ * @description get youtube information using `ytdl-core` npm package
  * @param {string} id - youtube id
  * @returns {object}
  */
