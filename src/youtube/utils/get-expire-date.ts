@@ -1,7 +1,8 @@
 /**
- * check the expiry date with regex
- * @param string {string} - string to test with regex
- * @param isDash {boolean} - specific rules for dash files from youtube
+ * @function getExpireDate
+ * @description check the expiry date with regex
+ * @param {string} string - string to test with regex
+ * @param {boolean} isDash - specific rules for dash files from youtube
  * @returns {number}
  */
 export function getExpireDate(string: string, isDash: boolean): number {

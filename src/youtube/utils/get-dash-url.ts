@@ -1,7 +1,13 @@
 import fetch from 'node-fetch';
 import parser from 'fast-xml-parser';
 
-export async function getDashUrl(url: string) {
+/**
+ * @function getDashUrl
+ * @description get audio URL from dash file
+ * @param {string} url
+ * @returns {Promise<string|Error>}
+ */
+export async function getDashUrl(url: string): Promise<string | Error> {
   return new Promise((resolve, reject) => {
     (async () => {
       try {
