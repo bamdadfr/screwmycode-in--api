@@ -1,3 +1,12 @@
+## [1.3.6](https://github.com/screwmycode/screwmycode-api/compare/v1.3.5...v1.3.6) (2021-04-06)
+
+
+### Bug Fixes
+
+* **deps:** upgraded deps ([21cd66c](https://github.com/screwmycode/screwmycode-api/commit/21cd66cffd56ac8c6d347c266e8c952156ccd2ff))
+* **utils:** added jsdoc ([88a2013](https://github.com/screwmycode/screwmycode-api/commit/88a2013e13472b53ca8e7298dfe49b5175ccc2fa))
+* **utils:** added jsdoc and fixed typo ([224bf2b](https://github.com/screwmycode/screwmycode-api/commit/224bf2bb2cd19fe14fbd05ca3634ae9a2ddc78de))
+
 ## [1.3.5](https://github.com/screwmycode/screwmycode-api/compare/v1.3.4...v1.3.5) (2021-04-05)
 
 
