@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateYoutubeDto } from './dto/create-youtube.dto';
 import { Youtube, YoutubeDocument } from './schemas/youtube.schema';
-import { youtubeIdIsvalid } from './utils/youtube-id-is-valid';
+import { youtubeIdIsValid } from './utils/youtube-id-is-valid';
 import { GetYoutubeInfo, getYoutubeInfo } from './utils/get-youtube-info';
 import { getExpireDate } from './utils/get-expire-date';
 
@@ -21,7 +21,7 @@ export class YoutubeService {
   }
 
   async read(id: string): Promise<Youtube> {
-    if (!youtubeIdIsvalid(id)) throw new Error('youtube id is not valid');
+    if (!youtubeIdIsValid(id)) throw new Error('youtube id is not valid');
 
     const now = parseInt(Date.now().toString().slice(0, 10), 10);
     const exists = await this.youtubeModel.exists({ id });
@@ -41,7 +41,7 @@ export class YoutubeService {
   }
 
   async readThenCreate(id: string): Promise<Youtube> {
-    if (!youtubeIdIsvalid(id)) throw new Error('youtube id is not valid');
+    if (!youtubeIdIsValid(id)) throw new Error('youtube id is not valid');
 
     let youtube: GetYoutubeInfo;
     try {
@@ -63,7 +63,7 @@ export class YoutubeService {
   }
 
   async readThenRefresh(id: string): Promise<Youtube> {
-    if (!youtubeIdIsvalid(id)) throw new Error('youtube id is not valid');
+    if (!youtubeIdIsValid(id)) throw new Error('youtube id is not valid');
 
     const foundYoutube = await this.youtubeModel.findOne({ id });
 
@@ -83,7 +83,7 @@ export class YoutubeService {
   }
 
   async update(id: string): Promise<Youtube> {
-    if (!youtubeIdIsvalid(id)) throw new Error('youtube id is not valid');
+    if (!youtubeIdIsValid(id)) throw new Error('youtube id is not valid');
 
     const foundYoutube = await this.youtubeModel.findOne({ id });
 
