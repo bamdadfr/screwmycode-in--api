@@ -1,0 +1,75 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 14.14.39
+    - 15.0.0
+  - dependency-name: eslint-config-prettier
+    versions:
+    - 8.2.0
+    - 8.3.0
+  - dependency-name: eslint
+    versions:
+    - 7.24.0
+    - 7.25.0
+  - dependency-name: ts-loader
+    versions:
+    - 9.0.0
+    - 9.1.0
+  - dependency-name: mongoose
+    versions:
+    - 5.11.16
+    - 5.11.17
+    - 5.11.18
+    - 5.11.19
+    - 5.12.0
+    - 5.12.1
+    - 5.12.2
+    - 5.12.5
+  - dependency-name: eslint-plugin-prettier
+    versions:
+    - 3.4.0
+  - dependency-name: "@typescript-eslint/parser"
+    versions:
+    - 4.21.0
+    - 4.22.0
+  - dependency-name: "@typescript-eslint/eslint-plugin"
+    versions:
+    - 4.21.0
+    - 4.22.0
+  - dependency-name: typescript
+    versions:
+    - 4.2.4
+  - dependency-name: "@bamdadsabbagh/eslint-config"
+    versions:
+    - 1.7.1
+    - 1.8.0
+    - 1.8.1
+    - 1.8.3
+    - 1.8.4
+    - 1.8.5
+    - 1.8.6
+    - 1.9.0
+    - 1.9.1
+    - 1.9.2
+  - dependency-name: fast-xml-parser
+    versions:
+    - 3.19.0
+  - dependency-name: pm2
+    versions:
+    - 4.5.5
+  - dependency-name: ytdl-core
+    versions:
+    - 4.5.0
+  - dependency-name: "@types/cors"
+    versions:
+    - 2.8.10
+  - dependency-name: "@bamdadsabbagh/stylelint-config"
+    versions:
+    - 1.2.186
