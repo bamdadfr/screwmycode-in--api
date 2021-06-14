@@ -1,3 +1,11 @@
+## [1.3.20](https://github.com/screwmycode/screwmycode-api/compare/v1.3.19...v1.3.20) (2021-06-14)
+
+
+### Bug Fixes
+
+* **asfalte:** ⚙️ yarn-upgrade--onMondays-1000 ([a67a79d](https://github.com/screwmycode/screwmycode-api/commit/a67a79d781c0f6066b16106293221593ad481d09))
+* **deps:** updated dependencies to latest + added `dev` alias command ([aab5106](https://github.com/screwmycode/screwmycode-api/commit/aab510641e0ee18ec06ec630a3443b2158887cc0))
+
 ## [1.3.19](https://github.com/screwmycode/screwmycode-api/compare/v1.3.18...v1.3.19) (2021-06-07)
 
 
