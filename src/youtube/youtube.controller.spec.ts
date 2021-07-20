@@ -40,7 +40,48 @@ describe('YoutubeController', () => {
   });
 
   describe('find', () => {
-    it('should call service with arguments');
-    it('should return youtube data');
+    describe('when id is valid', () => {
+      it('should return success: true', async () => {
+        const response = await controller.find('UY6dvVeuzk4');
+        expect(response.success).toBe(true);
+      });
+
+      it('should return a defined data object', async () => {
+        const response = await controller.find('UY6dvVeuzk4');
+        expect(response.data).toBeDefined();
+      });
+
+      it('should return a defined data.title value', async () => {
+        const response = await controller.find('UY6dvVeuzk4');
+        expect(response.data.title).toBeDefined();
+      });
+
+      it('should return a defined data.url value', async () => {
+        const response = await controller.find('UY6dvVeuzk4');
+        expect(response.data.url).toBeDefined();
+      });
+
+      it('should return a defined data.hits value', async () => {
+        const response = await controller.find('UY6dvVeuzk4');
+        expect(response.data.hits).toBeDefined();
+      });
+    });
+
+    describe('when id is not valid', () => {
+      it('should return success: true', async () => {
+        const response = await controller.find('zeikorjzeiuofh');
+        expect(response.success).toBe(false);
+      });
+
+      it('should return a defined error object', async () => {
+        const response = await controller.find('zeikorjzeiuofh');
+        expect(response.error).toBeDefined();
+      });
+
+      it('should return a defined error.message value', async () => {
+        const response = await controller.find('zeikorjzeiuofh');
+        expect(response.error.message).toBeDefined();
+      });
+    });
   });
 });
