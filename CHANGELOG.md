@@ -1,3 +1,10 @@
+## [1.3.33](https://github.com/screwmycode/screwmycode-api/compare/v1.3.32...v1.3.33) (2021-07-20)
+
+
+### Bug Fixes
+
+* dotenv import back to require() ([a4510a7](https://github.com/screwmycode/screwmycode-api/commit/a4510a76e5683de8c3163f08b9f3b9a1f0ce98e6))
+
 ## [1.3.32](https://github.com/screwmycode/screwmycode-api/compare/v1.3.31...v1.3.32) (2021-07-20)
 
 
