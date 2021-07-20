@@ -15,7 +15,7 @@ describe('AppController', () => {
   });
 
   describe('index', () => {
-    it('should return success === true', () => {
+    it('should return success = true', () => {
       expect(appController.index().success).toBe(true);
     });
   });
