@@ -1,19 +1,24 @@
 import { YoutubeController } from './youtube.controller';
 import { Test, TestingModule } from '@nestjs/testing';
 import { YoutubeService } from './youtube.service';
+import {
+  closeMongoConnection,
+  MongoTestModule,
+} from '../../test/mongo-test.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { YoutubeEntity, YoutubeSchema } from './youtube.schema';
-import { getMongoUrl } from '../utils/get-mongo-url';
 
 describe('YoutubeController', () => {
   let controller: YoutubeController;
 
+  afterAll(async () => {
+    await closeMongoConnection();
+  });
+
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [YoutubeController],
-      providers: [YoutubeService],
       imports: [
-        MongooseModule.forRoot(getMongoUrl()),
+        MongoTestModule(),
         MongooseModule.forFeature([
           {
             name: YoutubeEntity.name,
@@ -21,6 +26,8 @@ describe('YoutubeController', () => {
           },
         ]),
       ],
+      controllers: [YoutubeController],
+      providers: [YoutubeService],
     }).compile();
 
     controller = module.get<YoutubeController>(YoutubeController);

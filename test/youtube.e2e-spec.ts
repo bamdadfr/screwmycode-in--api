@@ -3,6 +3,7 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 import { YoutubeModule } from '../src/youtube/youtube.module';
+import { youtubeConstants } from './youtube.constants';
 
 describe('YoutubeController (e2e)', () => {
   let server;
@@ -26,7 +27,9 @@ describe('YoutubeController (e2e)', () => {
   });
 
   it('@Get /youtube/UY6dvVeuzk4 should succeed', async () => {
-    const response = await request(server).get('/youtube/UY6dvVeuzk4');
+    const response = await request(server).get(
+      `/youtube/${youtubeConstants.id.valid[0]}`,
+    );
 
     expect(response.status).toBe(200);
     expect(response.body.success).toBe(true);
@@ -38,7 +41,9 @@ describe('YoutubeController (e2e)', () => {
   });
 
   it('@Get /youtube/q3WzYdFyAqc should fail', async () => {
-    const response = await request(server).get('/youtube/q3WzYdFyAqc');
+    const response = await request(server).get(
+      `/youtube/${youtubeConstants.id.notValid[0]}`,
+    );
 
     expect(response.status).toBe(200);
     expect(response.body.success).toBe(false);
@@ -48,7 +53,9 @@ describe('YoutubeController (e2e)', () => {
   });
 
   it('@Get /youtube/invalid should fail', async () => {
-    const response = await request(server).get('/youtube/invalid');
+    const response = await request(server).get(
+      `/youtube/${youtubeConstants.id.notValid[1]}`,
+    );
 
     expect(response.status).toBe(200);
     expect(response.body.success).toBe(false);

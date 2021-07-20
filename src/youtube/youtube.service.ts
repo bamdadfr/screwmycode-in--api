@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { YoutubeEntity, YoutubeDocument } from './youtube.schema';
 import { GetYoutubeInfo, getYoutubeInfo } from './utils/get-youtube-info';
-import { getExpirationDate, validateId } from './utils';
+import { getExpirationDate } from './utils/get-expiration-date';
 
 @Injectable()
 export class YoutubeService {
@@ -15,16 +15,14 @@ export class YoutubeService {
   /**
    * this method will be used in future versions to retrieve all entries with pagination
    */
-  async findAll(): Promise<void> {
-    // return this.youtubeModel.find().select('-_id id title url hit');
-  }
+  // async findAll(): Promise<void> {
+  // return this.youtubeModel.find().select('-_id id title url hit');
+  // }
 
   /**
    * @description find a youtubeDocument by id
    */
   async find(id: string): Promise<YoutubeEntity> {
-    validateId(id);
-
     const dateNow = parseInt(Date.now().toString().slice(0, 10), 10);
     const youtubeDocumentExists = await this.youtubeModel.exists({ id });
 
@@ -42,8 +40,6 @@ export class YoutubeService {
   }
 
   async create(id: string): Promise<YoutubeEntity> {
-    validateId(id);
-
     let info: GetYoutubeInfo;
     try {
       info = await getYoutubeInfo(id);
@@ -67,8 +63,6 @@ export class YoutubeService {
    * @description update document
    */
   async update(id: string): Promise<YoutubeEntity> {
-    validateId(id);
-
     const document = await this.youtubeModel.findOne({ id });
 
     let info: GetYoutubeInfo;
