@@ -1,4 +1,4 @@
-export class YoutubeDto {
+export class ReadYoutubeDto {
   success: boolean;
   data?: {
     title: string;

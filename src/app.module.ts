@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { YoutubeModule } from './youtube/youtube.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { getMongoUrl } from './config/get-mongo-url';
+import { getMongoUrl } from './utils/get-mongo-url';
 
 const mongoUrl = getMongoUrl();
 
