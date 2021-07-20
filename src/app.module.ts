@@ -5,10 +5,8 @@ import { YoutubeModule } from './youtube/youtube.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { getMongoUrl } from './utils/get-mongo-url';
 
-const mongoUrl = getMongoUrl();
-
 @Module({
-  imports: [MongooseModule.forRoot(mongoUrl), YoutubeModule],
+  imports: [MongooseModule.forRoot(getMongoUrl()), YoutubeModule],
   controllers: [AppController],
   providers: [AppService],
 })
