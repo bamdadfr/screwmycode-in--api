@@ -24,8 +24,7 @@
 
 <p align=center>
     <img src="https://img.shields.io/github/v/release/bamdadsabbagh/screwmycode-in--api">
-    <img src="https://api.codeclimate.com/v1/badges/9d8331cec24be05155cc/maintainability">
-    <img src="https://codecov.io/gh/bamdadsabbagh/screwmycode-in--api/branch/master/graph/badge.svg?token=UOD356LWLX">
+    <img src="https://api.codeclimate.com/v1/badges/eaf85dfc567f46742d9c/maintainability">
 </p>
 
 <p align=center>
