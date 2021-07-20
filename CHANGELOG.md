@@ -1,3 +1,10 @@
+## [1.3.34](https://github.com/screwmycode/screwmycode-api/compare/v1.3.33...v1.3.34) (2021-07-20)
+
+
+### Performance Improvements
+
+* version bump ([5a86969](https://github.com/screwmycode/screwmycode-api/commit/5a869699ee49c80e3ce415bee745d4241e66b371))
+
 ## [1.3.33](https://github.com/screwmycode/screwmycode-api/compare/v1.3.32...v1.3.33) (2021-07-20)
 
 
