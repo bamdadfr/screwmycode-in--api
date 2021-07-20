@@ -1,7 +1,5 @@
 <!--suppress HtmlDeprecatedAttribute, HtmlRequiredAltAttribute -->
 
-# screwmycode/screwmycode-api
-
 <p align=center>
     <a href="https://api.screwmycode.in/">
         <img width=100 src="https://raw.githubusercontent.com/bamdadsabbagh/screwmycode-in--www/master/public/icons/SCRW_KSET.svg">
@@ -9,31 +7,31 @@
 </p>
 
 <p align=center>
-    Variable speed pitch control for <a href="https://www.youtube.com/">YouTube</a>
+    Pitch control for <a href="https://www.youtube.com/">YouTube</a> & <a href="https://soundcloud.com/">SoundCloud</a>
 </p>
 
 <p align=center>
-    <a href="https://github.com/screwmycode/screwmycode-api">
-        <img src="https://img.shields.io/github/stars/screwmycode/screwmycode-api?label=git">
+    <a href="https://github.com/bamdadsabbagh/screwmycode-in--api">
+        <img src="https://img.shields.io/github/stars/bamdadsabbagh/screwmycode-in--api?label=git">
     </a>
-    <img src="https://img.shields.io/github/license/screwmycode/screwmycode-api">
+    <img src="https://img.shields.io/github/license/bamdadsabbagh/screwmycode-in--api">
 </p>
 
 <p align=center>
-    <img src="https://img.shields.io/github/languages/count/screwmycode/screwmycode-api">
-    <img src="https://img.shields.io/github/languages/top/screwmycode/screwmycode-api">
+    <img src="https://img.shields.io/github/languages/count/bamdadsabbagh/screwmycode-in--api">
+    <img src="https://img.shields.io/github/languages/top/bamdadsabbagh/screwmycode-in--api">
 </p>
 
 <p align=center>
-    <img src="https://img.shields.io/github/v/release/screwmycode/screwmycode-api">
+    <img src="https://img.shields.io/github/v/release/bamdadsabbagh/screwmycode-in--api">
     <img src="https://api.codeclimate.com/v1/badges/9d8331cec24be05155cc/maintainability">
-    <img src="https://codecov.io/gh/screwmycode/screwmycode-api/branch/master/graph/badge.svg?token=UOD356LWLX">
+    <img src="https://codecov.io/gh/bamdadsabbagh/screwmycode-in--api/branch/master/graph/badge.svg?token=UOD356LWLX">
 </p>
 
 <p align=center>
-    <img src="https://img.shields.io/david/screwmycode/screwmycode-api">
-    <img src="https://img.shields.io/david/dev/screwmycode/screwmycode-api">
-    <img src="https://img.shields.io/snyk/vulnerabilities/github/screwmycode/screwmycode-api">
+    <img src="https://img.shields.io/david/bamdadsabbagh/screwmycode-in--api">
+    <img src="https://img.shields.io/david/dev/bamdadsabbagh/screwmycode-in--api">
+    <img src="https://img.shields.io/snyk/vulnerabilities/github/bamdadsabbagh/screwmycode-in--api">
 </p>
 
 <p align=center>
@@ -46,7 +44,7 @@
 ### Source
 
 ```bash
-git clone https://github.com/screwmycode/screwmycode-api
+git clone https://github.com/bamdadsabbagh/screwmycode-in--api
 cd screwmycode-api
 yarn
 ```
@@ -105,5 +103,5 @@ docker run \
     -e MONGO_USER=myMongoUser \
     -e MONGO_PASS=myMongoPassword \
     -p 3000:3000 \
-    docker.pkg.github.com/screwmycode/screwmycode-api/screwmycode-api:latest
+    docker.pkg.github.com/bamdadsabbagh/screwmycode-in--api/screwmycode-in--api:latest
 ```
