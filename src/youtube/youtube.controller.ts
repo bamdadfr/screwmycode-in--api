@@ -2,7 +2,9 @@ import { Controller, Get, Param } from '@nestjs/common';
 import { YoutubeService } from './youtube.service';
 import { ReadYoutubeDto } from './dto/read-youtube.dto';
 import { ReadYoutubesDto } from './dto/read-youtubes.dto';
-import { buildResponseFromEntity, buildResponseFromError } from './utils';
+import { buildResponseFromEntity } from './utils/build-response-from-entity';
+import { buildResponseFromError } from './utils/build-response-from-error';
+import * as ytdl from 'ytdl-core';
 
 @Controller('youtube')
 export class YoutubeController {
@@ -17,11 +19,10 @@ export class YoutubeController {
 
   @Get(':id')
   async find(@Param('id') id: string): Promise<ReadYoutubeDto> {
-    try {
-      const result = await this.youtubeService.find(id);
-      return buildResponseFromEntity(result);
-    } catch (error) {
-      return buildResponseFromError(error);
-    }
+    const isValid = ytdl.validateID(id);
+    if (!isValid) return buildResponseFromError(new Error('id is not valid'));
+
+    const result = await this.youtubeService.find(id);
+    return buildResponseFromEntity(result);
   }
 }
