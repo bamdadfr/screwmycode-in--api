@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type YoutubeDocument = Youtube & Document;
+export type YoutubeDocument = YoutubeEntity & Document;
 
 @Schema()
-export class Youtube {
+export class YoutubeEntity {
   @Prop()
   id: string;
 
@@ -21,4 +21,4 @@ export class Youtube {
   hits: number;
 }
 
-export const YoutubeSchema = SchemaFactory.createForClass(Youtube);
+export const YoutubeSchema = SchemaFactory.createForClass(YoutubeEntity);

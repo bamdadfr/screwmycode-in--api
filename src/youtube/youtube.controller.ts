@@ -1,62 +1,27 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { YoutubeService } from './youtube.service';
-import { YoutubeDto } from './youtube.dto';
+import { ReadYoutubeDto } from './dto/read-youtube.dto';
+import { ReadYoutubesDto } from './dto/read-youtubes.dto';
+import { buildResponseFromEntity, buildResponseFromError } from './utils';
 
 @Controller('youtube')
 export class YoutubeController {
   constructor(private readonly youtubeService: YoutubeService) {}
 
   @Get()
-  async index(): Promise<{ success: boolean }> {
+  async findAll(): Promise<ReadYoutubesDto> {
     return {
       success: true,
     };
   }
 
   @Get(':id')
-  async read(@Param('id') id: string): Promise<YoutubeDto> {
+  async find(@Param('id') id: string): Promise<ReadYoutubeDto> {
     try {
-      const { title, url, hits } = await this.youtubeService.read(id);
-      return {
-        success: true,
-        data: {
-          title,
-          url,
-          hits,
-        },
-      };
+      const result = await this.youtubeService.find(id);
+      return buildResponseFromEntity(result);
     } catch (error) {
-      const { message } = error;
-      return {
-        success: false,
-        error: {
-          message,
-        },
-      };
-    }
-  }
-
-  @Post(':id')
-  async update(@Param('id') id: string): Promise<YoutubeDto> {
-    try {
-      await this.youtubeService.update(id);
-      const { title, url, hits } = await this.youtubeService.read(id);
-      return {
-        success: true,
-        data: {
-          title,
-          url,
-          hits,
-        },
-      };
-    } catch (error) {
-      const { message } = error;
-      return {
-        success: false,
-        error: {
-          message,
-        },
-      };
+      return buildResponseFromError(error);
     }
   }
 }
