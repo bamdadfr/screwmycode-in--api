@@ -1,3 +1,12 @@
+## [1.3.32](https://github.com/screwmycode/screwmycode-api/compare/v1.3.31...v1.3.32) (2021-07-20)
+
+
+### Performance Improvements
+
+* clean code + remove dead code + add cors when app is in production ([26fd767](https://github.com/screwmycode/screwmycode-api/commit/26fd767a145d12bfbb5cd707bc371f5b0e979d7a))
+* rename release.config.js ([b898f85](https://github.com/screwmycode/screwmycode-api/commit/b898f85b76d8137c8b4d2e3028ba5193f1c9c789))
+* update dependencies to latest ([66878b7](https://github.com/screwmycode/screwmycode-api/commit/66878b77111231cf9a5ce7720b5d33214ea31cd9))
+
 ## [1.3.31](https://github.com/screwmycode/screwmycode-api/compare/v1.3.30...v1.3.31) (2021-07-19)
 
 
