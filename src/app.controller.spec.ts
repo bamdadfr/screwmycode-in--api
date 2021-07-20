@@ -3,20 +3,20 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 describe('AppController', () => {
-  let controller: AppController;
+  let appController: AppController;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const appModule: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
       providers: [AppService],
     }).compile();
 
-    controller = module.get<AppController>(AppController);
+    appController = appModule.get<AppController>(AppController);
   });
 
   describe('index', () => {
     it('should return success = true', () => {
-      expect(controller.index().success).toBe(true);
+      expect(appController.index().success).toBe(true);
     });
   });
 });
