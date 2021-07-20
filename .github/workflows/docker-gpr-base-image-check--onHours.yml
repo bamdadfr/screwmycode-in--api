@@ -1,4 +1,4 @@
-name: docker-gpr-base-image-check--0x100
+name: docker-gpr-base-image-check--onHours
 
 on:
   schedule:
