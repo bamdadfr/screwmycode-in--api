@@ -1,3 +1,10 @@
+## [1.3.35](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.3.34...v1.3.35) (2021-07-20)
+
+
+### Bug Fixes
+
+* tests are now using `nodkz/mongodb-memory-server` ([9d4bd4e](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/9d4bd4e3f1b79e545c0d41083c35adfec8434414))
+
 ## [1.3.34](https://github.com/screwmycode/screwmycode-api/compare/v1.3.33...v1.3.34) (2021-07-20)
 
 
