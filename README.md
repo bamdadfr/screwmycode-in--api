@@ -27,6 +27,7 @@
 <p align=center>
     <img src="https://img.shields.io/github/v/release/screwmycode/screwmycode-api">
     <img src="https://api.codeclimate.com/v1/badges/9d8331cec24be05155cc/maintainability">
+    <img src="https://codecov.io/gh/screwmycode/screwmycode-api/branch/master/graph/badge.svg?token=UOD356LWLX">
 </p>
 
 <p align=center>
