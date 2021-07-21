@@ -38,7 +38,7 @@
         "rimraf": "^3.0.2",
         "rxjs": "^7.1.0",
         "swagger-ui-express": "^4.1.6",
-        "ytdl-core": "^4.5.0"
+        "ytdl-core": "^4.9.0"
     },
     "devDependencies": {
         "@nestjs/cli": "^8.0.2",
