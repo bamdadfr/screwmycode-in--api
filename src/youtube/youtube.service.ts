@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { YoutubeEntity, YoutubeDocument } from './youtube.schema';
 import { GetYoutubeInfo, getYoutubeInfo } from './utils/get-youtube-info';
 import { getExpirationDate } from './utils/get-expiration-date';
+import axios from 'axios';
 
 @Injectable()
 export class YoutubeService {
@@ -26,16 +27,18 @@ export class YoutubeService {
     const dateNow = parseInt(Date.now().toString().slice(0, 10), 10);
     const youtubeDocumentExists = await this.youtubeModel.exists({ id });
 
-    // if document does not exist, create it
+    // if document does not exist, create document
     if (!youtubeDocumentExists) return await this.create(id);
 
-    // fetch document
+    // fetch existing document
     const youtubeDocument = await this.youtubeModel.findOne({ id });
+    const isAccessible = (await axios.head(youtubeDocument.url)).status === 200;
 
-    // if we are before the expire date, return the document
-    if (dateNow < youtubeDocument.expireDate) return youtubeDocument;
+    // if isAccessible and date not expired, return existing document
+    if (isAccessible && dateNow < youtubeDocument.expireDate)
+      return youtubeDocument;
 
-    // else, refresh the document
+    // else, update existing document
     return await this.update(id);
   }
 
