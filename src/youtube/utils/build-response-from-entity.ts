@@ -11,6 +11,7 @@ export function buildResponseFromEntity(
     success: true,
     data: {
       title: document.title,
+      image: document.image,
       url: document.url,
       hits: document.hits,
     },

@@ -3,6 +3,7 @@ import { getDashUrl } from './get-dash-url';
 
 export class GetYoutubeInfo {
   title?: string;
+  image?: string;
   url?: string;
   isDash?: boolean;
 }
@@ -16,6 +17,7 @@ export async function getYoutubeInfo(id: string): Promise<GetYoutubeInfo> {
   try {
     const response = {
       title: undefined,
+      image: undefined,
       url: undefined,
       isDash: undefined,
     };
@@ -23,6 +25,8 @@ export async function getYoutubeInfo(id: string): Promise<GetYoutubeInfo> {
     const info = await ytdl.getInfo(url);
 
     response.title = info.videoDetails.title;
+    response.image =
+      info.videoDetails.thumbnails[info.videoDetails.thumbnails.length - 1].url;
 
     const audio = ytdl.chooseFormat(info.formats, {
       quality: '140',
