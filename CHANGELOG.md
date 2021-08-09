@@ -1,3 +1,21 @@
+# [1.4.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.3.40...v1.4.0) (2021-08-09)
+
+
+### Bug Fixes
+
+* **YoutubeService:** verify status code before sending back saved document ([b102d3a](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/b102d3a17b394e485268f20deb0ff01f8728cfaa))
+
+
+### Features
+
+* **YoutubeModule:** add new field `image` ([41cd7cd](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/41cd7cd8835134415e53387e8960cdb39682d73a))
+
+
+### Performance Improvements
+
+* update app name in package.json and README.md ([b955ccf](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/b955ccfa5c7c21ca23bf993fd4163952959872b2))
+* **deps:** add `axios` ([2172c46](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/2172c469d5c88fc38b78164c82d7c796af4212f4))
+
 ## [1.3.40](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.3.39...v1.3.40) (2021-08-09)
 
 
