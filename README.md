@@ -44,7 +44,7 @@
 
 ```bash
 git clone https://github.com/bamdadsabbagh/screwmycode-in--api
-cd screwmycode-api
+cd screwmycode-in--api
 yarn
 ```
 
