@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.4.0...v1.5.0) (2021-08-09)
+
+
+### Features
+
+* **YoutubeModule:** route `/youtube/` (index) now returns the top 5 most played tracks ([98d7122](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/98d7122cc80daa8ba95cdc77c628f03ca0570a98))
+
 # [1.4.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.3.40...v1.4.0) (2021-08-09)
 
 
