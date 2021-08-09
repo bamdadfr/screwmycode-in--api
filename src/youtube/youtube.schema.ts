@@ -12,6 +12,9 @@ export class YoutubeEntity {
   title: string;
 
   @Prop()
+  image: string;
+
+  @Prop()
   url: string;
 
   @Prop()

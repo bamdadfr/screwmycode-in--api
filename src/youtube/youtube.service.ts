@@ -53,6 +53,7 @@ export class YoutubeService {
     const modelPrimitives: YoutubeEntity = {
       id,
       title: info.title,
+      image: info.image,
       url: info.url,
       hits: 1,
       expireDate: getExpirationDate(info.url, info.isDash),
@@ -76,6 +77,7 @@ export class YoutubeService {
     }
 
     document.title = info.title;
+    document.image = info.image;
     document.url = info.url;
     document.expireDate = getExpirationDate(info.url, info.isDash);
     document.hits += 1;
