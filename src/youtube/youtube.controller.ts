@@ -5,6 +5,7 @@ import { ReadYoutubesDto } from './dto/read-youtubes.dto';
 import { buildResponseFromEntity } from './utils/build-response-from-entity';
 import { buildResponseFromError } from './utils/build-response-from-error';
 import * as ytdl from 'ytdl-core';
+import { buildResponseFromEntities } from './utils/build-response-from-entities';
 
 @Controller('youtube')
 export class YoutubeController {
@@ -12,9 +13,8 @@ export class YoutubeController {
 
   @Get()
   async findAll(): Promise<ReadYoutubesDto> {
-    return {
-      success: true,
-    };
+    const result = await this.youtubeService.findAll();
+    return buildResponseFromEntities(result);
   }
 
   @Get(':id')
