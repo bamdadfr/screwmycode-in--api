@@ -14,11 +14,15 @@ export class YoutubeService {
   ) {}
 
   /**
-   * this method will be used in future versions to retrieve all entries with pagination
+   * @description get the 5 most played entries
    */
-  // async findAll(): Promise<void> {
-  // return this.youtubeModel.find().select('-_id id title url hit');
-  // }
+  async findAll(): Promise<YoutubeEntity[]> {
+    return this.youtubeModel
+      .find()
+      .select('-_id id title hits')
+      .sort({ hits: -1 })
+      .limit(5);
+  }
 
   /**
    * @description find a youtubeDocument by id
@@ -32,7 +36,12 @@ export class YoutubeService {
 
     // fetch existing document
     const youtubeDocument = await this.youtubeModel.findOne({ id });
-    const isAccessible = (await axios.head(youtubeDocument.url)).status === 200;
+    let isAccessible;
+    try {
+      isAccessible = (await axios.head(youtubeDocument.url)).status === 200;
+    } catch (error) {}
+
+    console.log(isAccessible);
 
     // if isAccessible and date not expired, return existing document
     if (isAccessible && dateNow < youtubeDocument.expireDate)
