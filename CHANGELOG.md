@@ -1,3 +1,17 @@
+# [1.6.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.5.8...v1.6.0) (2021-09-20)
+
+
+### Bug Fixes
+
+* **asfalte:** ⚙️ yarn-upgrade--onMondays-1000 ([a77de2b](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/a77de2b242257f76468480090ed92d39bdd51cdd))
+* **asfalte:** 🐳 docker-gpr-base-image-check--0x100 ([d3bcace](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/d3bcacea24efa6f358b1b6eea9acf1c54e7e98f2))
+* **CI:** update release pipelines ([6082c3e](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/6082c3ecb6e4f0e17d024d512d54418edf9282d3))
+
+
+### Features
+
+* upgrade dependencies to latest ([3b5c2c1](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/3b5c2c17e6aeda39710c6944423a42f8172a91e3))
+
 ## [1.5.8](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.5.7...v1.5.8) (2021-09-13)
 
 
