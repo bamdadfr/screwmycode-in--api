@@ -35,7 +35,7 @@
         "axios": "^0.21.1",
         "fast-xml-parser": "^3.19.0",
         "helmet": "^4.4.1",
-        "mongoose": "^6.0.6",
+        "mongoose": "^6.0.8",
         "node-fetch": "^3.0.0",
         "reflect-metadata": "^0.1.13",
         "rimraf": "^3.0.2",
