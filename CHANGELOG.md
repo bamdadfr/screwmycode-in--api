@@ -1,3 +1,10 @@
+## [1.6.4](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.6.3...v1.6.4) (2021-10-04)
+
+
+### Bug Fixes
+
+* upgrade packages and downgrade node-fetch ([baa1490](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/baa1490c639040ab98decff249dfa7789adc06f9))
+
 ## [1.6.3](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.6.2...v1.6.3) (2021-09-29)
 
 
