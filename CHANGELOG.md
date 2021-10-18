@@ -1,3 +1,10 @@
+## [1.6.7](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.6.6...v1.6.7) (2021-10-18)
+
+
+### Bug Fixes
+
+* **asfalte:** ⚙️ yarn-upgrade--onMondays-1000 ([992f252](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/992f252972e9d786eac298dac0e0f82732da814d))
+
 ## [1.6.6](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.6.5...v1.6.6) (2021-10-13)
 
 
