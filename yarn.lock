@@ -651,10 +651,10 @@
     jsonc-parser "3.0.0"
     pluralize "8.0.0"
 
-"@nestjs/swagger@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-5.1.0.tgz#dddce4fca002a008d3b996d845a57c6c7be993bd"
-  integrity sha512-+/Edyzkh3n9Kkw72zzRDHF1ZWK1PlvkkM9lK9fjYaiMjEZ3oaCiSjdwd88vAVX6UIP0nvQkT5VNpSLYU+GK5yg==
+"@nestjs/swagger@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-5.1.3.tgz#8d160240db7550dfb935883dcd80d06e22587463"
+  integrity sha512-w0f0Mq7qd6dXf37CU+COx/1tp/yZIozyyd0XnL02NEJzndf5rPAlq18TY80Rr2PgU+janpVZ7fIUB3c6dJUxuw==
   dependencies:
     "@nestjs/mapped-types" "1.0.0"
     lodash "4.17.21"
