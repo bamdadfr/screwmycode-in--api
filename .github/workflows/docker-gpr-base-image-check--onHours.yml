@@ -35,7 +35,7 @@ jobs:
           git push
 
       - if: ${{ env.IS_OUT_OF_DATE == 'true' }}
-        uses: peter-evans/repository-dispatch@master
+        uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.PAT }}
           event-type: docker-base-image-check
