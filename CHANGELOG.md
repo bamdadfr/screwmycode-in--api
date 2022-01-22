@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.6.30...v1.7.0) (2022-01-22)
+
+
+### Features
+
+* update dependencies + fix related issues ([81e3179](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/81e31799d9241325c0091710a6ca2f410ab72f14))
+
 ## [1.6.30](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.6.29...v1.6.30) (2022-01-22)
 
 
