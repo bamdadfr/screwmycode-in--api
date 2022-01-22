@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MongooseModule } from '@nestjs/mongoose';
 import { YoutubeService } from './youtube.service';
-import { YoutubeSchema, YoutubeEntity } from './youtube.schema';
+import { YoutubeEntity, YoutubeSchema } from './youtube.schema';
 import {
-  MongoTestModule,
   closeMongoConnection,
+  MongoTestModule,
 } from '../../test/mongo-test.module';
 import { YoutubeController } from './youtube.controller';
 
