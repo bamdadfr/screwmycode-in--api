@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import * as helmet from 'helmet';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { isEnvProduction } from './utils/is-env-production';
 

@@ -40,9 +40,7 @@ describe('YoutubeController', () => {
   describe('findAll', () => {
     it('should return success: true', async () => {
       const response = await controller.findAll();
-      expect(response).toStrictEqual({
-        success: true,
-      });
+      expect(response.success).toStrictEqual(true);
     });
   });
 
