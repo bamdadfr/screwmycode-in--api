@@ -1,3 +1,10 @@
+## [1.6.30](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.6.29...v1.6.30) (2022-01-22)
+
+
+### Bug Fixes
+
+* use v1 of `peter-evans/repository-dispatch` ([85c82e4](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/85c82e43821668c2c291be3643f7d3d6eb6e6fbc))
+
 ## [1.6.29](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.6.28...v1.6.29) (2022-01-17)
 
 
