@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { YoutubeEntity, YoutubeDocument } from './youtube.schema';
+import { YoutubeDocument, YoutubeEntity } from './youtube.schema';
 import { GetYoutubeInfo, getYoutubeInfo } from './utils/get-youtube-info';
 import { getExpirationDate } from './utils/get-expiration-date';
 import axios from 'axios';
