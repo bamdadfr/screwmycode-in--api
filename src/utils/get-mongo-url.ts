@@ -1,8 +1,11 @@
 import { isEnvProduction } from './is-env-production';
 
 export function getMongoUrl() {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  if (!isEnvProduction()) require('dotenv').config();
+  if (!isEnvProduction()) {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('dotenv').config();
+    return `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_HOST}:27017`;
+  }
 
   return `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_HOST}`;
 }
