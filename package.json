@@ -34,7 +34,7 @@
     "@nestjs/swagger": "^5.1.0",
     "axios": "^0.25.0",
     "fast-xml-parser": "^4.0.1",
-    "helmet": "^5.0.1",
+    "helmet": "^5.0.2",
     "mongoose": "^6.1.7",
     "node-fetch": "^3.2.0",
     "reflect-metadata": "^0.1.13",
