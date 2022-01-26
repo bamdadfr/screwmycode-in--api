@@ -19,9 +19,20 @@ export class YoutubeService {
   async findAll(): Promise<YoutubeEntity[]> {
     return this.youtubeModel
       .find()
-      .select('-_id id title hits')
+      .select('-_id id title image hits')
       .sort({ hits: -1 })
       .limit(5);
+  }
+
+  /**
+   * Find the last 10 entries
+   */
+  async findLatest(): Promise<YoutubeEntity[]> {
+    return this.youtubeModel
+      .find()
+      .select('-_id id title image hits')
+      .sort({ expireDate: -1 })
+      .limit(10);
   }
 
   /**
@@ -32,7 +43,9 @@ export class YoutubeService {
     const youtubeDocumentExists = await this.youtubeModel.exists({ id });
 
     // if document does not exist, create document
-    if (!youtubeDocumentExists) return await this.create(id);
+    if (!youtubeDocumentExists) {
+      return await this.create(id);
+    }
 
     // fetch existing document
     const youtubeDocument = await this.youtubeModel.findOne({ id });
@@ -41,11 +54,10 @@ export class YoutubeService {
       isAccessible = (await axios.head(youtubeDocument.url)).status === 200;
     } catch (error) {}
 
-    console.log(isAccessible);
-
     // if isAccessible and date not expired, return existing document
-    if (isAccessible && dateNow < youtubeDocument.expireDate)
+    if (isAccessible && dateNow < youtubeDocument.expireDate) {
       return youtubeDocument;
+    }
 
     // else, update existing document
     return await this.update(id);

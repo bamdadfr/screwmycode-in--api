@@ -17,10 +17,18 @@ export class YoutubeController {
     return buildResponseFromEntities(result);
   }
 
+  @Get('/latest')
+  async findLatest(): Promise<any> {
+    const result = await this.youtubeService.findLatest();
+    return buildResponseFromEntities(result);
+  }
+
   @Get(':id')
   async find(@Param('id') id: string): Promise<ReadYoutubeDto> {
     const isValid = ytdl.validateID(id);
-    if (!isValid) return buildResponseFromError(new Error('id is not valid'));
+    if (!isValid) {
+      return buildResponseFromError(new Error('id is not valid'));
+    }
 
     const result = await this.youtubeService.find(id);
     return buildResponseFromEntity(result);
