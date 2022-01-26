@@ -12,12 +12,11 @@ export function buildResponseFromEntities(
       {
         id: document.id,
         title: document.title,
+        image: document.image,
         hits: document.hits,
       },
     ];
   });
-
-  console.log(data);
 
   return {
     success: true,

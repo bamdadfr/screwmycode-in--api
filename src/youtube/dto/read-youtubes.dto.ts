@@ -3,6 +3,7 @@ export class ReadYoutubesDto {
   data: {
     id: string;
     title: string;
+    image: string;
     hits: number;
   }[];
 }
