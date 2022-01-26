@@ -26,7 +26,9 @@ export async function getYoutubeInfo(id: string): Promise<GetYoutubeInfo> {
 
     response.title = info.videoDetails.title;
     response.image =
-      info.videoDetails.thumbnails[info.videoDetails.thumbnails.length - 1].url;
+      info.videoDetails.thumbnails[
+        info.videoDetails.thumbnails.length - 1
+      ].url.split('?')[0];
 
     const audio = ytdl.chooseFormat(info.formats, {
       quality: '140',
