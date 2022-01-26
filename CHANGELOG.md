@@ -1,3 +1,11 @@
+# [1.8.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.7.1...v1.8.0) (2022-01-26)
+
+
+### Features
+
+* **getYoutubeInfo:** remove parameters from image URL ([68c8f33](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/68c8f336576491d07db60ece0203fc91240e7252))
+* **YouTube:** Add `/latest` endpoint to fetch the latest entries + output the image URL from aggregated endpoints ([1ea593e](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/1ea593e430e8b072005a3d035a4c96b2055b98e3))
+
 ## [1.7.1](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.7.0...v1.7.1) (2022-01-24)
 
 
