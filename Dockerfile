@@ -25,8 +25,8 @@ LABEL maintainer="Bamdad Sabbagh <hi@bamdad.fr>"
 ENV NODE_ENV=production
 WORKDIR /app
 
+COPY package.json ./app/dist
 COPY --from=build /app/dist ./dist
-COPY package.json ./
 COPY --from=dependencies /app/node_modules ./node_modules
 
 EXPOSE 3000
