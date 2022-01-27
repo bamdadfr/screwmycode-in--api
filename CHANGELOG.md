@@ -1,3 +1,11 @@
+## [2.2.2](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.2.1...v2.2.2) (2022-01-27)
+
+
+### Bug Fixes
+
+* **docker:** put package.json in correct location ([4349dab](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/4349dabeff6861661cd7dd4abdcf81a857ec61cd))
+* **docker:** put package.json in correct location ([d47eb42](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/d47eb42fe0c2d95eb643b9780d11daabbfef14c4))
+
 ## [2.2.1](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.2.0...v2.2.1) (2022-01-27)
 
 
