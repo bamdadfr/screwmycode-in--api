@@ -1,11 +1,11 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { YoutubeService } from './youtube.service';
-import { ReadYoutubeDto } from './dto/read-youtube.dto';
-import { ReadYoutubesDto } from './dto/read-youtubes.dto';
-import { buildResponseFromEntity } from './utils/build-response-from-entity';
-import { buildResponseFromError } from './utils/build-response-from-error';
-import * as ytdl from 'ytdl-core';
-import { buildResponseFromEntities } from './utils/build-response-from-entities';
+import ytdl from 'ytdl-core';
+import { YoutubeService } from './youtube.service.js';
+import { ReadYoutubeDto } from './dto/read-youtube.dto.js';
+import { ReadYoutubesDto } from './dto/read-youtubes.dto.js';
+import { buildResponseFromEntity } from './utils/build-response-from-entity.js';
+import { buildResponseFromError } from './utils/build-response-from-error.js';
+import { buildResponseFromEntities } from './utils/build-response-from-entities.js';
 
 @Controller('youtube')
 export class YoutubeController {
