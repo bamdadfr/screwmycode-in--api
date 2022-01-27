@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.1.0...v2.2.0) (2022-01-27)
+
+
+### Features
+
+* add app version for home endpoint ([2fdac65](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/2fdac65ab8efbb97236da6a77f85802f4e4cb40b))
+
 # [2.1.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.0.0...v2.1.0) (2022-01-27)
 
 
