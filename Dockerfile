@@ -26,7 +26,7 @@ ENV NODE_ENV=production
 WORKDIR /app
 
 COPY --from=build /app/dist ./dist
-COPY package.json yarn.lock ./
+COPY package.json ./
 COPY --from=dependencies /app/node_modules ./node_modules
 
 EXPOSE 3000
