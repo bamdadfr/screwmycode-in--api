@@ -1,3 +1,10 @@
+## [2.2.5](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.2.4...v2.2.5) (2022-01-27)
+
+
+### Bug Fixes
+
+* **docker:** set package.json in correct path (app root) ([86d9aed](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/86d9aed36d7bd418787361e42b440069731446ba))
+
 ## [2.2.4](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.2.3...v2.2.4) (2022-01-27)
 
 
