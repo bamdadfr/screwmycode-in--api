@@ -1,5 +1,5 @@
-import { ReadYoutubeDto } from '../dto/read-youtube.dto';
-import { YoutubeEntity } from '../youtube.schema';
+import { ReadYoutubeDto } from '../dto/read-youtube.dto.js';
+import { YoutubeEntity } from '../youtube.schema.js';
 
 /**
  * @description build controller response from service entity

@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
-import * as helmet from 'helmet';
+import helmet from 'helmet';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { AppModule } from './app.module';
-import { isEnvProduction } from './utils/is-env-production';
+import { AppModule } from './app.module.js';
+import { isEnvProduction } from './utils/is-env-production.js';
 
 async function bootstrap() {
   console.log(`NODE_ENV in production? ${isEnvProduction()}`);

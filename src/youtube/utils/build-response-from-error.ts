@@ -1,4 +1,4 @@
-import { ReadYoutubeDto } from '../dto/read-youtube.dto';
+import { ReadYoutubeDto } from '../dto/read-youtube.dto.js';
 
 /**
  * @description build controller response from service error
