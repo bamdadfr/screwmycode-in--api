@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.0.0...v2.1.0) (2022-01-27)
+
+
+### Features
+
+* **image:** add piped endpoints for image and audio files ([7cae705](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/7cae70538cdca38925b6c14530ed48e013bad9c5))
+
 # [2.0.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.8.0...v2.0.0) (2022-01-27)
 
 # [1.8.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v1.7.1...v1.8.0) (2022-01-26)
