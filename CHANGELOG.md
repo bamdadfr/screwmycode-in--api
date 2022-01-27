@@ -1,3 +1,10 @@
+## [2.2.4](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.2.3...v2.2.4) (2022-01-27)
+
+
+### Bug Fixes
+
+* **docker:** copy package.json after adding files from previous stages ([699195d](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/699195d73584f7c2cd030d08c8cfd2806b6ddb38))
+
 ## [2.2.3](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.2.2...v2.2.3) (2022-01-27)
 
 
