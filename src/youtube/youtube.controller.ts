@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Res, Response } from '@nestjs/common';
 import ytdl from 'ytdl-core';
+import got from 'got';
 import { YoutubeService } from './youtube.service.js';
 import { ReadYoutubeDto } from './dto/read-youtube.dto.js';
 import { ReadYoutubesDto } from './dto/read-youtubes.dto.js';
@@ -32,5 +33,21 @@ export class YoutubeController {
 
     const result = await this.youtubeService.find(id);
     return buildResponseFromEntity(result);
+  }
+
+  @Get(':id/image')
+  async getImage(@Param('id') id: string, @Res() res: Response): Promise<void> {
+    const { image } = await this.youtubeService.find(id);
+    if (image) {
+      got.stream(image).pipe(res as any);
+    }
+  }
+
+  @Get(':id/audio')
+  async getAudio(@Param('id') id: string, @Res() res: Response): Promise<void> {
+    const { url } = await this.youtubeService.find(id);
+    if (url) {
+      got.stream(url).pipe(res as any);
+    }
   }
 }
