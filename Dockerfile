@@ -27,7 +27,7 @@ WORKDIR /app
 
 COPY --from=build /app/dist ./dist
 COPY --from=dependencies /app/node_modules ./node_modules
-COPY package.json ./dist
+COPY package.json ./
 
 EXPOSE 3000
 CMD ["node", "dist/main"]
