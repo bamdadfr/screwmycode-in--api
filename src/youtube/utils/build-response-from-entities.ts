@@ -1,5 +1,5 @@
-import { YoutubeEntity } from '../youtube.schema';
-import { ReadYoutubesDto } from '../dto/read-youtubes.dto';
+import { YoutubeEntity } from '../youtube.schema.js';
+import { ReadYoutubesDto } from '../dto/read-youtubes.dto.js';
 
 export function buildResponseFromEntities(
   documents: YoutubeEntity[],

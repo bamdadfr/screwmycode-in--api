@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { YoutubeDocument, YoutubeEntity } from './youtube.schema';
-import { GetYoutubeInfo, getYoutubeInfo } from './utils/get-youtube-info';
-import { getExpirationDate } from './utils/get-expiration-date';
-import axios from 'axios';
+import mongoose from 'mongoose';
+import got from 'got';
+import { YoutubeDocument, YoutubeEntity } from './youtube.schema.js';
+import { GetYoutubeInfo, getYoutubeInfo } from './utils/get-youtube-info.js';
+import { getExpirationDate } from './utils/get-expiration-date.js';
 
 @Injectable()
 export class YoutubeService {
   constructor(
     @InjectModel(YoutubeEntity.name)
-    private readonly youtubeModel: Model<YoutubeDocument>,
+    private readonly youtubeModel: mongoose.Model<YoutubeDocument>,
   ) {}
 
   /**
@@ -51,7 +51,8 @@ export class YoutubeService {
     const youtubeDocument = await this.youtubeModel.findOne({ id });
     let isAccessible;
     try {
-      isAccessible = (await axios.head(youtubeDocument.url)).status === 200;
+      const { statusCode } = await got.head(youtubeDocument.url);
+      isAccessible = statusCode === 200;
     } catch (error) {}
 
     // if isAccessible and date not expired, return existing document

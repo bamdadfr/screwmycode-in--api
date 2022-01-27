@@ -1,5 +1,5 @@
-import * as ytdl from 'ytdl-core';
-import { getDashUrl } from './get-dash-url';
+import ytdl from 'ytdl-core';
+import { getDashUrl } from './get-dash-url.js';
 
 export class GetYoutubeInfo {
   title?: string;
