@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.2.0...v2.2.1) (2022-01-27)
+
+
+### Bug Fixes
+
+* **docker:** copy package.json in docker image for module specification ([1f4d24a](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/1f4d24a403a351ecd4d57b2fe5e3d6ae99660587))
+
 # [2.2.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.1.0...v2.2.0) (2022-01-27)
 
 
