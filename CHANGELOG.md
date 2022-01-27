@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.2.2...v2.2.3) (2022-01-27)
+
+
+### Bug Fixes
+
+* **packages:** add `dotenv` as regular dependency ([b86e91e](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/b86e91ea5557ce5ec65c6e97655f785563db454b))
+
 ## [2.2.2](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.2.1...v2.2.2) (2022-01-27)
 
 
