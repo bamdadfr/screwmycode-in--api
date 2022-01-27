@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
+import request from 'supertest';
 import { AppModule } from '../src/app.module';
 import { YoutubeModule } from '../src/youtube/youtube.module';
 import { youtubeConstants } from './youtube.constants';
