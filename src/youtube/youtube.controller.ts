@@ -25,7 +25,7 @@ export class YoutubeController {
   @Get(':id')
   async find(@Param('id') id: string): Promise<ReadYoutubeDto> {
     validateYoutubeId(id);
-    const result = await this.youtubeService.read(id);
+    const result = await this.youtubeService.readOrCreate(id);
     return buildResponseFromEntity(result);
   }
 
@@ -41,7 +41,7 @@ export class YoutubeController {
   @Get(':id/audio')
   async getAudio(@Param('id') id: string, @Res() res: Response): Promise<void> {
     validateYoutubeId(id);
-    const { url } = await this.youtubeService.readOrCreateOrUpdate(id);
+    const { url } = await this.youtubeService.readAndEnsureAudioAvailable(id);
     if (url) {
       got.stream(url).pipe(res as any);
     }

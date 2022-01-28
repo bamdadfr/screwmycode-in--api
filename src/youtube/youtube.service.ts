@@ -73,29 +73,30 @@ export class YoutubeService {
     return document.save();
   }
 
-  async readOrCreateOrUpdate(id: string): Promise<YoutubeEntity> {
-    const dateNow = parseInt(Date.now().toString().slice(0, 10), 10);
-    const youtubeDocumentExists = await this.youtubeModel.exists({ id });
+  async readOrCreate(id: string): Promise<YoutubeEntity> {
+    const documentExists = await this.youtubeModel.exists({ id });
 
-    // if document does not exist, create document
-    if (!youtubeDocumentExists) {
+    if (documentExists) {
+      return this.read(id);
+    } else {
       return await this.create(id);
     }
+  }
 
-    // fetch existing document
-    const youtubeDocument = await this.youtubeModel.findOne({ id });
-    let isAccessible;
+  async readAndEnsureAudioAvailable(id: string): Promise<YoutubeEntity> {
+    const document = await this.read(id);
+
+    let isAvailable;
     try {
-      const { statusCode } = await got.head(youtubeDocument.url);
-      isAccessible = statusCode === 200;
+      const { statusCode } = await got.head(document.url);
+      isAvailable = statusCode === 200;
     } catch (error) {}
 
-    // if isAccessible and date not expired, return existing document
-    if (isAccessible && dateNow < youtubeDocument.expireDate) {
-      return youtubeDocument;
+    const dateNow = parseInt(Date.now().toString().slice(0, 10), 10);
+    if (isAvailable && dateNow < document.expireDate) {
+      return document;
     }
 
-    // else, update existing document
     return await this.update(id);
   }
 }
