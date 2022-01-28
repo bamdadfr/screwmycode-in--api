@@ -13,55 +13,24 @@ export class YoutubeService {
     private readonly youtubeModel: mongoose.Model<YoutubeDocument>,
   ) {}
 
-  /**
-   * @description get the 5 most played entries
-   */
-  async findAll(): Promise<YoutubeEntity[]> {
+  async readAllByHits(limit = 5): Promise<YoutubeEntity[]> {
     return this.youtubeModel
       .find()
       .select('-_id id title image hits')
       .sort({ hits: -1 })
-      .limit(5);
+      .limit(limit);
   }
 
-  /**
-   * Find the last 10 entries
-   */
-  async findLatest(): Promise<YoutubeEntity[]> {
+  async readAllByDate(limit = 10): Promise<YoutubeEntity[]> {
     return this.youtubeModel
       .find()
       .select('-_id id title image hits')
       .sort({ expireDate: -1 })
-      .limit(10);
+      .limit(limit);
   }
 
-  /**
-   * @description find a youtubeDocument by id
-   */
-  async find(id: string): Promise<YoutubeEntity> {
-    const dateNow = parseInt(Date.now().toString().slice(0, 10), 10);
-    const youtubeDocumentExists = await this.youtubeModel.exists({ id });
-
-    // if document does not exist, create document
-    if (!youtubeDocumentExists) {
-      return await this.create(id);
-    }
-
-    // fetch existing document
-    const youtubeDocument = await this.youtubeModel.findOne({ id });
-    let isAccessible;
-    try {
-      const { statusCode } = await got.head(youtubeDocument.url);
-      isAccessible = statusCode === 200;
-    } catch (error) {}
-
-    // if isAccessible and date not expired, return existing document
-    if (isAccessible && dateNow < youtubeDocument.expireDate) {
-      return youtubeDocument;
-    }
-
-    // else, update existing document
-    return await this.update(id);
+  async read(id: string): Promise<YoutubeEntity> {
+    return this.youtubeModel.findOne({ id });
   }
 
   async create(id: string): Promise<YoutubeEntity> {
@@ -85,9 +54,6 @@ export class YoutubeService {
     return await document.save();
   }
 
-  /**
-   * @description update document
-   */
   async update(id: string): Promise<YoutubeEntity> {
     const document = await this.youtubeModel.findOne({ id });
 
@@ -105,5 +71,31 @@ export class YoutubeService {
     document.hits += 1;
 
     return document.save();
+  }
+
+  async readOrCreateOrUpdate(id: string): Promise<YoutubeEntity> {
+    const dateNow = parseInt(Date.now().toString().slice(0, 10), 10);
+    const youtubeDocumentExists = await this.youtubeModel.exists({ id });
+
+    // if document does not exist, create document
+    if (!youtubeDocumentExists) {
+      return await this.create(id);
+    }
+
+    // fetch existing document
+    const youtubeDocument = await this.youtubeModel.findOne({ id });
+    let isAccessible;
+    try {
+      const { statusCode } = await got.head(youtubeDocument.url);
+      isAccessible = statusCode === 200;
+    } catch (error) {}
+
+    // if isAccessible and date not expired, return existing document
+    if (isAccessible && dateNow < youtubeDocument.expireDate) {
+      return youtubeDocument;
+    }
+
+    // else, update existing document
+    return await this.update(id);
   }
 }
