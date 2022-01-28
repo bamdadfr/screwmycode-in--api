@@ -1,25 +1,25 @@
 import { YoutubeEntity } from '../youtube.schema.js';
-import { ReadYoutubesDto } from '../dto/read-youtubes.dto.js';
+import { buildResponseFromEntity } from './build-response-from-entity.js';
+import { ReadYoutubeDto } from '../dto/read-youtube.dto.js';
 
 export function buildResponseFromEntities(
   documents: YoutubeEntity[],
-): ReadYoutubesDto {
+): ReadYoutubeDto[] {
   let data = [];
 
   documents.forEach((document) => {
+    const entity = buildResponseFromEntity(document);
     data = [
       ...data,
       {
-        id: document.id,
-        title: document.title,
-        image: document.image,
-        hits: document.hits,
+        id: entity.id,
+        title: entity.title,
+        image: entity.image,
+        audio: entity.audio,
+        hits: entity.hits,
       },
     ];
   });
 
-  return {
-    success: true,
-    data,
-  };
+  return data;
 }

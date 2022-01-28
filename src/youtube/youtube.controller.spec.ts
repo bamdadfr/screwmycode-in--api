@@ -37,55 +37,40 @@ describe('YoutubeController', () => {
     expect(controller).toBeDefined();
   });
 
-  describe('findAll', () => {
-    it('should return success: true', async () => {
-      const response = await controller.findAll();
-      expect(response.success).toStrictEqual(true);
+  describe('findTop', () => {
+    it('should return a response', async () => {
+      const response = await controller.findTop();
+      expect(response).toBeDefined();
+    });
+  });
+
+  describe('findLatest', () => {
+    it('should return a response', async () => {
+      const response = await controller.findLatest();
+      expect(response).toBeDefined();
     });
   });
 
   describe('find', () => {
-    describe('when id is valid', () => {
-      it('should return success: true', async () => {
-        const response = await controller.find('UY6dvVeuzk4');
-        expect(response.success).toBe(true);
-      });
+    describe('with parameter valid', () => {
+      const parameter = 'UY6dvVeuzk4';
 
-      it('should return a defined data object', async () => {
-        const response = await controller.find('UY6dvVeuzk4');
-        expect(response.data).toBeDefined();
-      });
-
-      it('should return a defined data.title value', async () => {
-        const response = await controller.find('UY6dvVeuzk4');
-        expect(response.data.title).toBeDefined();
-      });
-
-      it('should return a defined data.url value', async () => {
-        const response = await controller.find('UY6dvVeuzk4');
-        expect(response.data.url).toBeDefined();
-      });
-
-      it('should return a defined data.hits value', async () => {
-        const response = await controller.find('UY6dvVeuzk4');
-        expect(response.data.hits).toBeDefined();
+      it('should return a valid response', async () => {
+        const response = await controller.find(parameter);
+        expect(response).toBeDefined();
+        expect(response.id).toBeDefined();
+        expect(response.title).toBeDefined();
+        expect(response.image).toBeDefined();
+        expect(response.audio).toBeDefined();
+        expect(response.hits).toBeDefined();
       });
     });
 
-    describe('when id is not valid', () => {
-      it('should return success: true', async () => {
-        const response = await controller.find('zeikorjzeiuofh');
-        expect(response.success).toBe(false);
-      });
+    describe('with parameter not valid', () => {
+      const parameter = 'aiudhjazioudhsf';
 
-      it('should return a defined error object', async () => {
-        const response = await controller.find('zeikorjzeiuofh');
-        expect(response.error).toBeDefined();
-      });
-
-      it('should return a defined error.message value', async () => {
-        const response = await controller.find('zeikorjzeiuofh');
-        expect(response.error.message).toBeDefined();
+      it('should throw', async () => {
+        await expect(controller.find(parameter)).rejects.toThrow();
       });
     });
   });

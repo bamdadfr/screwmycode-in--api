@@ -9,7 +9,7 @@ export class GetYoutubeInfo {
 }
 
 /**
- * @description get youtube information using `ytdl-core` npm package
+ * @description Get YouTube information
  */
 export async function getYoutubeInfo(id: string): Promise<GetYoutubeInfo> {
   const url = `https://www.youtube.com/watch?v=${id}`;

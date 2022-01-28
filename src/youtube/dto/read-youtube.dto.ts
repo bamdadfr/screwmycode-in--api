@@ -1,12 +1,7 @@
 export class ReadYoutubeDto {
-  success: boolean;
-  data?: {
-    title: string;
-    image: string;
-    url: string;
-    hits: number;
-  };
-  error?: {
-    message: string;
-  };
+  id: string;
+  title: string;
+  image: string;
+  audio: string;
+  hits: number;
 }
