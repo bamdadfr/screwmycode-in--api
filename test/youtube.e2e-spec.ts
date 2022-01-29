@@ -2,7 +2,7 @@ import { Test } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
 import { AppModule } from '../src/app.module';
-import { YoutubeModule } from '../src/youtube/youtube.module';
+import { YoutubeModule } from '../src/domains/youtube/youtube.module';
 import { youtubeConstants } from './youtube.constants';
 
 describe('YoutubeController (e2e)', () => {
