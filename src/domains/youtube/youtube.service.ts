@@ -2,26 +2,18 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import got from 'got';
-import { YoutubeDocument, YoutubeEntity } from './youtube.schema.js';
+import { YoutubeDocument, Youtube } from './schemas/youtube.schema.js';
 import { GetYoutubeInfo, getYoutubeInfo } from './utils/get-youtube-info.js';
 import { getExpirationDate } from './utils/get-expiration-date.js';
 
 @Injectable()
 export class YoutubeService {
   constructor(
-    @InjectModel(YoutubeEntity.name)
+    @InjectModel(Youtube.name)
     private readonly youtubeModel: mongoose.Model<YoutubeDocument>,
   ) {}
 
-  async readAllByHits(limit = 5): Promise<YoutubeEntity[]> {
-    return this.youtubeModel
-      .find()
-      .select('-_id id title image hits')
-      .sort({ hits: -1 })
-      .limit(limit);
-  }
-
-  async readAllByDate(limit = 10): Promise<YoutubeEntity[]> {
+  async readAllByDate(limit = 10): Promise<Youtube[]> {
     return this.youtubeModel
       .find()
       .select('-_id id title image hits')
@@ -29,11 +21,11 @@ export class YoutubeService {
       .limit(limit);
   }
 
-  async read(id: string): Promise<YoutubeEntity> {
-    return this.youtubeModel.findOne({ id });
+  async read(id: Youtube['id']): Promise<Youtube> {
+    return this.youtubeModel.findOneAndUpdate({ id }, { $inc: { hits: 1 } });
   }
 
-  async create(id: string): Promise<YoutubeEntity> {
+  async create(id: string): Promise<Youtube> {
     let info: GetYoutubeInfo;
     try {
       info = await getYoutubeInfo(id);
@@ -41,20 +33,20 @@ export class YoutubeService {
       throw new Error(error);
     }
 
-    const modelPrimitives: YoutubeEntity = {
+    const draft: Youtube = {
       id,
       title: info.title,
       image: info.image,
-      url: info.url,
+      audio: info.url,
       hits: 1,
       expireDate: getExpirationDate(info.url, info.isDash),
     };
 
-    const document = new this.youtubeModel(modelPrimitives);
+    const document = new this.youtubeModel(draft);
     return await document.save();
   }
 
-  async update(id: string): Promise<YoutubeEntity> {
+  async update(id: Youtube['id']): Promise<Youtube> {
     const document = await this.youtubeModel.findOne({ id });
 
     let info: GetYoutubeInfo;
@@ -66,14 +58,14 @@ export class YoutubeService {
 
     document.title = info.title;
     document.image = info.image;
-    document.url = info.url;
+    document.audio = info.url;
     document.expireDate = getExpirationDate(info.url, info.isDash);
     document.hits += 1;
 
     return document.save();
   }
 
-  async readOrCreate(id: string): Promise<YoutubeEntity> {
+  async readOrCreate(id: Youtube['id']): Promise<Youtube> {
     const documentExists = await this.youtubeModel.exists({ id });
 
     if (documentExists) {
@@ -83,12 +75,12 @@ export class YoutubeService {
     }
   }
 
-  async readAndEnsureAudioAvailable(id: string): Promise<YoutubeEntity> {
+  async readAndEnsureAudioAvailable(id: Youtube['id']): Promise<Youtube> {
     const document = await this.read(id);
 
     let isAvailable;
     try {
-      const { statusCode } = await got.head(document.url);
+      const { statusCode } = await got.head(document.audio);
       isAvailable = statusCode === 200;
     } catch (error) {}
 

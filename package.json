@@ -36,10 +36,12 @@
     "fast-xml-parser": "^4.0.1",
     "got": "^12.0.1",
     "helmet": "^5.0.1",
+    "just-sort-by": "^3.0.1",
     "mongoose": "^6.1.7",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.3.1",
+    "soundcloud-scraper": "^5.0.2",
     "swagger-ui-express": "^4.1.6",
     "ytdl-core": "^4.5.0"
   },

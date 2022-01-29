@@ -5,7 +5,7 @@ import { YoutubeService } from './youtube.service';
 import {
   closeMongoConnection,
   MongoTestModule,
-} from '../../test/mongo-test.module';
+} from '../../../test/mongo-test.module';
 
 describe('YoutubeModule', () => {
   let controller: YoutubeController;
