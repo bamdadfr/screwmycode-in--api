@@ -4,9 +4,9 @@ import { YoutubeService } from './youtube.service';
 import {
   closeMongoConnection,
   MongoTestModule,
-} from '../../test/mongo-test.module';
+} from '../../../test/mongo-test.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { YoutubeEntity, YoutubeSchema } from './youtube.schema';
+import { Youtube, YoutubeSchema } from './schemas/youtube.schema';
 
 describe('YoutubeController', () => {
   let controller: YoutubeController;
@@ -21,7 +21,7 @@ describe('YoutubeController', () => {
         MongoTestModule(),
         MongooseModule.forFeature([
           {
-            name: YoutubeEntity.name,
+            name: Youtube.name,
             schema: YoutubeSchema,
           },
         ]),

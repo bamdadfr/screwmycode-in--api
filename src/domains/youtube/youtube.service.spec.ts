@@ -1,11 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MongooseModule } from '@nestjs/mongoose';
 import { YoutubeService } from './youtube.service';
-import { YoutubeEntity, YoutubeSchema } from './youtube.schema';
+import { Youtube, YoutubeSchema } from './schemas/youtube.schema';
 import {
   closeMongoConnection,
   MongoTestModule,
-} from '../../test/mongo-test.module';
+} from '../../../test/mongo-test.module';
 import { YoutubeController } from './youtube.controller';
 
 describe('YoutubeService', () => {
@@ -21,7 +21,7 @@ describe('YoutubeService', () => {
         MongoTestModule(),
         MongooseModule.forFeature([
           {
-            name: YoutubeEntity.name,
+            name: Youtube.name,
             schema: YoutubeSchema,
           },
         ]),
