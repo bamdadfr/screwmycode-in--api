@@ -23,6 +23,10 @@ export class SoundcloudService {
   }
 
   async read(id: Soundcloud['id']): Promise<Soundcloud> {
+    return this.soundcloudModel.findOne({ id });
+  }
+
+  async increment(id: Soundcloud['id']): Promise<Soundcloud> {
     return this.soundcloudModel.findOneAndUpdate({ id }, { $inc: { hits: 1 } });
   }
 

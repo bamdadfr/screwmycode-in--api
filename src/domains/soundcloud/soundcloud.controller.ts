@@ -20,6 +20,7 @@ export class SoundcloudController {
 
     const soundcloud = await this.soundcloudService.readOrCreate(id);
     const stream = await getSoundcloudStream(soundcloud);
+    await this.soundcloudService.increment(id);
 
     return {
       id: soundcloud.id,
