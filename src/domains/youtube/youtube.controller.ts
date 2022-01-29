@@ -12,14 +12,18 @@ export class YoutubeController {
   @Get(':id')
   async find(@Param('id') id: string): Promise<YoutubeDto> {
     validateYoutubeId(id);
+
     const document = await this.youtubeService.readOrCreate(id);
+
     return generateYoutubeDto(document);
   }
 
   @Get(':id/image')
   async getImage(@Param('id') id: string, @Res() res: Response): Promise<void> {
     validateYoutubeId(id);
+
     const { image } = await this.youtubeService.read(id);
+
     if (image) {
       got.stream(image).pipe(res as any);
     }
@@ -28,7 +32,10 @@ export class YoutubeController {
   @Get(':id/audio')
   async getAudio(@Param('id') id: string, @Res() res: Response): Promise<void> {
     validateYoutubeId(id);
+
     const { audio } = await this.youtubeService.readAndEnsureAudioAvailable(id);
+    await this.youtubeService.increment(id);
+
     if (audio) {
       got.stream(audio).pipe(res as any);
     }

@@ -22,6 +22,10 @@ export class YoutubeService {
   }
 
   async read(id: Youtube['id']): Promise<Youtube> {
+    return this.youtubeModel.findOne({ id });
+  }
+
+  async increment(id: Youtube['id']): Promise<Youtube> {
     return this.youtubeModel.findOneAndUpdate({ id }, { $inc: { hits: 1 } });
   }
 
