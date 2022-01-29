@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.2.5...v3.0.0) (2022-01-29)
+
+
+### Bug Fixes
+
+* **YouTube:** Split multipurpose create or read or update function into more specific functions ([9a8cf70](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/9a8cf70b9f3669f6479ad5fe50a87d860a241913))
+
+
+### Features
+
+* **Services:** Uncouple increments on read, create their own service method to call from the controller ([61a7ee7](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/61a7ee7a5c3ee03ac3098258494e523bbb08cdf9))
+
 ## [2.2.5](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.2.4...v2.2.5) (2022-01-27)
 
 
