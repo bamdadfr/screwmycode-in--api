@@ -10,9 +10,14 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   if (isEnvProduction()) {
-    console.log('enabling CORS');
+    console.log('enabling CORS for screwmycode.in domain only');
     app.enableCors({
       origin: /screwmycode\.in$/,
+    });
+  } else {
+    console.log('enabling CORS for all origins');
+    app.enableCors({
+      origin: /.*$/,
     });
   }
 
