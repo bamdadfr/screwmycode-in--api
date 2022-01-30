@@ -1,3 +1,15 @@
+## [3.0.1](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.0.0...v3.0.1) (2022-01-30)
+
+
+### Bug Fixes
+
+* **Services:** Create entities with hits at 0 instead of 1 ([6794d0e](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/6794d0eeb1fcf68ea4ad2756757724fde483ae37))
+
+
+### Performance Improvements
+
+* **CORS:** Allow all origins when not in production environment ([38598ba](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/38598ba3e74495c23a3898ae1b5c04af09f6f42c))
+
 # [3.0.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v2.2.5...v3.0.0) (2022-01-29)
 
 
