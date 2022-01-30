@@ -37,7 +37,7 @@ export class SoundcloudService {
 
     const draft: Soundcloud = {
       id,
-      hits: 1,
+      hits: 0,
       title: info.title,
       image: info.thumbnail,
       audio: info.trackURL,

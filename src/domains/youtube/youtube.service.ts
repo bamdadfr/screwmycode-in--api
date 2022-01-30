@@ -42,7 +42,7 @@ export class YoutubeService {
       title: info.title,
       image: info.image,
       audio: info.url,
-      hits: 1,
+      hits: 0,
       expireDate: getExpirationDate(info.url, info.isDash),
     };
 
