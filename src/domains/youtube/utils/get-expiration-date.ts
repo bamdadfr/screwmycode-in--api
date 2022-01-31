@@ -1,14 +1,8 @@
 /**
- * @description parse the expiration date with regex
+ * Utility function to get the expiration date of a YouTube video URL.
  */
-export function getExpirationDate(string: string, isDash: boolean): number {
-  if (isDash) {
-    const regex = /expire\/[0-9]{10}/gm;
-    const response = regex.exec(string)[0].replace('expire/', '');
-    return parseInt(response, 10);
-  }
-
-  const regex = /expire=[0-9]{10}/gm;
-  const response = regex.exec(string)[0].replace('expire=', '');
-  return parseInt(response, 10);
+export function getExpirationDate(string: string): number {
+  const regex = /expire[\/=]([0-9]{10})/gm;
+  const matches = regex.exec(string);
+  return parseInt(matches[1], 10);
 }
