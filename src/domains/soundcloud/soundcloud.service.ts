@@ -64,7 +64,7 @@ export class SoundcloudService {
     const isAccessible = await isUrlAccessible(soundcloud.stream);
 
     if (!isAccessible) {
-      return this.update(id);
+      return await this.update(id);
     }
 
     return soundcloud;
