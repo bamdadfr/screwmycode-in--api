@@ -3,7 +3,7 @@ import got from 'got';
 import { YoutubeService } from './youtube.service.js';
 import { YoutubeDto } from './dto/youtube.dto.js';
 import { validateYoutubeId } from './utils/validate-youtube-id.js';
-import { generateYoutubeDto } from './utils/generate-youtube-dto.js';
+import { getPipedYoutubeMedia } from './utils/get-piped-youtube-media.js';
 
 @Controller('youtube')
 export class YoutubeController {
@@ -13,9 +13,14 @@ export class YoutubeController {
   async find(@Param('id') id: string): Promise<YoutubeDto> {
     validateYoutubeId(id);
 
-    const document = await this.youtubeService.readOrCreate(id);
-
-    return generateYoutubeDto(document);
+    const youtube = await this.youtubeService.readOrCreate(id);
+    return {
+      id: youtube.id,
+      hits: youtube.hits,
+      title: youtube.title,
+      image: getPipedYoutubeMedia(youtube, 'image'),
+      audio: getPipedYoutubeMedia(youtube, 'audio'),
+    };
   }
 
   @Get(':id/image')
@@ -23,7 +28,6 @@ export class YoutubeController {
     validateYoutubeId(id);
 
     const { image } = await this.youtubeService.read(id);
-
     if (image) {
       got.stream(image).pipe(res as any);
     }
@@ -34,9 +38,8 @@ export class YoutubeController {
     validateYoutubeId(id);
 
     const { audio } = await this.youtubeService.readAndEnsureAudioAvailable(id);
-    await this.youtubeService.increment(id);
-
     if (audio) {
+      await this.youtubeService.increment(id);
       got.stream(audio).pipe(res as any);
     }
   }
