@@ -1,3 +1,15 @@
+# [3.1.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.0.1...v3.1.0) (2022-01-31)
+
+
+### Features
+
+* **Soundcloud:** Add piped media to cache stream URL, reducing Soundcloud requests and better hit detection + Various improvements and code cleaning ([4a0e8c1](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/4a0e8c108e49c0d5f4f677de4f16f5438c00df69))
+
+
+### Performance Improvements
+
+* **YouTube:** Remove `expireDate` field in database + Add on-the-fly audio availability checks ([fb6b8d5](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/fb6b8d5dd90ac639baab9871bec8f14f7ec8df69))
+
 ## [3.0.1](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.0.0...v3.0.1) (2022-01-30)
 
 
