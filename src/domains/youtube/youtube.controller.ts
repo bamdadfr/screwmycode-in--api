@@ -3,7 +3,7 @@ import got from 'got';
 import { YoutubeService } from './youtube.service.js';
 import { YoutubeDto } from './dto/youtube.dto.js';
 import { validateYoutubeId } from './utils/validate-youtube-id.js';
-import { getPipedYoutubeMedia } from './utils/get-piped-youtube-media.js';
+import { getDomain } from '../../utils/get-domain.js';
 
 @Controller('youtube')
 export class YoutubeController {
@@ -18,8 +18,8 @@ export class YoutubeController {
       id: youtube.id,
       hits: youtube.hits,
       title: youtube.title,
-      image: getPipedYoutubeMedia(youtube, 'image'),
-      audio: getPipedYoutubeMedia(youtube, 'audio'),
+      image: `${getDomain()}/youtube/${youtube.id}/image`,
+      audio: `${getDomain()}/youtube/${youtube.id}/audio`,
     };
   }
 
