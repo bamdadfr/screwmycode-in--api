@@ -4,7 +4,7 @@ import { SoundcloudService } from './soundcloud.service.js';
 import { validateSoundcloudUrl } from './utils/validate-soundcloud-url.js';
 import { SoundcloudDto } from './dto/soundcloud.dto.js';
 import { getSoundcloudUrl } from './utils/get-soundcloud-url.js';
-import { getPipedSoundcloudMedia } from './utils/get-piped-soundcloud-media.js';
+import { getDomain } from '../../utils/get-domain.js';
 
 @Controller('soundcloud')
 export class SoundcloudController {
@@ -25,8 +25,8 @@ export class SoundcloudController {
       id: soundcloud.id,
       hits: soundcloud.hits,
       title: soundcloud.title,
-      image: getPipedSoundcloudMedia(soundcloud, 'image'),
-      audio: getPipedSoundcloudMedia(soundcloud, 'audio'),
+      image: `${getDomain()}/soundcloud/${soundcloud.id}/image`,
+      audio: `${getDomain()}/soundcloud/${soundcloud.id}/audio`,
     };
   }
 

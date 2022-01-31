@@ -1,12 +1,19 @@
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
-import { YoutubeDocument, Youtube } from '../youtube/schemas/youtube.schema.js';
+import { Youtube, YoutubeDocument } from '../youtube/schemas/youtube.schema.js';
 import {
   Soundcloud,
   SoundcloudDocument,
 } from '../soundcloud/schemas/soundcloud.schema.js';
-import { TypedEntity } from '../../utils/append-type.js';
-import { mergeDocuments } from './utils/merge-documents.js';
+import {
+  RootLatestDto,
+  RootSoundcloudLatest,
+  RootSoundcloudTop,
+  RootTopDto,
+  RootYoutubeLatest,
+  RootYoutubeTop,
+} from './dto/root.dto.js';
+import { getDomain } from '../../utils/get-domain.js';
 
 export class RootService {
   constructor(
@@ -16,35 +23,71 @@ export class RootService {
     private readonly soundcloudModel: mongoose.Model<SoundcloudDocument>,
   ) {}
 
-  async readAllByHits(limit = 10): Promise<TypedEntity[]> {
-    const soundcloudDocuments = await this.soundcloudModel
+  async readAllByHits(limit = 10): Promise<RootTopDto> {
+    const youtubes = await this.youtubeModel
       .find()
       .select('-_id id hits title image')
       .sort({ hits: -1 })
       .limit(limit);
 
-    const youtubeDocuments = await this.youtubeModel
+    const soundclouds = await this.soundcloudModel
       .find()
       .select('-_id id hits title image')
       .sort({ hits: -1 })
       .limit(limit);
 
-    return mergeDocuments({ soundcloudDocuments, youtubeDocuments });
+    const typedYoutubes: RootYoutubeTop[] = youtubes.map((youtube) => {
+      return {
+        ...youtube.toObject(),
+        image: `${getDomain()}/youtube/${youtube.id}/image`,
+        type: 'youtube',
+      };
+    });
+
+    const typedSoundclouds: RootSoundcloudTop[] = soundclouds.map(
+      (soundcloud) => {
+        return {
+          ...soundcloud.toObject(),
+          image: `${getDomain()}/soundcloud/${soundcloud.id}/image`,
+          type: 'soundcloud',
+        };
+      },
+    );
+
+    return [...typedYoutubes, ...typedSoundclouds];
   }
 
-  async readAllByDate(limit = 10): Promise<TypedEntity[]> {
-    const soundcloudDocuments = await this.soundcloudModel
+  async readAllByDate(limit = 10): Promise<RootLatestDto> {
+    const youtubes = await this.youtubeModel
       .find()
       .select('-_id id hits title image updatedAt')
       .sort({ updatedAt: -1 })
       .limit(limit);
 
-    const youtubeDocuments = await this.youtubeModel
+    const soundclouds = await this.soundcloudModel
       .find()
       .select('-_id id hits title image updatedAt')
       .sort({ updatedAt: -1 })
       .limit(limit);
 
-    return mergeDocuments({ soundcloudDocuments, youtubeDocuments });
+    const typedYoutubes: RootYoutubeLatest[] = youtubes.map((youtube) => {
+      return {
+        ...youtube.toObject(),
+        image: `${getDomain()}/youtube/${youtube.id}/image`,
+        type: 'youtube',
+      };
+    });
+
+    const typedSoundclouds: RootSoundcloudLatest[] = soundclouds.map(
+      (soundcloud) => {
+        return {
+          ...soundcloud.toObject(),
+          image: `${getDomain()}/soundcloud/${soundcloud.id}/image`,
+          type: 'soundcloud',
+        };
+      },
+    );
+
+    return [...typedYoutubes, ...typedSoundclouds];
   }
 }
