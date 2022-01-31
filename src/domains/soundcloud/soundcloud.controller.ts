@@ -51,7 +51,7 @@ export class SoundcloudController {
   async getAudio(
     @Param('username') username: string,
     @Param('trackName') trackName: string,
-    @Res() res: Response,
+    @Res() res,
   ): Promise<void> {
     const id = `${username}/${trackName}`;
     const url = getSoundcloudUrl(id);
@@ -62,7 +62,8 @@ export class SoundcloudController {
 
     if (stream) {
       await this.soundcloudService.increment(id);
-      got.stream(stream).pipe(res as any);
+      res.set({ 'Cross-Origin-Resource-Policy': 'same-site' });
+      got.stream(stream).pipe(res);
     }
   }
 }
