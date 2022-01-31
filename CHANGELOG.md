@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.1.1...v3.1.2) (2022-01-31)
+
+
+### Bug Fixes
+
+* **Types:** Set pipe URLs in root domain + Enforce piped audio URLs in type definitions ([06ed6d1](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/06ed6d16b09c4dd0b368a760ff627a3e3f7769c1))
+
 ## [3.1.1](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.1.0...v3.1.1) (2022-01-31)
 
 
