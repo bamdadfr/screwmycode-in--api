@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.1.0...v3.1.1) (2022-01-31)
+
+
+### Bug Fixes
+
+* **Soundcloud:** Set CORP header for piped audio ([ff27bc4](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/ff27bc4819f0c8d693dc4017ed4a82b57be9f1f4))
+
 # [3.1.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.0.1...v3.1.0) (2022-01-31)
 
 
