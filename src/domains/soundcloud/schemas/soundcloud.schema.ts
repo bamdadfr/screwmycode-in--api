@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 @Schema({ timestamps: true })
 export class Soundcloud {
-  // id = `${username}/${trackName}`;
+  // username/trackName
   @Prop({ required: true, unique: true })
   id: string;
 
@@ -18,6 +18,9 @@ export class Soundcloud {
 
   @Prop({ required: true })
   audio: string;
+
+  @Prop()
+  stream: string;
 }
 
 export type SoundcloudDocument = Soundcloud & Document;

@@ -19,9 +19,6 @@ export class Youtube {
   audio: string;
 
   @Prop()
-  expireDate: number;
-
-  @Prop()
   hits: number;
 }
 
