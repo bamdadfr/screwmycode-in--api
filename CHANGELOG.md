@@ -1,3 +1,10 @@
+## [3.1.3](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.1.2...v3.1.3) (2022-02-01)
+
+
+### Performance Improvements
+
+* **Root:** Move response builder at controller level + Add utility function to convert documents to response objects + Fix DTO types ([f478ca7](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/f478ca7bc01909ae823906ba83909e0284919fbb))
+
 ## [3.1.2](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.1.1...v3.1.2) (2022-01-31)
 
 
