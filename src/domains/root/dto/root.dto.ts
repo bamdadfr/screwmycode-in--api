@@ -1,31 +1,14 @@
-import { SoundcloudDto } from '../../soundcloud/dto/soundcloud.dto';
-import { YoutubeDto } from '../../youtube/dto/youtube.dto';
+import { SoundcloudDto } from '../../soundcloud/dto/soundcloud.dto.js';
+import { YoutubeDto } from '../../youtube/dto/youtube.dto.js';
 
-export interface RootYoutubeTop {
-  id: YoutubeDto['id'];
+export type RootTopDto = {
+  id: YoutubeDto['id'] | SoundcloudDto['id'];
   hits: number;
   title: string;
-  type: 'youtube';
-  image: YoutubeDto['image'];
-}
+  type: 'youtube' | 'soundcloud';
+  image: YoutubeDto['image'] | SoundcloudDto['image'];
+};
 
-// TODO: Inspect NestJS decorator
-export interface RootYoutubeLatest extends RootYoutubeTop {
+export interface RootLatestDto extends RootTopDto {
   updatedAt?: string;
 }
-
-export interface RootSoundcloudTop {
-  id: SoundcloudDto['id'];
-  hits: number;
-  title: string;
-  type: 'soundcloud';
-  image: SoundcloudDto['image'];
-}
-
-// TODO: Inspect NestJS decorator
-export interface RootSoundcloudLatest extends RootSoundcloudTop {
-  updatedAt?: string;
-}
-
-export type RootTopDto = (RootYoutubeTop | RootSoundcloudTop)[];
-export type RootLatestDto = (RootYoutubeLatest | RootSoundcloudLatest)[];
