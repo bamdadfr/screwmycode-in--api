@@ -1,3 +1,10 @@
+## [3.1.4](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.1.3...v3.1.4) (2022-02-01)
+
+
+### Performance Improvements
+
+* **Dependencies:** Update to latest except `@types/node` because of mongodb ([ff27de2](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/ff27de21244043a48b4056b8356c42726c05ee80))
+
 ## [3.1.3](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.1.2...v3.1.3) (2022-02-01)
 
 
