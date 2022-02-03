@@ -43,7 +43,7 @@
     "rxjs": "^7.3.1",
     "soundcloud-scraper": "^5.0.2",
     "swagger-ui-express": "^4.1.6",
-    "ytdl-core": "^4.5.0"
+    "ytdl-core": "^4.10.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.1.2",
