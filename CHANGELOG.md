@@ -1,3 +1,10 @@
+## [3.1.5](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.1.4...v3.1.5) (2022-02-09)
+
+
+### Bug Fixes
+
+* **asfalte:** 🐳 docker-gpr-base-image-check--0x100 ([2208036](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/2208036babb8aadedc54b57036323792cdf5696b))
+
 ## [3.1.4](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.1.3...v3.1.4) (2022-02-01)
 
 
