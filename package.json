@@ -33,7 +33,7 @@
     "@nestjs/platform-express": "^8.2.6",
     "@nestjs/swagger": "^5.2.0",
     "dotenv": "^15.0.0",
-    "fast-xml-parser": "^4.0.1",
+    "fast-xml-parser": "^4.0.6",
     "got": "^12.0.1",
     "helmet": "^5.0.1",
     "just-sort-by": "^3.0.1",
