@@ -42,7 +42,7 @@
     "rimraf": "^3.0.2",
     "rxjs": "^7.3.1",
     "soundcloud-scraper": "^5.0.2",
-    "swagger-ui-express": "^4.1.6",
+    "swagger-ui-express": "^4.4.0",
     "ytdl-core": "^4.5.0"
   },
   "devDependencies": {
