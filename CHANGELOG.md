@@ -1,3 +1,15 @@
+## [3.2.1](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.2.0...v3.2.1) (2022-08-26)
+
+
+### Bug Fixes
+
+* Update dependencies ([7e01d7b](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/7e01d7b440d94ac9e83d6c609a3eff607d7d5dbd))
+
+
+### Performance Improvements
+
+* Remove swagger ([6d1b106](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/6d1b1060ff729ecbe7b41fab9f0ac0563d349122))
+
 # [3.2.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.1.21...v3.2.0) (2022-08-02)
 
 
