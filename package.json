@@ -35,7 +35,7 @@
     "dotenv": "^16.0.1",
     "fast-xml-parser": "^4.0.9",
     "got": "^12.3.1",
-    "helmet": "^5.1.1",
+    "helmet": "^6.0.0",
     "just-sort-by": "^3.1.1",
     "mongoose": "^6.5.3",
     "reflect-metadata": "^0.1.13",
