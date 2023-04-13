@@ -27,10 +27,10 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^9.0.11",
-    "@nestjs/core": "^9.0.11",
+    "@nestjs/common": "^9.3.12",
+    "@nestjs/core": "^9.3.12",
     "@nestjs/mongoose": "^9.2.0",
-    "@nestjs/platform-express": "^9.0.11",
+    "@nestjs/platform-express": "^9.3.12",
     "@nestjs/swagger": "^6.0.5",
     "dotenv": "^16.0.1",
     "fast-xml-parser": "^4.0.9",
