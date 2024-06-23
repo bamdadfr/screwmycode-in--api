@@ -1,3 +1,10 @@
+## [3.3.8](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.3.7...v3.3.8) (2024-06-23)
+
+
+### Bug Fixes
+
+* **CI:** update docker pipeline ([740b17f](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/740b17fa3f90d96a8d740ff8680620e3d846b13d))
+
 ## [3.3.7](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.3.6...v3.3.7) (2024-06-23)
 
 
