@@ -4,6 +4,8 @@ FROM node:lts-alpine AS build
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml tsconfig.json tsconfig.build.json ./
+
+RUN npm install -g pnpm
 RUN pnpm i
 
 COPY . .
@@ -16,6 +18,8 @@ ENV NODE_ENV=production
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
+
+RUN npm install -g pnpm
 RUN pnpm i
 
 # serve
