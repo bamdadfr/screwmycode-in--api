@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          repository: ${{ github.repository }}/${{ env.IMAGE }}:latest
+          tags: ${{ github.repository }}/${{ env.IMAGE }}:latest
