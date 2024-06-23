@@ -7,18 +7,23 @@ on:
 
 jobs:
   docker:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     steps:
+      - name: setup qemu
+        uses: docker/setup-qemu-action@v3
 
-      - run: echo "IMAGE=$(echo "${{ github.repository }}" | awk -F / '{print $2}' | sed -e "s/:refs//")" >> $GITHUB_ENV
+      - name: setup docker build
+        uses: docker/setup-buildx-action@v3
 
-      - uses: actions/checkout@master
-
-      - uses: docker/build-push-action@v1
+      - name: login
+        uses: docker/login-action@v3
         with:
-          registry: docker.pkg.github.com
-          username: ${{ github.repository_owner }}
-          password: ${{ github.token }}
-          repository: ${{ github.repository }}/${{ env.IMAGE }}
-          tag_with_ref: true
-          tags: latest
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.PAT }}
+
+      - name: build and push
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          repository: ${{ github.repository }}/${{ env.IMAGE }}:latest
