@@ -9,6 +9,8 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "IMAGE=$(echo "${{ github.repository }}" | awk -F / '{print $2}' | sed -e "s/:refs//")
+
       - name: setup qemu
         uses: docker/setup-qemu-action@v3
 
