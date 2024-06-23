@@ -11,11 +11,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          # list of Docker images to use as base name for tags
-          images: |
-            bamdadsabbagh/screwmycode-in--api/screwmycode-in--api
-            ghcr.io/bamdadsabbagh/screwmycode-in--api/screwmycode-in--api
-          # generate Docker tags based on the following events/attributes
+          images: ghcr.io/bamdadsabbagh/screwmycode-in--api/screwmycode-in--api
           tags: |
             type=schedule
             type=ref,event=branch
@@ -37,8 +33,7 @@ jobs:
       - name: build and push
         uses: docker/build-push-action@v6
         with:
+          context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          secrets: |
-            GIT_AUTH_TOKEN=${{ secrets.PAT }}
