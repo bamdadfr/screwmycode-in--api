@@ -1,3 +1,10 @@
+## [3.3.4](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.3.3...v3.3.4) (2024-06-23)
+
+
+### Bug Fixes
+
+* **CI:** try ([c5c4010](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/c5c401099d7764819d37dac8236175e1c45a75e3))
+
 ## [3.3.3](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.3.2...v3.3.3) (2024-06-23)
 
 
