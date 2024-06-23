@@ -3,11 +3,11 @@ FROM node:lts-alpine AS build
 
 WORKDIR /app
 
-COPY package.json yarn.lock tsconfig.json tsconfig.build.json ./
-RUN yarn install --frozen-lockfile
+COPY package.json pnpm-lock.yaml tsconfig.json tsconfig.build.json ./
+RUN pnpm i
 
 COPY . .
-RUN yarn build
+RUN pnpm build
 
 # dependencies
 FROM node:lts-alpine AS dependencies
@@ -15,8 +15,8 @@ FROM node:lts-alpine AS dependencies
 ENV NODE_ENV=production
 WORKDIR /app
 
-COPY package.json yarn.lock ./
-RUN yarn install --production --frozen-lockfile
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm i
 
 # serve
 FROM node:lts-alpine
