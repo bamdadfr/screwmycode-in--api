@@ -1,3 +1,10 @@
+## [3.3.2](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.3.1...v3.3.2) (2024-06-23)
+
+
+### Bug Fixes
+
+* **CI:** fix docker pipe ([75ca60b](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/75ca60bb3df0e180137699005e0e5c1939062c27))
+
 ## [3.3.1](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.3.0...v3.3.1) (2024-06-23)
 
 
