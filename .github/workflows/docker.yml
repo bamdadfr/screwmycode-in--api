@@ -9,7 +9,23 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "IMAGE=$(echo "${{ github.repository }}" | awk -F / '{print $2}' | sed -e "s/:refs//")
+      - name: generate meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          # list of Docker images to use as base name for tags
+          images: |
+            bamdadsabbagh/screwmycode-in--api
+            ghcr.io/bamdadsabbagh/screwmycode-in--api
+          # generate Docker tags based on the following events/attributes
+          tags: |
+            type=schedule
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=sha   
 
       - name: setup qemu
         uses: docker/setup-qemu-action@v3
@@ -28,4 +44,5 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ github.repository }}/${{ env.IMAGE }}:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
