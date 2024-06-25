@@ -1,3 +1,11 @@
+## [3.3.9](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.3.8...v3.3.9) (2024-06-25)
+
+
+### Bug Fixes
+
+* **docker:** update whitelisted files ([1bf8147](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/1bf8147cd464f622aebbbd7a3ea0ce8698ab6e3b))
+* **youtube:** read or create when hitting directly on audio endpoint ([e7fb4bd](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/e7fb4bd9f45b7cd1a7e383986f2b5a216b92bd47))
+
 ## [3.3.8](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.3.7...v3.3.8) (2024-06-23)
 
 
