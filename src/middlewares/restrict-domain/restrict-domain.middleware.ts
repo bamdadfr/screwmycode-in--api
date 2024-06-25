@@ -4,10 +4,10 @@ import { NextFunction, Request, Response } from 'express';
 @Injectable()
 export class RestrictDomainMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
-    const hostnames = ['screwmycode.in'];
+    const hostnames = ['www.screwmycode.in', 'api.screwmycode.in'];
     const host = req.get('host');
     const origin = req.get('origin');
-    const referer = req.get('referer');
+    const referer = req.get('Referrer');
     console.log({ host, origin, referer });
 
     if (hostnames.includes(host)) {
