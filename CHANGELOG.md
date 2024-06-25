@@ -1,3 +1,10 @@
+## [3.3.10](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.3.9...v3.3.10) (2024-06-25)
+
+
+### Bug Fixes
+
+* **ci:** remove context ([3506557](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/35065571e6bfc40a78eead3d341c9ce591195ea5))
+
 ## [3.3.9](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.3.8...v3.3.9) (2024-06-25)
 
 
