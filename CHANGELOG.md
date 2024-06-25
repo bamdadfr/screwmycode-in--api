@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.4.2...v4.0.0) (2024-06-25)
+
+
+### Features
+
+* use django ([783cd2a](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/783cd2affa81ea662bbf83331c97bb5e4434720f))
+
+
+### BREAKING CHANGES
+
+* Rewrite API, ditch nest.js and use django
+
 ## [3.4.2](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.4.1...v3.4.2) (2024-06-25)
 
 
