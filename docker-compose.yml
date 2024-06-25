@@ -1,0 +1,9 @@
+services:
+  web:
+    restart: always
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    volumes:
+      - /root/django-api/db.sqlite3:/app/db.sqlite3
