@@ -7,7 +7,8 @@ export class RestrictDomainMiddleware implements NestMiddleware {
     const hostnames = ['screwmycode.in'];
     const host = req.get('host');
     const origin = req.get('origin');
-    console.log({ host, origin });
+    const referer = req.get('referer');
+    console.log({ host, origin, referer });
 
     if (hostnames.includes(host)) {
       next();
