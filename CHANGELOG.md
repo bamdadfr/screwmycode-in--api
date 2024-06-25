@@ -1,3 +1,10 @@
+## [3.4.1](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.4.0...v3.4.1) (2024-06-25)
+
+
+### Bug Fixes
+
+* add referer ([9f7f477](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/9f7f47778c9d4a6570b62b228a3ab8c47d461834))
+
 # [3.4.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.3.10...v3.4.0) (2024-06-25)
 
 
