@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.3.10...v3.4.0) (2024-06-25)
+
+
+### Features
+
+* add soundcloud domain restriction (for test) ([3fb6dd6](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/3fb6dd6533c2bdc7e9724753b55c83c8c7849915))
+
 ## [3.3.10](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.3.9...v3.3.10) (2024-06-25)
 
 
