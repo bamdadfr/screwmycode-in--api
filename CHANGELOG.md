@@ -1,3 +1,10 @@
+## [3.4.2](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.4.1...v3.4.2) (2024-06-25)
+
+
+### Bug Fixes
+
+* print but do not block ([c81ee9f](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/c81ee9f9c9788f195b2d0d65bdae2184ad36e6d9))
+
 ## [3.4.1](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.4.0...v3.4.1) (2024-06-25)
 
 
