@@ -1,9 +1,5 @@
 *
-
-!package.json
-!pnpm-lock.yaml
-
-!tsconfig.json
-!tsconfig.build.json
-
-!src/
+!requirements.txt
+!screwmycodein
+!manage.py
+!config.yaml
