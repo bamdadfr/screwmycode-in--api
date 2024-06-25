@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v4.0.1...v4.0.2) (2024-06-25)
+
+
+### Bug Fixes
+
+* improve production code ([5233527](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/5233527cb55e2c10937243ad799a5ad6c5c1ec45))
+
 ## [4.0.1](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v4.0.0...v4.0.1) (2024-06-25)
 
 
