@@ -1,0 +1,21 @@
+annotated-types==0.6.0
+asgiref==3.8.1
+certifi==2024.2.2
+charset-normalizer==3.3.2
+contextlib2==21.6.0
+Django==5.0.3
+django-cors-headers==4.4.0
+django-ninja==1.1.0
+django-ninja-extra==0.20.4
+dnspython==2.6.1
+idna==3.6
+injector==0.21.0
+mysqlclient==2.2.4
+pydantic==2.6.4
+pydantic_core==2.16.3
+PyYAML==6.0.1
+requests==2.31.0
+sqlparse==0.4.4
+typing_extensions==4.10.0
+urllib3==2.2.1
+youtube-dl @ git+https://github.com/ytdl-org/youtube-dl.git
