@@ -1,21 +1,16 @@
+---
 name: release
-
 on:
   push:
-    branches:
-      - master
-
+    branches: [master]
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-
       - uses: actions/checkout@master
-
       - uses: actions/setup-node@master
         with:
           node-version: '20'
-
       - run: |
           npm install -g \
             semantic-release \
@@ -27,14 +22,11 @@ jobs:
             semantic-release-chrome \
             semantic-release-firefox-add-on \
             aggregate-error
-
       - run: semantic-release --dry-run
         env:
           GH_TOKEN: ${{ secrets.PAT }}
-
       - run: echo "NEXT_VERSION=$(cat .VERSION)" >> $GITHUB_ENV
-      - run: update-version.sh
-
+      - run: ./update-version.sh
       - run: semantic-release
         env:
           GH_TOKEN: ${{ secrets.PAT }}
