@@ -1,3 +1,12 @@
+## [4.0.1](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v4.0.0...v4.0.1) (2024-06-25)
+
+
+### Bug Fixes
+
+* **bin:** use correct chmod ([f41c587](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/f41c587b1ba043b8c6e0988ac296b082a545eeaa))
+* update release file ([803d980](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/803d980ea6733a9cbb9258debfe9d271502a8067))
+* update workflow ([d881ae2](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/d881ae2805f92f8b68af93f40bd038da983a2003))
+
 # [4.0.0](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v3.4.2...v4.0.0) (2024-06-25)
 
 
