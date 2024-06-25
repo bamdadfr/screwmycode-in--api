@@ -71,7 +71,7 @@ export class YoutubeService {
   }
 
   async readAndEnsureAudioAvailable(id: Youtube['id']): Promise<Youtube> {
-    const document = await this.read(id);
+    const document = await this.readOrCreate(id);
     const isAccessible = await isUrlAccessible(document.audio);
     const expireDate = getExpirationDate(document.audio);
     const nowDate = getNowDate();
