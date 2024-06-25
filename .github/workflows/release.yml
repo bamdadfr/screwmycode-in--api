@@ -27,12 +27,13 @@ jobs:
             semantic-release-chrome \
             semantic-release-firefox-add-on \
             aggregate-error
-        
+
       - run: semantic-release --dry-run
         env:
           GH_TOKEN: ${{ secrets.PAT }}
 
       - run: echo "NEXT_VERSION=$(cat .VERSION)" >> $GITHUB_ENV
+      - run: update-version.sh
 
       - run: semantic-release
         env:
