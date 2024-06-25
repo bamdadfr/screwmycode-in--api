@@ -4,7 +4,8 @@ import yaml
 
 
 class Config:
-    def __init__(self, production: bool = False):
+    def __init__(self):
+        production = os.environ.get("ENV") == "production"
         self.production = production
 
         cwd = os.getcwd()
