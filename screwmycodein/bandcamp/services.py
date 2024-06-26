@@ -1,5 +1,3 @@
-from django.db.models import QuerySet
-
 from .models import Bandcamp
 
 
@@ -10,11 +8,11 @@ class BandcampService:
         return results.first()
 
     @staticmethod
-    def find_latest(limit: int) -> QuerySet:
+    def find_latest(limit: int):
         results = Bandcamp.objects.order_by("-updated_at")
         return results[:limit]
 
     @staticmethod
-    def find_top(limit: int) -> QuerySet:
+    def find_top(limit: int):
         results = Bandcamp.objects.order_by("-hits")
         return results[:limit]
