@@ -1,9 +1,9 @@
 from typing import Tuple
 
-from .dto import BandcampDto
-from .models import Bandcamp
 from ..utils.proxy import Proxy
 from ..utils.youtube_dl_utils import YoutubeDlUtil
+from .dto import BandcampDto
+from .models import Bandcamp
 
 Title = str
 Audio = str
