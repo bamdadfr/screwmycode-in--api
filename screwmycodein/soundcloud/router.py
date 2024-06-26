@@ -1,12 +1,12 @@
 from django.core.handlers.wsgi import WSGIRequest
 from ninja import Router
 
+from ..utils.is_not_already_streaming import is_not_already_streaming
+from ..utils.proxy import Proxy
 from .dto import SoundcloudDto
 from .models import Soundcloud
 from .services import SoundcloudService
 from .utils import SoundcloudUtil
-from ..utils.is_not_already_streaming import is_not_already_streaming
-from ..utils.proxy import Proxy
 
 router = Router()
 
@@ -20,9 +20,9 @@ def root(request: WSGIRequest):
 @SoundcloudUtil.validate_id
 def index(request: WSGIRequest, artist: str, name: str):
     soundcloud_id = SoundcloudUtil.get_id(artist, name)
-    results = SoundcloudService.find_id(soundcloud_id)
+    soundcloud = SoundcloudService.find_id(soundcloud_id)
 
-    if not results.exists():
+    if soundcloud is None:
         title, audio, image = SoundcloudUtil.get_info(soundcloud_id)
 
         soundcloud = Soundcloud(
@@ -34,8 +34,6 @@ def index(request: WSGIRequest, artist: str, name: str):
         )
 
         soundcloud.save()
-    else:
-        soundcloud: Soundcloud = results[0]
 
     return SoundcloudUtil.serialize(soundcloud)
 
@@ -44,12 +42,11 @@ def index(request: WSGIRequest, artist: str, name: str):
 @SoundcloudUtil.validate_id
 def get_audio(request: WSGIRequest, artist: str, name: str):
     soundcloud_id = SoundcloudUtil.get_id(artist, name)
-    results = SoundcloudService.find_id(soundcloud_id)
+    soundcloud = SoundcloudService.find_id(soundcloud_id)
 
-    if not results.exists():
+    if soundcloud is None:
         return 404, "Not found"
 
-    soundcloud: Soundcloud = results[0]
     is_available = Proxy.check_remote_available(soundcloud.audio)
 
     if not is_available:
@@ -72,12 +69,11 @@ def get_image(
     name: str,
 ):
     soundcloud_id = SoundcloudUtil.get_id(artist, name)
-    results = SoundcloudService.find_id(soundcloud_id)
+    soundcloud = SoundcloudService.find_id(soundcloud_id)
 
-    if not results.exists():
+    if soundcloud is None:
         return 404, "Not found"
 
-    soundcloud: Soundcloud = results[0]
     return Proxy.stream_remote(soundcloud.image)
 
 
@@ -85,12 +81,11 @@ def get_image(
 @SoundcloudUtil.validate_id
 def increment(request: WSGIRequest, artist: str, name: str):
     soundcloud_id = SoundcloudUtil.get_id(artist, name)
-    results = SoundcloudService.find_id(soundcloud_id)
+    soundcloud = SoundcloudService.find_id(soundcloud_id)
 
-    if not results.exists():
+    if soundcloud is None:
         return 404, "Not found"
 
-    soundcloud: Soundcloud = results[0]
     soundcloud.hits += 1
     soundcloud.save()
     return SoundcloudUtil.serialize(soundcloud)

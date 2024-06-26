@@ -5,8 +5,9 @@ from .models import Soundcloud
 
 class SoundcloudService:
     @staticmethod
-    def find_id(id_: str) -> QuerySet:
-        return Soundcloud.objects.filter(id=id_)
+    def find_id(id_: str):
+        results = Soundcloud.objects.filter(id=id_)
+        return results.first()
 
     @staticmethod
     def find_latest(limit: int) -> QuerySet:
