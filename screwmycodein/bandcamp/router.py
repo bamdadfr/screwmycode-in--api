@@ -1,12 +1,12 @@
 from django.core.handlers.wsgi import WSGIRequest
 from ninja import Router
 
+from ..utils.is_not_already_streaming import is_not_already_streaming
+from ..utils.proxy import Proxy
 from .dto import BandcampDto
 from .models import Bandcamp
 from .services import BandcampService
 from .utils import BandcampUtil
-from ..utils.is_not_already_streaming import is_not_already_streaming
-from ..utils.proxy import Proxy
 
 router = Router()
 
@@ -19,9 +19,9 @@ def root(request: WSGIRequest):
 @router.get("{artist}/{name}", response={200: BandcampDto, 404: str})
 def index(request: WSGIRequest, artist: str, name: str):
     bandcamp_id = BandcampUtil.get_id(artist, name)
-    results = BandcampService.find_id(bandcamp_id)
+    bandcamp = BandcampService.find_id(bandcamp_id)
 
-    if not results.exists():
+    if bandcamp is None:
         title, audio, image = BandcampUtil.get_info(bandcamp_id)
 
         bandcamp = Bandcamp(
@@ -33,8 +33,6 @@ def index(request: WSGIRequest, artist: str, name: str):
         )
 
         bandcamp.save()
-    else:
-        bandcamp: Bandcamp = results[0]
 
     return BandcampUtil.serialize(bandcamp)
 
@@ -42,12 +40,11 @@ def index(request: WSGIRequest, artist: str, name: str):
 @router.get("{artist}/{name}/audio", response={200: bytes, 404: str})
 def get_audio(request: WSGIRequest, artist: str, name: str):
     bandcamp_id = BandcampUtil.get_id(artist, name)
-    results = BandcampService.find_id(bandcamp_id)
+    bandcamp = BandcampService.find_id(bandcamp_id)
 
-    if not results.exists():
+    if bandcamp is None:
         return 404, "Not found"
 
-    bandcamp: Bandcamp = results[0]
     is_available = Proxy.check_remote_available(bandcamp.audio)
 
     if not is_available:
@@ -65,24 +62,22 @@ def get_audio(request: WSGIRequest, artist: str, name: str):
 @router.get("{artist}/{name}/image", response={200: bytes, 404: str})
 def get_image(request: WSGIRequest, artist: str, name: str):
     bandcamp_id = BandcampUtil.get_id(artist, name)
-    results = BandcampService.find_id(bandcamp_id)
+    bandcamp = BandcampService.find_id(bandcamp_id)
 
-    if not results.exists():
+    if bandcamp is None:
         return 404, "Not Found"
 
-    bandcamp: Bandcamp = results[0]
     return Proxy.stream_remote(bandcamp.image)
 
 
 @router.post("{artist}/{name}/increment", response={200: BandcampDto, 404: str})
-def get_image(request: WSGIRequest, artist: str, name: str):
+def increment(request: WSGIRequest, artist: str, name: str):
     bandcamp_id = BandcampUtil.get_id(artist, name)
-    results = BandcampService.find_id(bandcamp_id)
+    bandcamp = BandcampService.find_id(bandcamp_id)
 
-    if not results.exists():
+    if bandcamp is None:
         return 404, "Not found"
 
-    bandcamp: Bandcamp = results[0]
     bandcamp.hits += 1
     bandcamp.save()
     return BandcampUtil.serialize(bandcamp)

@@ -5,8 +5,9 @@ from .models import Bandcamp
 
 class BandcampService:
     @staticmethod
-    def find_id(id_: str) -> QuerySet:
-        return Bandcamp.objects.filter(id=id_)
+    def find_id(id_: str):
+        results = Bandcamp.objects.filter(id=id_)
+        return results.first()
 
     @staticmethod
     def find_latest(limit: int) -> QuerySet:
