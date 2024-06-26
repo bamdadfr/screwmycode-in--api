@@ -1,3 +1,18 @@
+## [4.0.3](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v4.0.2...v4.0.3) (2024-06-26)
+
+
+### Bug Fixes
+
+* improve typing ([43e2998](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/43e2998a7867eaabbbf6601c01be3d09bbdd3e88))
+* update requirements ([d1eceb5](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/d1eceb5085734b4ec16afc6cfe4a376758808c96))
+
+
+### Performance Improvements
+
+* improve bandcamp querying ([ccae33c](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/ccae33c03af5c5bea3ae5e1fbd4db0b97606e565))
+* improve soundcloud querying ([303f09e](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/303f09ee8a4cc9e51c73422dd1fbef52a4aa935b))
+* improve youtube querying ([cbd1ca0](https://github.com/bamdadsabbagh/screwmycode-in--api/commit/cbd1ca04fa021db5192bcbb966f912c6b53e73e2))
+
 ## [4.0.2](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v4.0.1...v4.0.2) (2024-06-25)
 
 
