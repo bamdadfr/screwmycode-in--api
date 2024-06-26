@@ -7,6 +7,8 @@ Django==5.0.3
 django-cors-headers==4.4.0
 django-ninja==1.1.0
 django-ninja-extra==0.20.4
+django-stubs==5.0.2
+django-stubs-ext==5.0.2
 dnspython==2.6.1
 idna==3.6
 injector==0.21.0
@@ -16,6 +18,7 @@ pydantic_core==2.16.3
 PyYAML==6.0.1
 requests==2.31.0
 sqlparse==0.4.4
-typing_extensions==4.10.0
+types-PyYAML==6.0.12.20240311
+typing_extensions==4.12.2
 urllib3==2.2.1
 youtube-dl @ git+https://github.com/ytdl-org/youtube-dl.git
