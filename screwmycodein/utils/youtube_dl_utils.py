@@ -17,6 +17,10 @@ class YoutubeDlUtil:
             "skip_download": True,
         }
 
+        title: str = ""
+        image: str = ""
+        audio: str = ""
+
         with YoutubeDL(options) as ydl:
             info = ydl.extract_info(url=url, download=False)
 
@@ -24,7 +28,6 @@ class YoutubeDlUtil:
             image = info.get("thumbnails")[-1].get("url")
 
             formats = info.get("formats", [])
-
             for f in formats:
                 if f["format_id"] == format_id:
                     audio = f["url"]

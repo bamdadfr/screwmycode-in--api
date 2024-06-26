@@ -3,10 +3,10 @@ from typing import Callable
 
 from django.core.handlers.wsgi import WSGIRequest
 
-from .dto import YoutubeDto
-from .models import Youtube
 from ..utils.proxy import Proxy
 from ..utils.youtube_dl_utils import YoutubeDlUtil
+from .dto import YoutubeDto
+from .models import Youtube
 
 
 class YoutubeUtil:
@@ -20,7 +20,7 @@ class YoutubeUtil:
                 is_valid = bool(id_regex.match(youtube_id.strip()))
 
                 if not is_valid:
-                    raise ValueError(f"YouTube id is not valid")
+                    raise ValueError("YouTube id is not valid")
 
                 return callback(request, youtube_id)
             except ValueError as e:

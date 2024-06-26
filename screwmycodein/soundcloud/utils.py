@@ -3,10 +3,10 @@ from typing import Callable, Tuple
 
 from django.core.handlers.wsgi import WSGIRequest
 
-from .dto import SoundcloudDto
-from .models import Soundcloud
 from ..utils.proxy import Proxy
 from ..utils.youtube_dl_utils import YoutubeDlUtil
+from .dto import SoundcloudDto
+from .models import Soundcloud
 
 Title = str
 Audio = str
@@ -26,7 +26,7 @@ class SoundcloudUtil:
                 is_valid = bool(id_regex.match(soundcloud_id.strip()))
 
                 if not is_valid:
-                    raise ValueError(f"Soundcloud id is not valid")
+                    raise ValueError("Soundcloud id is not valid")
 
                 return callback(request, artist, name)
             except ValueError as e:
