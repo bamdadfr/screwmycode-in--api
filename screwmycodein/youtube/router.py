@@ -1,12 +1,12 @@
 from django.core.handlers.wsgi import WSGIRequest
 from ninja import Router
 
+from ..utils.is_not_already_streaming import is_not_already_streaming
+from ..utils.proxy import Proxy
 from .dto import YoutubeDto
 from .models import Youtube
 from .services import YoutubeService
 from .utils import YoutubeUtil
-from ..utils.is_not_already_streaming import is_not_already_streaming
-from ..utils.proxy import Proxy
 
 router = Router()
 
@@ -19,9 +19,9 @@ def root(request: WSGIRequest):
 @router.get("{youtube_id}", response={200: YoutubeDto, 404: str})
 @YoutubeUtil.validate_id
 def index(request: WSGIRequest, youtube_id: str):
-    results = YoutubeService.find_id(youtube_id)
+    youtube = YoutubeService.find_id(youtube_id)
 
-    if not results.exists():
+    if youtube is None:
         title, audio, image = YoutubeUtil.get_info(youtube_id)
 
         youtube = Youtube(
@@ -33,8 +33,6 @@ def index(request: WSGIRequest, youtube_id: str):
         )
 
         youtube.save()
-    else:
-        youtube: Youtube = results[0]
 
     return YoutubeUtil.serialize(youtube)
 
@@ -45,12 +43,11 @@ def get_audio(
     request: WSGIRequest,
     youtube_id: str,
 ):
-    results = YoutubeService.find_id(youtube_id)
+    youtube = YoutubeService.find_id(youtube_id)
 
-    if not results.exists():
+    if youtube is None:
         return 404, "Not Found"
 
-    youtube: Youtube = results[0]
     is_available = Proxy.check_remote_available(youtube.audio)
 
     if not is_available:
@@ -68,24 +65,22 @@ def get_audio(
 @router.get("{youtube_id}/image", response={200: bytes, 404: str})
 @YoutubeUtil.validate_id
 def get_image(request: WSGIRequest, youtube_id: str):
-    results = YoutubeService.find_id(youtube_id)
+    youtube = YoutubeService.find_id(youtube_id)
 
-    if not results.exists():
+    if youtube is None:
         return 404, "Not found"
 
-    youtube: Youtube = results[0]
     return Proxy.stream_remote(youtube.image)
 
 
 @router.post("{youtube_id}/increment", response={200: YoutubeDto, 404: str})
 @YoutubeUtil.validate_id
 def increment(request: WSGIRequest, youtube_id: str):
-    results = YoutubeService.find_id(youtube_id)
+    youtube = YoutubeService.find_id(youtube_id)
 
-    if not results.exists():
+    if youtube is None:
         return 404, "Not found"
 
-    youtube: Youtube = results[0]
     youtube.hits += 1
     youtube.save()
     return YoutubeUtil.serialize(youtube)
