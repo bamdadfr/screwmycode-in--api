@@ -1,7 +1,7 @@
 ---
 django_secret: django_secret
-allowed_hosts: [ ]
-allowed_origins: [ ]
+allowed_hosts: []
+allowed_origins: []
 mysql:
   name: mysql
   user: root
