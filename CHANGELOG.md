@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.0.3...v4.0.4) (2024-07-06)
+
+
+### Bug Fixes
+
+* update dependencies ([79159f9](https://github.com/bamdadfr/screwmycode-in--api/commit/79159f9047a3977953c3e73cf00142fbde15dada))
+
 ## [4.0.3](https://github.com/bamdadsabbagh/screwmycode-in--api/compare/v4.0.2...v4.0.3) (2024-06-26)
 
 
