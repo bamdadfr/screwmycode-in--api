@@ -5,8 +5,7 @@ import yaml
 
 class Config:
     def __init__(self):
-        production = os.environ.get("ENV") == "production"
-        self.production = production
+        self.production = os.environ.get("ENV") == "production"
 
         cwd = os.getcwd()
         cfg = "config.production.yaml" if self.production is True else "config.yaml"
