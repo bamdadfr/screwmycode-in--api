@@ -1,3 +1,10 @@
+## [4.0.6](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.0.5...v4.0.6) (2024-07-11)
+
+
+### Bug Fixes
+
+* update django ([475c17b](https://github.com/bamdadfr/screwmycode-in--api/commit/475c17b060db900dfa3708834c8fad5e7a905f2a))
+
 ## [4.0.5](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.0.4...v4.0.5) (2024-07-06)
 
 
