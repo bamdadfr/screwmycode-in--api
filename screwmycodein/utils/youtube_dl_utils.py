@@ -1,7 +1,7 @@
 from typing import Tuple
 
-import youtube_dl.utils
 from youtube_dl import YoutubeDL
+from youtube_dl.utils import DownloadError
 
 Title = str
 Audio = str
@@ -36,5 +36,5 @@ class YoutubeDlUtil:
                         break
 
             return title, audio, image
-        except youtube_dl.utils.DownloadError:
+        except DownloadError:
             return YoutubeDlUtil.extract_info(url, format_id)
