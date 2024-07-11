@@ -1,3 +1,12 @@
+## [4.0.8](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.0.7...v4.0.8) (2024-07-11)
+
+
+### Bug Fixes
+
+* add youtube_dl purge command to restart helper ([04e9447](https://github.com/bamdadfr/screwmycode-in--api/commit/04e94470254ec092175100d23bc9e06739333921))
+* remove recursion from youtube extraction ([dbc171b](https://github.com/bamdadfr/screwmycode-in--api/commit/dbc171ba7ef721f4043d87402731bb8d2db36182))
+* update zip helper ([679babd](https://github.com/bamdadfr/screwmycode-in--api/commit/679babd801150bd5852786674b0458bbec6e38da))
+
 ## [4.0.7](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.0.6...v4.0.7) (2024-07-11)
 
 
