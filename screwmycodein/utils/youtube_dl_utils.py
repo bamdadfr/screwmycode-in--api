@@ -1,6 +1,5 @@
 from typing import Tuple
 
-import youtube_dl.utils
 from youtube_dl import YoutubeDL
 
 Title = str
@@ -22,19 +21,16 @@ class YoutubeDlUtil:
         image: str = ""
         audio: str = ""
 
-        try:
-            with YoutubeDL(options) as ydl:
-                info = ydl.extract_info(url=url, download=False)
+        with YoutubeDL(options) as ydl:
+            info = ydl.extract_info(url=url, download=False)
 
-                title = info.get("title")
-                image = info.get("thumbnails")[-1].get("url")
+            title = info.get("title")
+            image = info.get("thumbnails")[-1].get("url")
 
-                formats = info.get("formats", [])
-                for f in formats:
-                    if f["format_id"] == format_id:
-                        audio = f["url"]
-                        break
+            formats = info.get("formats", [])
+            for f in formats:
+                if f["format_id"] == format_id:
+                    audio = f["url"]
+                    break
 
-            return title, audio, image
-        except youtube_dl.utils.DownloadError:
-            return YoutubeDlUtil.extract_info(url, format_id)
+        return title, audio, image
