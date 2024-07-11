@@ -1,3 +1,12 @@
+## [4.0.7](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.0.6...v4.0.7) (2024-07-11)
+
+
+### Bug Fixes
+
+* recurse get info if fail ([fed8f1b](https://github.com/bamdadfr/screwmycode-in--api/commit/fed8f1b1aa8d339653bcc604709702bd70784536))
+* update restart helper ([294be3d](https://github.com/bamdadfr/screwmycode-in--api/commit/294be3d1ab0d4091e3900a05c42a5625c78b5931))
+* use fixed youtube-dl commit ([b2e490f](https://github.com/bamdadfr/screwmycode-in--api/commit/b2e490f122466361b0573aee366e6ed690a0a844))
+
 ## [4.0.6](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.0.5...v4.0.6) (2024-07-11)
 
 
