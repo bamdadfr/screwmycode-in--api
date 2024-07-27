@@ -21,4 +21,4 @@ sqlparse==0.5.0
 types-PyYAML==6.0.12.20240311
 typing_extensions==4.12.2
 urllib3==2.2.2
-youtube_dl @ git+https://github.com/ytdl-org/youtube-dl.git@16f5bbc464602773e61eeafef51d1dbc47987bb4
+youtube_dl @ git+https://github.com/ytdl-org/youtube-dl.git
