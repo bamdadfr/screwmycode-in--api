@@ -3,7 +3,7 @@ asgiref==3.8.1
 certifi==2024.7.4
 charset-normalizer==3.3.2
 contextlib2==21.6.0
-Django==5.0.7
+Django==5.1
 django-cors-headers==4.4.0
 django-ninja==1.2.1
 django-ninja-extra==0.21.1
