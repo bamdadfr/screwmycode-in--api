@@ -59,7 +59,7 @@ def get_audio(
 
     youtube.save()
 
-    return Proxy.stream_remote(youtube.audio, 256)
+    return Proxy.stream_remote(youtube.audio, 512)
 
 
 @router.get("{youtube_id}/image", response={200: bytes, 404: str})
