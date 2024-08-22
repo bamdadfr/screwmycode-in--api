@@ -1,3 +1,20 @@
+# [4.1.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.0.10...v4.1.0) (2024-08-22)
+
+
+### Bug Fixes
+
+* replace restart script ([5386e36](https://github.com/bamdadfr/screwmycode-in--api/commit/5386e3657fcf21fda64c44ff21914032567707af))
+
+
+### Features
+
+* replace youtube-dl with yt-dlp ([009dcd3](https://github.com/bamdadfr/screwmycode-in--api/commit/009dcd3d6a52107121ad332ef202e48952addf69))
+
+
+### Performance Improvements
+
+* increase chunk size of youtube audio ([9b8a6bf](https://github.com/bamdadfr/screwmycode-in--api/commit/9b8a6bf60874dbaeb253285e6f18b79e3a5ee737))
+
 ## [4.0.10](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.0.9...v4.0.10) (2024-08-08)
 
 
