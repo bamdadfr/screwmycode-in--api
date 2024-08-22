@@ -1,6 +1,6 @@
 from typing import Tuple
 
-from youtube_dl import YoutubeDL
+from yt_dlp import YoutubeDL
 
 Title = str
 Audio = str
