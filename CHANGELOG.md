@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.1.0...v4.2.0) (2024-10-07)
+
+
+### Features
+
+* add expires headers for audio and image endpoints ([ff41587](https://github.com/bamdadfr/screwmycode-in--api/commit/ff415871510506c6b07c46ddb9d33251f0e652d1))
+
 # [4.1.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.0.10...v4.1.0) (2024-08-22)
 
 
