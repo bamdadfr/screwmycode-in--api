@@ -1,3 +1,10 @@
+## [4.2.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.2.0...v4.2.1) (2024-10-07)
+
+
+### Bug Fixes
+
+* add 200 status code middleware ([00743fb](https://github.com/bamdadfr/screwmycode-in--api/commit/00743fb81adfeedb5fd3c7ac815a2f571124fe94))
+
 # [4.2.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.1.0...v4.2.0) (2024-10-07)
 
 
