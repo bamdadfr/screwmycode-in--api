@@ -1,7 +1,12 @@
----
 django_secret: django_secret
+webhook_secret: webhook_secret
+
+venv_path: /path/to/venv
+app_path: /path/to/django
+
 allowed_hosts: []
 allowed_origins: []
+
 mysql:
   name: mysql
   user: root

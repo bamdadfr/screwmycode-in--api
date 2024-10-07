@@ -1,0 +1,15 @@
+name: trigger-webhook
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  trigger-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger webhook
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
+        run: ./trigger-webhook.sh $WEBHOOK_URL $WEBHOOK_SECRET

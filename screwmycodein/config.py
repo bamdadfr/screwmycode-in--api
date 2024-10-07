@@ -16,6 +16,11 @@ class Config:
         file.close()
 
         self.django_secret = data["django_secret"]
+        self.webhook_secret = data["webhook_secret"]
+
+        self.venv_path = data["venv_path"]
+        self.app_path = data["app_path"]
+
         self.allowed_hosts = data["allowed_hosts"]
         self.allowed_origins = data["allowed_origins"]
 
