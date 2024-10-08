@@ -34,7 +34,7 @@ def success_middleware(get_response: GetResponse):
     def middleware(request: WSGIRequest):
         response = get_response(request)
 
-        if response.status_code is not 200:
+        if response.status_code != 200:
             return HttpResponseNotFound("Error")
 
         return response
