@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.0.0...v5.1.0) (2024-10-08)
+
+
+### Features
+
+* add new top endpoints ([2258953](https://github.com/bamdadfr/screwmycode-in--api/commit/22589535c9196c174283db228bb2e9f3654b7f21))
+
 # [5.0.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.3.6...v5.0.0) (2024-10-08)
 
 
