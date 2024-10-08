@@ -1,3 +1,10 @@
+## [4.3.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.3.2...v4.3.3) (2024-10-08)
+
+
+### Bug Fixes
+
+* checkout before triggering workflow ([16f884f](https://github.com/bamdadfr/screwmycode-in--api/commit/16f884f682e172c33b90109c2c37cee4fd82925b))
+
 ## [4.3.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.3.1...v4.3.2) (2024-10-08)
 
 
