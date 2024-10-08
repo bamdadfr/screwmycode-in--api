@@ -3,10 +3,7 @@ from typing import Callable
 
 from django.core.handlers.wsgi import WSGIRequest
 
-from ..utils.proxy import Proxy
-from ..utils.youtube_dl_utils import YoutubeDlUtil
-from .dto import YoutubeDto
-from .models import Youtube
+from ..utils.youtube_dl_utils import YoutubeDlUtil, YoutubeDlInfo
 
 
 class YoutubeUtil:
@@ -34,16 +31,6 @@ class YoutubeUtil:
         return url
 
     @staticmethod
-    def get_info(id_: str):
+    def get_info(id_: str) -> YoutubeDlInfo:
         url = YoutubeUtil.get_url(id_)
         return YoutubeDlUtil.extract_info(url, YoutubeUtil.format_id)
-
-    @staticmethod
-    def serialize(youtube: Youtube) -> YoutubeDto:
-        return {
-            "id": youtube.id,
-            "hits": youtube.hits,
-            "title": youtube.title,
-            "image": Proxy.screen_image("youtube", youtube.id),
-            "audio": Proxy.screen_audio("youtube", youtube.id),
-        }

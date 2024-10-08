@@ -53,9 +53,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "screwmycodein.middleware.success_middleware",
-    "screwmycodein.middleware.audio_middleware",
-    "screwmycodein.middleware.image_middleware",
 ]
 
 ROOT_URLCONF = "screwmycodein.urls"

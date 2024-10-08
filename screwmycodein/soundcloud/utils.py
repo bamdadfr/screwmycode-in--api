@@ -1,17 +1,9 @@
 import re
-from typing import Callable, Tuple
+from typing import Callable
 
 from django.core.handlers.wsgi import WSGIRequest
 
-from ..utils.proxy import Proxy
-from ..utils.youtube_dl_utils import YoutubeDlUtil
-from .dto import SoundcloudDto
-from .models import Soundcloud
-
-Title = str
-Audio = str
-Image = str
-Info = Tuple[Title, Audio, Image]
+from ..utils.youtube_dl_utils import YoutubeDlUtil, YoutubeDlInfo
 
 
 class SoundcloudUtil:
@@ -21,7 +13,7 @@ class SoundcloudUtil:
     def validate_id(callback: Callable):
         def decorator(request: WSGIRequest, artist: str, name: str):
             try:
-                soundcloud_id = SoundcloudUtil.get_id(artist, name)
+                soundcloud_id = SoundcloudUtil.get_slug(artist, name)
                 id_regex = re.compile(r"^(.*)$")
                 is_valid = bool(id_regex.match(soundcloud_id.strip()))
 
@@ -35,7 +27,7 @@ class SoundcloudUtil:
         return decorator
 
     @staticmethod
-    def get_id(artist: str, name: str) -> str:
+    def get_slug(artist: str, name: str) -> str:
         return f"{artist}/{name}"
 
     @staticmethod
@@ -44,16 +36,6 @@ class SoundcloudUtil:
         return url
 
     @staticmethod
-    def get_info(id_: str) -> Info:
+    def get_info(id_: str) -> YoutubeDlInfo:
         url = SoundcloudUtil.get_url(id_)
         return YoutubeDlUtil.extract_info(url, SoundcloudUtil.format_id)
-
-    @staticmethod
-    def serialize(soundcloud: Soundcloud) -> SoundcloudDto:
-        return {
-            "id": soundcloud.id,
-            "hits": soundcloud.hits,
-            "title": soundcloud.title,
-            "image": Proxy.screen_image("soundcloud", soundcloud.id),
-            "audio": Proxy.screen_audio("soundcloud", soundcloud.id),
-        }

@@ -1,21 +1,13 @@
 from typing import Tuple
 
-from ..utils.proxy import Proxy
-from ..utils.youtube_dl_utils import YoutubeDlUtil
-from .dto import BandcampDto
-from .models import Bandcamp
-
-Title = str
-Audio = str
-Image = str
-Info = Tuple[Title, Audio, Image]
+from ..utils.youtube_dl_utils import YoutubeDlUtil, YoutubeDlInfo
 
 
 class BandcampUtil:
     format_id = "mp3-128"
 
     @staticmethod
-    def get_id(artist: str, name: str) -> str:
+    def get_slug(artist: str, name: str) -> str:
         return f"{artist}/{name}"
 
     @staticmethod
@@ -24,22 +16,12 @@ class BandcampUtil:
         return artist, name
 
     @staticmethod
-    def get_url(id_: str) -> str:
-        artist, name = BandcampUtil.split_id(id_)
+    def get_url(slug: str) -> str:
+        artist, name = BandcampUtil.split_id(slug)
         url = f"https://{artist}.bandcamp.com/track/{name}"
         return url
 
     @staticmethod
-    def get_info(id_: str) -> Info:
-        url = BandcampUtil.get_url(id_)
+    def get_info(slug: str) -> YoutubeDlInfo:
+        url = BandcampUtil.get_url(slug)
         return YoutubeDlUtil.extract_info(url, BandcampUtil.format_id)
-
-    @staticmethod
-    def serialize(bandcamp: Bandcamp) -> BandcampDto:
-        return {
-            "id": bandcamp.id,
-            "hits": bandcamp.hits,
-            "title": bandcamp.title,
-            "image": Proxy.screen_image("bandcamp", bandcamp.id),
-            "audio": Proxy.screen_audio("bandcamp", bandcamp.id),
-        }

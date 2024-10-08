@@ -11,6 +11,7 @@ from .youtube.router import router as youtube_router
 api = NinjaAPI()
 
 api.add_router("/", home_router)
+
 api.add_router("/webhook", webhook_router)
 
 api.add_router("/top", top_router)

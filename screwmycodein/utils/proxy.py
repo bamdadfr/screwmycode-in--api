@@ -1,10 +1,11 @@
+from datetime import datetime, timedelta
 from typing import Literal
 
 import requests
 from django.http import StreamingHttpResponse
 
 from .get_domain import get_domain
-from .get_entity_type import EntityType
+from ..audio.models import Audio
 
 EndpointType = Literal["audio", "image"]
 
@@ -20,7 +21,11 @@ class Proxy:
             return False
 
     @staticmethod
-    def stream_remote(url: str, chunk_size=1024 * 1024) -> StreamingHttpResponse:
+    def stream_remote(
+        url: str,
+        expires_hours: int,
+        chunk_size=1024 * 1024,
+    ) -> StreamingHttpResponse:
         response = requests.get(url, stream=True)
         content_type = response.headers["content-type"]
 
@@ -29,21 +34,24 @@ class Proxy:
             content_type=content_type,
         )
 
+        expires_date = datetime.now() + timedelta(hours=expires_hours)
+        expires_header = expires_date.strftime("%a, %d %b %Y %H:%M:%S GMT")
+        streaming.headers["Expires"] = expires_header
+
         return streaming
 
     @staticmethod
     def __screen_endpoint(
         endpoint_type: EndpointType,
-        entity_type: EntityType,
-        id_: str,
+        audio: Audio,
     ) -> str:
         domain = get_domain()
-        return f"{domain}/{entity_type}/{id_}/{endpoint_type}"
+        return f"{domain}/{audio.type}/{audio.slug}/{endpoint_type}"
 
     @staticmethod
-    def screen_image(entity_type: EntityType, id_: str):
-        return Proxy.__screen_endpoint("image", entity_type, id_)
+    def screen_image(audio: Audio):
+        return Proxy.__screen_endpoint("image", audio)
 
     @staticmethod
-    def screen_audio(entity_type: EntityType, id_: str):
-        return Proxy.__screen_endpoint("audio", entity_type, id_)
+    def screen_audio(audio: Audio):
+        return Proxy.__screen_endpoint("audio", audio)
