@@ -1,3 +1,11 @@
+## [4.3.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.3.1...v4.3.2) (2024-10-08)
+
+
+### Bug Fixes
+
+* update webhook workflow ([640f803](https://github.com/bamdadfr/screwmycode-in--api/commit/640f8032804146c2c85b1ded7e414ec47bd822c3))
+* use more explicit config example ([bba1874](https://github.com/bamdadfr/screwmycode-in--api/commit/bba1874e8a18a635d7a8fe159f3392b502b50aeb))
+
 ## [4.3.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.3.0...v4.3.1) (2024-10-08)
 
 
