@@ -1,3 +1,10 @@
+## [4.3.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.3.3...v4.3.4) (2024-10-08)
+
+
+### Bug Fixes
+
+* typo version ([af37e55](https://github.com/bamdadfr/screwmycode-in--api/commit/af37e552aff60ba1e0edc7e7ec38d9863e2e866b))
+
 ## [4.3.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.3.2...v4.3.3) (2024-10-08)
 
 
