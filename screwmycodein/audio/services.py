@@ -1,6 +1,9 @@
+from datetime import datetime
+
 from django.db.models import Count
 
 from .models import Audio
+from ..utils.time import TimeUtil
 
 
 class AudioService:
@@ -25,6 +28,19 @@ class AudioService:
         return rows[:limit]
 
     @staticmethod
-    def find_top(limit: int):
-        rows = Audio.objects.annotate(hit_count=Count('hit')).order_by('-hit_count')
-        return rows[:limit]
+    def find_top_all(limit: int):
+        audios = Audio.objects.annotate(count=Count('hit')).order_by('-count')
+        return audios[:limit]
+
+    @staticmethod
+    def find_top_filter(
+        limit: int,
+        time_from: datetime,
+        time_to: datetime = TimeUtil.now(),
+    ):
+        audios = Audio.objects.annotate(count=Count('hit')).filter(
+            hit__timestamp__gte=time_from,
+            hit__timestamp__lt=time_to,
+        ).order_by('-count')
+
+        return audios[:limit]

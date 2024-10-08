@@ -1,10 +1,10 @@
-from datetime import datetime, timedelta
 from typing import Literal
 
 import requests
 from django.http import StreamingHttpResponse
 
 from .get_domain import get_domain
+from .time import TimeUtil
 from ..audio.models import Audio
 
 EndpointType = Literal["audio", "image"]
@@ -34,7 +34,7 @@ class Proxy:
             content_type=content_type,
         )
 
-        expires_date = datetime.now() + timedelta(hours=expires_hours)
+        expires_date = TimeUtil.hours_in(expires_hours)
         expires_header = expires_date.strftime("%a, %d %b %Y %H:%M:%S GMT")
         streaming.headers["Expires"] = expires_header
 
