@@ -1,3 +1,10 @@
+## [5.1.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.0...v5.1.1) (2024-10-08)
+
+
+### Bug Fixes
+
+* typo ([11e3bf0](https://github.com/bamdadfr/screwmycode-in--api/commit/11e3bf081ca1a9e5de1eb87325f0fa994115e2e8))
+
 # [5.1.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.0.0...v5.1.0) (2024-10-08)
 
 
