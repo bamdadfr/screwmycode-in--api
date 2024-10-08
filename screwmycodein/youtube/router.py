@@ -1,11 +1,13 @@
 from django.core.handlers.wsgi import WSGIRequest
 from ninja import Router
 
-from .dto import YoutubeDto
-from .models import Youtube
-from .services import YoutubeService
 from .utils import YoutubeUtil
+from ..audio.dto import AudioDto
+from ..audio.models import Audio
+from ..audio.services import AudioService
+from ..audio.utils import AudioUtil
 from ..constants import AUDIO_EXPIRES, IMAGE_EXPIRES
+from ..hits.models import Hit
 from ..utils.is_not_already_streaming import is_not_already_streaming
 from ..utils.proxy import Proxy
 from ..utils.youtube_dl_utils import YoutubeDlUtil
@@ -19,72 +21,76 @@ def root(request: WSGIRequest):
     pass
 
 
-@router.get("{youtube_id}", response={200: YoutubeDto, 404: str})
+@router.get("{youtube_id}", response={200: AudioDto, 404: str})
 @YoutubeUtil.validate_id
 @YoutubeDlUtil.catch_exceptions
-def index(request: WSGIRequest, youtube_id: str):
-    youtube = YoutubeService.find_id(youtube_id)
+def index(request: WSGIRequest, slug: str):
+    row = AudioService.find_youtube_slug(slug)
 
-    if youtube is None:
-        title, audio, image = YoutubeUtil.get_info(youtube_id)
+    if row is None:
+        title, audio, image = YoutubeUtil.get_info(slug)
 
-        youtube = Youtube(
-            id=youtube_id,
-            hits=0,
+        row = Audio(
+            slug=slug,
+            type=Audio.Type.YOUTUBE,
             title=title,
             audio=audio,
             image=image,
         )
 
-        youtube.save()
+        row.save()
 
-    return YoutubeUtil.serialize(youtube)
+        hits = Hit(audio=row)
+        hits.save()
+
+    return AudioUtil.serialize(row)
 
 
 @router.get("{youtube_id}/audio", response={200: bytes, 404: str})
 @YoutubeUtil.validate_id
-def get_audio(
-    request: WSGIRequest,
-    youtube_id: str,
-):
-    youtube = YoutubeService.find_id(youtube_id)
+def get_audio(request: WSGIRequest, slug: str):
+    row = AudioService.find_youtube_slug(slug)
 
-    if youtube is None:
+    if row is None:
         return 404, "Not Found"
 
-    is_available = Proxy.check_remote_available(youtube.audio)
+    is_available = Proxy.check_remote_available(row.audio)
 
     if not is_available:
-        _, audio, _ = YoutubeUtil.get_info(youtube.id)
-        youtube.audio = audio
+        _, audio, _ = YoutubeUtil.get_info(row.slug)
+        row.audio = audio
 
     if is_not_already_streaming(request):
-        youtube.hits += 1
+        hits = Hit(audio=row)
+        hits.save()
 
-    youtube.save()
+    row.save()
 
-    return Proxy.stream_remote(youtube.audio, AUDIO_EXPIRES, 512)
+    return Proxy.stream_remote(row.audio, AUDIO_EXPIRES, 512)
 
 
 @router.get("{youtube_id}/image", response={200: bytes, 404: str})
 @YoutubeUtil.validate_id
-def get_image(request: WSGIRequest, youtube_id: str):
-    youtube = YoutubeService.find_id(youtube_id)
+def get_image(request: WSGIRequest, slug: str):
+    row = AudioService.find_youtube_slug(slug)
 
-    if youtube is None:
+    if row is None:
         return 404, "Not found"
 
-    return Proxy.stream_remote(youtube.image, IMAGE_EXPIRES)
+    return Proxy.stream_remote(row.image, IMAGE_EXPIRES)
 
 
-@router.post("{youtube_id}/increment", response={200: YoutubeDto, 404: str})
+@router.post("{youtube_id}/increment", response={200: AudioDto, 404: str})
 @YoutubeUtil.validate_id
-def increment(request: WSGIRequest, youtube_id: str):
-    youtube = YoutubeService.find_id(youtube_id)
+def increment(request: WSGIRequest, slug: str):
+    row = AudioService.find_youtube_slug(slug)
 
-    if youtube is None:
+    if row is None:
         return 404, "Not found"
 
-    youtube.hits += 1
-    youtube.save()
-    return YoutubeUtil.serialize(youtube)
+    row.save()
+
+    hits = Hit(audio=row)
+    hits.save()
+
+    return AudioUtil.serialize(row)

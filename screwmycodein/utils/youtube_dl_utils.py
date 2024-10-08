@@ -4,10 +4,7 @@ from typing import Callable, Tuple
 from django.core.handlers.wsgi import WSGIRequest
 from yt_dlp import YoutubeDL
 
-Title = str
-Audio = str
-Image = str
-Info = Tuple[Title, Audio, Image]
+YoutubeDlInfo = Tuple[str, str, str]
 
 
 class YoutubeDlUtil:
@@ -23,7 +20,7 @@ class YoutubeDlUtil:
         return wrapper
 
     @staticmethod
-    def extract_info(url: str, format_id: str) -> Info:
+    def extract_info(url: str, format_id: str) -> YoutubeDlInfo:
         options = {
             "quiet": True,
             "no_warnings": True,

@@ -1,12 +1,10 @@
 from typing_extensions import TypedDict
 
-from ..utils.get_entity_type import EntityType
-
 
 class TopDto(TypedDict):
-    id: str
+    slug: str
     title: str
     hits: int
-    type: EntityType
+    type: str
     image: str
     audio: str

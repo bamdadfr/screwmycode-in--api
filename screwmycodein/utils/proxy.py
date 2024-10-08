@@ -5,7 +5,7 @@ import requests
 from django.http import StreamingHttpResponse
 
 from .get_domain import get_domain
-from .get_entity_type import EntityType
+from ..audio.models import Audio
 
 EndpointType = Literal["audio", "image"]
 
@@ -43,16 +43,15 @@ class Proxy:
     @staticmethod
     def __screen_endpoint(
         endpoint_type: EndpointType,
-        entity_type: EntityType,
-        id_: str,
+        audio: Audio,
     ) -> str:
         domain = get_domain()
-        return f"{domain}/{entity_type}/{id_}/{endpoint_type}"
+        return f"{domain}/{audio.type}/{audio.slug}/{endpoint_type}"
 
     @staticmethod
-    def screen_image(entity_type: EntityType, id_: str):
-        return Proxy.__screen_endpoint("image", entity_type, id_)
+    def screen_image(audio: Audio):
+        return Proxy.__screen_endpoint("image", audio)
 
     @staticmethod
-    def screen_audio(entity_type: EntityType, id_: str):
-        return Proxy.__screen_endpoint("audio", entity_type, id_)
+    def screen_audio(audio: Audio):
+        return Proxy.__screen_endpoint("audio", audio)
