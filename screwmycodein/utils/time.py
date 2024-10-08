@@ -18,7 +18,7 @@ class TimeUtil:
 
     @staticmethod
     def days_in(days: int):
-        return timezone.now() - timedelta(days=days)
+        return timezone.now() + timedelta(days=days)
 
     @staticmethod
     def days_ago(days: int):
