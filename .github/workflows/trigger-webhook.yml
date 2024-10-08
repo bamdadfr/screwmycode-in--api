@@ -8,6 +8,8 @@ jobs:
   trigger-webhook:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
+
       - name: Trigger webhook
         env:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
