@@ -41,7 +41,7 @@ def webhook_post(request: WSGIRequest):
     try:
         subprocess.run(
             [
-                '/home/bamdad/git/screwmycode-in--api/webhook-deploy.sh',
+                f"{config.app_path}/webhook-deploy.sh",
                 config.venv_path,
                 config.app_path,
             ],
