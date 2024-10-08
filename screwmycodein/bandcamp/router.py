@@ -1,22 +1,26 @@
 from django.core.handlers.wsgi import WSGIRequest
 from ninja import Router
 
-from ..utils.is_not_already_streaming import is_not_already_streaming
-from ..utils.proxy import Proxy
 from .dto import BandcampDto
 from .models import Bandcamp
 from .services import BandcampService
 from .utils import BandcampUtil
+from ..constants import AUDIO_EXPIRES, IMAGE_EXPIRES
+from ..utils.is_not_already_streaming import is_not_already_streaming
+from ..utils.proxy import Proxy
+from ..utils.youtube_dl_utils import YoutubeDlUtil
 
 router = Router()
 
 
 @router.get("/")
 def root(request: WSGIRequest):
+    """not used for now"""
     pass
 
 
 @router.get("{artist}/{name}", response={200: BandcampDto, 404: str})
+@YoutubeDlUtil.catch_exceptions
 def index(request: WSGIRequest, artist: str, name: str):
     bandcamp_id = BandcampUtil.get_id(artist, name)
     bandcamp = BandcampService.find_id(bandcamp_id)
@@ -56,7 +60,7 @@ def get_audio(request: WSGIRequest, artist: str, name: str):
 
     bandcamp.save()
 
-    return Proxy.stream_remote(bandcamp.audio)
+    return Proxy.stream_remote(bandcamp.audio, AUDIO_EXPIRES)
 
 
 @router.get("{artist}/{name}/image", response={200: bytes, 404: str})
@@ -67,7 +71,7 @@ def get_image(request: WSGIRequest, artist: str, name: str):
     if bandcamp is None:
         return 404, "Not Found"
 
-    return Proxy.stream_remote(bandcamp.image)
+    return Proxy.stream_remote(bandcamp.image, IMAGE_EXPIRES)
 
 
 @router.post("{artist}/{name}/increment", response={200: BandcampDto, 404: str})

@@ -1,23 +1,27 @@
 from django.core.handlers.wsgi import WSGIRequest
 from ninja import Router
 
-from ..utils.is_not_already_streaming import is_not_already_streaming
-from ..utils.proxy import Proxy
 from .dto import YoutubeDto
 from .models import Youtube
 from .services import YoutubeService
 from .utils import YoutubeUtil
+from ..constants import AUDIO_EXPIRES, IMAGE_EXPIRES
+from ..utils.is_not_already_streaming import is_not_already_streaming
+from ..utils.proxy import Proxy
+from ..utils.youtube_dl_utils import YoutubeDlUtil
 
 router = Router()
 
 
 @router.get("/")
 def root(request: WSGIRequest):
+    """not used for now"""
     pass
 
 
 @router.get("{youtube_id}", response={200: YoutubeDto, 404: str})
 @YoutubeUtil.validate_id
+@YoutubeDlUtil.catch_exceptions
 def index(request: WSGIRequest, youtube_id: str):
     youtube = YoutubeService.find_id(youtube_id)
 
@@ -59,7 +63,7 @@ def get_audio(
 
     youtube.save()
 
-    return Proxy.stream_remote(youtube.audio, 512)
+    return Proxy.stream_remote(youtube.audio, AUDIO_EXPIRES, 512)
 
 
 @router.get("{youtube_id}/image", response={200: bytes, 404: str})
@@ -70,7 +74,7 @@ def get_image(request: WSGIRequest, youtube_id: str):
     if youtube is None:
         return 404, "Not found"
 
-    return Proxy.stream_remote(youtube.image)
+    return Proxy.stream_remote(youtube.image, IMAGE_EXPIRES)
 
 
 @router.post("{youtube_id}/increment", response={200: YoutubeDto, 404: str})

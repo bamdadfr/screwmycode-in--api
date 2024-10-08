@@ -1,5 +1,7 @@
-from typing import Tuple
+from functools import wraps
+from typing import Callable, Tuple
 
+from django.core.handlers.wsgi import WSGIRequest
 from yt_dlp import YoutubeDL
 
 Title = str
@@ -9,6 +11,17 @@ Info = Tuple[Title, Audio, Image]
 
 
 class YoutubeDlUtil:
+    @staticmethod
+    def catch_exceptions(callback: Callable):
+        @wraps(callback)
+        def wrapper(request: WSGIRequest, *args, **kwargs):
+            try:
+                return callback(request, *args, **kwargs)
+            except Exception as e:
+                return 404, f"{e}"
+
+        return wrapper
+
     @staticmethod
     def extract_info(url: str, format_id: str) -> Info:
         options = {

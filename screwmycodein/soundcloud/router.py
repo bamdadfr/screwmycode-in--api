@@ -1,22 +1,26 @@
 from django.core.handlers.wsgi import WSGIRequest
 from ninja import Router
 
-from ..utils.is_not_already_streaming import is_not_already_streaming
-from ..utils.proxy import Proxy
 from .dto import SoundcloudDto
 from .models import Soundcloud
 from .services import SoundcloudService
 from .utils import SoundcloudUtil
+from ..constants import AUDIO_EXPIRES, IMAGE_EXPIRES
+from ..utils.is_not_already_streaming import is_not_already_streaming
+from ..utils.proxy import Proxy
+from ..utils.youtube_dl_utils import YoutubeDlUtil
 
 router = Router()
 
 
 @router.get("/")
 def root(request: WSGIRequest):
+    """not used for now"""
     pass
 
 
 @router.get("{artist}/{name}", response={200: SoundcloudDto, 404: str})
+@YoutubeDlUtil.catch_exceptions
 @SoundcloudUtil.validate_id
 def index(request: WSGIRequest, artist: str, name: str):
     soundcloud_id = SoundcloudUtil.get_id(artist, name)
@@ -58,7 +62,7 @@ def get_audio(request: WSGIRequest, artist: str, name: str):
 
     soundcloud.save()
 
-    return Proxy.stream_remote(soundcloud.audio)
+    return Proxy.stream_remote(soundcloud.audio, AUDIO_EXPIRES)
 
 
 @router.get("{artist}/{name}/image", response={200: bytes, 404: str})
@@ -74,7 +78,7 @@ def get_image(
     if soundcloud is None:
         return 404, "Not found"
 
-    return Proxy.stream_remote(soundcloud.image)
+    return Proxy.stream_remote(soundcloud.image, IMAGE_EXPIRES)
 
 
 @router.post("{artist}/{name}/increment", response={200: SoundcloudDto, 404: str})

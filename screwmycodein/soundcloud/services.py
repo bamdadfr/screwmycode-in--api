@@ -3,7 +3,7 @@ from .models import Soundcloud
 
 class SoundcloudService:
     @staticmethod
-    def find_id(id_: str):
+    def find_id(id_: str) -> Soundcloud | None:
         results = Soundcloud.objects.filter(id=id_)
         return results.first()
 

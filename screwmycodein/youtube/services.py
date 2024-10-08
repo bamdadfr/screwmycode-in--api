@@ -3,7 +3,7 @@ from .models import Youtube
 
 class YoutubeService:
     @staticmethod
-    def find_id(id_: str):
+    def find_id(id_: str) -> Youtube | None:
         results = Youtube.objects.filter(id=id_)
         return results.first()
 

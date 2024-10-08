@@ -1,12 +1,12 @@
 import re
-from typing import Callable
+from typing import Callable, Tuple
 
 from django.core.handlers.wsgi import WSGIRequest
 
-from ..utils.proxy import Proxy
-from ..utils.youtube_dl_utils import YoutubeDlUtil
 from .dto import YoutubeDto
 from .models import Youtube
+from ..utils.proxy import Proxy
+from ..utils.youtube_dl_utils import YoutubeDlUtil
 
 
 class YoutubeUtil:
@@ -34,7 +34,7 @@ class YoutubeUtil:
         return url
 
     @staticmethod
-    def get_info(id_: str):
+    def get_info(id_: str) -> Tuple[str, str, str]:
         url = YoutubeUtil.get_url(id_)
         return YoutubeDlUtil.extract_info(url, YoutubeUtil.format_id)
 

@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from typing import Literal
 
 import requests
@@ -20,7 +21,11 @@ class Proxy:
             return False
 
     @staticmethod
-    def stream_remote(url: str, chunk_size=1024 * 1024) -> StreamingHttpResponse:
+    def stream_remote(
+        url: str,
+        expires_hours: int,
+        chunk_size=1024 * 1024,
+    ) -> StreamingHttpResponse:
         response = requests.get(url, stream=True)
         content_type = response.headers["content-type"]
 
@@ -28,6 +33,10 @@ class Proxy:
             response.iter_content(chunk_size=chunk_size),
             content_type=content_type,
         )
+
+        expires_date = datetime.now() + timedelta(hours=expires_hours)
+        expires_header = expires_date.strftime("%a, %d %b %Y %H:%M:%S GMT")
+        streaming.headers["Expires"] = expires_header
 
         return streaming
 

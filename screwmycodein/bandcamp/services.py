@@ -3,7 +3,7 @@ from .models import Bandcamp
 
 class BandcampService:
     @staticmethod
-    def find_id(id_: str):
+    def find_id(id_: str) -> Bandcamp | None:
         results = Bandcamp.objects.filter(id=id_)
         return results.first()
 
