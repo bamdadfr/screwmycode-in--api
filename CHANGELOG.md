@@ -1,3 +1,10 @@
+## [4.3.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.3.0...v4.3.1) (2024-10-08)
+
+
+### Bug Fixes
+
+* dummy for CI ([08f5925](https://github.com/bamdadfr/screwmycode-in--api/commit/08f59258a41a31d773d8c0078eb440bac660f210))
+
 ## [4.2.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.2.0...v4.2.1) (2024-10-07)
 
 
