@@ -12,4 +12,4 @@ jobs:
         env:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
           WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
-        run: ./trigger-webhook.sh $WEBHOOK_URL $WEBHOOK_SECRET
+        run: ./webhook-trigger.sh $WEBHOOK_URL $WEBHOOK_SECRET
