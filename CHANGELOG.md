@@ -1,3 +1,10 @@
+## [4.3.5](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.3.4...v4.3.5) (2024-10-08)
+
+
+### Bug Fixes
+
+* use reliable comparison ([028f00e](https://github.com/bamdadfr/screwmycode-in--api/commit/028f00e983c9faf6c39732b22287339b5d5f31b1))
+
 ## [4.3.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.3.3...v4.3.4) (2024-10-08)
 
 
