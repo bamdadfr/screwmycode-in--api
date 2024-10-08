@@ -1,3 +1,20 @@
+# [5.0.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.3.6...v5.0.0) (2024-10-08)
+
+
+### Bug Fixes
+
+* use decorators instead of broad middlewares ([c0c8e66](https://github.com/bamdadfr/screwmycode-in--api/commit/c0c8e6644852b1550c729490bb354b479df6ad1a))
+
+
+### Features
+
+* use new data modeling separating hits and audios ([5f5990b](https://github.com/bamdadfr/screwmycode-in--api/commit/5f5990be698f8f57ca3d142c2bc7387035d66667))
+
+
+### BREAKING CHANGES
+
+* database models have been modified
+
 ## [4.3.6](https://github.com/bamdadfr/screwmycode-in--api/compare/v4.3.5...v4.3.6) (2024-10-08)
 
 
