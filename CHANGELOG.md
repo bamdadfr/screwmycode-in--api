@@ -1,3 +1,10 @@
+## [5.1.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.3...v5.1.4) (2024-10-09)
+
+
+### Bug Fixes
+
+* chunk size for youtube at 512 was better ([4173ace](https://github.com/bamdadfr/screwmycode-in--api/commit/4173ace2c1a7b0642f1bd002d74992789f64e8d9))
+
 ## [5.1.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.2...v5.1.3) (2024-10-09)
 
 
