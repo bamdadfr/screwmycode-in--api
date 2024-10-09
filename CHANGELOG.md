@@ -1,3 +1,10 @@
+## [5.1.5](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.4...v5.1.5) (2024-10-09)
+
+
+### Bug Fixes
+
+* use dynamic chunk size set by input response ([bb02a67](https://github.com/bamdadfr/screwmycode-in--api/commit/bb02a67747c85c0873124376f5474f6dfe302b81))
+
 ## [5.1.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.3...v5.1.4) (2024-10-09)
 
 
