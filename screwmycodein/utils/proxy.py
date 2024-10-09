@@ -26,7 +26,7 @@ class Proxy:
         expires_hours: int,
         chunk_size=1024 * 1024,
     ) -> StreamingHttpResponse:
-        hop_by_hop_headers = ['Connection']
+        hop_by_hop_headers = ['Connection', 'Transfer-Encoding']
 
         response = requests.get(url, stream=True)
         streaming = StreamingHttpResponse(response.iter_content(chunk_size=chunk_size))
