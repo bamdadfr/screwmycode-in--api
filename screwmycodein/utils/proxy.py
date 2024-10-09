@@ -26,13 +26,17 @@ class Proxy:
         expires_hours: int,
         chunk_size=1024 * 1024,
     ) -> StreamingHttpResponse:
-        response = requests.get(url, stream=True)
-        content_type = response.headers["content-type"]
+        hop_by_hop_headers = ['Connection']
 
-        streaming = StreamingHttpResponse(
-            response.iter_content(chunk_size=chunk_size),
-            content_type=content_type,
-        )
+        response = requests.get(url, stream=True)
+        streaming = StreamingHttpResponse(response.iter_content(chunk_size=chunk_size))
+
+        # copy headers from response
+        for response_header in response.headers:
+            if response_header in hop_by_hop_headers:
+                continue
+
+            streaming.headers[response_header] = response.headers[response_header]
 
         expires_date = TimeUtil.hours_in(expires_hours)
         expires_header = expires_date.strftime("%a, %d %b %Y %H:%M:%S GMT")
