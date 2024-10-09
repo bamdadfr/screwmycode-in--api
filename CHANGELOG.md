@@ -1,3 +1,10 @@
+## [5.1.11](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.10...v5.1.11) (2024-10-09)
+
+
+### Bug Fixes
+
+* reduce chunk size for youtube audio ([7fc138c](https://github.com/bamdadfr/screwmycode-in--api/commit/7fc138c819ae6542cd359fd677d0e13c6e81d29a))
+
 ## [5.1.10](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.9...v5.1.10) (2024-10-09)
 
 
