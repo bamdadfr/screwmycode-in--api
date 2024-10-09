@@ -1,3 +1,10 @@
+## [5.1.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.2...v5.1.3) (2024-10-09)
+
+
+### Bug Fixes
+
+* exclude transfer encoding header ([3464dfe](https://github.com/bamdadfr/screwmycode-in--api/commit/3464dfee412a11f606530d54e70561dc1b8a446e))
+
 ## [5.1.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.1...v5.1.2) (2024-10-09)
 
 
