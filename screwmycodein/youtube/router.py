@@ -24,7 +24,7 @@ def root(request: WSGIRequest):
 @router.get("{youtube_id}", response={200: AudioDto, 404: str})
 @YoutubeUtil.validate_id
 @YoutubeDlUtil.catch_exceptions
-def index(request: WSGIRequest, slug: str):
+def youtube(request: WSGIRequest, slug: str):
     row = AudioService.find_youtube_slug(slug)
 
     if row is None:
@@ -48,7 +48,7 @@ def index(request: WSGIRequest, slug: str):
 
 @router.get("{youtube_id}/audio", response={200: bytes, 404: str})
 @YoutubeUtil.validate_id
-def get_audio(request: WSGIRequest, slug: str):
+def youtube_audio(request: WSGIRequest, slug: str):
     row = AudioService.find_youtube_slug(slug)
 
     if row is None:
@@ -66,12 +66,12 @@ def get_audio(request: WSGIRequest, slug: str):
 
     row.save()
 
-    return Proxy.stream_remote(row.audio, AUDIO_EXPIRES)
+    return Proxy.stream_remote(row.audio, AUDIO_EXPIRES, 512)
 
 
 @router.get("{youtube_id}/image", response={200: bytes, 404: str})
 @YoutubeUtil.validate_id
-def get_image(request: WSGIRequest, slug: str):
+def youtube_image(request: WSGIRequest, slug: str):
     row = AudioService.find_youtube_slug(slug)
 
     if row is None:
@@ -82,7 +82,7 @@ def get_image(request: WSGIRequest, slug: str):
 
 @router.post("{youtube_id}/increment", response={200: AudioDto, 404: str})
 @YoutubeUtil.validate_id
-def increment(request: WSGIRequest, slug: str):
+def youtube_increment(request: WSGIRequest, slug: str):
     row = AudioService.find_youtube_slug(slug)
 
     if row is None:

@@ -4,7 +4,6 @@ import requests
 from django.http import StreamingHttpResponse
 
 from .get_domain import get_domain
-from .time import TimeUtil
 from ..audio.models import Audio
 
 EndpointType = Literal["audio", "image"]
@@ -24,22 +23,27 @@ class Proxy:
     def stream_remote(
         url: str,
         expires_hours: int,
+        chunk_size: int | None = None,
     ) -> StreamingHttpResponse:
-        hop_by_hop_headers = ['Connection', 'Transfer-Encoding']
 
         response = requests.get(url, stream=True)
-        streaming = StreamingHttpResponse(response.iter_content())
+        streaming = StreamingHttpResponse(
+            response.iter_content(chunk_size=chunk_size),
+            content_type=response.headers["Content-Type"],
+        )
 
         # copy headers from response
-        for response_header in response.headers:
-            if response_header in hop_by_hop_headers:
-                continue
+        # hop_by_hop_headers = ['Connection', 'Transfer-Encoding']
+        # for response_header in response.headers:
+        #     if response_header in hop_by_hop_headers:
+        #         continue
+        #
+        #     streaming.headers[response_header] = response.headers[response_header]
 
-            streaming.headers[response_header] = response.headers[response_header]
-
-        expires_date = TimeUtil.hours_in(expires_hours)
-        expires_header = expires_date.strftime("%a, %d %b %Y %H:%M:%S GMT")
-        streaming.headers["Expires"] = expires_header
+        # set expires
+        # expires_date = TimeUtil.hours_in(expires_hours)
+        # expires_header = expires_date.strftime("%a, %d %b %Y %H:%M:%S GMT")
+        # streaming.headers["Expires"] = expires_header
 
         return streaming
 
