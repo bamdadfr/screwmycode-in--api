@@ -1,3 +1,10 @@
+## [5.1.7](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.6...v5.1.7) (2024-10-09)
+
+
+### Bug Fixes
+
+* copy selected headers ([e0cf41c](https://github.com/bamdadfr/screwmycode-in--api/commit/e0cf41c3f541abda6e2fa036eab4c9bd191c043a))
+
 ## [5.1.6](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.5...v5.1.6) (2024-10-09)
 
 
