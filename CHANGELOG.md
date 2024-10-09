@@ -1,3 +1,11 @@
+## [5.1.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.1...v5.1.2) (2024-10-09)
+
+
+### Bug Fixes
+
+* improve stream proxying ([f615d58](https://github.com/bamdadfr/screwmycode-in--api/commit/f615d5809af2e76ac4583f524d8f6d363bd17bbc))
+* improve youtube chunk size ([686124b](https://github.com/bamdadfr/screwmycode-in--api/commit/686124b28b97e482dd4a2b875792c80f81fb0d0e))
+
 ## [5.1.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.0...v5.1.1) (2024-10-08)
 
 
