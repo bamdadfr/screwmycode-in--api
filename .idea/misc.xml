@@ -4,7 +4,7 @@
     <option name="enabledOnSave" value="true" />
     <option name="executionMode" value="BINARY" />
     <option name="pathToExecutable" value="$USER_HOME$/.local/bin/black" />
-    <option name="sdkName" value="Python 3.11 (django-api)" />
+    <option name="sdkName" value="Python 3.11 (screwmycode-in--api)" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_22" project-jdk-name="Python 3.11 (screwmycode-in--api)" project-jdk-type="Python SDK">
     <output url="file://$PROJECT_DIR$/out" />
