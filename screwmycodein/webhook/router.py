@@ -16,7 +16,7 @@ config = Config()
 @router.post(
     "/deploy",
     response={200: str, 400: str, 401: str, 403: str, 500: str},
-    throttle=AnonRateThrottle('1/m')
+    throttle=AnonRateThrottle("1/m"),
 )
 def webhook_post(request: WSGIRequest):
     # Verify HMAC signature

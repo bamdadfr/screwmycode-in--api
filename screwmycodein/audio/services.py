@@ -29,7 +29,7 @@ class AudioService:
 
     @staticmethod
     def find_top_all(limit: int):
-        audios = Audio.objects.annotate(count=Count('hit')).order_by('-count')
+        audios = Audio.objects.annotate(count=Count("hit")).order_by("-count")
         return audios[:limit]
 
     @staticmethod
@@ -38,9 +38,13 @@ class AudioService:
         time_from: datetime,
         time_to: datetime = TimeUtil.now(),
     ):
-        audios = Audio.objects.annotate(count=Count('hit')).filter(
-            hit__timestamp__gte=time_from,
-            hit__timestamp__lt=time_to,
-        ).order_by('-count')
+        audios = (
+            Audio.objects.annotate(count=Count("hit"))
+            .filter(
+                hit__timestamp__gte=time_from,
+                hit__timestamp__lt=time_to,
+            )
+            .order_by("-count")
+        )
 
         return audios[:limit]

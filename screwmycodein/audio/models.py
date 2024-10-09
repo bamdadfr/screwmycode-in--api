@@ -3,9 +3,9 @@ from django.db import models
 
 class Audio(models.Model):
     class Type(models.TextChoices):
-        YOUTUBE = 'youtube'
-        SOUNDCLOUD = 'soundcloud'
-        BANDCAMP = 'bandcamp'
+        YOUTUBE = "youtube"
+        SOUNDCLOUD = "soundcloud"
+        BANDCAMP = "bandcamp"
 
     objects = models.Manager()
 
