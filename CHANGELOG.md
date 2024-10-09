@@ -1,3 +1,10 @@
+## [5.1.9](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.8...v5.1.9) (2024-10-09)
+
+
+### Bug Fixes
+
+* increase youtube chunk size to 512kb ([72a3ebf](https://github.com/bamdadfr/screwmycode-in--api/commit/72a3ebfeae862c385e4ed1d832a66ac40afed0b2))
+
 ## [5.1.8](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.7...v5.1.8) (2024-10-09)
 
 
