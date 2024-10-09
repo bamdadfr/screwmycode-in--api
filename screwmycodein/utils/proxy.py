@@ -24,12 +24,11 @@ class Proxy:
     def stream_remote(
         url: str,
         expires_hours: int,
-        chunk_size=1024 * 1024,
     ) -> StreamingHttpResponse:
         hop_by_hop_headers = ['Connection', 'Transfer-Encoding']
 
         response = requests.get(url, stream=True)
-        streaming = StreamingHttpResponse(response.iter_content(chunk_size=chunk_size))
+        streaming = StreamingHttpResponse(response.iter_content())
 
         # copy headers from response
         for response_header in response.headers:

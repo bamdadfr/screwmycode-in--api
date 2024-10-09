@@ -66,7 +66,7 @@ def get_audio(request: WSGIRequest, slug: str):
 
     row.save()
 
-    return Proxy.stream_remote(row.audio, AUDIO_EXPIRES, 512)
+    return Proxy.stream_remote(row.audio, AUDIO_EXPIRES)
 
 
 @router.get("{youtube_id}/image", response={200: bytes, 404: str})
