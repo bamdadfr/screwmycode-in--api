@@ -32,18 +32,21 @@ class Proxy:
             content_type=response.headers["Content-Type"],
         )
 
-        # copy headers from response
-        # hop_by_hop_headers = ['Connection', 'Transfer-Encoding']
-        # for response_header in response.headers:
-        #     if response_header in hop_by_hop_headers:
-        #         continue
-        #
-        #     streaming.headers[response_header] = response.headers[response_header]
+        # copy headers
+        headers_to_copy = [
+            "Accept-Ranges",
+            "Content-Length",
+            "X-Content-Type-Options",
+            "Date",
+            "Expires",
+            "Cache-Control",
+            "Age",
+        ]
+        for response_header in response.headers:
+            if response_header not in headers_to_copy:
+                continue
 
-        # set expires
-        # expires_date = TimeUtil.hours_in(expires_hours)
-        # expires_header = expires_date.strftime("%a, %d %b %Y %H:%M:%S GMT")
-        # streaming.headers["Expires"] = expires_header
+            streaming.headers[response_header] = response.headers[response_header]
 
         return streaming
 
