@@ -23,7 +23,7 @@ class Proxy:
     def stream_remote(
         url: str,
         expires_hours: int,
-        chunk_size: int | None = None,
+        chunk_size: int = 1024 * 1024,
     ) -> StreamingHttpResponse:
 
         response = requests.get(url, stream=True)
