@@ -1,3 +1,10 @@
+## [5.1.8](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.7...v5.1.8) (2024-10-09)
+
+
+### Bug Fixes
+
+* set default chunk size back ([df796b5](https://github.com/bamdadfr/screwmycode-in--api/commit/df796b5e3bfae960497eec29cbc02c7cc64be119))
+
 ## [5.1.7](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.6...v5.1.7) (2024-10-09)
 
 
