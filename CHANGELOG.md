@@ -1,3 +1,10 @@
+## [5.1.19](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.18...v5.1.19) (2024-10-10)
+
+
+### Bug Fixes
+
+* add back image endpoints ([734cd7f](https://github.com/bamdadfr/screwmycode-in--api/commit/734cd7f665e96576aa057cf7675054db2120a384))
+
 ## [5.1.18](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.17...v5.1.18) (2024-10-10)
 
 
