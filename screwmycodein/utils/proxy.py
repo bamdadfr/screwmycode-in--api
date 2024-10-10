@@ -22,18 +22,22 @@ class Proxy:
     @staticmethod
     def stream_remote(
         url: str,
-        expires_hours: int,
-        chunk_size: int = 1024 * 1024,
     ) -> StreamingHttpResponse:
+        eightkb = 8192
 
-        response = requests.get(url, stream=True)
+        headers = {
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+        }
+
+        response = requests.get(url, headers=headers, stream=True)
+
         streaming = StreamingHttpResponse(
-            response.iter_content(chunk_size=chunk_size),
+            response.iter_content(chunk_size=eightkb),
             content_type=response.headers["Content-Type"],
         )
 
         # copy headers
-        headers_to_copy = [
+        allowed_headers = [
             "Accept-Ranges",
             "Content-Length",
             "X-Content-Type-Options",
@@ -42,11 +46,11 @@ class Proxy:
             "Cache-Control",
             "Age",
         ]
-        for response_header in response.headers:
-            if response_header not in headers_to_copy:
+        for header in response.headers:
+            if header not in allowed_headers:
                 continue
 
-            streaming.headers[response_header] = response.headers[response_header]
+            streaming.headers[header] = response.headers[header]
 
         return streaming
 

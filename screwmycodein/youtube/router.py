@@ -6,7 +6,6 @@ from ..audio.dto import AudioDto
 from ..audio.models import Audio
 from ..audio.services import AudioService
 from ..audio.utils import AudioUtil
-from ..constants import AUDIO_EXPIRES, IMAGE_EXPIRES
 from ..hits.models import Hit
 from ..utils.is_not_already_streaming import is_not_already_streaming
 from ..utils.proxy import Proxy
@@ -66,7 +65,7 @@ def youtube_audio(request: WSGIRequest, slug: str):
 
     row.save()
 
-    return Proxy.stream_remote(row.audio, AUDIO_EXPIRES, 256)
+    return Proxy.stream_remote(row.audio)
 
 
 @router.get("{youtube_id}/image", response={200: bytes, 404: str})
@@ -77,7 +76,7 @@ def youtube_image(request: WSGIRequest, slug: str):
     if row is None:
         return 404, "Not found"
 
-    return Proxy.stream_remote(row.image, IMAGE_EXPIRES)
+    return Proxy.stream_remote(row.image)
 
 
 @router.post("{youtube_id}/increment", response={200: AudioDto, 404: str})

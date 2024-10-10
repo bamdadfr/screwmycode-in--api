@@ -6,7 +6,6 @@ from ..audio.dto import AudioDto
 from ..audio.models import Audio
 from ..audio.services import AudioService
 from ..audio.utils import AudioUtil
-from ..constants import AUDIO_EXPIRES, IMAGE_EXPIRES
 from ..hits.models import Hit
 from ..utils.is_not_already_streaming import is_not_already_streaming
 from ..utils.proxy import Proxy
@@ -68,7 +67,7 @@ def get_audio(request: WSGIRequest, artist: str, name: str):
 
     row.save()
 
-    return Proxy.stream_remote(row.audio, AUDIO_EXPIRES)
+    return Proxy.stream_remote(row.audio)
 
 
 @router.get("{artist}/{name}/image", response={200: bytes, 404: str})
@@ -84,7 +83,7 @@ def get_image(
     if row is None:
         return 404, "Not found"
 
-    return Proxy.stream_remote(row.image, IMAGE_EXPIRES)
+    return Proxy.stream_remote(row.image)
 
 
 @router.post("{artist}/{name}/increment", response={200: AudioDto, 404: str})

@@ -1,16 +1,15 @@
 from django.core.handlers.wsgi import WSGIRequest
 from ninja import Router
 
-from .utils import BandcampUtil
 from ..audio.dto import AudioDto
 from ..audio.models import Audio
 from ..audio.services import AudioService
 from ..audio.utils import AudioUtil
-from ..constants import AUDIO_EXPIRES, IMAGE_EXPIRES
 from ..hits.models import Hit
 from ..utils.is_not_already_streaming import is_not_already_streaming
 from ..utils.proxy import Proxy
 from ..utils.youtube_dl_utils import YoutubeDlUtil
+from .utils import BandcampUtil
 
 router = Router()
 
@@ -66,7 +65,7 @@ def get_audio(request: WSGIRequest, artist: str, name: str):
 
     row.save()
 
-    return Proxy.stream_remote(row.audio, AUDIO_EXPIRES)
+    return Proxy.stream_remote(row.audio)
 
 
 @router.get("{artist}/{name}/image", response={200: bytes, 404: str})
@@ -77,7 +76,7 @@ def get_image(request: WSGIRequest, artist: str, name: str):
     if row is None:
         return 404, "Not Found"
 
-    return Proxy.stream_remote(row.image, IMAGE_EXPIRES)
+    return Proxy.stream_remote(row.image)
 
 
 @router.post("{artist}/{name}/increment", response={200: AudioDto, 404: str})
