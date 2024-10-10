@@ -1,3 +1,12 @@
+## [5.1.12](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.11...v5.1.12) (2024-10-10)
+
+
+### Bug Fixes
+
+* add mysql strict mode ([4589208](https://github.com/bamdadfr/screwmycode-in--api/commit/45892085a2315142fc052ef2458b8b6a0afe821b))
+* add restart script ([a1f2a7b](https://github.com/bamdadfr/screwmycode-in--api/commit/a1f2a7b043f3ce13aadc09e7cde5c4fb7c5fcf5e))
+* update pip upgrader ([b57e0d0](https://github.com/bamdadfr/screwmycode-in--api/commit/b57e0d02c439e719023695a0de57df98d44593f0))
+
 ## [5.1.11](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.10...v5.1.11) (2024-10-09)
 
 
