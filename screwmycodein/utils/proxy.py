@@ -3,8 +3,8 @@ from typing import Literal
 import requests
 from django.http import StreamingHttpResponse
 
-from .get_domain import get_domain
 from ..audio.models import Audio
+from .get_domain import get_domain
 
 EndpointType = Literal["audio", "image"]
 
@@ -26,7 +26,10 @@ class Proxy:
         eightkb = 8192
 
         headers = {
-            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
+            "User-Agent": (
+                "Mozilla/5.0 (X11; Linux x86_64; rv:128.0)"
+                " Gecko/20100101 Firefox/128.0"
+            )
         }
 
         response = requests.get(url, headers=headers, stream=True)
@@ -67,5 +70,8 @@ class Proxy:
         return Proxy.__screen_endpoint("image", audio)
 
     @staticmethod
-    def screen_audio(audio: Audio):
-        return Proxy.__screen_endpoint("audio", audio)
+    def screen_audio(row: Audio):
+        if row.type == Audio.Type.SOUNDCLOUD:
+            return Proxy.__screen_endpoint("audio", row)
+
+        return row.audio
