@@ -7,4 +7,3 @@ class TopDto(TypedDict):
     hits: int
     type: str
     image: str
-    audio: str

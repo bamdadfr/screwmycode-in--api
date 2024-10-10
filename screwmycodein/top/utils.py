@@ -15,7 +15,6 @@ class TopUtil:
 
         for row in rows:
             image = Proxy.screen_image(row)
-            audio = Proxy.screen_audio(row)
             hits = HitsService.count_all(row)
 
             dto = TopDto(
@@ -24,7 +23,6 @@ class TopUtil:
                 hits=hits,
                 type=row.type,
                 image=image,
-                audio=audio,
             )
 
             dtos.append(dto)

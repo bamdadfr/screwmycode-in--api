@@ -19,7 +19,6 @@ def index(request: WSGIRequest):
 
     for row in rows:
         image = Proxy.screen_image(row)
-        audio = Proxy.screen_audio(row)
         hits = HitsService.count_all(row)
 
         dto = LatestDto(
@@ -28,7 +27,6 @@ def index(request: WSGIRequest):
             hits=hits,
             type=row.type,
             image=image,
-            audio=audio,
             updated_at=row.updated_at,
         )
 

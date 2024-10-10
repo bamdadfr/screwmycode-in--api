@@ -9,5 +9,4 @@ class LatestDto(TypedDict):
     hits: int
     type: str
     image: str
-    audio: str
     updated_at: datetime

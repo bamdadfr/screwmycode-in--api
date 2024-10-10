@@ -8,3 +8,7 @@ class AudioDto(TypedDict):
     title: str
     image: str
     audio: str
+
+
+AudioDtoFullResponse = {200: AudioDto, 404: str}
+AudioDtoStreamResponse = {200: bytes, 404: str}
