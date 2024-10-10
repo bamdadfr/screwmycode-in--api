@@ -7,7 +7,7 @@ app_path="$2"
 source "${venv_path}" && cd "${app_path}" || exit 1
 git pull
 
-python -m pip install --upgrade pip
+pip install --upgrade pip
 pip install -r requirements.txt
 
 python manage.py migrate
