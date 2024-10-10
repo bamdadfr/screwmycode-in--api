@@ -49,10 +49,7 @@ class Proxy:
 
     @staticmethod
     def screen_image(row: Audio):
-        if row.type == Audio.Type.SOUNDCLOUD:
-            return Proxy.__screen_endpoint("image", row)
-
-        return row.image
+        return Proxy.__screen_endpoint("image", row)
 
     @staticmethod
     def screen_audio(row: Audio):
