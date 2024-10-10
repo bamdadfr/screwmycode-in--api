@@ -1,3 +1,10 @@
+## [5.1.18](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.17...v5.1.18) (2024-10-10)
+
+
+### Bug Fixes
+
+* screen all images (CORS) ([efc4052](https://github.com/bamdadfr/screwmycode-in--api/commit/efc405257e3c95d24f47a1d9c7b2fc08cd79edf4))
+
 ## [5.1.17](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.16...v5.1.17) (2024-10-10)
 
 
