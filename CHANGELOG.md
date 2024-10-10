@@ -1,3 +1,10 @@
+## [5.1.13](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.12...v5.1.13) (2024-10-10)
+
+
+### Bug Fixes
+
+* apply black ([307cba7](https://github.com/bamdadfr/screwmycode-in--api/commit/307cba7083a325efe6d6e95fdd8de28d89cd6fb8))
+
 ## [5.1.12](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.11...v5.1.12) (2024-10-10)
 
 
