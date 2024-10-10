@@ -1,3 +1,10 @@
+## [5.1.15](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.14...v5.1.15) (2024-10-10)
+
+
+### Bug Fixes
+
+* screen only soundcloud audios ([ed9e2ee](https://github.com/bamdadfr/screwmycode-in--api/commit/ed9e2ee9e2fadbe0fe385235fb241707d3cef4ef))
+
 ## [5.1.14](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.13...v5.1.14) (2024-10-10)
 
 
