@@ -1,3 +1,10 @@
+## [5.1.16](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.15...v5.1.16) (2024-10-10)
+
+
+### Bug Fixes
+
+* allow 4 bytes utf8 chars ([643d353](https://github.com/bamdadfr/screwmycode-in--api/commit/643d353b24dc9385564e296efaeeced1ee95e475))
+
 ## [5.1.15](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.14...v5.1.15) (2024-10-10)
 
 
