@@ -1,3 +1,10 @@
+## [5.1.17](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.16...v5.1.17) (2024-10-10)
+
+
+### Bug Fixes
+
+* improve dtos ([a97390e](https://github.com/bamdadfr/screwmycode-in--api/commit/a97390e40d2767a1477900e08b59b3b13263f6bd))
+
 ## [5.1.16](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.15...v5.1.16) (2024-10-10)
 
 
