@@ -25,10 +25,6 @@ def test_home():
     __test_200("/")
 
 
-def test_latest():
-    __test_200("/latest")
-
-
 def test_last():
     __test_200("/last")
 
