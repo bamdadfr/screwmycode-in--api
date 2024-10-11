@@ -1,3 +1,10 @@
+## [5.3.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.3.0...v5.3.1) (2024-10-11)
+
+
+### Bug Fixes
+
+* remove /latest ([57b3e8e](https://github.com/bamdadfr/screwmycode-in--api/commit/57b3e8e2b682d7a47830d7d3d37cbea4dcc89766))
+
 # [5.3.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.2.1...v5.3.0) (2024-10-11)
 
 
