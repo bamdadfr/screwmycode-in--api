@@ -16,7 +16,6 @@ api.add_router("/webhook", webhook_router)
 
 api.add_router("/top", top_router)
 api.add_router("/latest", latest_router)
-api.add_router("/last", latest_router)
 
 api.add_router("/youtube", youtube_router)
 api.add_router("/soundcloud", soundcloud_router)
