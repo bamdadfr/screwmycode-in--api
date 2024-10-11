@@ -33,5 +33,5 @@ def soundcloud_image(
     artist: str,
     name: str,
 ):
-    row = AudioService.find_or_create_soundcloud(artist, name)
+    row = AudioService.find_or_create_bandcamp(artist, name)
     return Proxy.stream_remote(row.image)
