@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.2.0...v5.2.1) (2024-10-11)
+
+
+### Bug Fixes
+
+* can't duplicate like this ([74fc557](https://github.com/bamdadfr/screwmycode-in--api/commit/74fc5577f0a05593d331c696dd2188b8894dc080))
+
 # [5.2.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.20...v5.2.0) (2024-10-11)
 
 
