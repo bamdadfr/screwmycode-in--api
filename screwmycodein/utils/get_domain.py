@@ -1,4 +1,4 @@
-from screwmycodein.config import Config
+from screwmycodein.screwmycodein.config import Config
 
 
 def get_domain() -> str:

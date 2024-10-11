@@ -1,7 +1,7 @@
+from screwmycodein.utils.proxy import Proxy
 from .dto import AudioDto
 from .models import Audio
 from ..hits.services import HitsService
-from ..utils.proxy import Proxy
 
 
 class AudioUtil:

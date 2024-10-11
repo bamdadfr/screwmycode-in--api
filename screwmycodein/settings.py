@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
-from .config import Config
+from screwmycodein.screwmycodein.config import Config
 
 config = Config()
 
@@ -55,7 +55,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "screwmycodein.urls"
+ROOT_URLCONF = "screwmycodein.screwmycodein.urls"
 
 TEMPLATES = [
     {

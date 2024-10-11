@@ -2,9 +2,9 @@ from typing import List
 
 from django.db.models import QuerySet
 
-from screwmycodein.audio.models import Audio
-from screwmycodein.hits.services import HitsService
-from screwmycodein.latest.dto import LatestDto
+from screwmycodein.last.dto import LatestDto
+from screwmycodein.screwmycodein.audio.models import Audio
+from screwmycodein.screwmycodein.hits.services import HitsService
 from screwmycodein.utils.proxy import Proxy
 
 

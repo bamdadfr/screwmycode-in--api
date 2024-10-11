@@ -3,8 +3,8 @@ from typing import Literal
 import requests
 from django.http import StreamingHttpResponse
 
+from screwmycodein.screwmycodein.audio.models import Audio
 from .get_domain import get_domain
-from ..audio.models import Audio
 
 EndpointType = Literal["audio", "image"]
 

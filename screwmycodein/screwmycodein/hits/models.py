@@ -1,6 +1,6 @@
 from django.db import models
 
-from screwmycodein.audio.models import Audio
+from screwmycodein.screwmycodein.audio.models import Audio
 
 
 class Hit(models.Model):

@@ -2,7 +2,7 @@ from datetime import datetime
 
 from django.db.models import Count
 
-from screwmycodein.audio.models import Audio
+from screwmycodein.screwmycodein.audio.models import Audio
 from screwmycodein.utils.time import TimeUtil
 
 

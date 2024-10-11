@@ -3,7 +3,7 @@ from typing import Callable
 
 from django.core.handlers.wsgi import WSGIRequest
 
-from ..exceptions import InvalidSlugException
+from screwmycodein.screwmycodein.exceptions import InvalidSlugException
 from ..utils.youtube_dl_utils import YoutubeDlUtil, YoutubeDlInfo
 
 

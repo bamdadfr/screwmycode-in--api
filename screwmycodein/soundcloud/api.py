@@ -1,11 +1,14 @@
 from django.core.handlers.wsgi import WSGIRequest
 from ninja import Router
 
+from screwmycodein.screwmycodein.audio.dto import (
+    AudioDtoFullResponse,
+    AudioDtoStreamResponse,
+)
+from screwmycodein.screwmycodein.audio.services import AudioService
+from screwmycodein.screwmycodein.audio.utils import AudioUtil
+from screwmycodein.screwmycodein.hits.models import Hit
 from .utils import SoundcloudUtil
-from ..audio.dto import AudioDtoFullResponse, AudioDtoStreamResponse
-from ..audio.services import AudioService
-from ..audio.utils import AudioUtil
-from ..hits.models import Hit
 from ..utils.is_not_already_streaming import is_not_already_streaming
 from ..utils.proxy import Proxy
 from ..utils.youtube_dl_utils import YoutubeDlUtil

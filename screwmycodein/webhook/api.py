@@ -7,7 +7,7 @@ from django.core.handlers.wsgi import WSGIRequest
 from ninja import Router
 from ninja.throttling import AnonRateThrottle
 
-from screwmycodein.config import Config
+from screwmycodein.screwmycodein.config import Config
 
 router = Router()
 config = Config()

@@ -1,11 +1,11 @@
 import requests
 
+from screwmycodein.bandcamp.utils import BandcampUtil
+from screwmycodein.screwmycodein.exceptions import AudioTypeUnknownException
+from screwmycodein.soundcloud.utils import SoundcloudUtil
+from screwmycodein.youtube.utils import YoutubeUtil
 from .models import Audio
-from ..bandcamp.utils import BandcampUtil
-from ..exceptions import AudioTypeUnknownException
 from ..hits.models import Hit
-from ..soundcloud.utils import SoundcloudUtil
-from ..youtube.utils import YoutubeUtil
 
 
 class AudioService:
