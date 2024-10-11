@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.20...v5.2.0) (2024-10-11)
+
+
+### Features
+
+* add new routes + improve time filtering ([6ebff9a](https://github.com/bamdadfr/screwmycode-in--api/commit/6ebff9a30f0cb11a5a15f69477cf544a81164efd))
+
 ## [5.1.20](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.1.19...v5.1.20) (2024-10-11)
 
 
