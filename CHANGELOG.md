@@ -1,3 +1,10 @@
+# [5.3.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.2.1...v5.3.0) (2024-10-11)
+
+
+### Features
+
+* copy /latest to /last + update file structure ([bfc6cc0](https://github.com/bamdadfr/screwmycode-in--api/commit/bfc6cc06863f9927c803c226c42e5b4f1913658e))
+
 ## [5.2.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.2.0...v5.2.1) (2024-10-11)
 
 
