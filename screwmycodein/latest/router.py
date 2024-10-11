@@ -4,32 +4,48 @@ from django.core.handlers.wsgi import WSGIRequest
 from ninja import Router
 
 from .dto import LatestDto
-from ..audio.services import AudioService
-from ..hits.services import HitsService
-from ..utils.proxy import Proxy
+from .services import LastService
+from .utils import LastUtil
+from ..utils.route import RouteUtil
+from ..utils.time import TimeUtil
 
 router = Router()
 
 
 @router.get("/", response=List[LatestDto])
-def index(request: WSGIRequest):
-    rows = AudioService.find_latest(10)
+@RouteUtil.count_param
+def last(request: WSGIRequest, count: int):
+    rows = LastService.all(count)
+    return LastUtil.serialize(rows)
 
-    dtos: List[LatestDto] = []
 
-    for row in rows:
-        image = Proxy.screen_image(row)
-        hits = HitsService.count_all(row)
+@router.get("/hour", response=List[LatestDto])
+@RouteUtil.count_param
+def last_hour(request: WSGIRequest, count: int):
+    time_from = TimeUtil.hours_ago(1)
+    rows = LastService.filter(count, time_from)
+    return LastUtil.serialize(rows)
 
-        dto = LatestDto(
-            slug=row.slug,
-            title=row.title,
-            hits=hits,
-            type=row.type,
-            image=image,
-            updated_at=row.updated_at,
-        )
 
-        dtos.append(dto)
+@router.get("/day", response=List[LatestDto])
+@RouteUtil.count_param
+def last_day(request: WSGIRequest, count: int):
+    time_from = TimeUtil.hours_ago(24)
+    rows = LastService.filter(count, time_from)
+    return LastUtil.serialize(rows)
 
-    return dtos
+
+@router.get("/week", response=List[LatestDto])
+@RouteUtil.count_param
+def last_week(request: WSGIRequest, count: int):
+    time_from = TimeUtil.days_ago(7)
+    rows = LastService.filter(count, time_from)
+    return LastUtil.serialize(rows)
+
+
+@router.get("/month", response=List[LatestDto])
+@RouteUtil.count_param
+def last_week(request: WSGIRequest, count: int):
+    time_from = TimeUtil.days_ago(30)
+    rows = LastService.filter(count, time_from)
+    return LastUtil.serialize(rows)

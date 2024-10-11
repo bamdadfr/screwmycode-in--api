@@ -29,30 +29,80 @@ def test_latest():
     __test_200("/latest")
 
 
-def test_top_index():
+def test_last():
+    __test_200("/last")
+
+
+def test_last_count_1():
+    response = __test_200("/last?count=1")
+    data = response.json()
+    assert len(data) == 1
+
+
+def test_last_count_oob():
+    response = __test_200("/last?count=-1")
+    data = response.json()
+    assert len(data) == 1
+
+    response = __test_200("/last?count=200")
+    data = response.json()
+    assert len(data) <= 50
+
+
+def test_last_hour():
+    __test_200("/last/hour")
+
+
+def test_last_day():
+    __test_200("/last/day")
+
+
+def test_last_week():
+    __test_200("/last/week")
+
+
+def test_last_month():
+    __test_200("/last/month")
+
+
+def test_top():
     __test_200("/top")
 
 
-def test_top_index_limit_1():
-    response = __test_200("/top?limit=1")
+def test_top_count_1():
+    response = __test_200("/top?count=1")
     data = response.json()
     assert len(data) == 1
+
+
+def test_top_oob():
+    response = __test_200("/top?count=-1")
+    data = response.json()
+    assert len(data) == 1
+
+    response = __test_200("/top?count=200")
+    data = response.json()
+    assert len(data) <= 50
 
 
 def test_top_index_today():
     __test_200("/top/today")
 
 
-def test_top_index_yesterday():
+def test_top_yesterday():
     __test_200("/top/yesterday")
 
 
-def test_top_index_hour():
+def test_top_hour():
     __test_200("/top/hour")
 
 
-def test_top_index_week():
+def test_top_week():
     __test_200("/top/week")
+
+
+def test_top_month():
+    __test_200("/top/month")
 
 
 def test_youtube_index():
