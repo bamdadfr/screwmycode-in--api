@@ -1,3 +1,10 @@
+## [5.3.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.3.2...v5.3.3) (2024-10-15)
+
+
+### Bug Fixes
+
+* improve hit registration ([5492b78](https://github.com/bamdadfr/screwmycode-in--api/commit/5492b7861eccdcf4822dfc47db87a838ee07931e))
+
 ## [5.3.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.3.1...v5.3.2) (2024-10-15)
 
 
