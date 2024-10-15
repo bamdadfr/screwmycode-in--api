@@ -1,3 +1,10 @@
+## [5.3.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.3.1...v5.3.2) (2024-10-15)
+
+
+### Bug Fixes
+
+* update count ([8c39a2e](https://github.com/bamdadfr/screwmycode-in--api/commit/8c39a2e9aae58aa22625d0afb01c1f8f456d9405))
+
 ## [5.3.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.3.0...v5.3.1) (2024-10-11)
 
 
