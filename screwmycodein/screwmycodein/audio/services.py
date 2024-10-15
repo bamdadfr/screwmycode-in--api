@@ -42,9 +42,6 @@ class AudioService:
 
         new_row.save()
 
-        hit = Hit(audio=new_row)
-        hit.save()
-
         return new_row
 
     @staticmethod
@@ -53,8 +50,15 @@ class AudioService:
         return rows.first()
 
     @staticmethod
+    def __hit(audio: Audio) -> None:
+        hit = Hit(audio=audio)
+        hit.save()
+
+    @staticmethod
     def find_or_create_youtube(slug: str) -> Audio:
-        return AudioService.__find_or_create_audio(slug, Audio.Type.YOUTUBE)
+        audio = AudioService.__find_or_create_audio(slug, Audio.Type.YOUTUBE)
+        AudioService.__hit(audio)
+        return audio
 
     @staticmethod
     def __find_soundcloud_slug(slug: str) -> Audio | None:
@@ -64,7 +68,9 @@ class AudioService:
     @staticmethod
     def find_or_create_soundcloud(artist: str, name: str) -> Audio:
         slug = SoundcloudUtil.get_slug(artist, name)
-        return AudioService.__find_or_create_audio(slug, Audio.Type.SOUNDCLOUD)
+        audio = AudioService.__find_or_create_audio(slug, Audio.Type.SOUNDCLOUD)
+        AudioService.__hit(audio)
+        return audio
 
     @staticmethod
     def __find_bandcamp_slug(slug: str) -> Audio | None:
@@ -74,7 +80,9 @@ class AudioService:
     @staticmethod
     def find_or_create_bandcamp(artist: str, name: str) -> Audio:
         slug = BandcampUtil.get_slug(artist, name)
-        return AudioService.__find_or_create_audio(slug, Audio.Type.BANDCAMP)
+        audio = AudioService.__find_or_create_audio(slug, Audio.Type.BANDCAMP)
+        AudioService.__hit(audio)
+        return audio
 
     @staticmethod
     def ensure_audio_available(row: Audio) -> Audio:
