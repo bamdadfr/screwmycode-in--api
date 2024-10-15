@@ -2,9 +2,9 @@ from typing import Callable
 
 from django.core.handlers.wsgi import WSGIRequest
 
-COUNT = 10
+COUNT = 50
 COUNT_MIN = 1
-COUNT_MAX = 50
+COUNT_MAX = 100
 
 
 class RouteUtil:
