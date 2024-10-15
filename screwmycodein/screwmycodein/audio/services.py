@@ -106,5 +106,6 @@ class AudioService:
             raise AudioTypeUnknownException
 
         row.audio = audio
+        row.save()
 
         return row
