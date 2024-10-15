@@ -1,3 +1,10 @@
+## [5.3.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.3.3...v5.3.4) (2024-10-15)
+
+
+### Bug Fixes
+
+* improve audio verification ([f7178a2](https://github.com/bamdadfr/screwmycode-in--api/commit/f7178a2b665ba4ab472e6796f6f4719b055b2aa0))
+
 ## [5.3.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.3.2...v5.3.3) (2024-10-15)
 
 
