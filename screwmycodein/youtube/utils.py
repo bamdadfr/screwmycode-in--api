@@ -12,6 +12,7 @@ class YoutubeUtil:
 
     @staticmethod
     def validate_id(callback: Callable):
+        # TODO: add wrapping
         def decorator(request: WSGIRequest, youtube_id: str):
             try:
                 id_regex = re.compile(r"^[a-zA-Z0-9-_]{11}$")
@@ -27,11 +28,11 @@ class YoutubeUtil:
         return decorator
 
     @staticmethod
-    def get_url(id_: str) -> str:
-        url = f"https://www.youtube.com/watch?v={id_}"
+    def get_url(slug: str) -> str:
+        url = f"https://www.youtube.com/watch?v={slug}"
         return url
 
     @staticmethod
-    def get_info(id_: str) -> YoutubeDlInfo:
-        url = YoutubeUtil.get_url(id_)
+    def get_info(slug: str) -> YoutubeDlInfo:
+        url = YoutubeUtil.get_url(slug)
         return YoutubeDlUtil.extract_info(url, YoutubeUtil.format_id)

@@ -1,7 +1,10 @@
 import requests
 
 from screwmycodein.bandcamp.utils import BandcampUtil
-from screwmycodein.screwmycodein.exceptions import AudioTypeUnknownException
+from screwmycodein.screwmycodein.exceptions import (
+    AudioTypeUnknownException,
+    AudioVerificationException,
+)
 from screwmycodein.soundcloud.utils import SoundcloudUtil
 from screwmycodein.youtube.utils import YoutubeUtil
 from .models import Audio
@@ -86,10 +89,12 @@ class AudioService:
 
     @staticmethod
     def ensure_audio_available(row: Audio) -> Audio:
-        response = requests.head(row.audio)
-
-        if response.status_code == 200:
-            return row
+        try:
+            response = requests.head(row.audio)
+            if response.status_code == 200:
+                return row
+        except Exception as err:
+            AudioVerificationException(err, row)
 
         if row.type == Audio.Type.YOUTUBE:
             _, audio, _ = YoutubeUtil.get_info(row.slug)
