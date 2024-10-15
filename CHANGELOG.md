@@ -1,3 +1,10 @@
+## [5.3.5](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.3.4...v5.3.5) (2024-10-15)
+
+
+### Bug Fixes
+
+* correctly save audio row after url update ([08ec8e9](https://github.com/bamdadfr/screwmycode-in--api/commit/08ec8e9a7c3606687a66b8bbddfd69f3d59edcdd))
+
 ## [5.3.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.3.3...v5.3.4) (2024-10-15)
 
 
