@@ -34,12 +34,14 @@ class YoutubeDlUtil:
         with YoutubeDL(options) as ydl:
             info = ydl.extract_info(url=url, download=False)
 
-            title = info.get("title")
-            image = info.get("thumbnails")[-1].get("url")
+            title = info.get("title")  # type: ignore
+            image = info.get("thumbnails")[-1].get("url")  # type: ignore
+            formats = info.get("formats", [])  # type: ignore
 
-            formats = info.get("formats", [])
             for f in formats:
-                if f["format_id"] == format_id:
+                current_id: str = f["format_id"]
+
+                if current_id.startswith(format_id):
                     audio = f["url"]
                     break
 

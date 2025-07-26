@@ -7,7 +7,7 @@ from ..utils.youtube_dl_utils import YoutubeDlUtil, YoutubeDlInfo
 
 
 class SoundcloudUtil:
-    format_id = "http_mp3_128"
+    format_id = "http_mp3"
 
     @staticmethod
     def validate_id(callback: Callable):
