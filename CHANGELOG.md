@@ -1,3 +1,10 @@
+## [5.3.7](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.3.6...v5.3.7) (2025-07-26)
+
+
+### Bug Fixes
+
+* soundcloud api ([470ebb1](https://github.com/bamdadfr/screwmycode-in--api/commit/470ebb17513394dae4728bf10e317a7cf4a5168c))
+
 ## [5.3.6](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.3.5...v5.3.6) (2025-07-26)
 
 
