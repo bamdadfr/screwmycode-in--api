@@ -17,6 +17,7 @@ class Config:
 
         self.django_secret = data["django_secret"]
         self.webhook_secret = data["webhook_secret"]
+        self.jwt_secret = data["jwt_secret"]
 
         self.venv_path = data["venv_path"]
         self.app_path = data["app_path"]

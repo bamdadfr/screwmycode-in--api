@@ -1,10 +1,16 @@
 from functools import wraps
-from typing import Callable, Tuple
+from typing import Callable, NamedTuple, Tuple
 
 from django.core.handlers.wsgi import WSGIRequest
 from yt_dlp import YoutubeDL
 
 YoutubeDlInfo = Tuple[str, str, str]
+
+
+class ExtractedInfo(NamedTuple):
+    title: str
+    audio: str
+    image: str
 
 
 class YoutubeDlUtil:
@@ -46,3 +52,35 @@ class YoutubeDlUtil:
                     break
 
         return title, audio, image
+
+    @staticmethod
+    def extract_info_new(url: str, format_id: str) -> ExtractedInfo:
+        options = {
+            "quiet": True,
+            "no_warnings": True,
+            "skip_download": True,
+        }
+
+        title: str = ""
+        image: str = ""
+        audio: str = ""
+
+        with YoutubeDL(options) as ydl:
+            info = ydl.extract_info(url=url, download=False)
+
+            title = info.get("title")  # type: ignore
+            image = info.get("thumbnails")[-1].get("url")  # type: ignore
+            formats = info.get("formats", [])  # type: ignore
+
+            for f in formats:
+                current_id: str = f["format_id"]
+
+                if current_id.startswith(format_id):
+                    audio = f["url"]
+                    break
+
+        return ExtractedInfo(
+            title=title,
+            audio=audio,
+            image=image,
+        )
