@@ -1,3 +1,10 @@
+# [5.4.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.3.7...v5.4.0) (2025-07-28)
+
+
+### Features
+
+* add v2 endpoints ([57f153d](https://github.com/bamdadfr/screwmycode-in--api/commit/57f153defb4466446a5a96bdbf888f1b989cb59e))
+
 ## [5.3.7](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.3.6...v5.3.7) (2025-07-26)
 
 
