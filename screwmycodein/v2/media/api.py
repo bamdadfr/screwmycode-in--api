@@ -42,7 +42,6 @@ def get(request, data: StreamBody):
     is_youtube = "youtube.com" in data.url
     is_soundcloud = "soundcloud.com" in data.url
     is_bandcamp = "bandcamp.com" in data.url
-    print(data, is_youtube, is_soundcloud, is_bandcamp)
 
     if not is_youtube and not is_soundcloud and not is_bandcamp:
         return not_found_response
