@@ -12,6 +12,12 @@ EndpointType = Literal["audio", "image"]
 config = Config()
 
 
+def get_chunk_size(url: str) -> int:
+    if "googlevideo.com" in url or "youtube.com" in url:
+        return 1024 * 32  # 32KB for YouTube
+    return 1024 * 1024  # 1MB for others
+
+
 class Proxy:
     @staticmethod
     def stream_remote(
@@ -19,9 +25,10 @@ class Proxy:
         request: WSGIRequest | None = None,
     ) -> StreamingHttpResponse:
         response = requests.get(url, stream=True)
+        chunk_size = get_chunk_size(url)
 
         streaming = StreamingHttpResponse(
-            response.iter_content(chunk_size=1024 * 1024),
+            response.iter_content(chunk_size=chunk_size),
             content_type=response.headers["Content-Type"],
         )
 
