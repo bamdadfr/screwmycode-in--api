@@ -12,8 +12,15 @@ EndpointType = Literal["audio", "image"]
 config = Config()
 
 
-def get_chunk_size(url: str) -> int:
+def is_youtube_audio_source(url: str):
     if "googlevideo.com" in url or "youtube.com" in url:
+        return True
+
+    return False
+
+
+def get_chunk_size(url: str) -> int:
+    if is_youtube_audio_source(url):
         return 1024 * 32  # 32KB for YouTube
     return 1024 * 1024  # 1MB for others
 
@@ -24,7 +31,14 @@ class Proxy:
         url: str,
         request: WSGIRequest | None = None,
     ) -> StreamingHttpResponse:
-        response = requests.get(url, stream=True)
+        if is_youtube_audio_source(url):
+            # Separate session for YouTube to avoid poisoning
+            session = requests.Session()
+            response = session.get(url, stream=True)
+        else:
+            # Normal requests for other providers
+            response = requests.get(url, stream=True)
+
         chunk_size = get_chunk_size(url)
 
         streaming = StreamingHttpResponse(
