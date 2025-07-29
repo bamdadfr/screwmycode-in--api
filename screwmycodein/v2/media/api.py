@@ -3,9 +3,11 @@ import jwt
 from django.conf import settings
 from django.http import HttpResponse
 from ninja import Router
-from screwmycodein.dtos.audio_v2 import AudioType, AudioV2Service
+from screwmycodein.dtos.audio_v2_service import AudioV2Service
 from screwmycodein.dtos.hit_v2 import HitV2, HitV2Service
 from screwmycodein.utils.proxy import Proxy
+from screwmycodein.utils.youtube_dl_utils import YoutubeDlUtil
+from screwmycodein.v2.audio import is_audio_available
 from screwmycodein.v2.auth import JWTBearer
 from screwmycodein.v2.body import StreamBody
 from screwmycodein.v2.requests import is_not_already_streaming
@@ -14,65 +16,36 @@ from screwmycodein.v2.responses import not_found_response
 router = Router()
 
 
-@router.post("/", auth=JWTBearer())
-def main(request, data: StreamBody):
-    is_soundcloud = "soundcloud.com" in data.url
-    is_youtube = "youtube.com" in data.url
-    is_bandcamp = "bandcamp.com" in data.url
-
-    if not is_youtube and not is_soundcloud and not is_bandcamp:
-        return not_found_response
-
-    if is_soundcloud:
-        row = AudioV2Service.find_or_create(data.url, "soundcloud")
+# communicating with nextjs api route
+@router.post("/get", auth=JWTBearer())
+def get(request, data: StreamBody):
+    try:
+        row = AudioV2Service.find_or_create(data.url)
 
         if data.type == "audio":
+            if not is_audio_available(row):
+                info = YoutubeDlUtil.extract_info_new(row.url)
+                row.audio = info.audio
+                row.save()
+
             if is_not_already_streaming(request):
                 hit = HitV2(audio=row)
                 hit.save()
 
-            return Proxy.stream_remote(row.audio)
-        if data.type == "image":
-            return Proxy.stream_remote(row.image)
-
-        return None
-
-
-@router.post("/get", auth=JWTBearer())
-def get(request, data: StreamBody):
-    is_youtube = "youtube.com" in data.url
-    is_soundcloud = "soundcloud.com" in data.url
-    is_bandcamp = "bandcamp.com" in data.url
-
-    if not is_youtube and not is_soundcloud and not is_bandcamp:
+        return {
+            "media_url": row.image if data.type == "image" else row.audio,
+            "media_type": data.type,
+            "item": {
+                "url": row.url,
+                "title": row.title,
+                "hits": HitV2Service.count_all(row),
+            },
+        }
+    except Exception:
         return not_found_response
 
-    if is_youtube:
-        audio_type = "youtube"
-    elif is_soundcloud:
-        audio_type = "soundcloud"
-    elif is_bandcamp:
-        audio_type = "bandcamp"
-    else:
-        raise ValueError()
 
-    row = AudioV2Service.find_or_create(data.url, audio_type)
-
-    if data.type == "audio" and is_not_already_streaming(request):
-        hit = HitV2(audio=row)
-        hit.save()
-
-    return {
-        "media_url": row.image if data.type == "image" else row.audio,
-        "media_type": data.type,
-        "item": {
-            "url": row.url,
-            "title": row.title,
-            "hits": HitV2Service.count_all(row),
-        },
-    }
-
-
+# communicating with react client
 @router.get("/{token}")
 def serve(request: WSGIRequest, token: str):
     try:
@@ -85,5 +58,5 @@ def serve(request: WSGIRequest, token: str):
         return HttpResponse("Token expired", status=410)
     except jwt.InvalidTokenError:
         return HttpResponse("Invalid token", status=401)
-    except Exception as e:
+    except Exception:
         return HttpResponse("Server error", status=500)
