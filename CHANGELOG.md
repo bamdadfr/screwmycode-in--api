@@ -1,3 +1,10 @@
+## [5.4.6](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.5...v5.4.6) (2025-07-29)
+
+
+### Bug Fixes
+
+* use dynamic chunk size for youtube audio sources ([3ab5f09](https://github.com/bamdadfr/screwmycode-in--api/commit/3ab5f09619343baa636c29ef0026cb9e8b6b729d))
+
 ## [5.4.5](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.4...v5.4.5) (2025-07-29)
 
 
