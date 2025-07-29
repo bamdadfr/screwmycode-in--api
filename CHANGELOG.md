@@ -1,3 +1,10 @@
+## [5.4.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.3...v5.4.4) (2025-07-29)
+
+
+### Bug Fixes
+
+* setup boundaries for list size ([3aaa331](https://github.com/bamdadfr/screwmycode-in--api/commit/3aaa33142f0a7f596f9cb2c8f906596ec08cfd60))
+
 ## [5.4.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.2...v5.4.3) (2025-07-29)
 
 
