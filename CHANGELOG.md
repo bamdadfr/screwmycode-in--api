@@ -1,3 +1,10 @@
+## [5.4.7](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.6...v5.4.7) (2025-07-29)
+
+
+### Bug Fixes
+
+* desperate request pooling ([b30d87a](https://github.com/bamdadfr/screwmycode-in--api/commit/b30d87a34bb7caefb3b41511f2a08d3be569c795))
+
 ## [5.4.6](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.5...v5.4.6) (2025-07-29)
 
 
