@@ -1,3 +1,10 @@
+## [5.4.5](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.4...v5.4.5) (2025-07-29)
+
+
+### Bug Fixes
+
+* add migration ([12f9af7](https://github.com/bamdadfr/screwmycode-in--api/commit/12f9af72a91146f97ed77f12599c28e6872e23b9))
+
 ## [5.4.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.3...v5.4.4) (2025-07-29)
 
 
