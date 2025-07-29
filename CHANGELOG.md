@@ -1,3 +1,10 @@
+## [5.4.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.1...v5.4.2) (2025-07-29)
+
+
+### Bug Fixes
+
+* copy headers when proxy streaming ([d3f65cf](https://github.com/bamdadfr/screwmycode-in--api/commit/d3f65cf505839f52937417ac7d34d54f5dbeed9c))
+
 ## [5.4.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.0...v5.4.1) (2025-07-28)
 
 
