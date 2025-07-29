@@ -7,6 +7,9 @@ from screwmycodein.v2.date import get_date_filter
 
 router = Router()
 
+_MAX_LIMIT = 100
+_MIN_LIMIT = 0
+
 
 # communicate with react client
 @router.post("/", auth=JWTBearer())
@@ -15,6 +18,11 @@ def main(request, body: ListBody):
         return {"error": "sort_by must be 'hits' or 'date'"}
 
     limit = body.limit
+    if limit > _MAX_LIMIT:
+        limit = _MAX_LIMIT
+    elif limit < _MIN_LIMIT:
+        limit = _MIN_LIMIT
+
     queryset = AudioV2.objects.all()
 
     date_filter = get_date_filter(body.range)
