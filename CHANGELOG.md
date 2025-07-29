@@ -1,3 +1,11 @@
+## [5.4.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.2...v5.4.3) (2025-07-29)
+
+
+### Bug Fixes
+
+* disable v1 routes ([350d3f0](https://github.com/bamdadfr/screwmycode-in--api/commit/350d3f052ad50ec17e333d2fe1896b75357d188e))
+* regen only on audio request + reorganize code ([db56e8a](https://github.com/bamdadfr/screwmycode-in--api/commit/db56e8a0bd92a6a01727d5fc414beab2dd0cc779))
+
 ## [5.4.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.1...v5.4.2) (2025-07-29)
 
 
