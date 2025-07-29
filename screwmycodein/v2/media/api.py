@@ -1,3 +1,4 @@
+from django.core.handlers.wsgi import WSGIRequest
 import jwt
 from django.conf import settings
 from django.http import HttpResponse
@@ -73,13 +74,12 @@ def get(request, data: StreamBody):
 
 
 @router.get("/{token}")
-def serve(request, token: str):
-    """Serve media using temporary token"""
+def serve(request: WSGIRequest, token: str):
     try:
         payload = jwt.decode(token, settings.JWT_SECRET, algorithms=["HS256"])
         media_url = payload["media_url"]
 
-        return Proxy.stream_remote(media_url)
+        return Proxy.stream_remote(media_url, request)
 
     except jwt.ExpiredSignatureError:
         return HttpResponse("Token expired", status=410)

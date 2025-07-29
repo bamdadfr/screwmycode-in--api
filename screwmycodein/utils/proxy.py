@@ -1,18 +1,22 @@
 from typing import Literal
 
+from django.core.handlers.wsgi import WSGIRequest
 import requests
 from django.http import StreamingHttpResponse
 
 from screwmycodein.screwmycodein.audio.models import Audio
+from screwmycodein.screwmycodein.config import Config
 from .get_domain import get_domain
 
 EndpointType = Literal["audio", "image"]
+config = Config()
 
 
 class Proxy:
     @staticmethod
     def stream_remote(
         url: str,
+        request: WSGIRequest | None = None,
     ) -> StreamingHttpResponse:
         response = requests.get(url, stream=True)
 
@@ -36,6 +40,22 @@ class Proxy:
                 continue
 
             streaming.headers[header] = response.headers[header]
+
+        if request:
+            origin = request.headers.get("Origin")
+
+            if origin is None:
+                return streaming
+
+            allowed_origins = config.allowed_origins
+
+            if origin in allowed_origins:
+                streaming["Access-Control-Allow-Origin"] = origin
+                streaming["Access-Control-Allow-Credentials"] = "true"
+                streaming["Access-Control-Allow-Methods"] = "GET, OPTIONS"
+                streaming["Access-Control-Allow-Headers"] = (
+                    "Authorization, Content-Type"
+                )
 
         return streaming
 
