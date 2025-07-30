@@ -2,6 +2,7 @@ import jwt
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
 from ninja import Router, Schema
+from ninja.throttling import AnonRateThrottle
 
 from screwmycodein.db.hit_v2 import HitV2, HitV2Service
 from screwmycodein.db.media_service import MediaService
@@ -16,7 +17,10 @@ class BodyDto(Schema):
     url: str
 
 
-@router.post("/")
+@router.post(
+    "/",
+    throttle=AnonRateThrottle("6/m"),
+)
 def serve(request: WSGIRequest, body: BodyDto):
     try:
         _ = get_audio_type(body.url)
