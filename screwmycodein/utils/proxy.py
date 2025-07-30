@@ -21,7 +21,7 @@ def is_youtube_audio_source(url: str):
 
 def get_chunk_size(url: str) -> int:
     if is_youtube_audio_source(url):
-        return 1024 * 32  # 32KB for YouTube
+        return 1024 * 128  # 128KB for YouTube
     return 1024 * 1024  # 1MB for others
 
 
