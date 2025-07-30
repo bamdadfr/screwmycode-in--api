@@ -1,3 +1,10 @@
+## [5.6.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.1...v5.6.2) (2025-07-30)
+
+
+### Bug Fixes
+
+* divide proxy chunk sizes by 2 ([a2f428c](https://github.com/bamdadfr/screwmycode-in--api/commit/a2f428c5cf10ad0713574206e40724e401a6ced3))
+
 ## [5.6.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.0...v5.6.1) (2025-07-30)
 
 
