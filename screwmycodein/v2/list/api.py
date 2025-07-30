@@ -17,9 +17,9 @@ def main(request: WSGIRequest):
 
     date_filter = get_date_filter(DateRange.all)
     if date_filter:
-        queryset = queryset.filter(updated_at__gte=date_filter)
+        queryset = queryset.filter(created_at__gte=date_filter)
 
-    medias = queryset.order_by("-updated_at")[:limit]
+    medias = queryset.order_by("-created_at")[:limit]
 
     base_path = "/v2/media/"
 
