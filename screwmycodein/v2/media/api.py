@@ -4,13 +4,37 @@ from django.conf import settings
 from django.http import HttpResponse
 from ninja import Router
 from screwmycodein.dtos.audio_v2_service import AudioV2Service
-from screwmycodein.dtos.hit_v2 import HitV2
+from screwmycodein.dtos.hit_v2 import HitV2, HitV2Service
 from screwmycodein.utils.proxy import Proxy
 from screwmycodein.utils.youtube_dl_utils import YoutubeDlUtil
 from screwmycodein.v2.audio import is_audio_available
+from screwmycodein.v2.auth import JWTBearer
+from ninja import Schema
 from screwmycodein.v2.requests import is_not_already_streaming
 
 router = Router()
+
+
+class InputBody(Schema):
+    mediaUrl: str
+
+
+@router.post("/input", auth=JWTBearer())
+def request(request: WSGIRequest, body: InputBody):
+    try:
+        media_url = body.mediaUrl
+
+        row = AudioV2Service.find_or_create(media_url)
+        hit = HitV2(audio=row)
+        hit.save()
+
+        return {
+            "url": row.url,
+            "title": row.title,
+            "hits": HitV2Service.count_all(row),
+        }
+    except jwt.InvalidTokenError:
+        return HttpResponse("Invalid token", status=401)
 
 
 @router.get("/{token}")
