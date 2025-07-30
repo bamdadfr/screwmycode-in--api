@@ -57,7 +57,6 @@ def serve(request: WSGIRequest, token: str):
         return HttpResponse("Token expired", status=410)
     except jwt.InvalidTokenError:
         print("INVALID")
-        print(payload)
         print(request.headers)
         return HttpResponse("Invalid token", status=401)
     except Exception:
