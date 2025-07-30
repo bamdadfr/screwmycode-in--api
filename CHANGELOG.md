@@ -1,3 +1,10 @@
+## [5.6.5](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.4...v5.6.5) (2025-07-30)
+
+
+### Bug Fixes
+
+* use created at for history rankings ([7ae171a](https://github.com/bamdadfr/screwmycode-in--api/commit/7ae171ad2d8f9591a353e198c0324ba534fae7ea))
+
 ## [5.6.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.3...v5.6.4) (2025-07-30)
 
 
