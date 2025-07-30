@@ -1,3 +1,11 @@
+## [5.6.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.3...v5.6.4) (2025-07-30)
+
+
+### Bug Fixes
+
+* quadruple chunk sizes ([d5335d8](https://github.com/bamdadfr/screwmycode-in--api/commit/d5335d8217edb318c624972a3c7a7d9b44f7af12))
+* remove print ([70e93ec](https://github.com/bamdadfr/screwmycode-in--api/commit/70e93ec0ac1c723b43206baee8587539ef049e8a))
+
 ## [5.6.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.2...v5.6.3) (2025-07-30)
 
 
