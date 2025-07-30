@@ -31,14 +31,7 @@ class Proxy:
         url: str,
         request: WSGIRequest | None = None,
     ) -> StreamingHttpResponse:
-        if is_youtube_audio_source(url):
-            # Separate session for YouTube to avoid poisoning
-            session = requests.Session()
-            response = session.get(url, stream=True)
-        else:
-            # Normal requests for other providers
-            response = requests.get(url, stream=True)
-
+        response = requests.get(url, stream=True)
         chunk_size = get_chunk_size(url)
 
         streaming = StreamingHttpResponse(
