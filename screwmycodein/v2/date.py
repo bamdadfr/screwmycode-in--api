@@ -1,20 +1,32 @@
 from datetime import timedelta
+from enum import Enum
+
 from django.utils import timezone
 
 
-def get_date_filter(range_param: str):
+class DateRange(Enum):
+    today = "today"
+    yesterday = "yesterday"
+    week = "week"
+    month = "month"
+    year = "year"
+    all = "all"
+
+
+def get_date_filter(date_range: DateRange):
     now = timezone.now()
 
-    if range_param == "today":
+    if date_range is DateRange.today:
         return now.replace(hour=0, minute=0, second=0, microsecond=0)
-    elif range_param == "yesterday":
+    elif date_range is DateRange.yesterday:
         yesterday = now - timedelta(days=1)
         return yesterday.replace(hour=0, minute=0, second=0, microsecond=0)
-    elif range_param == "week":
+    elif date_range is DateRange.week:
         return now - timedelta(days=7)
-    elif range_param == "month":
+    elif date_range is DateRange.month:
         return now - timedelta(days=30)
-    elif range_param == "year":
+    elif date_range is DateRange.year:
         return now - timedelta(days=365)
-    else:  # "all"
+    else:
+        # all
         return None

@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class AudioV2(models.Model):
+class MediaModel(models.Model):
     objects = models.Manager()
 
     id = models.BigAutoField(primary_key=True)

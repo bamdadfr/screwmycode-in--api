@@ -1,5 +1,5 @@
-from .models import Hit
 from ..audio.models import Audio
+from .models import Hit
 
 
 class HitsService:

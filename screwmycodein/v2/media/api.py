@@ -1,63 +1,54 @@
-from django.core.handlers.wsgi import WSGIRequest
 import jwt
-from django.conf import settings
+from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
 from ninja import Router
-from screwmycodein.dtos.audio_v2_service import AudioV2Service
-from screwmycodein.dtos.hit_v2 import HitV2, HitV2Service
+
+from screwmycodein.db.hit_v2 import HitV2
+from screwmycodein.db.media_service import MediaService
 from screwmycodein.utils.proxy import Proxy
 from screwmycodein.utils.youtube_dl_utils import YoutubeDlUtil
-from screwmycodein.v2.audio import is_audio_available
-from screwmycodein.v2.auth import JWTBearer
-from ninja import Schema
-from screwmycodein.v2.requests import is_not_already_streaming
+from screwmycodein.v2.audio import check_is_remote_available
+from screwmycodein.v2.requests import is_new_request
+from screwmycodein.v2.sign import decode_media_url
 
 router = Router()
-
-
-class InputBody(Schema):
-    mediaUrl: str
-
-
-@router.post("/input", auth=JWTBearer())
-def request(request: WSGIRequest, body: InputBody):
-    try:
-        media_url = body.mediaUrl
-
-        row = AudioV2Service.find_or_create(media_url)
-        hit = HitV2(audio=row)
-        hit.save()
-
-        return {
-            "url": row.url,
-            "title": row.title,
-            "hits": HitV2Service.count_all(row),
-        }
-    except jwt.InvalidTokenError:
-        return HttpResponse("Invalid token", status=401)
 
 
 @router.get("/{token}")
 def serve(request: WSGIRequest, token: str):
     try:
-        payload = jwt.decode(token, settings.JWT_SECRET, algorithms=["HS256"])
-        media_url = payload["mediaUrl"]
-        media_type = payload["mediaType"]
-
-        row = AudioV2Service.find_or_create(media_url)
+        raw = decode_media_url(token)
+        media_url = raw["url"]
+        media_type = raw["type"]
+        media = MediaService.find_or_create(media_url)
 
         if media_type == "audio":
-            if not is_audio_available(row):
-                info = YoutubeDlUtil.extract_info_new(row.url)
-                row.audio = info.audio
-                row.save()
+            audio_available = check_is_remote_available(media.audio)
 
-            if is_not_already_streaming(request):
-                hit = HitV2(audio=row)
+            # refresh if necessary
+            if not audio_available:
+                info = YoutubeDlUtil.extract_info_new(media.url)
+                media.audio = info.audio
+                media.save()
+
+            # increment hits
+            if is_new_request(request):
+                hit = HitV2(media=media)
                 hit.save()
 
-        target_url = row.image if media_type == "image" else row.audio
+            raw_url = media.audio
 
-        return Proxy.stream_remote(target_url, request)
+        else:
+            image_available = check_is_remote_available(media.image)
+
+            # refresh if necessary
+            if not image_available:
+                info = YoutubeDlUtil.extract_info_new(media.url)
+                media.audio = info.audio
+                media.save()
+
+            raw_url = media.image
+
+        return Proxy.stream_remote(raw_url, request)
     except jwt.InvalidTokenError:
         return HttpResponse("Invalid token", status=401)

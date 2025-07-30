@@ -15,3 +15,4 @@ api.add_router("/webhook", "screwmycodein.webhook.api.router")
 # v2 routes
 api.add_router("/v2/media", "screwmycodein.v2.media.api.router")
 api.add_router("/v2/list", "screwmycodein.v2.list.api.router")
+api.add_router("/v2/create", "screwmycodein.v2.create.api.router")

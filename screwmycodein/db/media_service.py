@@ -1,18 +1,18 @@
-from screwmycodein.dtos.audio_v2_model import AudioV2
+from screwmycodein.db.media_model import MediaModel
 from screwmycodein.utils.youtube_dl_utils import YoutubeDlUtil
 
 
-class AudioV2Service:
+class MediaService:
     @staticmethod
     def find_or_create(url: str):
-        row = AudioV2.objects.filter(url=url).first()
+        row = MediaModel.objects.filter(url=url).first()
 
         if row:
             return row
 
         info = YoutubeDlUtil.extract_info_new(url)
 
-        new_row = AudioV2(
+        new_row = MediaModel(
             url=url,
             title=info.title,
             audio=info.audio,

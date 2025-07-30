@@ -1,54 +1,39 @@
+from django.core.handlers.wsgi import WSGIRequest
 from ninja import Router
-from screwmycodein.dtos.audio_v2_model import AudioV2
-from screwmycodein.dtos.hit_v2 import HitV2Service
+
+from screwmycodein.db.hit_v2 import HitV2Service
+from screwmycodein.db.media_model import MediaModel
 from screwmycodein.v2.auth import JWTBearer
-from screwmycodein.v2.body import ListBody
-from screwmycodein.v2.date import get_date_filter
+from screwmycodein.v2.date import DateRange, get_date_filter
+from screwmycodein.v2.sign import encode_media
 
 router = Router()
 
-_MAX_LIMIT = 100
-_MIN_LIMIT = 0
 
-
-# communicate with react client
 @router.post("/", auth=JWTBearer())
-def main(request, body: ListBody):
-    if body.sort_by not in ["hits", "date"]:
-        return {"error": "sort_by must be 'hits' or 'date'"}
+def main(request: WSGIRequest):
+    limit = 100
+    queryset = MediaModel.objects.all()
 
-    limit = body.limit
-    if limit > _MAX_LIMIT:
-        limit = _MAX_LIMIT
-    elif limit < _MIN_LIMIT:
-        limit = _MIN_LIMIT
-
-    queryset = AudioV2.objects.all()
-
-    date_filter = get_date_filter(body.range)
+    date_filter = get_date_filter(DateRange.all)
     if date_filter:
         queryset = queryset.filter(updated_at__gte=date_filter)
 
-    if body.sort_by == "date":
-        audios = queryset.order_by("-updated_at")[:limit]
-    else:  # hits
-        audios = list(queryset[:1000])
-        audios.sort(key=lambda x: HitV2Service.count_all(x), reverse=True)
-        audios = audios[:limit]
+    medias = queryset.order_by("-updated_at")[:limit]
+
+    base_path = "/v2/media/"
 
     items = [
         {
-            "url": audio.url,
-            "title": audio.title,
-            "hits": HitV2Service.count_all(audio),
+            "url": media.url,
+            "title": media.title,
+            "hits": HitV2Service.count_all(media),
+            "audio": f"{base_path}{encode_media(media, 'audio')}",
+            "image": f"{base_path}{encode_media(media, 'image')}",
         }
-        for audio in audios
+        for media in medias
     ]
 
     return {
-        "sort_by": body.sort_by,
-        "range": body.range,
-        "limit": body.limit,
-        "length": len(items),
         "items": items,
     }

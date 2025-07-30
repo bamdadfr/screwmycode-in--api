@@ -1,11 +1,11 @@
 from typing import Literal
+
 import requests
-from screwmycodein.dtos.audio_v2_model import AudioV2
 
 
-def is_audio_available(row: AudioV2) -> bool:
+def check_is_remote_available(url: str) -> bool:
     try:
-        response = requests.head(row.audio)
+        response = requests.head(url)
         return response.status_code == 200
     except Exception:
         return False

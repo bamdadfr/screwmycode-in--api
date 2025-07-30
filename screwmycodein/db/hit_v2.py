@@ -1,16 +1,16 @@
 from django.db import models
 
-from screwmycodein.dtos.audio_v2_model import AudioV2
+from screwmycodein.db.media_model import MediaModel
 
 
 class HitV2(models.Model):
-    audio = models.ForeignKey(AudioV2, on_delete=models.CASCADE)
+    media = models.ForeignKey(MediaModel, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
 
 
 class HitV2Service:
     @staticmethod
-    def count_all(audio: AudioV2) -> int:
-        results = HitV2.objects.filter(audio=audio)
+    def count_all(media: MediaModel) -> int:
+        results = HitV2.objects.filter(media=media)
         return results.count()
