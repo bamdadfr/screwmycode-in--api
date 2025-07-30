@@ -1,3 +1,10 @@
+## [5.6.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.2...v5.6.3) (2025-07-30)
+
+
+### Bug Fixes
+
+* add throttling for /create ([f29f10d](https://github.com/bamdadfr/screwmycode-in--api/commit/f29f10d3a7ba20e3d5bababb7f089cdd5819d946))
+
 ## [5.6.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.1...v5.6.2) (2025-07-30)
 
 
