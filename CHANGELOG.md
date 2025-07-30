@@ -1,3 +1,10 @@
+# [5.6.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.5.0...v5.6.0) (2025-07-30)
+
+
+### Features
+
+* new routes ([c0f43bb](https://github.com/bamdadfr/screwmycode-in--api/commit/c0f43bbcc4aac29cc47e9c411cb8e4f938ba6f46))
+
 # [5.5.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.16...v5.5.0) (2025-07-30)
 
 
