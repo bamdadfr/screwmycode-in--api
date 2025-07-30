@@ -1,7 +1,7 @@
 from typing import Literal
 
-from django.core.handlers.wsgi import WSGIRequest
 import requests
+from django.core.handlers.wsgi import WSGIRequest
 from django.http import StreamingHttpResponse
 
 from screwmycodein.screwmycodein.config import Config
@@ -27,16 +27,16 @@ def get_chunk_size(
     if is_youtube_audio_source(url):
         # YouTube audio typically works well with these sizes
         # Smaller = faster start, larger = better efficiency
-        base_size = 1024 * 128  # 128KB default
+        base_size = 1024 * 64  # 64KB default
 
         # Check if client has slow connection indicators
         if request and request.META.get("HTTP_SAVE_DATA") == "on":
-            return 1024 * 64  # 64KB for slow connections
+            return 1024 * 32  # 32KB for slow connections
 
         return base_size
 
     # Non-YouTube sources can handle larger chunks
-    return 1024 * 512  # 512KB for others
+    return 1024 * 256  # 256KB for others
 
 
 class Proxy:
