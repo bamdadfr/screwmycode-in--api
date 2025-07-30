@@ -1,3 +1,10 @@
+## [5.4.15](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.14...v5.4.15) (2025-07-30)
+
+
+### Bug Fixes
+
+* where is the sweetspot? ([53988b5](https://github.com/bamdadfr/screwmycode-in--api/commit/53988b50712712168baae03b4b383caebe12306f))
+
 ## [5.4.14](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.13...v5.4.14) (2025-07-30)
 
 
