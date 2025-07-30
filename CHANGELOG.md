@@ -1,3 +1,10 @@
+## [5.4.14](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.13...v5.4.14) (2025-07-30)
+
+
+### Bug Fixes
+
+* reduce youtube chunk size to 16k to avoid stutters ([ef7f7ed](https://github.com/bamdadfr/screwmycode-in--api/commit/ef7f7ed12607f0cd66dd43ca3bc50bc4c5c3271a))
+
 ## [5.4.13](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.12...v5.4.13) (2025-07-30)
 
 
