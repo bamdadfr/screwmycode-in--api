@@ -51,12 +51,14 @@ def serve(request: WSGIRequest, token: str):
     try:
         payload = jwt.decode(token, settings.JWT_SECRET, algorithms=["HS256"])
         media_url = payload["media_url"]
-
         return Proxy.stream_remote(media_url, request)
 
     except jwt.ExpiredSignatureError:
         return HttpResponse("Token expired", status=410)
     except jwt.InvalidTokenError:
+        print("INVALID")
+        print(payload)
+        print(request.headers)
         return HttpResponse("Invalid token", status=401)
     except Exception:
         return HttpResponse("Server error", status=500)
