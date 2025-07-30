@@ -45,19 +45,27 @@ def get(request, data: StreamBody):
         return not_found_response
 
 
-# communicating with react client
 @router.get("/{token}")
 def serve(request: WSGIRequest, token: str):
     try:
+        # Debug logging
+        print(f"Raw token from URL: {token}")
+        print(f"Token length: {len(token)}")
+        print(f"Secret (first 10 chars): {settings.JWT_SECRET[:10]}")
+        print(f"Secret (last 10 chars): {settings.JWT_SECRET[-10:]}")
+
+        # Try to decode without verification first to see the payload
+        try:
+            unverified = jwt.decode(token, options={"verify_signature": False})
+            print(f"Unverified payload: {unverified}")
+        except Exception as e:
+            print(f"Can't even decode without verification: {e}")
+
+        # Now try the actual decode
         payload = jwt.decode(token, settings.JWT_SECRET, algorithms=["HS256"])
         media_url = payload["media_url"]
         return Proxy.stream_remote(media_url, request)
 
-    except jwt.ExpiredSignatureError:
-        return HttpResponse("Token expired", status=410)
-    except jwt.InvalidTokenError:
-        print("INVALID")
-        print(request.headers)
+    except jwt.InvalidTokenError as e:
+        print(f"JWT Error details: {e}")
         return HttpResponse("Invalid token", status=401)
-    except Exception:
-        return HttpResponse("Server error", status=500)
