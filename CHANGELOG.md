@@ -1,3 +1,11 @@
+## [5.4.12](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.11...v5.4.12) (2025-07-30)
+
+
+### Bug Fixes
+
+* increase chunk size for youtube source ([3f34c46](https://github.com/bamdadfr/screwmycode-in--api/commit/3f34c46ce48e72d77d0933b7c00d671d20b8192d))
+* remove request pooling ([091d27c](https://github.com/bamdadfr/screwmycode-in--api/commit/091d27cbc9a21ece75ca9fe697184323753dfcec))
+
 ## [5.4.11](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.10...v5.4.11) (2025-07-30)
 
 
