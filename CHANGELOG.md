@@ -1,3 +1,10 @@
+# [5.5.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.16...v5.5.0) (2025-07-30)
+
+
+### Features
+
+* add new media input route ([70f4fea](https://github.com/bamdadfr/screwmycode-in--api/commit/70f4fea3f3bf261cf00e2d5dd65660a1303e5922))
+
 ## [5.4.16](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.4.15...v5.4.16) (2025-07-30)
 
 
