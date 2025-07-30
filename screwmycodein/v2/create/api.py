@@ -25,7 +25,6 @@ def serve(request: WSGIRequest, body: BodyDto):
     try:
         _ = get_audio_type(body.url)
         media = MediaService.find_or_create(body.url)
-        print(media.title)
         hit = HitV2(media=media)
         hit.save()
 
