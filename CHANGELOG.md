@@ -1,3 +1,10 @@
+## [5.6.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.0...v5.6.1) (2025-07-30)
+
+
+### Bug Fixes
+
+* try to catch first audio request ([6c51941](https://github.com/bamdadfr/screwmycode-in--api/commit/6c51941c1144260ac9cf2522ced83062089024b7))
+
 # [5.6.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.5.0...v5.6.0) (2025-07-30)
 
 
