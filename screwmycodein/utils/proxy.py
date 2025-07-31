@@ -23,7 +23,7 @@ def get_chunk_size(
     request: WSGIRequest | None = None,
 ) -> int:
     if is_youtube_audio_source(url):
-        base_size = 1024 * 64  # 64KB
+        base_size = 1024 * 160  # 160KB
 
         # slow connection?
         if request and request.META.get("HTTP_SAVE_DATA") == "on":
@@ -43,7 +43,10 @@ class Proxy:
         cache_duration: int | None = None,
     ) -> StreamingHttpResponse:
         headers = {
-            "User-Agent": "Mozilla/5.0 (compatible; AudioProxy/1.0)",
+            "User-Agent": (
+                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
+                " (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+            ),
         }
 
         if is_youtube_audio_source(url):
