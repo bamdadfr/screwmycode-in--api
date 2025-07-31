@@ -8,6 +8,7 @@ from screwmycodein.db.media_service import MediaService
 from screwmycodein.utils.proxy import Proxy
 from screwmycodein.utils.youtube_dl_utils import YoutubeDlUtil
 from screwmycodein.v2.audio import check_is_remote_available
+from screwmycodein.v2.date import hours_to_seconds
 from screwmycodein.v2.requests import is_new_request
 from screwmycodein.v2.sign import decode_media_url
 
@@ -37,7 +38,7 @@ def serve(request: WSGIRequest, token: str):
                 hit.save()
 
             raw_url = media.audio
-            cache_duration = 3600  # 1 hour for audio
+            cache_duration = hours_to_seconds(12)
 
         else:
             image_available = check_is_remote_available(media.image)
@@ -49,7 +50,7 @@ def serve(request: WSGIRequest, token: str):
                 media.save()
 
             raw_url = media.image
-            cache_duration = 86400  # 24 hours for images (artworks)
+            cache_duration = hours_to_seconds(24)
 
         return Proxy.stream_remote(
             url=raw_url,

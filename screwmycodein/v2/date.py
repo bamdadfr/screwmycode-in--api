@@ -30,3 +30,7 @@ def get_date_filter(date_range: DateRange):
     else:
         # all
         return None
+
+
+def hours_to_seconds(hours: int) -> int:
+    return 60 * 60 * hours

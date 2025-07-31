@@ -14,26 +14,18 @@ class MediaDto(TypedDict):
     exp: int
 
 
-def _get_normalized_expiration(hours_ahead: int = 1, leeway_seconds: int = 300) -> int:
-    """
-    Get expiration timestamp normalized to the start of an hour.
-
-    Args:
-        hours_ahead: How many hours ahead to set expiration
-        leeway_seconds: Extra seconds to add for clock skew (default 5 minutes)
-
-    Returns:
-        Timestamp at the start of the target hour plus leeway
-    """
+def _get_normalized_expiration(
+    hours_ahead: int = 24,
+    leeway_seconds: int = 300,
+) -> int:
     now = datetime.now()
-    # Move to the next hour boundary
+
     next_hour = now.replace(
         minute=0,
         second=0,
         microsecond=0,
     ) + timedelta(hours=hours_ahead)
 
-    # Add leeway for distributed systems clock skew
     target_time = next_hour + timedelta(seconds=leeway_seconds)
 
     return int(target_time.timestamp())
