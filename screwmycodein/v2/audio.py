@@ -1,5 +1,5 @@
 from typing import Literal
-
+from urllib.parse import urlparse
 import requests
 
 
@@ -15,21 +15,24 @@ AudioType = Literal["soundcloud", "youtube", "bandcamp"]
 
 
 def get_audio_type(url: str) -> AudioType:
-    audio_type: AudioType
-    is_youtube = "youtube.com" in url
-    is_soundcloud = "soundcloud.com" in url
-    is_bandcamp = "bandcamp.com" in url
+    try:
+        parsed_url = urlparse(url)
+        domain = parsed_url.netloc.lower()
 
-    if is_youtube:
-        audio_type = "youtube"
-    elif is_soundcloud:
-        audio_type = "soundcloud"
-    elif is_bandcamp:
-        audio_type = "bandcamp"
-    else:
-        raise ValueError()
+        if domain.startswith("www."):
+            domain = domain[4:]
 
-    return audio_type
+        if domain == "youtube.com" or domain.endswith(".youtube.com"):
+            return "youtube"
+        elif domain == "soundcloud.com" or domain.endswith(".soundcloud.com"):
+            return "soundcloud"
+        elif domain.endswith(".bandcamp.com"):
+            return "bandcamp"
+        else:
+            raise ValueError(f"Unsupported audio service domain: {domain}")
+
+    except Exception as e:
+        raise ValueError(f"Invalid URL or unsupported service: {e}")
 
 
 AudioFormat = dict[AudioType, str]
