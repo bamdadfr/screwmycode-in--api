@@ -1,3 +1,10 @@
+## [5.7.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.2...v5.7.3) (2025-07-31)
+
+
+### Bug Fixes
+
+* improve domain checking ([7fd8b4b](https://github.com/bamdadfr/screwmycode-in--api/commit/7fd8b4bf05b4b063de4c96d4196426e58a9c9da7))
+
 ## [5.7.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.1...v5.7.2) (2025-07-31)
 
 
