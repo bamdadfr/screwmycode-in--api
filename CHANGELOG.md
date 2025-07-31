@@ -1,3 +1,10 @@
+## [5.6.6](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.5...v5.6.6) (2025-07-31)
+
+
+### Bug Fixes
+
+* use default chunk size ([fc6001c](https://github.com/bamdadfr/screwmycode-in--api/commit/fc6001cf59894aeeecf354926cc17ae02c951c17))
+
 ## [5.6.5](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.4...v5.6.5) (2025-07-30)
 
 
