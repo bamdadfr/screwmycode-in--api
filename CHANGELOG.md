@@ -1,3 +1,10 @@
+## [5.7.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.3...v5.7.4) (2025-07-31)
+
+
+### Bug Fixes
+
+* move youtube default chunk size back to 32kb ([b1e8b64](https://github.com/bamdadfr/screwmycode-in--api/commit/b1e8b648eed2fd492e399257943a564251a502ee))
+
 ## [5.7.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.2...v5.7.3) (2025-07-31)
 
 
