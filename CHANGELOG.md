@@ -1,3 +1,10 @@
+## [5.7.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.0...v5.7.1) (2025-07-31)
+
+
+### Performance Improvements
+
+* increase and align tokens and caches ([98e6c0c](https://github.com/bamdadfr/screwmycode-in--api/commit/98e6c0cb849ba17031b8d82013b141b775e6898e))
+
 # [5.7.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.7...v5.7.0) (2025-07-31)
 
 
