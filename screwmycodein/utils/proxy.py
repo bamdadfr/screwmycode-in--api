@@ -27,16 +27,16 @@ def get_chunk_size(
     if is_youtube_audio_source(url):
         # YouTube audio typically works well with these sizes
         # Smaller = faster start, larger = better efficiency
-        base_size = 1024 * 256  # 256KB default
+        base_size = 1024 * 128  # 128KB default
 
         # Check if client has slow connection indicators
         if request and request.META.get("HTTP_SAVE_DATA") == "on":
-            return 1024 * 128  # 128KB for slow connections
+            return 1024 * 64  # 64KB for slow connections
 
         return base_size
 
     # Non-YouTube sources can handle larger chunks
-    return 1024 * 1024  # 1MB for others
+    return 1024 * 512  # 512KB for others
 
 
 class Proxy:
