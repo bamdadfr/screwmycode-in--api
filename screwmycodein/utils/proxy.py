@@ -1,6 +1,7 @@
 from typing import Literal
 
 import requests
+from requests import adapters
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import StreamingHttpResponse
 
@@ -44,6 +45,7 @@ class Proxy:
     def stream_remote(
         url: str,
         request: WSGIRequest | None = None,
+        cache_duration: int | None = None,
     ) -> StreamingHttpResponse:
         headers = {
             "User-Agent": "Mozilla/5.0 (compatible; AudioProxy/1.0)",
@@ -52,7 +54,7 @@ class Proxy:
         if is_youtube_audio_source(url):
             session = requests.Session()
             # Add connection pooling for better performance
-            adapter = requests.adapters.HTTPAdapter(
+            adapter = adapters.HTTPAdapter(
                 pool_connections=10,
                 pool_maxsize=10,
                 max_retries=3,
@@ -99,8 +101,14 @@ class Proxy:
                 streaming.headers[header] = response.headers[header]
 
         # Add buffering hints
-        streaming["X-Accel-Buffering"] = "no"  # Disable nginx buffering
-        streaming["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        # streaming["X-Accel-Buffering"] = "no"  # Disable nginx buffering
+        # streaming["Cache-Control"] = "no-cache, no-store, must-revalidate"
+
+        if cache_duration:
+            streaming["Cache-Control"] = f"public, max-age={cache_duration}"
+            streaming["Vary"] = "Accept-Encoding"
+            if "Pragma" in streaming:
+                del streaming["Pragma"]
 
         # CORS handling
         if request:

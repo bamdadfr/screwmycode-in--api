@@ -37,6 +37,7 @@ def serve(request: WSGIRequest, token: str):
                 hit.save()
 
             raw_url = media.audio
+            cache_duration = 3600  # 1 hour for audio
 
         else:
             image_available = check_is_remote_available(media.image)
@@ -48,7 +49,12 @@ def serve(request: WSGIRequest, token: str):
                 media.save()
 
             raw_url = media.image
+            cache_duration = 86400  # 24 hours for images (artworks)
 
-        return Proxy.stream_remote(raw_url, request)
+        return Proxy.stream_remote(
+            url=raw_url,
+            request=request,
+            cache_duration=cache_duration,
+        )
     except jwt.InvalidTokenError:
         return HttpResponse("Invalid token", status=401)
