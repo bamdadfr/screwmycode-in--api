@@ -1,3 +1,10 @@
+## [5.6.7](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.6...v5.6.7) (2025-07-31)
+
+
+### Bug Fixes
+
+* use cloudflare ip detection and throttling ([338de4f](https://github.com/bamdadfr/screwmycode-in--api/commit/338de4fd1a210fa474298f2501be86693f8cc348))
+
 ## [5.6.6](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.5...v5.6.6) (2025-07-31)
 
 
