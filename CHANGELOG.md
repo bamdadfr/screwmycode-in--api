@@ -1,3 +1,10 @@
+## [5.7.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.1...v5.7.2) (2025-07-31)
+
+
+### Bug Fixes
+
+* disable first hit on create ([7c78dfa](https://github.com/bamdadfr/screwmycode-in--api/commit/7c78dfacf56c5e82593bb178914bd0d5b2c1962e))
+
 ## [5.7.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.0...v5.7.1) (2025-07-31)
 
 
