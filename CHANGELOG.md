@@ -1,3 +1,16 @@
+# [5.7.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.7...v5.7.0) (2025-07-31)
+
+
+### Bug Fixes
+
+* refresh image ([0c85b31](https://github.com/bamdadfr/screwmycode-in--api/commit/0c85b311ee8eae23500bb1a7329b4ab4b071065e))
+
+
+### Features
+
+* add custom caching ([7a6ff35](https://github.com/bamdadfr/screwmycode-in--api/commit/7a6ff3563be9168f8b334b865e1bd0810f1e5235))
+* normalize token expiration ([9815daf](https://github.com/bamdadfr/screwmycode-in--api/commit/9815daffb2132e9fb1bd39e6952171a48da3af03))
+
 ## [5.6.7](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.6.6...v5.6.7) (2025-07-31)
 
 
