@@ -44,7 +44,7 @@ def serve(request: WSGIRequest, token: str):
             # refresh if necessary
             if not image_available:
                 info = YoutubeDlUtil.extract_info_new(media.url)
-                media.audio = info.audio
+                media.image = info.image
                 media.save()
 
             raw_url = media.image
