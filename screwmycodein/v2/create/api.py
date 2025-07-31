@@ -3,7 +3,7 @@ from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
 from ninja import Router, Schema
 
-from screwmycodein.db.hit_v2 import HitV2, HitV2Service
+from screwmycodein.db.hit_v2 import HitV2Service
 from screwmycodein.db.media_service import MediaService
 from screwmycodein.v2.audio import get_audio_type
 from screwmycodein.v2.constants import MEDIA_BASE_PATH
@@ -25,8 +25,6 @@ def serve(request: WSGIRequest, body: BodyDto):
     try:
         _ = get_audio_type(body.url)
         media = MediaService.find_or_create(body.url)
-        hit = HitV2(media=media)
-        hit.save()
 
         return {
             "url": media.url,
