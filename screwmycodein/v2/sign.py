@@ -1,5 +1,5 @@
-import time
 from typing import TypedDict
+from datetime import datetime, timedelta
 
 import jwt
 from django.conf import settings
@@ -14,11 +14,36 @@ class MediaDto(TypedDict):
     exp: int
 
 
+def _get_normalized_expiration(hours_ahead: int = 1, leeway_seconds: int = 300) -> int:
+    """
+    Get expiration timestamp normalized to the start of an hour.
+
+    Args:
+        hours_ahead: How many hours ahead to set expiration
+        leeway_seconds: Extra seconds to add for clock skew (default 5 minutes)
+
+    Returns:
+        Timestamp at the start of the target hour plus leeway
+    """
+    now = datetime.now()
+    # Move to the next hour boundary
+    next_hour = now.replace(
+        minute=0,
+        second=0,
+        microsecond=0,
+    ) + timedelta(hours=hours_ahead)
+
+    # Add leeway for distributed systems clock skew
+    target_time = next_hour + timedelta(seconds=leeway_seconds)
+
+    return int(target_time.timestamp())
+
+
 def encode_media(media: MediaModel, media_type: MediaType) -> str:
     media_dto: MediaDto = {
         "url": media.url,
         "type": media_type,
-        "exp": int(time.time()) + (24 * 60 * 60),  # 24 hours from now
+        "exp": _get_normalized_expiration(),
     }
 
     token = jwt.encode(
