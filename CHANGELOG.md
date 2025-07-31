@@ -1,3 +1,10 @@
+## [5.7.5](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.4...v5.7.5) (2025-07-31)
+
+
+### Bug Fixes
+
+* change user agent and youtube base chunk size to 160kb ([210fd5c](https://github.com/bamdadfr/screwmycode-in--api/commit/210fd5cb515b5186ae08873153ce9ed630564720))
+
 ## [5.7.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.3...v5.7.4) (2025-07-31)
 
 
