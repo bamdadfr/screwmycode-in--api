@@ -2,13 +2,13 @@ import jwt
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
 from ninja import Router, Schema
-from ninja.throttling import AnonRateThrottle
 
 from screwmycodein.db.hit_v2 import HitV2, HitV2Service
 from screwmycodein.db.media_service import MediaService
 from screwmycodein.v2.audio import get_audio_type
 from screwmycodein.v2.constants import MEDIA_BASE_PATH
 from screwmycodein.v2.sign import encode_media
+from screwmycodein.v2.throttle import CloudflareAwareThrottle
 
 router = Router()
 
@@ -19,7 +19,7 @@ class BodyDto(Schema):
 
 @router.post(
     "/",
-    throttle=AnonRateThrottle("6/m"),
+    throttle=CloudflareAwareThrottle("6/m"),
 )
 def serve(request: WSGIRequest, body: BodyDto):
     try:
