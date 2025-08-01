@@ -1,3 +1,10 @@
+# [5.8.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.7...v5.8.0) (2025-08-01)
+
+
+### Features
+
+* add php streaming ([c350655](https://github.com/bamdadfr/screwmycode-in--api/commit/c35065567168e8fd07be1606914e9c77dea2a92a))
+
 ## [5.7.7](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.6...v5.7.7) (2025-08-01)
 
 
