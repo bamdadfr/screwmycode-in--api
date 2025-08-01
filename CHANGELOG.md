@@ -1,3 +1,10 @@
+## [5.8.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.8.1...v5.8.2) (2025-08-01)
+
+
+### Bug Fixes
+
+* use strict base64 encoding ([134596f](https://github.com/bamdadfr/screwmycode-in--api/commit/134596f79bdf1e67ea6e43550391c78c0977e467))
+
 ## [5.8.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.8.0...v5.8.1) (2025-08-01)
 
 
