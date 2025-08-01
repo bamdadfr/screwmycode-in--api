@@ -1,3 +1,10 @@
+## [5.7.6](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.5...v5.7.6) (2025-08-01)
+
+
+### Bug Fixes
+
+* rolling back ([e26ff31](https://github.com/bamdadfr/screwmycode-in--api/commit/e26ff31b6ee01ffeaec814f2c40ded2bf18b89eb))
+
 ## [5.7.5](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.4...v5.7.5) (2025-07-31)
 
 
