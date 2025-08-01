@@ -1,3 +1,10 @@
+## [5.7.7](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.6...v5.7.7) (2025-08-01)
+
+
+### Bug Fixes
+
+* optimize streaming ([87cefa6](https://github.com/bamdadfr/screwmycode-in--api/commit/87cefa60c49cb78ae1de4a6b37c4a4fb2e50bfb4))
+
 ## [5.7.6](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.5...v5.7.6) (2025-08-01)
 
 
