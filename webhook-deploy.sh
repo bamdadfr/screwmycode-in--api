@@ -9,7 +9,7 @@ config_file="config.production.yaml"
 source "${venv_path}" && cd "${app_path}" || exit 1
 
 git fetch origin
-git reset --hard origin/main
+git reset --hard origin/master
 git clean -fd
 
 ln -s "${app_path}"/php/stream.php "${public_path}"/stream.php
