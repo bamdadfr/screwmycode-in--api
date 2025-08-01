@@ -1,3 +1,10 @@
+## [5.8.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.8.2...v5.8.3) (2025-08-01)
+
+
+### Bug Fixes
+
+* use url safe encoding ([95b8bc9](https://github.com/bamdadfr/screwmycode-in--api/commit/95b8bc9da34db5417a54fdd5eb062b4b2529cb0c))
+
 ## [5.8.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.8.1...v5.8.2) (2025-08-01)
 
 
