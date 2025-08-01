@@ -5,7 +5,7 @@ from ninja import Router
 
 from screwmycodein.db.hit_v2 import HitV2
 from screwmycodein.db.media_service import MediaService
-from screwmycodein.utils.proxy import Proxy
+from screwmycodein.utils.proxy import OptimizedProxy
 from screwmycodein.utils.youtube_dl_utils import YoutubeDlUtil
 from screwmycodein.v2.audio import check_is_remote_available
 from screwmycodein.v2.date import hours_to_seconds
@@ -52,7 +52,7 @@ def serve(request: WSGIRequest, token: str):
             raw_url = media.image
             cache_duration = hours_to_seconds(24)
 
-        return Proxy.stream_remote(
+        return OptimizedProxy.stream_remote(
             url=raw_url,
             request=request,
             cache_duration=cache_duration,
