@@ -44,6 +44,7 @@ def webhook_post(request: WSGIRequest):
                 f"{config.app_path}/webhook-deploy.sh",
                 config.venv_path,
                 config.app_path,
+                config.public_path,
             ],
             check=True,
             # capture_output=True,

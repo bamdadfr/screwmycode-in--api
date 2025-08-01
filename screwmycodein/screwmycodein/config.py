@@ -18,9 +18,11 @@ class Config:
         self.django_secret = data["django_secret"]
         self.webhook_secret = data["webhook_secret"]
         self.jwt_secret = data["jwt_secret"]
+        self.proxy_secret = data["proxy_secret"]
 
         self.venv_path = data["venv_path"]
         self.app_path = data["app_path"]
+        self.public_path = data["public_path"]
 
         self.allowed_hosts = data["allowed_hosts"]
         self.allowed_origins = data["allowed_origins"]
@@ -30,3 +32,8 @@ class Config:
         self.mysql_pass = data["mysql"]["pass"]
         self.mysql_host = data["mysql"]["host"]
         self.mysql_port = data["mysql"]["port"]
+
+        if self.production:
+            self.proxy_url = "https://api.screwmycode.in"
+        else:
+            self.proxy_url = "http://localhost:8001"

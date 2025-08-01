@@ -8,3 +8,5 @@ __pycache__
 
 config.yaml
 config.production.yaml
+.php-cs-fixer.cache
+php/.dev

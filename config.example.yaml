@@ -1,9 +1,11 @@
 django_secret: django_secret
 webhook_secret: webhook_secret
 jwt_secret: jwt_secret
+proxy_secret: proxy_secret
 
 venv_path: /path/to/venv/bin/activate
 app_path: /path/to/django
+public_path: /path/to/public
 
 allowed_hosts: []
 allowed_origins: []
