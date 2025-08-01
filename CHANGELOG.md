@@ -1,3 +1,10 @@
+## [5.8.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.8.0...v5.8.1) (2025-08-01)
+
+
+### Bug Fixes
+
+* set correct deploy branch ([aa2556e](https://github.com/bamdadfr/screwmycode-in--api/commit/aa2556e309c7ef313a9dea7e8141d740c35f8946))
+
 # [5.8.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.7.7...v5.8.0) (2025-08-01)
 
 
