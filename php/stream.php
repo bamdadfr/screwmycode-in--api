@@ -66,7 +66,7 @@ if (!hash_equals($expected_signature, $provided_signature)) {
 
 // Decode and validate payload
 try {
-    $payload_json = base64_decode($payload_b64);
+    $payload_json = base64_decode($payload_b64, true);
     $payload = json_decode($payload_json, true);
 
     if (!$payload) {
@@ -80,7 +80,7 @@ try {
     }
 
     // Now you have access to all your data:
-    $media_url = urldecode($payload['media_url']);
+    $media_url = $payload['media_url'];
     $media_type = $payload['media_type'];
 } catch (Exception $e) {
     http_response_code(400);

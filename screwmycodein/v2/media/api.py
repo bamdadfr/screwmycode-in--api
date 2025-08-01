@@ -3,7 +3,6 @@ import hashlib
 import hmac
 import json
 import time
-from urllib.parse import quote
 
 import jwt
 from django.core.handlers.wsgi import WSGIRequest
@@ -15,8 +14,6 @@ from screwmycodein.db.media_service import MediaService
 from screwmycodein.screwmycodein.config import Config
 from screwmycodein.utils.youtube_dl_utils import YoutubeDlUtil
 from screwmycodein.v2.audio import check_is_remote_available
-
-# from screwmycodein.v2.date import hours_to_seconds
 from screwmycodein.v2.requests import is_new_request
 from screwmycodein.v2.sign import decode_media_url
 
@@ -29,24 +26,23 @@ def generate_php_url(
     media_type: str,
 ) -> str:
     payload = {
-        "media_url": quote(media_url),
+        "media_url": media_url,
         "media_type": media_type,
         "expires": int(time.time()) + 300,  # 5 minutes from now
     }
 
-    # Encode the payload
+    # encoding
     payload_json = json.dumps(payload, separators=(",", ":"))
-    payload_b64 = base64.urlsafe_b64encode(payload_json.encode()).decode()
+    payload_b64 = base64.b64encode(payload_json.encode("utf-8")).decode("ascii")
 
-    # Sign the payload (not just timestamp)
+    # signing
     signature = hmac.new(
-        config.proxy_secret.encode(),
-        payload_b64.encode(),
+        config.proxy_secret.encode("utf-8"),
+        payload_b64.encode("ascii"),
         hashlib.sha256,
     ).hexdigest()
 
     php_url = f"{config.proxy_url}/stream.php?data={payload_b64}&sig={signature}"
-
     return php_url
 
 
@@ -73,7 +69,6 @@ def serve(request: WSGIRequest, token: str):
                 hit.save()
 
             raw_url = media.audio
-            # cache_duration = hours_to_seconds(12)
 
         else:
             image_available = check_is_remote_available(media.image)
@@ -85,14 +80,6 @@ def serve(request: WSGIRequest, token: str):
                 media.save()
 
             raw_url = media.image
-            # cache_duration = hours_to_seconds(24)
-
-        # php_url = (
-        #     f"https://api.screwmycode.in"
-        #     f"/stream.php?url={quote(raw_url)}"
-        #     f"&type={media_type}"
-        #     f"&cache={cache_duration}"
-        # )
 
         php_url = generate_php_url(raw_url, media_type)
         return HttpResponseRedirect(php_url)
