@@ -28,14 +28,18 @@ def generate_php_url(
     payload = {
         "media_url": media_url,
         "media_type": media_type,
-        "expires": int(time.time()) + 300,  # 5 minutes from now
+        "expires": int(time.time()) + 300,
     }
 
-    # encoding
+    # Encode using URL-safe base64 (no padding)
     payload_json = json.dumps(payload, separators=(",", ":"))
-    payload_b64 = base64.b64encode(payload_json.encode("utf-8")).decode("ascii")
+    payload_b64 = (
+        base64.urlsafe_b64encode(payload_json.encode("utf-8"))
+        .decode("ascii")
+        .rstrip("=")
+    )
 
-    # signing
+    # Sign the URL-safe base64 payload
     signature = hmac.new(
         config.proxy_secret.encode("utf-8"),
         payload_b64.encode("ascii"),

@@ -64,13 +64,26 @@ if (!hash_equals($expected_signature, $provided_signature)) {
     die('Invalid signature');
 }
 
-// Decode and validate payload
+// Decode URL-safe base64 payload
 try {
-    $payload_json = base64_decode($payload_b64, true);
-    $payload = json_decode($payload_json, true);
+    // Add padding back if needed
+    $payload_b64_padded = $payload_b64 . str_repeat('=', (4 - strlen($payload_b64) % 4) % 4);
 
-    if (!$payload) {
-        throw new Exception('Invalid payload');
+    // Convert URL-safe characters back to standard base64
+    $payload_b64_standard = str_replace(['-', '_'], ['+', '/'], $payload_b64_padded);
+
+    $payload_json = base64_decode($payload_b64_standard, true);
+    if ($payload_json === false) {
+        throw new Exception('Base64 decode failed');
+    }
+
+    $payload = json_decode($payload_json, true);
+    if ($payload === null && json_last_error() !== JSON_ERROR_NONE) {
+        throw new Exception('JSON decode failed: ' . json_last_error_msg());
+    }
+
+    if (!isset($payload['media_url']) || !isset($payload['expires']) || !isset($payload['media_type'])) {
+        throw new Exception('Missing required payload fields');
     }
 
     // Check expiration
@@ -79,7 +92,6 @@ try {
         die('Token expired');
     }
 
-    // Now you have access to all your data:
     $media_url = $payload['media_url'];
     $media_type = $payload['media_type'];
 } catch (Exception $e) {
