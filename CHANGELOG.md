@@ -1,3 +1,10 @@
+# [5.9.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.8.3...v5.9.0) (2025-08-02)
+
+
+### Features
+
+* allow head requests for media route ([5790216](https://github.com/bamdadfr/screwmycode-in--api/commit/579021637a3dd317019da3d7098fcf51530c0481))
+
 ## [5.8.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.8.2...v5.8.3) (2025-08-01)
 
 
