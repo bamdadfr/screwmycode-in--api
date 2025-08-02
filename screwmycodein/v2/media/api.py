@@ -50,7 +50,10 @@ def generate_php_url(
     return php_url
 
 
-@router.get("/{token}")
+@router.api_operation(
+    ["GET", "HEAD"],
+    "/{token}",
+)
 def serve(request: WSGIRequest, token: str):
     try:
         raw = decode_media_url(token)
