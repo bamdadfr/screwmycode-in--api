@@ -1,3 +1,10 @@
+## [5.9.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.3...v5.9.4) (2025-08-03)
+
+
+### Bug Fixes
+
+* actually that was good ([88b563c](https://github.com/bamdadfr/screwmycode-in--api/commit/88b563cad9f7600da6391dffd53059dff22bdc35))
+
 ## [5.9.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.2...v5.9.3) (2025-08-03)
 
 
