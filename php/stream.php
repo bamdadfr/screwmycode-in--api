@@ -127,6 +127,9 @@ curl_setopt($ch, CURLOPT_TIMEOUT, 30); // Add timeout
 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10); // Connection timeout
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // If HTTPS issues
 curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; ProxyBot/1.0)');
+curl_setopt($ch, CURLOPT_TCP_KEEPALIVE, 1);
+curl_setopt($ch, CURLOPT_TCP_KEEPIDLE, 2);
+curl_setopt($ch, CURLOPT_TCP_KEEPINTVL, 2);
 curl_setopt(
     $ch,
     CURLOPT_WRITEFUNCTION,
