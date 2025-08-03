@@ -122,14 +122,7 @@ header('Cache-Control: public, max-age=43200'); // Cache for 12 hours
 header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 43200) . ' GMT');
 
 $ch = curl_init($media_url);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_TIMEOUT, 30); // Add timeout
-curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10); // Connection timeout
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // If HTTPS issues
-curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; ProxyBot/1.0)');
-curl_setopt($ch, CURLOPT_TCP_KEEPALIVE, 1);
-curl_setopt($ch, CURLOPT_TCP_KEEPIDLE, 2);
-curl_setopt($ch, CURLOPT_TCP_KEEPINTVL, 2);
+
 curl_setopt(
     $ch,
     CURLOPT_WRITEFUNCTION,
@@ -139,6 +132,5 @@ curl_setopt(
         return strlen($data);
     }
 );
+
 curl_exec($ch);
-$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-curl_close($ch); // You're missing this!
