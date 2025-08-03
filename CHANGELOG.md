@@ -1,3 +1,10 @@
+## [5.9.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.0...v5.9.1) (2025-08-03)
+
+
+### Bug Fixes
+
+* properly close curl stream ([baf9b91](https://github.com/bamdadfr/screwmycode-in--api/commit/baf9b91947d44f08ecc4a7fa3491c1c167edc2d0))
+
 # [5.9.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.8.3...v5.9.0) (2025-08-02)
 
 
