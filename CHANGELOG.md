@@ -1,3 +1,10 @@
+## [5.9.3](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.2...v5.9.3) (2025-08-03)
+
+
+### Bug Fixes
+
+* rollback php stream script ([494b437](https://github.com/bamdadfr/screwmycode-in--api/commit/494b4374c8af7c2565e5464db900d471ff758b2c))
+
 ## [5.9.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.1...v5.9.2) (2025-08-03)
 
 
