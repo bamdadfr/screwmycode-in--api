@@ -4,8 +4,6 @@ from typing import Callable, NamedTuple, Tuple
 from django.core.handlers.wsgi import WSGIRequest
 from yt_dlp import YoutubeDL
 
-from screwmycodein.v2.audio import get_audio_format, get_audio_type
-
 YoutubeDlInfo = Tuple[str, str, str]
 
 
@@ -61,10 +59,8 @@ class YoutubeDlUtil:
             "quiet": True,
             "no_warnings": True,
             "skip_download": True,
+            "format": "best[protocol!*=m3u8]",
         }
-
-        audio_type = get_audio_type(url)
-        audio_format = get_audio_format(audio_type)
 
         title: str | None = None
         image: str | None = None
@@ -82,14 +78,10 @@ class YoutubeDlUtil:
             if thumbnails:
                 image = thumbnails[-1].get("url", "")
 
-            formats = info.get("formats", [])
-
-            for f in formats:
-                current_id: str = f["format_id"]
-
-                if current_id.startswith(audio_format):
-                    audio = f["url"]
-                    break
+            if info.get("url"):
+                audio = info["url"]
+            elif info.get("requested_formats"):
+                audio = info["requested_formats"][0].get("url", "")
 
         if title is None or image is None or audio is None:
             raise ValueError("Invalid values")

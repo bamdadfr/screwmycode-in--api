@@ -5,7 +5,7 @@ from ninja import Router, Schema
 
 from screwmycodein.db.hit_v2 import HitV2Service
 from screwmycodein.db.media_service import MediaService
-from screwmycodein.v2.audio import get_audio_type
+from screwmycodein.v2.audio import validate_provider
 from screwmycodein.v2.constants import MEDIA_BASE_PATH
 from screwmycodein.v2.sign import encode_media
 from screwmycodein.v2.throttle import CloudflareAwareThrottle
@@ -23,7 +23,7 @@ class BodyDto(Schema):
 )
 def serve(request: WSGIRequest, body: BodyDto):
     try:
-        _ = get_audio_type(body.url)
+        validate_provider(body.url)
         media = MediaService.find_or_create(body.url)
 
         return {
