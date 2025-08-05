@@ -3,6 +3,7 @@ from typing import Callable, NamedTuple, Tuple
 
 from django.core.handlers.wsgi import WSGIRequest
 from yt_dlp import YoutubeDL
+from yt_dlp.utils import DownloadError
 
 YoutubeDlInfo = Tuple[str, str, str]
 
@@ -66,28 +67,33 @@ class YoutubeDlUtil:
         image: str | None = None
         audio: str | None = None
 
-        with YoutubeDL(options) as ydl:
-            info = ydl.extract_info(url=url, download=False)
+        try:
+            with YoutubeDL(options) as ydl:
+                info = ydl.extract_info(url=url, download=False)
 
-            if info is None:
-                raise ValueError("Not found")
+                if info is None:
+                    raise ValueError("Not found")
 
-            title = info.get("title")
+                title = info.get("title")
 
-            thumbnails = info.get("thumbnails", [])
-            if thumbnails:
-                image = thumbnails[-1].get("url", "")
+                thumbnails = info.get("thumbnails", [])
+                if thumbnails:
+                    image = thumbnails[-1].get("url", "")
 
-            if info.get("url"):
-                audio = info["url"]
-            elif info.get("requested_formats"):
-                audio = info["requested_formats"][0].get("url", "")
+                if info.get("url"):
+                    audio = info["url"]
+                elif info.get("requested_formats"):
+                    audio = info["requested_formats"][0].get("url", "")
 
-        if title is None or image is None or audio is None:
-            raise ValueError("Invalid values")
+            if title is None or image is None or audio is None:
+                raise ValueError("Invalid values")
 
-        return ExtractedInfo(
-            title=title,
-            audio=audio,
-            image=image,
-        )
+            return ExtractedInfo(
+                title=title,
+                audio=audio,
+                image=image,
+            )
+        except DownloadError:
+            raise ValueError("Failed download")
+        except Exception:
+            raise ValueError("Failed extracation")
