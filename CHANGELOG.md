@@ -1,3 +1,10 @@
+## [5.9.5](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.4...v5.9.5) (2025-08-05)
+
+
+### Bug Fixes
+
+* stricter yt-dlp call ([e13e8aa](https://github.com/bamdadfr/screwmycode-in--api/commit/e13e8aacd38a4716c863c174cc6a0c387719b41a))
+
 ## [5.9.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.3...v5.9.4) (2025-08-03)
 
 
