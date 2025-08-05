@@ -1,3 +1,10 @@
+## [5.9.6](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.5...v5.9.6) (2025-08-05)
+
+
+### Bug Fixes
+
+* remove static format ids ([c1541be](https://github.com/bamdadfr/screwmycode-in--api/commit/c1541be6dfdafed67aa969b47ef63534c646f388))
+
 ## [5.9.5](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.4...v5.9.5) (2025-08-05)
 
 
