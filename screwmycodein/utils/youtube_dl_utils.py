@@ -66,16 +66,23 @@ class YoutubeDlUtil:
         audio_type = get_audio_type(url)
         audio_format = get_audio_format(audio_type)
 
-        title: str = ""
-        image: str = ""
-        audio: str = ""
+        title: str | None = None
+        image: str | None = None
+        audio: str | None = None
 
         with YoutubeDL(options) as ydl:
             info = ydl.extract_info(url=url, download=False)
 
-            title = info.get("title")  # type: ignore
-            image = info.get("thumbnails")[-1].get("url")  # type: ignore
-            formats = info.get("formats", [])  # type: ignore
+            if info is None:
+                raise ValueError("Not found")
+
+            title = info.get("title")
+
+            thumbnails = info.get("thumbnails", [])
+            if thumbnails:
+                image = thumbnails[-1].get("url", "")
+
+            formats = info.get("formats", [])
 
             for f in formats:
                 current_id: str = f["format_id"]
@@ -83,6 +90,9 @@ class YoutubeDlUtil:
                 if current_id.startswith(audio_format):
                     audio = f["url"]
                     break
+
+        if title is None or image is None or audio is None:
+            raise ValueError("Invalid values")
 
         return ExtractedInfo(
             title=title,
