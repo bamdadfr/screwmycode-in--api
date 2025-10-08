@@ -26,4 +26,4 @@ types-PyYAML==6.0.12.20240311
 typing_extensions==4.12.2
 urllib3==2.2.2
 websockets==13.0
-yt-dlp==2025.7.21
+yt-dlp==2025.9.26
