@@ -1,3 +1,10 @@
+# [5.10.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.7...v5.10.0) (2025-10-08)
+
+
+### Features
+
+* upgrade yt-dlp ([085a08b](https://github.com/bamdadfr/screwmycode-in--api/commit/085a08ba710e07cbb1da5b2a56da3ad7e3bde6a2))
+
 ## [5.9.7](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.6...v5.9.7) (2025-08-05)
 
 
