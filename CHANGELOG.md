@@ -1,3 +1,10 @@
+## [5.10.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.10.0...v5.10.1) (2025-10-11)
+
+
+### Bug Fixes
+
+* update django ([b9763b2](https://github.com/bamdadfr/screwmycode-in--api/commit/b9763b2d78f55df7ccd0608501a3257bba82048a))
+
 # [5.10.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.7...v5.10.0) (2025-10-08)
 
 
