@@ -3,8 +3,7 @@ from typing import Callable, NamedTuple, Tuple
 
 from django.core.handlers.wsgi import WSGIRequest
 from yt_dlp import YoutubeDL
-
-from screwmycodein.v2.audio import get_audio_format, get_audio_type
+from yt_dlp.utils import DownloadError
 
 YoutubeDlInfo = Tuple[str, str, str]
 
@@ -61,31 +60,40 @@ class YoutubeDlUtil:
             "quiet": True,
             "no_warnings": True,
             "skip_download": True,
+            "format": "best[protocol!*=m3u8]",
         }
 
-        audio_type = get_audio_type(url)
-        audio_format = get_audio_format(audio_type)
+        title: str | None = None
+        image: str | None = None
+        audio: str | None = None
 
-        title: str = ""
-        image: str = ""
-        audio: str = ""
+        try:
+            with YoutubeDL(options) as ydl:
+                info = ydl.extract_info(url=url, download=False)
 
-        with YoutubeDL(options) as ydl:
-            info = ydl.extract_info(url=url, download=False)
+                if info is None:
+                    raise ValueError("Not found")
 
-            title = info.get("title")  # type: ignore
-            image = info.get("thumbnails")[-1].get("url")  # type: ignore
-            formats = info.get("formats", [])  # type: ignore
+                title = info.get("title")
 
-            for f in formats:
-                current_id: str = f["format_id"]
+                thumbnails = info.get("thumbnails", [])
+                if thumbnails:
+                    image = thumbnails[-1].get("url", "")
 
-                if current_id.startswith(audio_format):
-                    audio = f["url"]
-                    break
+                if info.get("url"):
+                    audio = info["url"]
+                elif info.get("requested_formats"):
+                    audio = info["requested_formats"][0].get("url", "")
 
-        return ExtractedInfo(
-            title=title,
-            audio=audio,
-            image=image,
-        )
+            if title is None or image is None or audio is None:
+                raise ValueError("Invalid values")
+
+            return ExtractedInfo(
+                title=title,
+                audio=audio,
+                image=image,
+            )
+        except DownloadError:
+            raise ValueError("Failed download")
+        except Exception:
+            raise ValueError("Failed extracation")

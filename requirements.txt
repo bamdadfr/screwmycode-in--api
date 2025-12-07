@@ -4,7 +4,7 @@ Brotli==1.1.0
 certifi==2024.7.4
 charset-normalizer==3.3.2
 contextlib2==21.6.0
-Django==5.1
+Django==5.2.7
 django-cors-headers==4.4.0
 django-ninja==1.2.1
 django-ninja-extra==0.21.1
@@ -26,4 +26,4 @@ types-PyYAML==6.0.12.20240311
 typing_extensions==4.12.2
 urllib3==2.6.0
 websockets==13.0
-yt-dlp==2025.7.21
+yt-dlp==2025.9.26

@@ -1,3 +1,38 @@
+## [5.10.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.10.0...v5.10.1) (2025-10-11)
+
+
+### Bug Fixes
+
+* update django ([b9763b2](https://github.com/bamdadfr/screwmycode-in--api/commit/b9763b2d78f55df7ccd0608501a3257bba82048a))
+
+# [5.10.0](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.7...v5.10.0) (2025-10-08)
+
+
+### Features
+
+* upgrade yt-dlp ([085a08b](https://github.com/bamdadfr/screwmycode-in--api/commit/085a08ba710e07cbb1da5b2a56da3ad7e3bde6a2))
+
+## [5.9.7](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.6...v5.9.7) (2025-08-05)
+
+
+### Bug Fixes
+
+* wrap yt-dlp call ([05609db](https://github.com/bamdadfr/screwmycode-in--api/commit/05609db3c851386a151bf5ef7d2182f990eb05bc))
+
+## [5.9.6](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.5...v5.9.6) (2025-08-05)
+
+
+### Bug Fixes
+
+* remove static format ids ([c1541be](https://github.com/bamdadfr/screwmycode-in--api/commit/c1541be6dfdafed67aa969b47ef63534c646f388))
+
+## [5.9.5](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.4...v5.9.5) (2025-08-05)
+
+
+### Bug Fixes
+
+* stricter yt-dlp call ([e13e8aa](https://github.com/bamdadfr/screwmycode-in--api/commit/e13e8aacd38a4716c863c174cc6a0c387719b41a))
+
 ## [5.9.4](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.9.3...v5.9.4) (2025-08-03)
 
 
