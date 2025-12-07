@@ -1,3 +1,10 @@
+## [5.10.2](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.10.1...v5.10.2) (2025-12-07)
+
+
+### Bug Fixes
+
+* upgrade urllib3 ([7f4bb6f](https://github.com/bamdadfr/screwmycode-in--api/commit/7f4bb6fc8d2998024185789b1e8ca4c7edaffe7d))
+
 ## [5.10.1](https://github.com/bamdadfr/screwmycode-in--api/compare/v5.10.0...v5.10.1) (2025-10-11)
 
 
